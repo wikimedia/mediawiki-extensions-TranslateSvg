@@ -444,6 +444,26 @@ $messages['ru'] = array(
 	'translatesvg-toggle-hide' => 'Скрыть переводы на этом языке',
 );
 
+/** Swedish (Svenska)
+ * @author WikiPhoenix
+ */
+$messages['sv'] = array(
+	'translatesvg-legend' => 'Sökväg till fil',
+	'translatesvg-page' => 'Fil:',
+	'translatesvg-submit' => 'Gå',
+	'translatesvg-add' => 'Om ditt språk inte finns någonstans kan du [[#addlanguage|lägga till det]].',
+	'translatesvg-xcoordinate-pre' => 'X-koordinat (horisontal):',
+	'translatesvg-ycoordinate-pre' => 'Y-koordinat (vertikal):',
+	'translatesvg-specify' => 'Ange en ny språkkod (t.ex. en, fr, de, es, ...)',
+	'translatesvg-fallbackdesc' => 'Standard (inget språk specificerat)',
+	'translatesvg-qqqdesc' => 'Råd till översättare',
+	'translatesvg-nodesc' => '(ingen beskrivning)',
+	'translatesvg-remove' => 'Ta bort alla översättningar på detta språk',
+	'translatesvg-unsuccessful' => "Denna fil '''kunde inte översättas''', tyvärr.",
+	'translatesvg-toggle-view' => 'Visa översättningar på detta språk',
+	'translatesvg-toggle-hide' => 'Dölj översättningar på detta språk',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
