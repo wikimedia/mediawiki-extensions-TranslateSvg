@@ -172,6 +172,28 @@ $messages['dsb'] = array(
 	'translatesvg-toggle-hide' => 'Pśełožki  w toś tej rěcy schowaś',
 );
 
+/** Spanish (Español)
+ * @author Armando-Martin
+ */
+$messages['es'] = array(
+	'translatesvg-desc' => 'Proporciona una interfaz de estilo nativo para traducir archivos SVG en consonancia con la especificación SVG1.1',
+	'translatesvg-legend' => 'Ruta del archivo',
+	'translatesvg-page' => 'Archivo:',
+	'translatesvg-submit' => 'Ir',
+	'translatesvg-summary' => 'Esta página especial le permite agregar, quitar y modificar traducciones incrustadas dentro de un determinado archivo de imagen SVG.',
+	'translatesvg-add' => 'Si su idioma no aparece ya listado, puede [[#addlanguage|añadirlo]].',
+	'translatesvg-xcoordinate-pre' => 'Coordenada X (horizontal):',
+	'translatesvg-ycoordinate-pre' => 'Coordenada Y (vertical):',
+	'translatesvg-specify' => 'Especifique el nuevo código de idioma (por ejemplo: en, fr, de, es,...)',
+	'translatesvg-fallbackdesc' => 'Por defecto (sin especificación de idioma)',
+	'translatesvg-qqqdesc' => 'Asesoramiento a los traductores',
+	'translatesvg-nodesc' => '(sin descripción)',
+	'translatesvg-remove' => 'Eliminar todas las traducciones de este idioma',
+	'translatesvg-unsuccessful' => "Este archivo '''no se pudo traducir''', lo sentimos.",
+	'translatesvg-toggle-view' => 'Ver las traducciones en este idioma',
+	'translatesvg-toggle-hide' => 'Ocultar las traducciones en este idioma',
+);
+
 /** Persian (فارسی)
  * @author ZxxZxxZ
  */
