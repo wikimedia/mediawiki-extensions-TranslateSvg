@@ -501,3 +501,13 @@ $messages['uk'] = array(
 	'translatesvg-nodesc' => '(немає опису)',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'translatesvg-legend' => 'Đường dẫn tập tin',
+	'translatesvg-page' => 'Tập tin:',
+	'translatesvg-specify' => 'Định rõ mã ngôn ngữ mới (ví dụ en, fr, de, es, vi…)',
+	'translatesvg-nodesc' => '(không miêu tả)',
+);
+
