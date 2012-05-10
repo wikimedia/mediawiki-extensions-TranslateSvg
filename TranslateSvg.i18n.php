@@ -494,6 +494,26 @@ $messages['te'] = array(
 	'translatesvg-nodesc' => '(వివరణ లేదు)',
 );
 
+/** Uyghur (Arabic script) (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'translatesvg-legend' => 'ھۆججەت يولى',
+	'translatesvg-page' => 'ھۆججەت:',
+	'translatesvg-submit' => 'يۆتكەل',
+	'translatesvg-add' => 'ئەگەر تىلىڭىز تىزىمغا قوشۇلمىغان بولسا، ئۆزىڭىز [[#addlanguage|ئۇنى قوشالايسىز]].',
+	'translatesvg-xcoordinate-pre' => 'X-كوئوردىنات (توغرىسىغا):',
+	'translatesvg-ycoordinate-pre' => 'Y-كوئوردىناتى(بويىغا):',
+	'translatesvg-specify' => 'يېڭى تىل كودىنى بەلگىلەڭ (مەسىلەن، en، fr، de، es …)',
+	'translatesvg-fallbackdesc' => 'كۆڭۈلدىكى (تىل بەلگىلەنمىگەن)',
+	'translatesvg-qqqdesc' => 'تەرجىمە تەۋسىيەسى',
+	'translatesvg-nodesc' => '(چۈشەندۈرۈش يوق)',
+	'translatesvg-remove' => 'بۇ تىلنىڭ ھەممە تەرجىمىلىرىنى چىقىرىۋەت',
+	'translatesvg-unsuccessful' => "بۇ ھۆججەتنى '''تەرجىمە قىلالمايدۇ'''، كەچۈرۈڭ.",
+	'translatesvg-toggle-view' => 'بۇ تىلدىكى تەرجىمىنى كۆرسەت',
+	'translatesvg-toggle-hide' => 'بۇ تىلدىكى تەرجىمىنى يوشۇر',
+);
+
 /** Ukrainian (Українська)
  * @author A1
  */
