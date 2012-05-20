@@ -444,6 +444,14 @@ $messages['nl'] = array(
 	'translatesvg-toggle-hide' => 'Vertalen in deze taal verbergen',
 );
 
+/** Pälzisch (Pälzisch)
+ * @author Manuae
+ */
+$messages['pfl'] = array(
+	'translatesvg-page' => 'Dadai:',
+	'translatesvg-submit' => 'Ausfiere',
+);
+
 /** Russian (Русский)
  * @author Express2000
  */
