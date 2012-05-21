@@ -334,6 +334,25 @@ $messages['ia'] = array(
 	'translatesvg-toggle-hide' => 'Celar le traductiones in iste lingua',
 );
 
+/** Japanese (日本語)
+ * @author Shirayuki
+ */
+$messages['ja'] = array(
+	'translatesvg-legend' => 'ファイルパス',
+	'translatesvg-page' => 'ファイル：',
+	'translatesvg-add' => 'あなたの言語が一覧にない場合は、[[#addlanguage|追加]]できます。',
+	'translatesvg-xcoordinate-pre' => 'X 座標（水平）：',
+	'translatesvg-ycoordinate-pre' => 'Y 座標（垂直）：',
+	'translatesvg-specify' => '新しい言語コード（例：en、fr、de、es、...）を指定',
+	'translatesvg-fallbackdesc' => '既定（言語指定なし）',
+	'translatesvg-qqqdesc' => '翻訳者への助言',
+	'translatesvg-nodesc' => '（解説なし）',
+	'translatesvg-remove' => 'この言語のすべての翻訳を除去',
+	'translatesvg-unsuccessful' => "申し訳ありません、このファイルを'''翻訳できませんでした'''。",
+	'translatesvg-toggle-view' => 'この言語の翻訳を表示',
+	'translatesvg-toggle-hide' => 'この言語の翻訳を隠す',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
