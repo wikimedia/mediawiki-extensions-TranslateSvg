@@ -467,8 +467,22 @@ $messages['nl'] = array(
  * @author Manuae
  */
 $messages['pfl'] = array(
+	'translatesvg-desc' => 'Hodä nadirlischi Schniddschdell fas Iwasedze vun SVG-Dadaije im Oinglong midde Oagab SVG1.1',
+	'translatesvg-legend' => 'Dadaiweesch',
 	'translatesvg-page' => 'Dadai:',
 	'translatesvg-submit' => 'Ausfiere',
+	'translatesvg-summary' => 'Die Schbezialsaid ealaubds Zufiesche, Wegnemme un Änare vun Iwasetzunge in SVG-Dadaije.',
+	'translatesvg-add' => 'Wonns doi Schbrooch do ned hod, konschdse [[#addlanguage|dzufiesche]].',
+	'translatesvg-xcoordinate-pre' => 'X-Koordinaad (waachreschd):',
+	'translatesvg-ycoordinate-pre' => 'Y-Koordinaad (sengkreschd):',
+	'translatesvg-specify' => "Geb'n naije Schbroochcode oa (z. B. pfl, de, en, ...)",
+	'translatesvg-fallbackdesc' => 'Schdandad (kÄ Schbrooch oagewe)',
+	'translatesvg-qqqdesc' => 'Radschleesch fa Iwasedza',
+	'translatesvg-nodesc' => '(kä Bschraiwung)',
+	'translatesvg-remove' => 'Alli Iwasedzunge vunde Schbrooch wegnemme',
+	'translatesvg-unsuccessful' => "Die Dadai hod laida '''ned''' iwasedzd werre kenne.",
+	'translatesvg-toggle-view' => 'Alli Iwasedzunge vunde Schbrooch oagugge',
+	'translatesvg-toggle-hide' => 'Alli Iwasedzunge vunde Schbrooch vaschdegle',
 );
 
 /** Russian (Русский)
