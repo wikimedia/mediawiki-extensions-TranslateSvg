@@ -150,6 +150,16 @@ $messages['de-formal'] = array(
 	'translatesvg-add' => 'Sofern Ihre Sprache nicht bereits hier aufgeführt ist, können Sie sie [[#addlanguage|hinzufügen]].',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'translatesvg-page' => 'Dosya:',
+	'translatesvg-submit' => 'Şo',
+	'translatesvg-xcoordinate-pre' => 'X-kooordinati (horizontal):',
+	'translatesvg-ycoordinate-pre' => 'Y-Koordinati (vertical):',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
