@@ -565,11 +565,27 @@ $messages['ug-arab'] = array(
 	'translatesvg-toggle-hide' => 'بۇ تىلدىكى تەرجىمىنى يوشۇر',
 );
 
-/** Ukrainian (Українська)
+/** Ukrainian (українська)
  * @author A1
+ * @author Olvin
  */
 $messages['uk'] = array(
+	'translatesvg-desc' => 'Забезпечує переклад файлів SVG у відповідності до специфікації SVG1.1',
+	'translatesvg-legend' => 'Шлях до файлу',
+	'translatesvg-page' => 'Файл:',
+	'translatesvg-submit' => 'Перейти',
+	'translatesvg-summary' => 'Це спеціальна сторінка дозволяє додавати, вилучати та змінювати переклади, вміщені в це SVG-зображення.',
+	'translatesvg-add' => 'Якщо вашої мови немає в переліку, Ви можете [[#addlanguage|додати її]].',
+	'translatesvg-xcoordinate-pre' => 'X-координата (по горизонталі):',
+	'translatesvg-ycoordinate-pre' => 'У-координата (по вертикалі):',
+	'translatesvg-specify' => 'Зазначте код нової мови (наприклад uk, ru, pl, rue, ...)',
+	'translatesvg-fallbackdesc' => 'За замовчуванням (мову не задано)',
+	'translatesvg-qqqdesc' => 'Поради для перекладачів',
 	'translatesvg-nodesc' => '(немає опису)',
+	'translatesvg-remove' => 'Вилучити всі переклади цією мовою',
+	'translatesvg-unsuccessful' => "На жаль, цей файл ' ' 'не може бути перекладено' ' '.",
+	'translatesvg-toggle-view' => 'Переглянути переклади цією мовою',
+	'translatesvg-toggle-hide' => 'Приховати переклади цією мовою',
 );
 
 /** Vietnamese (Tiếng Việt)
