@@ -385,6 +385,13 @@ $messages['ko'] = array(
 	'translatesvg-toggle-hide' => '이 언어로 된 번역 숨기기',
 );
 
+/** Kurdish (Latin script) (‪Kurdî (latînî)‬)
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'translatesvg-submit' => 'Biçe',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
