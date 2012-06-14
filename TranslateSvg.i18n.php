@@ -56,7 +56,7 @@ $messages['qqq'] = array(
 	'translatesvg-toggle-hide' => 'A toggle label; clicking on it causes form elements to disappear',
 );
 
-/** Asturian (Asturianu)
+/** Asturian (asturianu)
  * @author Xuacu
  */
 $messages['ast'] = array(
@@ -101,7 +101,7 @@ $messages['be-tarask'] = array(
 	'translatesvg-toggle-hide' => 'Схаваць пераклады на гэтую мову',
 );
 
-/** Breton (Brezhoneg)
+/** Breton (brezhoneg)
  * @author Fulup
  * @author Y-M D
  */
@@ -182,7 +182,7 @@ $messages['dsb'] = array(
 	'translatesvg-toggle-hide' => 'Pśełožki  w toś tej rěcy schowaś',
 );
 
-/** Spanish (Español)
+/** Spanish (español)
  * @author Armando-Martin
  */
 $messages['es'] = array(
@@ -226,14 +226,14 @@ $messages['fa'] = array(
 	'translatesvg-toggle-hide' => 'نهفتن ترجمه‌ها به این زبان',
 );
 
-/** Finnish (Suomi)
+/** Finnish (suomi)
  * @author Crt
  */
 $messages['fi'] = array(
 	'translatesvg-submit' => 'Siirry',
 );
 
-/** French (Français)
+/** French (français)
  * @author Gomoko
  * @author Od1n
  */
@@ -322,7 +322,7 @@ $messages['hsb'] = array(
 	'translatesvg-toggle-hide' => 'Přełožki  w tutej rěči schować',
 );
 
-/** Interlingua (Interlingua)
+/** Interlingua (interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
@@ -413,7 +413,7 @@ $messages['lb'] = array(
 	'translatesvg-toggle-hide' => 'Iwwersetzungen an dëser Sprooch verstoppen',
 );
 
-/** Macedonian (Македонски)
+/** Macedonian (македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
@@ -502,7 +502,7 @@ $messages['pfl'] = array(
 	'translatesvg-toggle-hide' => 'Alli Iwasedzunge vunde Schbrooch vaschdegle',
 );
 
-/** Russian (Русский)
+/** Russian (русский)
  * @author Express2000
  */
 $messages['ru'] = array(
@@ -524,7 +524,7 @@ $messages['ru'] = array(
 	'translatesvg-toggle-hide' => 'Скрыть переводы на этом языке',
 );
 
-/** Swedish (Svenska)
+/** Swedish (svenska)
  * @author WikiPhoenix
  */
 $messages['sv'] = array(
