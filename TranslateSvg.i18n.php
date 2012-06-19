@@ -344,6 +344,28 @@ $messages['ia'] = array(
 	'translatesvg-toggle-hide' => 'Celar le traductiones in iste lingua',
 );
 
+/** Italian (italiano)
+ * @author Beta16
+ */
+$messages['it'] = array(
+	'translatesvg-desc' => "Fornisce un'interfaccia nativa per tradurre SVG con le specifiche SVG1.1",
+	'translatesvg-legend' => 'Percorso file',
+	'translatesvg-page' => 'File:',
+	'translatesvg-submit' => 'Vai',
+	'translatesvg-summary' => "Questa pagina speciale consente di aggiungere, rimuovere e modificare le traduzioni incorporate all'interno di un determinato file SVG.",
+	'translatesvg-add' => 'Se la tua lingua non è già elencata, puoi [[#addlanguage|aggiungerla]].',
+	'translatesvg-xcoordinate-pre' => 'Coordinata X (orizzontale):',
+	'translatesvg-ycoordinate-pre' => 'Coordinata Y (verticale):',
+	'translatesvg-specify' => 'Specifica il nuovo codice lingua (ad esempio: en, it, fr, de, es, ...)',
+	'translatesvg-fallbackdesc' => 'Predefinita (nessuna lingua indicata)',
+	'translatesvg-qqqdesc' => 'Consigli per i traduttori',
+	'translatesvg-nodesc' => '(nessuna descrizione)',
+	'translatesvg-remove' => 'Rimuovi tutte le traduzioni in questa lingua',
+	'translatesvg-unsuccessful' => "Spiacenti, questo file '''non può essere tradotto'''.",
+	'translatesvg-toggle-view' => 'Mostra traduzioni in questa lingua',
+	'translatesvg-toggle-hide' => 'Nascondi traduzioni in questa lingua',
+);
+
 /** Japanese (日本語)
  * @author Shirayuki
  */
