@@ -599,7 +599,7 @@ $messages['ug-arab'] = array(
  * @author Olvin
  */
 $messages['uk'] = array(
-	'translatesvg-desc' => 'Забезпечує переклад файлів SVG у відповідності до специфікації SVG1.1',
+	'translatesvg-desc' => 'Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1',
 	'translatesvg-legend' => 'Шлях до файлу',
 	'translatesvg-page' => 'Файл:',
 	'translatesvg-submit' => 'Перейти',
