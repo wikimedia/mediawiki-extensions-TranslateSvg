@@ -20,18 +20,6 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['SpecialTranslateSvg'] = $dir . 'SpecialTranslateSvg.php';
-$wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SpecialTranslateSvg.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
-$wgExtensionMessagesFiles['TranslateSvg-alias']  = $dir . 'TranslateSvg.alias.php';
-$wgSpecialPages['TranslateSvg'] = 'SpecialTranslateSvg'; # Tell MediaWiki about the new special page and its class name
-$wgSpecialPageGroups['TranslateSvg'] = 'media';
- 
 $wgResourceModules['ext.translateSvg'] = array(
-	'scripts' => array( 'ext.translateSvg.core.js' ),
-	// 'styles' => 'css/ext.translateSvg.css',
-	'messages' => array( 'translatesvg-add', 'translatesvg-addlink', 'translatesvg-specify', 'translatesvg-remove' ),
-	'dependencies' => array( 'jquery.spinner', 'jquery.makeCollapsible' ),
-	'localBasePath' => dirname( __FILE__ ),
-	'remoteExtPath' => 'translateSvg'
 );
