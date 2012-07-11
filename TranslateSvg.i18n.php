@@ -81,6 +81,7 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'translate-svg-nodesc' => '(Este ficheiro aínda non ten unha descrición.)',
 	'translatesvg-desc' => 'Proporciona unha inteface de estilo nativa para a tradución de ficheiros SVG en liña coa especificación SVG1.1.',
 );
 
@@ -103,6 +104,7 @@ $messages['hsb'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
+	'translate-svg-nodesc' => '(Iste file non ha un description.)',
 	'translatesvg-desc' => 'Forni un interfacie in stilo native pro traducer SVGs de maniera conforme al specification SVG1.1',
 );
 
@@ -110,6 +112,7 @@ $messages['ia'] = array(
  * @author Beta16
  */
 $messages['it'] = array(
+	'translate-svg-nodesc' => '(Questo file non ha una descrizione).',
 	'translatesvg-desc' => "Fornisce un'interfaccia nativa per tradurre SVG con le specifiche SVG1.1",
 );
 
@@ -136,10 +139,12 @@ $messages['ms'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author AvatarTeam
  * @author SPQRobin
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'translate-svg-nodesc' => '(Dit bestand heeft geen beschrijving.)',
 	'translatesvg-desc' => 'Biedt een interface voor het vertalen van SVG-bestanden in het bestand zelf volgens de SVG1.1-specificatie',
 );
 
