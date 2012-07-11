@@ -24,7 +24,6 @@ $messages['qqq'] = array(
 	'translatesvg-desc' => '{{desc}}',
 );
 
-
 /** Asturian (asturianu)
  * @author Xuacu
  */
@@ -32,7 +31,7 @@ $messages['ast'] = array(
 	'translatesvg-desc' => "Ufre una interfaz d'estilu nativu pa traducir en llinia ficheros SVG cola especificación SVG1.1.",
 );
 
-/** Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
  * @author EugeneZelenko
  * @author Wizardist
  */
@@ -44,13 +43,15 @@ $messages['be-tarask'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
+	'translate-svg-nodesc' => '(Diese Datei enthält keine Beschreibung.)',
 	'translatesvg-desc' => 'Ergänzt eine Spezialseite mit der SVG-Dateien in Einklang mit den SVG1.1-Spezifikationen übersetzt werden können',
 );
 
-/** Lower Sorbian (Dolnoserbski)
+/** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'translate-svg-nodesc' => '(Toś ta dataja njama wopisanje.)',
 	'translatesvg-desc' => 'Stoj pówjerch za pśełožowanje SVG-datajow pó specifikaciji SVG1.1 k dispoziciji',
 );
 
@@ -76,7 +77,7 @@ $messages['fr'] = array(
 	'translatesvg-desc' => 'Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1',
 );
 
-/** Galician (Galego)
+/** Galician (galego)
  * @author Toliño
  */
 $messages['gl'] = array(
@@ -90,10 +91,11 @@ $messages['he'] = array(
 	'translatesvg-desc' => 'מתן ממשק ילידי לתרגום קובצי SVG בהתאם לתקן SVG1.1',
 );
 
-/** Upper Sorbian (Hornjoserbsce)
+/** Upper Sorbian (hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
+	'translate-svg-nodesc' => '(Tuta dataja nima wopisanje.)',
 	'translatesvg-desc' => 'Steji powjerch za přełožowanje SVG-datajow po specifikaciji SVG1.1 k dispoziciji',
 );
 
@@ -122,6 +124,7 @@ $messages['ko'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
+	'translate-svg-nodesc' => '(Оваа податотека нема опис.)',
 	'translatesvg-desc' => 'Дава поредник за преведување на SVG податотеки во склад со одредбите на SVG1.1',
 );
 
@@ -154,10 +157,18 @@ $messages['ru'] = array(
 	'translatesvg-desc' => 'Предоставляет перевод файлов SVG в соответствии со спецификацией SVG1.1',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'translate-svg-nodesc' => '(Walang paglalarawan ang talaksang ito.)',
+	'translatesvg-desc' => 'Nagbibigay ng isang ugnayang-mukha na nasa katutubong estilo para sa pagsasalinwika ng mga SVG na nakaalinsundo sa pagkakatukoy ng SVG1.1',
+);
+
 /** Ukrainian (українська)
- * @author A1
  * @author Olvin
  */
 $messages['uk'] = array(
 	'translatesvg-desc' => 'Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1',
 );
+
