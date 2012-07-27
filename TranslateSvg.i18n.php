@@ -12,16 +12,84 @@ $messages = array();
  * @author jarry1250
  */
 $messages['en'] = array(
-	'translate-svg-nodesc' => '(This file does not have a description.)',
 	'translatesvg-desc' => 'Provides a native-style interface for translating SVGs in line with the SVG1.1 specification',
+
+	'translate-taskui-export-as-svg' => 'Save back to original SVG file',
+	'translate-svg-nodesc' => '(No file description was provided.)',
+	'translate-svg-js-thumbnail' => '(thumbnail updates automatically)',
+	'translate-page-description-legend-svgmg' => 'Information about this file',
+	'translate-taction-mstats-svgmg' => 'File statistics',
+	'translate-taction-export-svgmg' => 'Upload updated version of file',
+	'translate-svg-table-header' => 'Message identifier',
+	'translate-svg-filepage-caption' => 'This image rendered as PNG in other languages: $1',
+	'translate-svg-filepage-caption-translator' => 'This image rendered as PNG in other languages: $1; or translate it into $2',
+	'translate-svg-filepage-edit' => 'edit',
+	'translate-svg-filepage-finish' => 'finish',
+	'translate-svg-filepage-another' => 'another language',
+	'translate-svg-filepage-item' => '$1 ($2)',
+	'translate-svg-filepage-invite' => 'This file can be easily translated into other languages: $1',
+	'translate-svg-autocreate' => 'Automatically creating translation units based on changes to the source SVG file',
+	'translate-svg-autodelete' => 'Automatically deleting unnecessary translation units based on changes to the source SVG file',
+	'translate-svg-autoedit' => 'Automatically updating translations based on changes to the source SVG file',
+	'translate-svg-autofuzzy' => 'Automatically marking translations as fuzzy based on changes to the source SVG file',
+	'translate-svg-upload-comment' => 'Updating translations (started: $1; modified/expanded: $2)',
+	'translate-svg-upload-none' => '(none)',
+	'translate-svg-chooselanguage-title' => 'Language selection',
+	'translate-svg-chooselanguage-desc' => 'Please select the language you wish you translate this SVG file into: ',
+
+	# Labels for potential properties attached to strings
+	'translate-js-properties-legend' => 'Properties',
+	'translate-js-label-x' => 'X-coordinate:',
+	'translate-js-label-y' => 'Y-coordinate:',
+	'translate-js-label-color' => 'Color:',
+	'translate-js-label-font-family' => 'Font:',
+	'translate-js-label-font-size' => '',
+	'translate-js-label-units' => '',
+	'translate-js-label-bold' => 'Bold',
+	'translate-js-label-italic' => 'Italic',
+	'translate-js-label-underline' => 'Underline',
+	'translate-js-font-family-inherit' => '(inherit)',
 );
 
 /** Message documentation (Message documentation)
  * @author jarry1250
  */
 $messages['qqq'] = array(
-	'translate-svg-nodesc' => 'Text that displays under the heading "Information about the file" if no information/description could be found.',
 	'translatesvg-desc' => '{{desc}}',
+	'translate-taskui-export-as-svg' => 'Label for a radio button, not currently displayed since no other options',
+	'translate-svg-nodesc' => 'Text that displays under the heading "Information about the file" if no information/description could be found.',
+	'translate-svg-js-thumbnail' => 'Caption for a thumbnail that accompanies the translation of a string.',
+	'translate-page-description-legend-svgmg' => 'Caption for a box that contains file description information.',
+	'translate-taction-mstats-svgmg' => 'Interface message for a tab displayed at the top of the screen',
+	'translate-taction-export-svgmg' => 'Interface message for a tab displayed at the top of the screen',
+	'translate-svg-table-header' => 'Content for a column title/header cell',
+	'translate-svg-filepage-caption' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
+	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages',
+	'translate-svg-filepage-edit' => 'Call to action, used as link text',
+	'translate-svg-filepage-finish' => 'Call to action, used as link text',
+	'translate-svg-filepage-another' => 'Fragment, takes the place of a language name in a list; used as link text, links to a language selection dialog',
+	'translate-svg-filepage-item' => 'The format for each item in a comma-separated list; $1 represents a language name, $2 a call to action.',
+	'translate-svg-filepage-invite' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
+	'translate-svg-autocreate' => 'Edit summary used by a bot during page creation',
+	'translate-svg-autodelete' => 'Log reason/summary used a bot during page deletion',
+	'translate-svg-autoedit' => 'Edit summary used by a bot',
+	'translate-svg-autofuzzy' => 'Edit summary used by a bot. "Fuzzy" here is a Extension:Translate term meaning "mark translations for review"',
+	'translate-svg-upload-comment' => 'Upload summary used by a bot; $1 and $2 are comma-separated lists of languages',
+	'translate-svg-upload-none' => 'Placeholder that replaces an empty comma-separated list of languages in an upload summary',
+	'translate-svg-chooselanguage-title' => 'Title for a dialog box',
+	'translate-svg-chooselanguage-desc' => 'Content of a modal dialog box, immediately followed a by a language drop-down selector',
+
+	'translate-js-properties-legend' => 'The legend for a fieldset which contains property controls',
+	'translate-js-label-x' => 'Label for textbox which sets the horizontal position of a string',
+	'translate-js-label-y' => 'Label for a textbox which sets the vertical position of a string',
+	'translate-js-label-font-family' => 'Label for a dropdown "combobox" which sets the typeface used in a string',
+	'translate-js-label-font-size' => 'Label for a textbox which sets the size of the typeface used in a string',
+	'translate-js-label-units' => 'Label for a dropdown "combobox" which sets the units for the font-size used in a string',
+	'translate-js-label-color' => 'Label for a box which sets the (foreground) colour used for a string',
+	'translate-js-label-bold' => 'Label for a checkbox governing the formatting of a string',
+	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string',
+	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string',
+	'translate-js-font-family-inherit' => 'Label used to imply that no specific typeface will be set for a string; instead, it will be inherited from the document default.'
 );
 
 /** Asturian (asturianu)
@@ -176,4 +244,3 @@ $messages['tl'] = array(
 $messages['uk'] = array(
 	'translatesvg-desc' => 'Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1',
 );
-
