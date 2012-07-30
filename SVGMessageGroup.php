@@ -101,12 +101,11 @@ class SVGMessageGroup extends WikiMessageGroup {
 		if ( !$title->exists() ) {
 			return null;
 		}
-		$rev = Revision::newFromTitle( $title );
-		$properties = $rev->getText();
-		if( !TranslateSvgUtils::hasPropertyString( $properties ) ) {
+		$translation = Revision::newFromTitle( $title )->getText();
+		$properties = TranslateSvgUtils::extractPropertyString( $translation );
+		if( $properties === '' ){
 			return null;
 		}
-		TranslateSvgUtils::extractPropertyString( $properties );
 		return $properties;
 	}
 }
