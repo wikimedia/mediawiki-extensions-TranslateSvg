@@ -1,0 +1,17 @@
+.mw-sp-translate-table tr td:first-child {
+	width: 280px;
+}
+
+.mw-sp-translate-settings label {
+	/* Arbitary numbers picked to give prettier formatting */
+	line-height: 188%;
+	margin-right: 6px;
+}
+
+.justtranslated {
+	font-weight: bold;
+}
+
+.justtranslated:after{
+	content: ' (UNSAVED CHANGE)';
+}
