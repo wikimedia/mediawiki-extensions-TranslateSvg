@@ -30,7 +30,7 @@ $wgResourceModules['jquery.colorpicker'] = array(
 	'scripts' => array( 'resources/jquery.colorpicker.js' ),
 	'styles' => array( 'resources/jquery.colorpicker.css' ),
 	'localBasePath' => dirname( __FILE__ ),
-	'remoteExtPath' => 'translateSvg'
+	'remoteExtPath' => 'TranslateSvg'
 );
 
 $wgResourceModules['ext.translatesvg'] = array(
@@ -54,7 +54,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'ext.translate.hooks'
 	),
 	'localBasePath' => dirname( __FILE__ ),
-	'remoteExtPath' => 'translateSvg'
+	'remoteExtPath' => 'TranslateSvg'
 );
 
 $wgResourceModules['ext.translatesvg.filepage'] = array(
@@ -70,7 +70,7 @@ $wgResourceModules['ext.translatesvg.filepage'] = array(
 		'comma-separator'
 	),
 	'localBasePath' => dirname( __FILE__ ),
-	'remoteExtPath' => 'translateSvg'
+	'remoteExtPath' => 'TranslateSvg'
 );
 
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::addThumbnail';
