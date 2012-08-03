@@ -238,22 +238,6 @@ class SVGFormatReader {
 			if( $text->hasAttribute( 'style' ) ) {
 				$style = $text->getAttribute( 'style' );
 				$text->parentNode->setAttribute( 'style', $style );
-				$extraProperties = explode( ';', $style );
-				$text->removeAttribute( 'style' );
-				foreach( $extraProperties as $extraProperty ) {
-					$bits = explode( ':', $extraProperty, 2 );
-					if( count( $bits ) == 2 ) {
-						list( $attrName, $attrValue ) = TranslateSvgUtils::mapFromAttribute(
-							$bits[0], $bits[1]
-						);
-						list( $attrName, $attrValue ) = TranslateSvgUtils::mapToAttribute(
-							$attrName, $attrValue
-						);
-						if( $attrValue !== false ) {
-							$text->setAttribute( $attrName, trim( $attrValue, '"\' ' ) );
-						}
-					}
-				}
 			}
 		}
 		return true;
