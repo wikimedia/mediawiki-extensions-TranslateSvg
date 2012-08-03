@@ -266,7 +266,7 @@ class SVGFormatReader {
 		// Collapse overrides into new translations
 		foreach( $this->overrides as $key => $languages ) {
 			foreach( $languages as $language => $translation ) {
-				$language = $this->group->isSourceLanguage( $language ) ? 'fallback' : $language;
+				$language = ( $this->group->getSourceLanguage() === $language ) ? 'fallback' : $language;
 				$newTranslations[$key][$language] = TranslateSvgUtils::translationToArray( $translation );
 				$langNoHyphen = str_replace( '_', '', $language );
 				$newTranslations[$key][$language]['id'] = $newTranslations[$key]['fallback']['id'] . $langNoHyphen;
@@ -459,7 +459,7 @@ class SVGFormatReader {
 					continue;
 				}
 
-				$language = $this->group->isSourceLanguage( $language ) ? 'fallback' : $language;
+				$language = ( $this->group->getSourceLanguage() == $language ) ? 'fallback' : $language;
 				$item = TranslateSvgUtils::translationToArray( $translation );
 				if( !isset( $onWikiTranslations[$key] ) ) {
 					$onWikiTranslations[$key] = array();
