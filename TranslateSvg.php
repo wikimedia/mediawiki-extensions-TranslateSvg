@@ -84,7 +84,7 @@ $wgHooks['BeforePageDisplay'][] = 'TranslateSvgHooks::updateFileDescriptionPages
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::makeFilePageGlobalVariables';
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::exposeTranslateSvgTemplateName';
 $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
-$wgHooks['TranslateBeforeSpecialPage'][] = 'TranslateSvgHooks::makeThumbnailPage';
+$wgHooks['TranslateBeforeSpecialTranslate'][] = 'TranslateSvgHooks::makeThumbnailPage';
 $wgHooks['TranslateNoSuchGroupFound'][] = 'TranslateSvgHooks::mimicSVGGroup';
 $wgHooks['FileUpload'][] = 'TranslateSvgHooks::checkTranslationIntegrity';
 
