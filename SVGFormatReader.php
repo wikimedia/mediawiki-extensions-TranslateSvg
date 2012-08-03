@@ -116,7 +116,7 @@ class SVGFormatReader {
 		$tspanLength = $tspans->length;
 		for( $i = 0; $i < $tspanLength; $i++ ) {
 			$tspan = $tspans->item( $i );
-				if( $tspan->hasAttribute( 'id' ) ) {
+			if( $tspan->hasAttribute( 'id' ) ) {
 				$id = $tspan->getAttribute( 'id' );
 				if( strpos( $id, '|' ) !== false
 					|| strpos( $id, '/' ) !== false  ) {
@@ -268,8 +268,6 @@ class SVGFormatReader {
 			foreach( $languages as $language => $translation ) {
 				$language = ( $this->group->getSourceLanguage() === $language ) ? 'fallback' : $language;
 				$newTranslations[$key][$language] = TranslateSvgUtils::translationToArray( $translation );
-				$langNoHyphen = str_replace( '_', '', $language );
-				$newTranslations[$key][$language]['id'] = $newTranslations[$key]['fallback']['id'] . $langNoHyphen;
 			}
 		}
 
@@ -278,6 +276,8 @@ class SVGFormatReader {
 			foreach( $languages as $language => $translation ) {
 				$oldItem = isset( $translations[$key][$language] ) ? $translations[$key][$language] : array();
 				$translations[$key][$language] = $newTranslations[$key][$language] + $oldItem;
+				$langNoHyphen = str_replace( '_', '', $language );
+				$translations[$key][$language]['id'] = $translations[$key]['fallback']['id'] . $langNoHyphen;
 			}
 		}
 
@@ -455,7 +455,8 @@ class SVGFormatReader {
 				$key = array_pop( $key );
 				$translation = str_replace( TRANSLATE_FUZZY, '', $item->translation() );
 
-				if( $translation === '' ) { // No translation provided
+				if( $translation === '' ) {
+					// No translation provided
 					continue;
 				}
 
