@@ -4,44 +4,30 @@
 		updateThumbnailTimer : 0,
 		dialogWidth: false,
 		init: function () {
-			if ( $( 'input[name="group"]' ).val() !== 'SVGMessageGroup' ) {
+			if ( $( 'fieldset.mw-sp-translate-settings' ).data( 'grouptype' ) !== 'SVGMessageGroup' ) {
+				// Not translating an SVG file
 				return;
 			}
 
-			$( '#ca-mstats a' ).text( mw.msg( 'translate-taction-mstats-svgmg' ) );
-			$( '#ca-export a' ).text( mw.msg( 'translate-taction-export-svgmg' ) );
-			$( '.mw-sp-translate-description legend' ).text( mw.msg( 'translate-page-description-legend-svgmg' ) );
-			$( '.mw-sp-translate-table th' ).first().text( mw.msg( 'translate-svg-table-header' ) );
-			$( 'fieldset.mw-sp-translate-settings label' ).each( function () {
-				if( $( this ).find( 'select#language' ).length !== 1 ){
-					$( this ).hide();
-				}
-			} );
-			$( 'fieldset.mw-sp-translate-settings input[type="submit"]' ).css( 'margin-top', '-28px' );
-
-			mw.hooks = mw.hooks || {};
-			mw.hooks.translate = mw.hooks.translate || {};
-			mw.hooks.translate.beforeSubmit = mw.hooks.translate.beforeSubmit || [];
-			mw.hooks.translate.afterSubmit = mw.hooks.translate.afterSubmit || [];
-			mw.hooks.translate.afterRegisterFeatures = mw.hooks.translate.afterRegisterFeatures || [];
-
-			mw.hooks.translate.beforeSubmit.push( function ( form ) {
-				var textarea = form.find( '.mw-translate-edit-area' ).last();
+			mw.translateHooks.add( 'beforeSubmit', function ( form ) {
+				// Add properties from other inputs back into main translations
+				var textarea = form.find( '.mw-translate-edit-area' );
 				mw.translateSvg.oldValue = textarea.val();
 				textarea.val( mw.translateSvg.oldValue + mw.translateSvg.propertiesToString( form ) );
 				return true;
 			} );
-			mw.hooks.translate.afterSubmit.push( function ( form ) {
+			mw.translateHooks.add( 'afterSubmit', function ( form ) {
+				// ...and remove them again to avoid duplication / user confusion
 				form.find( '.mw-translate-edit-area' ).val( mw.translateSvg.oldValue );
 				return true;
 			} );
-			mw.hooks.translate.afterRegisterFeatures.push( function ( form ) {
-				$( '#mw-translate-prop-color' ).colourPicker();
-				var colorPicker = $( '#mw-translate-prop-color' );
+			mw.translateHooks.add( 'afterRegisterFeatures', function ( form ) {
+				// Initialise colourPicker UI
+				form.find( '#mw-translate-prop-color' ).colorPicker();
+				var colorPicker = form.find( '#mw-translate-prop-color' );
 				if( colorPicker.val() === 'other' ){
 					colorPicker.val( '' );
 				}
-
 				form.find( '.mw-translate-inputs textarea,input[type="number"],input[type="text"]' )
 					.keyup( function () { mw.translateSvg.updateThumbnailDelayed( form ); } );
 				form.find( '.mw-translate-inputs input[type="text"]' )
@@ -52,6 +38,16 @@
 					.change( function () { mw.translateSvg.updateThumbnail( form ); } );
 				return true;
 			} );
+			$( '#ca-mstats a' ).text( mw.msg( 'translate-taction-mstats-svgmg' ) );
+			$( '#ca-export a' ).text( mw.msg( 'translate-taction-export-svgmg' ) );
+			$( '.mw-sp-translate-description legend' ).text( mw.msg( 'translate-page-description-legend-svgmg' ) );
+			$( '.mw-sp-translate-table th' ).first().text( mw.msg( 'translate-svg-table-header' ) );
+			$( 'fieldset.mw-sp-translate-settings label' ).each( function () {
+				if( $( this ).find( 'select#language' ).length !== 1 ){
+					$( this ).hide();
+				}
+			} );
+			$( 'fieldset.mw-sp-translate-settings input[type="submit"]' ).css( 'margin-top', '-28px' );
 
 			/* If required, show chooselanguage dialog box */
 			mw.translateSvg.dialogwidth = $( window ).width() * 0.8;
