@@ -78,15 +78,18 @@ class TranslateSvgHooks{
 	 * Function used to preload properties via the TranslatePrefillTranslation hook
 	 *
 	 * @param $properties \string To be filled with the preloaded property string
-	 * @param $key \string Key of the message.
-	 * @param $group \MessageGroup Message group concerned.
+	 * @param $handle \MessageHandle Message handle of the message in question.
 	 * @return \bool true
 	 */
-	public static function getDefaultPropertiesFromGroup( &$properties, $key, $group ) {
+	public static function getDefaultPropertiesFromGroup( &$properties, $handle ) {
+		$group = $handle->getGroup();
 		if( !( $group instanceof SVGMessageGroup || $properties !== null ) ) {
 			return true;
 		}
-		$properties = $group->getProperties( $key, $group->getSourceLanguage() );
+		$properties = $group->getProperties(
+			$handle->getKey(),
+			$group->getSourceLanguage()
+		);
 		return true;
 	}
 
