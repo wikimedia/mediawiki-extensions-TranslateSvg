@@ -274,7 +274,8 @@ class TranslateSvgUtils {
 			if( $attribute->name === 'space' ) {
 				// XML namespace prefix seems to disappear: TODO?
 				$prefix = 'xml:';
-			} elseif( $attribute->name === 'style' ){
+			}
+			if( $attribute->name === 'style' ){
 				$extraProperties = explode( ';', $attribute->value );
 				foreach( $extraProperties as $extraProperty ) {
 					$bits = explode( ':', $extraProperty, 2 );
@@ -290,12 +291,13 @@ class TranslateSvgUtils {
 						}
 					}
 				}
-			}
-			list( $attrName, $attrValue ) = self::mapToAttribute(
-				$prefix . $attribute->name, $attribute->value
-			);
-			if( $attrName !== false && $attrValue !== false ) {
-				$array[$attrName] = $attrValue;
+			} else {
+				list( $attrName, $attrValue ) = self::mapToAttribute(
+					$prefix . $attribute->name, $attribute->value
+				);
+				if( $attrName !== false && $attrValue !== false ) {
+					$array[$attrName] = $attrValue;
+				}
 			}
 		}
 		return $array;

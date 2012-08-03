@@ -96,7 +96,7 @@ $wgTranslateSVGTypefaces = array( 'serif', 'sans-serif', 'monospace' );
 
 $wgTranslateSVGDefaultProperties = array(
 	'x' => '', 'y' => '', 'font-family' => 'other',
-	'font-size' => '', 'units' => 'other', 'color' => 'black',
+	'font-size' => '', 'units' => 'other', 'color' => '',
 	'underline' => '', 'italic' => '', 'bold' => ''
 );
 $wgTranslateSVGOptionalProperties = array(
