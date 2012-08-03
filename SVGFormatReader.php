@@ -411,7 +411,6 @@ class SVGFormatReader {
 					// No matching text node for this language, so we'll create one
 					$switch->appendChild( $newTextTag );
 				}
-echo $langName;
 				$langName = ( $language === 'fallback' ) ? 'fallback' : Language::fetchLanguageName( $language );
 				if( in_array( $language, $currentLanguages ) ) {
 					$this->expanded[$langName] = 'expanded';

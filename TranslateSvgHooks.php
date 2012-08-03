@@ -16,7 +16,8 @@ class TranslateSvgHooks{
 	/**
 	 * Function used to add a translation helper box via the TranslateGetBoxes hook
 	 *
-	 * @param $title \Title The Title object representing the page being translated
+	 * @param $group \MessageGroup The MessageGroup of the page being translated
+	 * @param $handle \MessageHandle The MessageHandle of the page being translated
 	 * @param $boxes \array The array to which the thumbnail helper is added
 	 * @return \bool true
 	 */
@@ -318,7 +319,8 @@ class TranslateSvgHooks{
 
 		// Looks like we'll mimic an SVG group then
 		$group = new SVGMessageGroup( $id );
-		if( count( $group->getOnWikiLanguages() ) === 0 ) {
+		// TODO: Next alwats evaluates to true at present
+		if( !isset( $wgTranslateCC[ $id ] ) ){
 			if( !$group->importTranslations() ) {
 				$group =  null;
 			}
