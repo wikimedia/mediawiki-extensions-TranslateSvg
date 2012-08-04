@@ -292,8 +292,11 @@ class TranslateSvgUtils {
 					}
 				}
 			} else {
-				list( $attrName, $attrValue ) = self::mapToAttribute(
+				list( $attrName, $attrValue ) = self::mapFromAttribute(
 					$prefix . $attribute->name, $attribute->value
+				);
+				list( $attrName, $attrValue ) = self::mapToAttribute(
+					$attrName, $attrValue
 				);
 				if( $attrName !== false && $attrValue !== false ) {
 					$array[$attrName] = $attrValue;
