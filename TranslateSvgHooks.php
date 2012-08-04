@@ -104,7 +104,7 @@ class TranslateSvgHooks{
 	 * @return \bool true
 	 */
 	public static function propertiesToExtraInputs( &$message, &$extraInputs ) {
-		global $wgTranslateSVGTypefaces;
+		global $wgTranslateSvgTypefaces, $wgTranslateSvgColors;
 		$allowedUnits = array( 'px', 'pt', '%', 'em' );
 
 		if( !TranslateSvgUtils::hasPropertyString( $message ) ) {
@@ -156,7 +156,8 @@ class TranslateSvgHooks{
 					) . "&#160;";
 					break;
 				case 'color':
-					$colors = TranslateSvgUtils::getColorArray();
+					$colors = $wgTranslateSvgColors;
+					$colors[] = $currentValue;
 					$extraInputs .= Xml::label(
 						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index ) .
 						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $colors ),
