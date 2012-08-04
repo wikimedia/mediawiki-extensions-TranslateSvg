@@ -117,13 +117,13 @@ class SVGMessageGroup extends WikiMessageGroup {
 
 
 	/**
-	 * Returns 'default', the source language for all SVGMessageGroups
+	 * Returns 'en', the source language for all SVGMessageGroups
 	 * Overrides erroenous parent method.
 	 *
 	 * @return \bool
 	 */
 	public function getSourceLanguage() {
-		return 'default';
+		return 'en';
 	}
 
 	/**

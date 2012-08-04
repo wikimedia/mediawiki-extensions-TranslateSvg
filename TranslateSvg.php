@@ -2,7 +2,7 @@
 /*
 	TranslateSvg extension (c) 2012 Harry Burt (http://harryburt.co.uk) on a
 	file by file basis.
-	
+
 	Licensed freely under GNU General Public License Version 2, June 1991
 	For terms of use, see http://www.opensource.org/licenses/gpl-2.0.php.
 */
@@ -47,6 +47,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'translate-svg-chooselanguage-desc',
 		'translate-svg-instructions-desc',
 		'translate-svg-instructions-title',
+		'translate-svg-warn',
 		'translate-js-save',
 		'translate-js-next',
 		'go'
@@ -80,6 +81,7 @@ $wgResourceModules['ext.translatesvg.filepage'] = array(
 
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::addThumbnail';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeQQQ';
+$wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeMemory';
 $wgHooks['TranslatePrefillTranslation'][] = 'TranslateSvgHooks::getDefaultPropertiesFromGroup';
 $wgHooks['TranslateGetExtraInputs'][] = 'TranslateSvgHooks::propertiesToExtraInputs';
 $wgHooks['TranslateFormatMessageBeforeTable'][] = 'TranslateSvgHooks::stripPropertyString';

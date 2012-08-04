@@ -9,7 +9,7 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 
 	// No paging should be done.
 	protected function doPaging() {}
-	
+
 	// Override
 	protected function postinit() {}
 

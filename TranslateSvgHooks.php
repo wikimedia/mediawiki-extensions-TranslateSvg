@@ -63,6 +63,23 @@ class TranslateSvgHooks{
 	}
 
 	/**
+	 * Function used to remove the memory helper box via
+	 * the TranslateGetBoxes hook
+	 *
+	 * @param $title \Title The Title object representing the page being translated
+	 * @param $boxes \array The array from which the thumbnail helper is removed
+	 * @return \bool true
+	 */
+	public static function removeMemory( $group, $handle, &$boxes ) {
+		if( !( $group instanceof SVGMessageGroup ) ) {
+			return true;
+		}
+
+		unset( $boxes['translation-memory'] );
+		return true;
+	}
+
+	/**
 	 * Function used to add modules to the ResourceLoader via the
 	 * TranslatePrefillTranslation hook
 	 *
@@ -83,7 +100,7 @@ class TranslateSvgHooks{
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, $handle ) {
 		$group = $handle->getGroup();
-		if( !( $group instanceof SVGMessageGroup || $properties !== null ) ) {
+		if( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
 			return true;
 		}
 		$properties = $group->getProperties(
@@ -253,7 +270,7 @@ class TranslateSvgHooks{
 		}
 		return true;
 	}
-	
+
 	public static function updateFileDescriptionPages( $out ) {
 		$title = $out->getTitle();
 		if( TranslateSvgUtils::isSVGFilePage( $title ) ) {
@@ -275,7 +292,7 @@ class TranslateSvgHooks{
 		$vars['wgUserCanTranslate'] = $wgUser->isAllowed( 'translate' );
 
 		$messageGroup = new SVGMessageGroup( $wgTitle->getText() );
-		$reader = new SVGFormatReader( $messageGroup );				
+		$reader = new SVGFormatReader( $messageGroup );
 		$vars['wgFileCanBeTranslated'] = ( $reader && $reader->makeTranslationReady() );
 		if( !$vars['wgFileCanBeTranslated'] ) {
 			$vars['wgFileFullTranslations'] = array();
@@ -295,10 +312,12 @@ class TranslateSvgHooks{
 			}
 		}
 		foreach( $languages['partial'] as $language ) {
-			array_push( $partial, array(
-				'name' => Language::fetchLanguageName( $language ),
-				'code' => $language
-			) );
+			if( $language !== 'fallback' ) {
+				array_push( $partial, array(
+					'name' => Language::fetchLanguageName( $language ),
+					'code' => $language
+				) );
+			}
 		}
 		$vars['wgFileFullTranslations'] = $full;
 		$vars['wgFilePartialTranslations'] = $partial;
@@ -341,7 +360,7 @@ class TranslateSvgHooks{
 
 		$title = $file->getTitle();
 		if( !TranslateSvgUtils::isSVGFilePage( $title ) ) {
-			return true;			
+			return true;
 		}
 
 		$messageGroup = new SVGMessageGroup( $title->getText() );
@@ -384,7 +403,7 @@ class TranslateSvgHooks{
 		if( count( $added ) > 0 ) {
 			$messageGroup->importTranslations();
 		}
-
+wfSuppressWarnings();
 		// Removed need deleting
 		$removed = array_diff(
 			array_keys( $previousTranslations ),
@@ -420,7 +439,7 @@ class TranslateSvgHooks{
 			$newText = TranslateSvgUtils::arrayToTranslation( $new );
 			$summary = wfMessage( 'translate-svg-autoedit' )->inContentLanguage();
 			$definitionWikiPage->doEdit( $newText, $summary, 0, false, $bot );
-			
+
 			// If it's the text that's changed, fuzzy other messages
 			// If it's not, there's nothing we can reliably do
 			if( $old['text'] !== $new['text'] ) {
@@ -437,7 +456,7 @@ class TranslateSvgHooks{
 				}
 			}
 		}
-
+wfRestoreWarnings();
 		return true;
 	}
 }

@@ -19,10 +19,12 @@ img.infoimage {
 }
 
 #translatesvg-instructions {
+	/* Arbitary formatting */
 	padding-left: 10px;
 }
 
 #translatesvg-instructions p {
+	/* Arbitary formatting */
     margin-left: 12px;
     margin-top: 29px;
 }
@@ -32,5 +34,18 @@ img.infoimage {
     border: 1px solid #2F6FAB;
     line-height: 1.5em;
     margin: 1em 0;
+	clear: both;
     padding: 0 1em 1em;
+}
+
+#translatesvg-warning p {
+	/* Arbitary formatting */
+	margin-top:17px;
+}
+
+img.warnimage {
+	/* Arbitary formatting */
+	float: left;
+	margin-top: 10px;
+	margin-right: 20px;
 }

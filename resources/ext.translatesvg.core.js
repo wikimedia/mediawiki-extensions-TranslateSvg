@@ -14,7 +14,7 @@
 				var textarea = form.find( '.mw-translate-edit-area' );
 				mw.translateSvg.oldValue = textarea.val();
 				textarea.val( mw.translateSvg.oldValue + mw.translateSvg.propertiesToString( form ) );
-				form.hide();
+				form.parents( '.ui-dialog' ).hide();
 				return true;
 			} );
 			mw.translateHooks.add( 'afterSubmit', function ( form ) {
@@ -37,9 +37,12 @@
 					.change( function () { mw.translateSvg.updateThumbnail( form ); } );
 				form.find( '.mw-translate-inputs select' )
 					.change( function () { mw.translateSvg.updateThumbnail( form ); } );
+
+				form.submit( mw.translateSvg.addUnsavedWarning );
 				return true;
 			} );
-			/* Make Translate's interface more beginner-friendly */
+
+			// Make Translate's interface more beginner-friendly
 			$( '#ca-mstats a' ).text( mw.msg( 'translate-taction-mstats-svgmg' ) );
 			$( '#ca-export a' ).text( mw.msg( 'translate-taction-export-svgmg' ) );
 			$( '.mw-sp-translate-description legend' ).text( mw.msg( 'translate-page-description-legend-svgmg' ) );
@@ -52,15 +55,16 @@
 			$( 'fieldset.mw-sp-translate-settings input[type="submit"]' ).css( 'margin-top', '-28px' );
 			$( '.mw-sp-translate-table td:first-child a:first-child' ).css( 'visibility', 'hidden' );
 
-			/* If no cookie, show intro dialog */
+			// If no cookie, show intro dialog
 			mw.translateSvg.dialogWidth = $( window ).width() * 0.8;
 			if( $.cookie( 'TranslateSvgInstructions' ) === null ) {
 				var id = 'translatesvg-instructions';
 				var dialog = $( '<div>' ).attr( 'id', id ).appendTo( $( 'body' ) );
 				$( '<a>' )
 					.attr( 'href', 'https://commons.wikimedia.org/wiki/File:Commons-emblem-notice.svg' )
-					.append( $( '<img>' ).attr( 'width', 80 )
+					.append( $( '<img>' )
 						.addClass( 'infoimage' )
+						.attr( 'width', 80 )
 						.attr( 'height', 80 )
 						.attr( 'src', '//upload.wikimedia.org/wikipedia/commons/thumb/2/28/Commons-emblem-notice.svg/80px-Commons-emblem-notice.svg.png' )
 					)
@@ -90,8 +94,8 @@
 				} );
 			}
 
-			/* If required, show chooselanguage dialog box */
-			if( mw.util.getParamValue( 'chooselanguage' ) !== null ){ // i.e. ...&chooselanguage=
+			// If required, show chooselanguage dialog box
+			if( mw.util.getParamValue( 'chooselanguage' ) !== null ){
 				var id = 'translatesvg-chooselanguage';
 				var dialog = $( '<div>' ).attr( 'id', id ).appendTo( $( 'body' ) );
 				var fieldset = $( '.mw-sp-translate-settings' )
@@ -167,6 +171,25 @@
 			$.post( url, {}, function ( thumbnail ) {
 				$( form ).find( '.mw-sp-translate-edit-fields a.image').html( thumbnail );
 			} );
+		},
+
+		addUnsavedWarning: function () {
+			if( $( '#translatesvg-warning' ).length === 0 ){
+				$( '<div>' )
+					.attr( 'id', 'translatesvg-warning' )
+					.append(
+						$( '<a>' )
+							.attr( 'href', 'https://commons.wikimedia.org/wiki/File:Gnome-emblem-important.svg' )
+							.append( $( '<img>' )
+								.addClass( 'warnimage' )
+								.attr( 'width', 50 )
+								.attr( 'height', 50 )
+								.attr( 'src', '//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Gnome-emblem-important.svg/50px-Gnome-emblem-important.svg.png' )
+							)
+					)
+					.append( $( '<p>' ).html( mw.msg( 'translate-svg-warn', mw.msg( 'translate-taction-export-svgmg' ) ) ) )
+					.insertAfter( $( '.mw-translate-helplink' ) );
+			}
 		}
 	};
 

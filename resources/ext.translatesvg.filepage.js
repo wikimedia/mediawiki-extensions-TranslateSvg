@@ -106,7 +106,7 @@
 			filename = filename.replace( ' ', '+' );
 			var url = mw.util.wikiGetlink( 'Special:Translate' ) + '?group=' + filename;
 			if( langCode !== false ){
-				url += '&language=' + langCode;	
+				url += '&language=' + langCode;
 			} else {
 				url += '&chooselanguage=true';
 			}

@@ -64,9 +64,13 @@ class TranslateSvgUtils {
 	 * @return bool True if it is, false if it isn't.
 	 */
 	public static function isSVGFilePage( Title $title ) {
+		global $wgRequest;
 		if( $title->getNamespace() === NS_FILE ) {
 			$file = wfFindFile( $title );
-			if( $file && $file->getMimeType() === 'image/svg+xml' ){
+			if( $file && $file->getMimeType() === 'image/svg+xml'
+				&& ( $wgRequest->getText( 'action' ) === 'view'
+					|| $wgRequest->getText( 'action' ) === '' )
+			){
 				// SVG file description page
 				return true;
 			} else {

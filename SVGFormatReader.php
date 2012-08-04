@@ -18,7 +18,7 @@ class SVGFormatReader {
 	 * @var MessageGroup
 	 */
 	protected $group;
-	
+
 	/**
 	 * @var DOMDocument
 	 */
@@ -28,7 +28,7 @@ class SVGFormatReader {
 	 * @var DOMXpath
 	 */
 	protected $xpath = null;
-	
+
 	protected $started = array();
 	protected $expanded = array();
 	protected $overrides = array();
@@ -146,7 +146,7 @@ class SVGFormatReader {
 				if( preg_match( '/^trsvg([0-9]+)$/', $id, $matches ) ) {
 					array_push( $idsInUse, $matches[1] );
 				}
-			}	
+			}
 			if( !$text->hasChildNodes() ) {
 				$text->parentNode->removeChild( $text );
 				$i--;
@@ -273,8 +273,7 @@ class SVGFormatReader {
 					$parent = $languages['fallback']['data-parent'];
 					$translations[$parent][$language] = $translations[$parent]['fallback'];
 					if( $language !== 'fallback' ) {
-						$langNoHyphen = str_replace( '_', '', $language );
-						$translations[$parent][$language]['id'] .= $langNoHyphen;
+						$translations[$parent][$language]['id'] .= "-$language";
 					}
 				}
 			}
@@ -287,7 +286,7 @@ class SVGFormatReader {
 		$svg = clone $this->svg; // Don't want to manipulate the real thing
 		$tempXpath = new DOMXpath( $svg );
 		$tempXpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
-		
+
 		$switches = $svg->getElementsByTagName( 'switch' );
 		$number = $switches->length;
 		$translations = array();
@@ -314,7 +313,7 @@ class SVGFormatReader {
 					$child = $text->childNodes->item( $k );
 					if( $child->nodeType === 1 ) {
 						// Per the checks in makeTranslationReady() this is a tspan
-						$childId = $child->getAttribute( 'id' );
+						$childId = $fallback->item( 0 )->childNodes->item( $counter - 1 )->getAttribute( 'id' );
 						$translations[$childId][$lang] = TranslateSvgUtils::nodeToArray( $child );
 						$translations[$childId][$lang]['data-parent'] = $textId;
 						if( $text->hasAttribute( 'data-children' ) ) {
@@ -359,7 +358,7 @@ class SVGFormatReader {
 				if( $language !== 'fallback' ) {
 					$translation['systemLanguage'] = $language;
 				}
-			
+
 				// Prepare an array of "children" (sub-messages)
 				$children = array();
 				if( isset( $translation['data-children'] ) ) {

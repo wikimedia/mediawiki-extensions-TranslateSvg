@@ -14,7 +14,7 @@
 class SVGFormatWriter extends SimpleFormatWriter {
 
 	protected $group;
-	
+
 	/**
 	 * @var SVGFormatReader
 	 */
@@ -90,14 +90,14 @@ class SVGFormatWriter extends SimpleFormatWriter {
 		if( !$svgHandler->rasterize( $srcPath, $dstPath, $width, $height, $language ) ) {
 			return wfMessage( 'thumbnail-dest-create' );
 		}
-		
+
 		return Html::element( 'img', array(
 			'src' => "$hashPath/$newFilename",
 			'width' => $width,
 			'height' => $height
 		) );
 	}
-	
+
 	protected function uploadSVG( $svg ) {
 		global $wgTranslateSvgBotName, $wgContLang, $wgUser;
 
@@ -117,7 +117,7 @@ class SVGFormatWriter extends SimpleFormatWriter {
 		$started = $this->reader->getStarted();
 		$expanded = $this->reader->getExpanded();
 		unset( $expanded['fallback'] ); // Always gets touched, not interesting to us.
-		
+
 		if( count( $started ) === 0 && count( $expanded ) === 0 ) {
 			// No real change, jump to save just a a null edit might
 			return true;
