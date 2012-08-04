@@ -44,7 +44,11 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'translate-page-group-svgmg',
 		'translate-svg-table-header',
 		'translate-svg-chooselanguage-title',
-		'translate-svg-chooselanguage-desc'
+		'translate-svg-chooselanguage-desc',
+		'translate-svg-instructions-desc',
+		'translate-svg-instructions-title',
+		'translate-js-save',
+		'translate-js-next'
 	),
 	'dependencies' => array(
 		'jquery.form',

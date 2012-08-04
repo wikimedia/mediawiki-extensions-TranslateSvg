@@ -36,6 +36,8 @@ $messages['en'] = array(
 	'translate-svg-upload-none' => '(none)',
 	'translate-svg-chooselanguage-title' => 'Language selection',
 	'translate-svg-chooselanguage-desc' => 'Please select the language you wish you translate this SVG file into: ',
+	'translate-svg-instructions-title' => 'First time translating an SVG file this way?',
+	'translate-svg-instructions-desc' => 'To get started, click on a message identifier in the table provided to begin translation of that message, using the "$1" and "$2" buttons to help navigate through the messages requiring translation. When you\'re done, remember to use the "$3" tab to save your translations back to the original file.',
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',

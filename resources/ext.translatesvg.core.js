@@ -49,8 +49,45 @@
 			} );
 			$( 'fieldset.mw-sp-translate-settings input[type="submit"]' ).css( 'margin-top', '-28px' );
 
+			/* If no cookie, show intro dialog */
+			mw.translateSvg.dialogWidth = $( window ).width() * 0.8;
+			if( $.cookie( 'TranslateSvgInstructions' ) === null ) {
+				var id = 'translatesvg-instructions';
+				var dialog = $( '<div>' ).attr( 'id', id ).appendTo( $( 'body' ) );
+				$( '<a>' )
+					.attr( 'href', 'https://commons.wikimedia.org/wiki/File:Commons-emblem-notice.svg' )
+					.append( $( '<img>' ).attr( 'width', 80 )
+						.addClass( 'infoimage' )
+						.attr( 'height', 80 )
+						.attr( 'src', '//upload.wikimedia.org/wikipedia/commons/thumb/2/28/Commons-emblem-notice.svg/80px-Commons-emblem-notice.svg.png' )
+					)
+					.appendTo( dialog );
+				$( '<p>' )
+					.html( mw.msg(
+						'translate-svg-instructions-desc',
+						mw.msg( 'translate-js-save' ),
+						mw.msg( 'translate-js-next' ),
+						mw.msg( 'translate-taction-export-svgmg' )
+					) )
+					.appendTo( dialog );
+				dialog.dialog( {
+					modal: true,
+					beforeClose: function() {
+						$.cookie( 'TranslateSvgInstructions', 'true', {
+							expires: 365, // expires in 365 days
+							path: '/'
+						} );
+					},
+					bgiframe: true,
+					width: mw.translateSvg.dialogWidth,
+					title: mw.msg( 'translate-svg-instructions-title' ),
+					position: 'center',
+					resize: function() { $( '#' + id + ' textarea' ).width( '100%' ); },
+					resizeStop: function() { mw.translateSvg.dialogWidth = $( '#' + id ).width(); },
+				} );
+			}
+
 			/* If required, show chooselanguage dialog box */
-			mw.translateSvg.dialogwidth = $( window ).width() * 0.8;
 			if( mw.util.getParamValue( 'chooselanguage' ) !== null ){ // i.e. ...&chooselanguage=
 				var id = 'translatesvg-chooselanguage';
 				var dialog = $( '<div>' ).attr( 'id', id ).appendTo( $( 'body' ) );
@@ -71,11 +108,11 @@
 				dialog.dialog( {
 					modal: true,
 					bgiframe: true,
-					width: mw.translateSvg.dialogwidth,
+					width: mw.translateSvg.dialogWidth,
 					title: mw.msg( 'translate-svg-chooselanguage-title' ),
 					position: 'center',
 					resize: function() { $( '#' + id + ' textarea' ).width( '100%' ); },
-					resizeStop: function() { mw.translateSvg.dialogwidth = $( '#' + id ).width(); },
+					resizeStop: function() { mw.translateSvg.dialogWidth = $( '#' + id ).width(); },
 				} );
 			}
 		},

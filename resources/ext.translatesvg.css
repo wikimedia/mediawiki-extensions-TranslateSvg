@@ -12,6 +12,17 @@
 	font-weight: bold;
 }
 
-.justtranslated:after{
-	content: ' (UNSAVED CHANGE)';
+img.infoimage {
+	/* Arbitary numbers picked to give prettier formatting */
+	float: left;
+    margin: 20px 18px 20px 5px;
+}
+
+#translatesvg-instructions {
+	padding-left:10px;
+}
+
+#translatesvg-instructions p {
+    margin-left: 12px;
+    margin-top: 29px;
 }
