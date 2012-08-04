@@ -90,13 +90,13 @@ class TranslateSvgUtils {
 	 * @return \array Numerical array, [0] = attribute name, [1] = value
 	 */
 	public static function mapToAttribute( $parameter, $value ) {
-		global $wgTranslateSVGDefaultProperties, $wgTranslateSVGOptionalProperties;
+		global $wgTranslateSvgDefaultProperties, $wgTranslateSvgOptionalProperties;
 		$parameter = trim( $parameter );
 		$value = trim( $value );
 
 		$supported = array_merge(
-			array_keys( $wgTranslateSVGDefaultProperties ),
-			$wgTranslateSVGOptionalProperties
+			array_keys( $wgTranslateSvgDefaultProperties ),
+			$wgTranslateSvgOptionalProperties
 		);
 
 		if( !in_array( $parameter, $supported ) ) {
@@ -137,7 +137,7 @@ class TranslateSvgUtils {
 	 * @return \array Numerical array, [0] = parameter name, [1] = parameter value
 	 */
 	public static function mapFromAttribute( $parameter, $value ) {
-		global $wgTranslateSVGOptionalProperties;
+		global $wgTranslateSvgOptionalProperties;
 		$parameter = trim( $parameter );
 		$value = trim( $value );
 
@@ -147,7 +147,7 @@ class TranslateSvgUtils {
 				'text-decoration', 'font-family', 'fill', 'style',
 				'systemLanguage'
 			),
-			$wgTranslateSVGOptionalProperties
+			$wgTranslateSvgOptionalProperties
 		);
 		if( !in_array( $parameter, $supported ) ) {
 			// Not editable, so not suitable for extraction
@@ -225,14 +225,14 @@ class TranslateSvgUtils {
 	 * @return \string Translation e.g. Blah{{Properties|foo=bar}}
 	 */
 	public static function arrayToTranslation( $array ) {
-		global $wgTranslateSVGDefaultProperties, $wgTranslateSvgTemplateName;
+		global $wgTranslateSvgDefaultProperties, $wgTranslateSvgTemplateName;
 
 		// Start with text
 		$translation = $array['text'];
 		unset( $array['text'] );
 
 		// Fill $properties from defaults, array
-		$properties = $wgTranslateSVGDefaultProperties;
+		$properties = $wgTranslateSvgDefaultProperties;
 		foreach( $array as $attrName => $attrValue ) {
 			list( $attrName, $attrValue ) = self::mapFromAttribute( $attrName, $attrValue );
 			if( $attrValue !== false ) {
@@ -401,25 +401,5 @@ class TranslateSvgUtils {
 				continue;
 			}
 		}
-	}
-
-	/**
-	 * Stores a predefined array of hex-codes, prefixed with hashes, representing
-	 * a "nice" collection of colours that can be used in a <select>, etc.
-	 * @return \array Predefined colour array
-	 */
-	public static function getColorArray() {
-		$colors = array(
-			'#ffffff', '#ffccc9', '#ffce93', '#fffc9e', '#ffffc7', '#9aff99', '#96fffb',
-			'#cdffff', '#cbcefb', '#cfcfcf', '#fd6864', '#fe996b', '#fffe65', '#fcff2f',
-			'#67fd9a', '#38fff8', '#68fdff', '#9698ed', '#c0c0c0', '#fe0000', '#f8a102',
-			'#ffcc67', '#f8ff00', '#34ff34', '#68cbd0', '#34cdf9', '#6665cd', '#9b9b9b',
-			'#cb0000', '#f56b00', '#ffcb2f', '#ffc702', '#32cb00', '#00d2cb', '#3166ff',
-			'#6434fc', '#656565', '#9a0000', '#ce6301', '#cd9934', '#999903', '#009901',
-			'#329a9d', '#3531ff', '#6200c9', '#343434', '#680100', '#963400', '#986536',
-			'#646809', '#036400', '#34696d', '#00009b', '#303498', '#000000', '#330001',
-			'#643403', '#663234', '#343300', '#013300', '#003532', '#010066', '#340096'
-		);
-		return $colors;
 	}
 }

@@ -136,7 +136,7 @@ class TranslateSvgHooks{
 					}
 					$extraInputs .= Xml::label(
 						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index ) .
-						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $wgTranslateSVGTypefaces ),
+						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $wgTranslateSvgTypefaces ),
 						wfMsg( 'translate-js-font-family-inherit' ), $currentValue
 					) . "&#160;";
 					break;

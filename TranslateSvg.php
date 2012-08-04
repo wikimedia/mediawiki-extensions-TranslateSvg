@@ -97,14 +97,14 @@ $wgHooks['FileUpload'][] = 'TranslateSvgHooks::checkTranslationIntegrity';
  * List of typefaces (or keywords) that can safely be incorporated into SVG
  * images, not including "(inherit)", the default.
  */
-$wgTranslateSVGTypefaces = array( 'serif', 'sans-serif', 'monospace' );
+$wgTranslateSvgTypefaces = array( 'serif', 'sans-serif', 'monospace' );
 
-$wgTranslateSVGDefaultProperties = array(
+$wgTranslateSvgDefaultProperties = array(
 	'x' => '', 'y' => '', 'font-family' => 'other',
 	'font-size' => '', 'units' => 'other', 'color' => '',
 	'underline' => '', 'italic' => '', 'bold' => ''
 );
-$wgTranslateSVGOptionalProperties = array(
+$wgTranslateSvgOptionalProperties = array(
 	'id',
 	'data-children',
 	'xml:space',
