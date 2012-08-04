@@ -260,8 +260,7 @@ class SVGFormatReader {
 			foreach( $languages as $language => $translation ) {
 				$oldItem = isset( $translations[$key][$language] ) ? $translations[$key][$language] : array();
 				$translations[$key][$language] = $newTranslations[$key][$language] + $oldItem;
-				$langNoHyphen = str_replace( '_', '', $language );
-				$translations[$key][$language]['id'] = $translations[$key]['fallback']['id'] . $langNoHyphen;
+				$translations[$key][$language]['id'] = $translations[$key]['fallback']['id'] . "-$language";
 			}
 		}
 
