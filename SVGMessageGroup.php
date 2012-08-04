@@ -49,7 +49,8 @@ class SVGMessageGroup extends WikiMessageGroup {
 			$rev = wfMessage( 'translate-svg-nodesc' )->plain();
 		}
 
-		$desc = "[[$prefixedFilename|thumb|" . $wgLang->alignEnd() . "|upright|275x275px]]" . "\n" .
+		$caption = $wfMessage( 'translate-svg-thumbnail' );
+		$desc = "[[$prefixedFilename|thumb|" . $wgLang->alignEnd() . "|upright|275x275px|$caption]]" . "\n" .
 			Html::rawElement( 'div', array( 'style' => 'overflow:auto; padding:2px;' ), $rev );
 		$this->setDescription( $desc );
 	}

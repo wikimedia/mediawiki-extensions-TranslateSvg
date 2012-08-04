@@ -48,7 +48,8 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'translate-svg-instructions-desc',
 		'translate-svg-instructions-title',
 		'translate-js-save',
-		'translate-js-next'
+		'translate-js-next',
+		'go'
 	),
 	'dependencies' => array(
 		'jquery.form',
@@ -82,8 +83,8 @@ $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeQQQ';
 $wgHooks['TranslatePrefillTranslation'][] = 'TranslateSvgHooks::getDefaultPropertiesFromGroup';
 $wgHooks['TranslateGetExtraInputs'][] = 'TranslateSvgHooks::propertiesToExtraInputs';
 $wgHooks['TranslateFormatMessageBeforeTable'][] = 'TranslateSvgHooks::stripPropertyString';
-$wgHooks['TranslateGetOptions'][] = 'TranslateSvgHooks::makeExportAsSvgOptionDefault';
-$wgHooks['TranslateGetOptions'][] = 'TranslateSvgHooks::makeViewAllOptionDefault';
+$wgHooks['TranslateGetSpecialTranslateOptions'][] = 'TranslateSvgHooks::makeExportAsSvgOptionDefault';
+$wgHooks['TranslateGetSpecialTranslateOptions'][] = 'TranslateSvgHooks::makeViewAllOptionDefault';
 $wgHooks['BeforePageDisplay'][] = 'TranslateSvgHooks::updateFileDescriptionPages';
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::makeFilePageGlobalVariables';
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::exposeTranslateSvgTemplateName';

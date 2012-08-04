@@ -16,6 +16,7 @@ $messages['en'] = array(
 
 	'translate-taskui-export-as-svg' => 'Save back to original SVG file',
 	'translate-svg-nodesc' => '(No file description was provided.)',
+	'translate-svg-thumbnail' => 'Original file',
 	'translate-svg-js-thumbnail' => '(thumbnail updates automatically)',
 	'translate-page-description-legend-svgmg' => 'Information about this file',
 	'translate-taction-mstats-svgmg' => 'File statistics',
@@ -37,7 +38,7 @@ $messages['en'] = array(
 	'translate-svg-chooselanguage-title' => 'Language selection',
 	'translate-svg-chooselanguage-desc' => 'Please select the language you wish you translate this SVG file into: ',
 	'translate-svg-instructions-title' => 'First time translating an SVG file this way?',
-	'translate-svg-instructions-desc' => 'To get started, click on a message identifier in the table provided to begin translation of that message, using the "$1" and "$2" buttons to help navigate through the messages requiring translation. When you\'re done, remember to use the "$3" tab to save your translations back to the original file.',
+	'translate-svg-instructions-desc' => 'To get started, click on a message identifier in first column of the table provided to begin translation of that message, using the "$1" and "$2" buttons to help navigate through the messages requiring translation. When you\'re done, remember to use the "$3" tab to save your translations back to the original file.',
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',

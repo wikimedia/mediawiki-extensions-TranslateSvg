@@ -14,6 +14,7 @@
 				var textarea = form.find( '.mw-translate-edit-area' );
 				mw.translateSvg.oldValue = textarea.val();
 				textarea.val( mw.translateSvg.oldValue + mw.translateSvg.propertiesToString( form ) );
+				form.hide();
 				return true;
 			} );
 			mw.translateHooks.add( 'afterSubmit', function ( form ) {
@@ -38,6 +39,7 @@
 					.change( function () { mw.translateSvg.updateThumbnail( form ); } );
 				return true;
 			} );
+			/* Make Translate's interface more beginner-friendly */
 			$( '#ca-mstats a' ).text( mw.msg( 'translate-taction-mstats-svgmg' ) );
 			$( '#ca-export a' ).text( mw.msg( 'translate-taction-export-svgmg' ) );
 			$( '.mw-sp-translate-description legend' ).text( mw.msg( 'translate-page-description-legend-svgmg' ) );
@@ -48,6 +50,7 @@
 				}
 			} );
 			$( 'fieldset.mw-sp-translate-settings input[type="submit"]' ).css( 'margin-top', '-28px' );
+			$( '.mw-sp-translate-table td:first-child a:first-child' ).css( 'visibility', 'hidden' );
 
 			/* If no cookie, show intro dialog */
 			mw.translateSvg.dialogWidth = $( window ).width() * 0.8;
@@ -103,7 +106,9 @@
 				$( '<label>' ).attr( 'for', 'language' )
 					.text( mw.msg( 'translate-svg-chooselanguage-desc' ) )
 					.prependTo( form );
-				form.find( 'input[type="submit"]' ).css( 'margin-top', '-30px' );
+				form.find( 'input[type="submit"]' )
+					.css( 'margin-top', '-30px' )
+					.val( mw.msg( 'go' ) );
 
 				dialog.dialog( {
 					modal: true,

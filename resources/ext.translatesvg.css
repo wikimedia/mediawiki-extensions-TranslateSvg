@@ -19,10 +19,18 @@ img.infoimage {
 }
 
 #translatesvg-instructions {
-	padding-left:10px;
+	padding-left: 10px;
 }
 
 #translatesvg-instructions p {
     margin-left: 12px;
     margin-top: 29px;
+}
+
+#translatesvg-warning {
+	/* Mimic fieldset formatting */
+    border: 1px solid #2F6FAB;
+    line-height: 1.5em;
+    margin: 1em 0;
+    padding: 0 1em 1em;
 }
