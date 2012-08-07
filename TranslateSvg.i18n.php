@@ -52,6 +52,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Jarry1250
  * @author Kghbln
  * @author jarry1250
  */
@@ -65,7 +66,7 @@ $messages['qqq'] = array(
 	'translate-taction-export-svgmg' => 'Interface message for a tab displayed at the top of the screen',
 	'translate-svg-table-header' => 'Content for a column title/header cell',
 	'translate-svg-filepage-caption' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
-	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages',
+	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages (the generic text "another language" may appear as an item in $2).',
 	'translate-svg-filepage-edit' => 'Call to action, used as link text',
 	'translate-svg-filepage-finish' => 'Call to action, used as link text',
 	'translate-svg-filepage-another' => 'Fragment, takes the place of a language name in a list; used as link text, links to a language selection dialog',
@@ -214,6 +215,7 @@ $messages['dsb'] = array(
 
 /** Spanish (español)
  * @author Armando-Martin
+ * @author Dferg
  * @author Jewbask
  */
 $messages['es'] = array(
@@ -224,7 +226,7 @@ $messages['es'] = array(
 	'translate-js-label-bold' => 'Negrita',
 	'translate-js-label-italic' => 'Cursiva',
 	'translate-js-label-underline' => 'Subrayado',
-	'translate-js-font-family-inherit' => '(Heredar)',
+	'translate-js-font-family-inherit' => '(heredar)',
 );
 
 /** Persian (فارسی)
@@ -464,7 +466,7 @@ $messages['nl'] = array(
 	'translate-taction-mstats-svgmg' => 'Bestandstatistieken',
 	'translate-taction-export-svgmg' => 'Bijgewerkte versie van het bestand uploaden',
 	'translate-svg-filepage-caption' => 'Deze afbeelding weergegeven als PNG in andere talen: $1',
-	'translate-svg-filepage-caption-translator' => 'Deze afbeelding weergegeven als PNG in andere talen: $1; of vertaal de afbeelding in het $2',
+	'translate-svg-filepage-caption-translator' => 'Deze afbeelding weergegeven als PNG in andere talen: $1; of vertaal de afbeelding in: $2',
 	'translate-svg-filepage-edit' => 'bewerken',
 	'translate-svg-filepage-finish' => 'afronden',
 	'translate-svg-filepage-another' => 'een andere taal',
