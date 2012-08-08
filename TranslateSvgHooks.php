@@ -305,20 +305,16 @@ class TranslateSvgHooks{
 		$full = array();
 		$partial = array();
 		foreach( $languages['full'] as $language ) {
-			if( $language !== 'fallback' ) {
-				array_push( $full, array(
-					'name' => Language::fetchLanguageName( $language ),
-					'code' => $language
-				) );
-			}
+			array_push( $full, array(
+				'name' => Language::fetchLanguageName( $language ),
+				'code' => $language
+			) );
 		}
 		foreach( $languages['partial'] as $language ) {
-			if( $language !== 'fallback' ) {
-				array_push( $partial, array(
-					'name' => Language::fetchLanguageName( $language ),
-					'code' => $language
-				) );
-			}
+			array_push( $partial, array(
+				'name' => Language::fetchLanguageName( $language ),
+				'code' => $language
+			) );
 		}
 		$vars['wgFileFullTranslations'] = $full;
 		$vars['wgFilePartialTranslations'] = $partial;
