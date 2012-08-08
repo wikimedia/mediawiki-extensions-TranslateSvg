@@ -152,16 +152,16 @@ $messages['de'] = array(
 	'translate-taction-export-svgmg' => 'Aktualisierte Version der Datei hochladen',
 	'translate-svg-table-header' => 'Nachrichtenkennung',
 	'translate-svg-filepage-caption' => 'Dieses Bild als PNG in anderen Sprachen: $1',
-	'translate-svg-filepage-caption-translator' => 'Dieses Bild als PNG in anderen Sprachen: $1; oder übersetzen in $2',
+	'translate-svg-filepage-caption-translator' => 'Dieses Bild als PNG in anderen Sprachen: $1; oder übersetze es in $2',
 	'translate-svg-filepage-edit' => 'bearbeiten',
 	'translate-svg-filepage-finish' => 'beenden',
 	'translate-svg-filepage-another' => 'eine andere Sprache',
 	'translate-svg-filepage-item' => '$1 ($2)',
-	'translate-svg-filepage-invite' => 'Diese Datei kann einfach in andere Sprachen übersetzt werden: $1',
-	'translate-svg-autocreate' => 'Übersetzungseinheiten automatisch erstellen, basierend auf Änderungen der Quell-SVG-Datei',
-	'translate-svg-autodelete' => 'Unnötige Übersetzungseinheiten automatisch löschen, basierend auf Änderungen der Quell-SVG-Datei',
-	'translate-svg-autoedit' => 'Übersetzungen automatisch aktualisieren, basierend auf Änderungen der Quell-SVG-Datei',
-	'translate-svg-autofuzzy' => 'Übersetzungen automatisch als veraltet markieren, basierend auf Änderungen der Quell-SVG-Datei',
+	'translate-svg-filepage-invite' => 'Diese Datei kann leicht in andere Sprachen übersetzt werden: $1',
+	'translate-svg-autocreate' => 'Übersetzungseinheiten, basierend auf Änderungen an der Quell-SVG-Datei, automatisch erstellt',
+	'translate-svg-autodelete' => 'Unnötige Übersetzungseinheiten, basierend auf Änderungen an der Quell-SVG-Datei, automatisch gelöscht',
+	'translate-svg-autoedit' => 'Übersetzungen, basierend auf Änderungen an der Quell-SVG-Datei, automatisch aktualisiert',
+	'translate-svg-autofuzzy' => 'Übersetzungen, basierend auf Änderungen an der Quell-SVG-Datei, automatisch als veraltet markiert',
 	'translate-svg-upload-comment' => 'Aktualisiere Übersetzungen (gestartet: $1; geändert/erweitert: $2)',
 	'translate-svg-upload-none' => '(keine)',
 	'translate-svg-chooselanguage-title' => 'Sprachauswahl',
@@ -181,6 +181,7 @@ $messages['de'] = array(
  * @author Kghbln
  */
 $messages['de-formal'] = array(
+	'translate-svg-filepage-caption-translator' => 'Dieses Bild als PNG in anderen Sprachen: $1; oder übersetzen Sie es in $2',
 	'translate-svg-chooselanguage-desc' => 'Bitte wählen Sie die Sprache aus, in die Sie diese SVG-Datei übersetzen möchten:',
 );
 
