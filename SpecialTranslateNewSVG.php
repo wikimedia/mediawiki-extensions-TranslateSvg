@@ -68,7 +68,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 			$dbw = wfGetDB( DB_MASTER );
 			$table = 'translate_svg';
 			$row = array( 'ts_page_id' => $title->getArticleId() );
-			$dbw->insert( $table, $row, __METHOD__ );
+			$dbw->insert( $table, $row, __METHOD__, array( 'IGNORE' ) );
 			MessageGroups::clearCache();
 			return ( $dbw->affectedRows() > 0 );
 		} else {
