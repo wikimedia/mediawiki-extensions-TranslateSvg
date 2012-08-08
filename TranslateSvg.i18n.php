@@ -27,6 +27,7 @@ $messages['en'] = array(
 	'translate-svg-filepage-edit' => 'edit',
 	'translate-svg-filepage-finish' => 'finish',
 	'translate-svg-filepage-another' => 'another language',
+	'translate-svg-filepage-other' => 'other languages',
 	'translate-svg-filepage-item' => '$1 ($2)',
 	'translate-svg-filepage-invite' => 'This file can be easily translated into $1',
 	'translate-svg-autocreate' => 'Automatically creating translation units based on changes to the source SVG file',
@@ -35,16 +36,17 @@ $messages['en'] = array(
 	'translate-svg-autofuzzy' => 'Automatically marking translations as fuzzy based on changes to the source SVG file',
 	'translate-svg-upload-comment' => 'Updating translations (started: $1; modified/expanded: $2)',
 	'translate-svg-upload-none' => '(none)',
-	'translate-svg-new-title' => 'SVG translation',
-	'translate-svg-new-summary' => "To begin translation of this file, please select the language you are translating this file '''from''' (if ambiguous, select the most widely spoken language).",
-	'translate-svg-new-label' => 'Language: ',
-	'translate-svg-new-error-import' => "'''An error occured''': An unknown error occured whilst trying to create the pages required for translating this SVG.",
 	'translate-svg-chooselanguage-title' => 'Language selection',
 	'translate-svg-chooselanguage-desc' => 'Please select the language you wish you translate this SVG file into: ',
 	'translate-svg-instructions-title' => 'First time translating an SVG file this way?',
 	'translate-svg-instructions-desc' => 'To get started, click on a message identifier in first column of the table provided to begin translation of that message, using the "$1" and "$2" buttons to help navigate through the messages requiring translation. When you\'re done, remember to use the "$3" tab to save your translations back to the original file.',
 	'translate-svg-warn' => '<strong>Warning:</strong> Your changes to the SVG file will not be visible until you $1, which you should do whenever you are finished translating the file.',
 	'translate-svg-warn-inner' => 'save your changes back to the original file',
+	'translate-svg-new-title' => 'SVG translation',
+	'translate-svg-new-summary' => "To begin translation of this file, please select the language you are translating this file '''from''' (if ambiguous, select the most widely spoken language).",
+	'translate-svg-new-label' => 'Language: ',
+	'translate-svg-new-error-import' => "'''An error occured''': An unknown error occured whilst trying to create the pages required for translating this SVG.",
+	'translate-svg-new-error-group' => "'''An error occured''': An unknown error occured; perhaps you forgot to specifify a group in the URL?",
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',
@@ -61,6 +63,8 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Jarry1250
+ * @author Kghbln
  * @author jarry1250
  */
 $messages['qqq'] = array(
@@ -68,17 +72,21 @@ $messages['qqq'] = array(
 	'translate-taskui-export-as-svg' => 'Label for a radio button, not currently displayed since no other options',
 	'translate-svg-nodesc' => 'Text that displays under the heading "Information about the file" if no information/description could be found.',
 	'translate-svg-js-thumbnail' => 'Caption for a thumbnail that accompanies the translation of a string.',
+	'translate-svg-thumbnail' => 'Caption for a thumbnail that appears immediately before any strings are translated.',
 	'translate-page-description-legend-svgmg' => 'Caption for a box that contains file description information.',
 	'translate-taction-mstats-svgmg' => 'Interface message for a tab displayed at the top of the screen',
 	'translate-taction-export-svgmg' => 'Interface message for a tab displayed at the top of the screen',
 	'translate-svg-table-header' => 'Content for a column title/header cell',
 	'translate-svg-filepage-caption' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
-	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages',
+	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages (the generic text "another language" may appear as an item in $2).',
 	'translate-svg-filepage-edit' => 'Call to action, used as link text',
 	'translate-svg-filepage-finish' => 'Call to action, used as link text',
 	'translate-svg-filepage-another' => 'Fragment, takes the place of a language name in a list; used as link text, links to a language selection dialog',
-	'translate-svg-filepage-item' => 'The format for each item in a comma-separated list; $1 represents a language name, $2 a call to action.',
-	'translate-svg-filepage-invite' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
+	'translate-svg-filepage-other' => 'Fragment, used as link text in [[MediaWiki:Translate-svg-filepage-invite]], links to a language selection dialog',
+	'translate-svg-filepage-item' => 'The format for each item in a comma-separated list; $1 represents a language name, $2 a call to action.
+
+{{optional}}',
+	'translate-svg-filepage-invite' => 'Paragraph displayed on file description pages; $1 is a link with the text of [[MediaWiki:translate-svg-filepage-other]]',
 	'translate-svg-autocreate' => 'Edit summary used by a bot during page creation',
 	'translate-svg-autodelete' => 'Log reason/summary used a bot during page deletion',
 	'translate-svg-autoedit' => 'Edit summary used by a bot',
@@ -87,18 +95,24 @@ $messages['qqq'] = array(
 	'translate-svg-upload-none' => 'Placeholder that replaces an empty comma-separated list of languages in an upload summary',
 	'translate-svg-chooselanguage-title' => 'Title for a dialog box',
 	'translate-svg-chooselanguage-desc' => 'Content of a modal dialog box, immediately followed a by a language drop-down selector',
-
+	'translate-svg-instructions-title' => 'Title for a dialog box',
+	'translate-svg-instructions-desc' => 'Content of a modal dialog box, offering advice to the user',
+	'translate-svg-warn' => 'The content of a warning message. $1 is a link, with the text of that link equal to the value of [[MediaWiki:Translate-svg-warn-inner]].',
+	'translate-svg-warn-inner' => 'The content of a link that forms part of another sentence (see [[MediaWiki:Translate-svg-warn]]',
+	'translate-svg-new-title' => 'Title of a specal page',
+	'translate-svg-new-summary' => 'Introductory paragraph on a special page. Attention is drawn to the fact that the user is asked to provide the original language the file is being translated FROM, rather than the language they are translating it INTO.',
+	'translate-svg-new-label' => 'Label for a dropdown list of languages',
+	'translate-svg-new-error-import' => 'Text for a paragraph that appears whenever a certain type of error occurs',
+	'translate-svg-new-error-group' => 'Text for a paragraph that appears whenever a certain type of error occurs',
 	'translate-js-properties-legend' => 'The legend for a fieldset which contains property controls',
 	'translate-js-label-x' => 'Label for textbox which sets the horizontal position of a string',
 	'translate-js-label-y' => 'Label for a textbox which sets the vertical position of a string',
-	'translate-js-label-font-family' => 'Label for a dropdown "combobox" which sets the typeface used in a string',
-	'translate-js-label-font-size' => 'Label for a textbox which sets the size of the typeface used in a string',
-	'translate-js-label-units' => 'Label for a dropdown "combobox" which sets the units for the font-size used in a string',
 	'translate-js-label-color' => 'Label for a box which sets the (foreground) colour used for a string',
+	'translate-js-label-font-family' => 'Label for a dropdown "combobox" which sets the typeface used in a string',
 	'translate-js-label-bold' => 'Label for a checkbox governing the formatting of a string',
 	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string',
 	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string',
-	'translate-js-font-family-inherit' => 'Label used to imply that no specific typeface will be set for a string; instead, it will be inherited from the document default.'
+	'translate-js-font-family-inherit' => 'Label used to imply that no specific typeface will be set for a string; instead, it will be inherited from the document default.',
 );
 
 /** Asturian (asturianu)
@@ -114,7 +128,36 @@ $messages['ast'] = array(
  */
 $messages['be-tarask'] = array(
 	'translatesvg-desc' => 'Надае інтэрфэйс для перакладу SVG-файлаў, узгодненых са спэцыфікацыяй SVG1.1',
-	'translate-svg-nodesc' => '(Гэты файл ня мае апісаньня.)',
+	'translate-taskui-export-as-svg' => 'Захаваць у першапачатковы SVG-файл',
+	'translate-svg-nodesc' => '(Апісаньне не было пададзенае.)',
+	'translate-svg-js-thumbnail' => '(мініяцюра абнаўляецца аўтаматычна)',
+	'translate-page-description-legend-svgmg' => 'Інфармацыя пра файл',
+	'translate-taction-mstats-svgmg' => 'Статыстыка файла',
+	'translate-taction-export-svgmg' => 'Захаваць абноўленую вэрсію',
+	'translate-svg-table-header' => 'Ідэнтыфікатар паведамленьня',
+	'translate-svg-filepage-caption' => 'Гэтая выява ў PNG на іншых мовах: $1',
+	'translate-svg-filepage-caption-translator' => 'Гэтая выява ў PNG на іншых мовах: $1; для перакладу даступная $2',
+	'translate-svg-filepage-edit' => 'рэд.',
+	'translate-svg-filepage-finish' => 'давяршыць',
+	'translate-svg-filepage-another' => 'іншыя мовы',
+	'translate-svg-filepage-invite' => 'Гэты файл можна лёгка перакласьці на іншыя мовы: $1',
+	'translate-svg-autocreate' => 'Аўтаматычнае стварэньне адзінак перакладу, грунтуючыся на зьменах у зыходным SVG-файле',
+	'translate-svg-autodelete' => 'Аўтаматычнае выдаленьне непатрэбных адзінак перакладу, грунтуючыся на зьменах у зыходным SVG-файле',
+	'translate-svg-autoedit' => 'Аўтаматычнае абнаўленьне адзінак перакладу, грунтуючыся на зьменах у зыходным SVG-файле',
+	'translate-svg-autofuzzy' => 'Аўтаматычнае пазначэньне адзінак перакладу як састарэлых, грунтуючыся на зьменах у зыходным SVG-файле',
+	'translate-svg-upload-comment' => 'Абнаўленьне перакладаў (пачата: $1; зьменена/пашырана: $2)',
+	'translate-svg-upload-none' => '(няма)',
+	'translate-svg-chooselanguage-title' => 'Выбар мовы',
+	'translate-svg-chooselanguage-desc' => 'Калі ласка, выберыце мову, на якую жадаеце перакласьці гэты SVG-файл:',
+	'translate-js-properties-legend' => 'Уласьцівасьці',
+	'translate-js-label-x' => 'X-каардыната:',
+	'translate-js-label-y' => 'Y-каардыната:',
+	'translate-js-label-color' => 'Колер:',
+	'translate-js-label-font-family' => 'Шрыфт:',
+	'translate-js-label-bold' => 'Тоўсты',
+	'translate-js-label-italic' => 'Курсіў',
+	'translate-js-label-underline' => 'Падкрэсьлены',
+	'translate-js-font-family-inherit' => '(спадкаваць)',
 );
 
 /** German (Deutsch)
@@ -168,11 +211,33 @@ $messages['de-formal'] = array(
  */
 $messages['dsb'] = array(
 	'translatesvg-desc' => 'Stoj pówjerch za pśełožowanje SVG-datajow pó specifikaciji SVG1.1 k dispoziciji',
-	'translate-svg-nodesc' => '(Toś ta dataja njama wopisanje.)',
+	'translate-taskui-export-as-svg' => 'Slědk do spócetneje SVG-dataje składowaś',
+	'translate-svg-nodesc' => '(Žedne datajowe wopisanje pódane.)',
+	'translate-page-description-legend-svgmg' => 'Informacije wó toś tej dataji',
+	'translate-taction-mstats-svgmg' => 'Datajowa statistika',
+	'translate-taction-export-svgmg' => 'Zaktualizěrowanu wersiju dataje nagraś',
+	'translate-svg-table-header' => 'Identifikator powěsći',
+	'translate-svg-filepage-edit' => 'wobźěłaś',
+	'translate-svg-filepage-finish' => 'skóńcyś',
+	'translate-svg-filepage-another' => 'druga rěc',
+	'translate-svg-upload-comment' => 'Pśełožki se aktualizěruju (startowane: $1; změnjone/rozšyrjone: $2)',
+	'translate-svg-upload-none' => '(žedna)',
+	'translate-svg-chooselanguage-title' => 'Wuběrk rěcow',
+	'translate-svg-chooselanguage-desc' => 'Pšosym wubjeŕ rěc, do kótarejež coš toś tu sVG-dataju pśełožiś:',
+	'translate-js-properties-legend' => 'Kakosći',
+	'translate-js-label-x' => 'X-koordinata:',
+	'translate-js-label-y' => 'X-koordinata:',
+	'translate-js-label-color' => 'Barwa:',
+	'translate-js-label-font-family' => 'Pismo:',
+	'translate-js-label-bold' => 'Tucny',
+	'translate-js-label-italic' => 'Kursiwny',
+	'translate-js-label-underline' => 'Pódšmarnjony',
+	'translate-js-font-family-inherit' => '(zderbnuś)',
 );
 
 /** Spanish (español)
  * @author Armando-Martin
+ * @author Dferg
  * @author Jewbask
  */
 $messages['es'] = array(
@@ -183,7 +248,7 @@ $messages['es'] = array(
 	'translate-js-label-bold' => 'Negrita',
 	'translate-js-label-italic' => 'Cursiva',
 	'translate-js-label-underline' => 'Subrayado',
-	'translate-js-font-family-inherit' => '(Heredar)',
+	'translate-js-font-family-inherit' => '(heredar)',
 );
 
 /** Persian (فارسی)
@@ -215,9 +280,16 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'translatesvg-desc' => 'Proporciona unha inteface de estilo nativa para a tradución de ficheiros SVG en liña coa especificación SVG1.1.',
 	'translate-svg-nodesc' => '(Non se deu descrición ningunha para este ficheiro.)',
+	'translate-svg-js-thumbnail' => '(a miniatura actualízase automaticamente)',
+	'translate-page-description-legend-svgmg' => 'Información acerca do ficheiro',
+	'translate-taction-mstats-svgmg' => 'Estatísticas do ficheiro',
+	'translate-svg-table-header' => 'Identificador da mensaxe',
 	'translate-svg-filepage-edit' => 'editar',
 	'translate-svg-filepage-finish' => 'rematar',
 	'translate-svg-filepage-another' => 'outra lingua',
+	'translate-svg-filepage-invite' => 'Este ficheiro pódese traducir facilmente a outras linguas: $1',
+	'translate-svg-chooselanguage-title' => 'Selección da lingua',
+	'translate-svg-chooselanguage-desc' => 'Seleccione a lingua á que queira traducir este ficheiro SVG:',
 	'translate-js-properties-legend' => 'Propiedades',
 	'translate-js-label-color' => 'Cor:',
 	'translate-js-label-font-family' => 'Tipo de letra:',
@@ -231,7 +303,36 @@ $messages['gl'] = array(
  */
 $messages['he'] = array(
 	'translatesvg-desc' => 'מתן ממשק ילידי לתרגום קובצי SVG בהתאם לתקן SVG1.1',
+	'translate-taskui-export-as-svg' => 'שמירה לקובץ ה־SVG המקורי',
 	'translate-svg-nodesc' => '(לקובץ הזה אין תיאור.)',
+	'translate-svg-js-thumbnail' => '(התמונה הממוזערת מתעדכנת אוטומטית.)',
+	'translate-page-description-legend-svgmg' => 'מידע על הקובץ הזה',
+	'translate-taction-mstats-svgmg' => 'סטטיסטיקות על הקובץ',
+	'translate-taction-export-svgmg' => 'העלאת גרסה מעודכנת של הקובץ',
+	'translate-svg-table-header' => 'מזהה הודעה',
+	'translate-svg-filepage-caption' => 'הצגת הקובץ הזה כ־PNG בשפות אחרות: $1',
+	'translate-svg-filepage-caption-translator' => 'אפשר להציג את הקובץ הזה כ־PNG בשפות אחרות: $1; ואפשר לתרגם אותו ל$2',
+	'translate-svg-filepage-edit' => 'עריכה',
+	'translate-svg-filepage-finish' => 'סיום',
+	'translate-svg-filepage-another' => 'שפה אחרת',
+	'translate-svg-filepage-invite' => 'אפשר לתרגם את הקובץ הזה בקלות לשפות אחרות: $1',
+	'translate-svg-autocreate' => 'יצירה אוטומטית של יחידות תרגום בהתאם לשינויים בקובץ ה־SVG המקורי',
+	'translate-svg-autodelete' => 'מחיקה אוטומטית של יחידות תרגום לא נחוצות בהתאם לשינויים בקובץ ה־SVG המקורי',
+	'translate-svg-autoedit' => 'עדכון אוטומטי של תרגומים בהתאם לשינויים בקובץ ה־SVG המקורי',
+	'translate-svg-autofuzzy' => 'טשטוש אוטומטי של תרגומים (FUZZY) בהתאם לקובץ ה־SVG המקורי',
+	'translate-svg-upload-comment' => 'עדכון תרגומים (התחלה: $1; שינוי או הרחבה: $2)',
+	'translate-svg-upload-none' => '(אין)',
+	'translate-svg-chooselanguage-title' => 'בחירת שפה',
+	'translate-svg-chooselanguage-desc' => 'נא לבחור את השפה שברצונך לתרגם את קובץ ה־SVG הזה אליה:',
+	'translate-js-properties-legend' => 'מאפיינים',
+	'translate-js-label-x' => 'נקודת ציון על ציר X:',
+	'translate-js-label-y' => 'נקודת ציון על ציר Y:',
+	'translate-js-label-color' => 'צבע:',
+	'translate-js-label-font-family' => 'גופן:',
+	'translate-js-label-bold' => 'בולט',
+	'translate-js-label-italic' => 'נטוי',
+	'translate-js-label-underline' => 'קו תחתי',
+	'translate-js-font-family-inherit' => '(בירושה)',
 );
 
 /** Upper Sorbian (hornjoserbsce)
@@ -239,14 +340,20 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'translatesvg-desc' => 'Steji powjerch za přełožowanje SVG-datajow po specifikaciji SVG1.1 k dispoziciji',
+	'translate-taskui-export-as-svg' => 'Do prěnjotneje SVG-dataje wróćo zawěsćić',
 	'translate-svg-nodesc' => '(Žane datajowe wopisanje podate.)',
+	'translate-svg-js-thumbnail' => '(Miniatura so awtomatisce aktualizuje)',
 	'translate-page-description-legend-svgmg' => 'Informacije wo tutej dataji',
 	'translate-taction-mstats-svgmg' => 'Datajowa statistika',
+	'translate-taction-export-svgmg' => 'Zaktualizowanu wersiju dataje nahrać',
 	'translate-svg-table-header' => 'Identifikator powěsće',
+	'translate-svg-filepage-caption' => 'Tutón wobraz jako PNG w druhich rěčach: $1',
+	'translate-svg-filepage-caption-translator' => 'Tutón wobraz jako PNG w druhich rěčach: $1; abo přełož jón do $2',
 	'translate-svg-filepage-edit' => 'wobdźěłać',
 	'translate-svg-filepage-finish' => 'skónčić',
 	'translate-svg-filepage-another' => 'druha rěč',
 	'translate-svg-filepage-invite' => 'Tuta dataja da so lochko do druhich rěčow přełožić: $1',
+	'translate-svg-upload-comment' => 'Přełožki so aktualizuja (startowane: $1; změnjene/rozšěrjene: $2)',
 	'translate-svg-upload-none' => '(žana)',
 	'translate-svg-chooselanguage-title' => 'Wuběr rěčow',
 	'translate-svg-chooselanguage-desc' => 'Prošu wubjerće rěč, do kotrejež chceš SVG-dataju přełožić:',
@@ -374,7 +481,30 @@ $messages['ms'] = array(
  */
 $messages['nl'] = array(
 	'translatesvg-desc' => 'Biedt een interface voor het vertalen van SVG-bestanden in het bestand zelf volgens de SVG1.1-specificatie',
-	'translate-svg-nodesc' => '(Dit bestand heeft geen beschrijving.)',
+	'translate-taskui-export-as-svg' => 'Opslaan in het oorspronkelijke SVG-bestand',
+	'translate-svg-nodesc' => 'Dit bestand heeft geen beschrijving.',
+	'translate-svg-js-thumbnail' => '(miniatuur wordt automatisch bijgewerkt)',
+	'translate-page-description-legend-svgmg' => 'Gegevens over dit bestand',
+	'translate-taction-mstats-svgmg' => 'Bestandstatistieken',
+	'translate-taction-export-svgmg' => 'Bijgewerkte versie van het bestand uploaden',
+	'translate-svg-filepage-caption' => 'Deze afbeelding weergegeven als PNG in andere talen: $1',
+	'translate-svg-filepage-caption-translator' => 'Deze afbeelding weergegeven als PNG in andere talen: $1; of vertaal de afbeelding in: $2',
+	'translate-svg-filepage-edit' => 'bewerken',
+	'translate-svg-filepage-finish' => 'afronden',
+	'translate-svg-filepage-another' => 'een andere taal',
+	'translate-svg-filepage-invite' => 'Dit bestand kan gemakkelijk vertaald worden in andere talen: $1',
+	'translate-svg-upload-none' => '(geen)',
+	'translate-svg-chooselanguage-title' => 'Taalselectie',
+	'translate-svg-chooselanguage-desc' => 'Selecteer de taal waar u dit SVG-bestand in wilt vertalen:',
+	'translate-js-properties-legend' => 'Eigenschappen',
+	'translate-js-label-x' => 'X-coördinaat:',
+	'translate-js-label-y' => 'Y-coördinaat:',
+	'translate-js-label-color' => 'Kleur:',
+	'translate-js-label-font-family' => 'Lettertype:',
+	'translate-js-label-bold' => 'Vet',
+	'translate-js-label-italic' => 'Cursief',
+	'translate-js-label-underline' => 'Onderstrepen',
+	'translate-js-font-family-inherit' => '(overnemen)',
 );
 
 /** Pälzisch (Pälzisch)
