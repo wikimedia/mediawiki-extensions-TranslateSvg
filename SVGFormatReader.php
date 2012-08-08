@@ -427,7 +427,7 @@ class SVGFormatReader {
 				} else {
 					$this->filteredTextNodes[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
 				}
-				$this->savedLanguages[] = $lang;
+				$this->savedLanguages[] = ( $lang === 'fallback' ) ? $this->group->getSourceLanguage() : $lang;
 			}
 		}
 		$this->inFileTranslations = $translations;
