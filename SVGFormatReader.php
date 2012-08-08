@@ -164,6 +164,7 @@ class SVGFormatReader {
 			}
 		}
 
+		$textLength = $this->svg->getElementsByTagName( 'text' )->length;
 		for( $i = 0; $i < $textLength; $i++ ) {
 			$text = $texts->item( $i );
 			$numChildren = $text->childNodes->length;
