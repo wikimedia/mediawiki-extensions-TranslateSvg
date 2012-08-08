@@ -168,9 +168,10 @@ class TranslateSvgHooks{
 				case 'italic':
 				case 'underline':
 					$checked = ( $currentValue === 'yes' );
-					$extraInputs .= Xml::checkLabel(
+					$extraInputs .= Html::openElement( 'span', array( 'style' => 'white-space:nowrap;' ) )
+					. Xml::checkLabel(
 						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index, 'mw-translate-prop-'.$index, $checked
-					) . "&#160;";
+					) . Html::closeElement( 'span' ) . " ";
 					break;
 				case 'color':
 					$colors = $wgTranslateSvgColors;
@@ -293,7 +294,7 @@ class TranslateSvgHooks{
 
 		$messageGroup = new SVGMessageGroup( $wgTitle->getText() );
 		$reader = new SVGFormatReader( $messageGroup );
-		$vars['wgFileCanBeTranslated'] = ( $reader && $reader->makeTranslationReady() );
+		$vars['wgFileCanBeTranslated'] = ( $reader !== null );
 		if( !$vars['wgFileCanBeTranslated'] ) {
 			$vars['wgFileFullTranslations'] = array();
 			$vars['wgFilePartialTranslations'] = array();
@@ -365,7 +366,7 @@ class TranslateSvgHooks{
 			return true;
 		}
 		$previousTranslations = $reader->getOnWikiTranslations();
-		$newTranslations = $reader->getInFileTranslations();
+		$newTranslations = $reader->getInFileTranslations( true );
 
 		// Has this actually been through the translation process yet?
 		if( count( $previousTranslations ) === 0 ) {

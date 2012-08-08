@@ -17,6 +17,7 @@
 				parent.append( '<br />' + mw.tSvgFileDesc.getHasTranslationsSpan( full, partial ) );
 			}
 		},
+
 		getHasTranslationsSpan: function ( full, partial ){
 			var canTranslate = mw.config.get( 'wgUserCanTranslate' );
 			var userLangCode = mw.config.get( 'wgUserLanguage' );

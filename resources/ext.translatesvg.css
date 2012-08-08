@@ -36,11 +36,12 @@ img.infoimage {
     margin: 1em 0;
 	clear: both;
     padding: 0 1em 1em;
+	overflow: auto;
 }
 
 #translatesvg-warning p {
 	/* Arbitary formatting */
-	margin-top:17px;
+	margin-top:23px;
 }
 
 img.warnimage {

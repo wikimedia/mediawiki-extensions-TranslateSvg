@@ -31,6 +31,11 @@
 				}
 				form.find( '.mw-translate-inputs textarea,input[type="number"],input[type="text"]' )
 					.keyup( function () { mw.translateSvg.updateThumbnailDelayed( form ); } );
+				form.find( '.mw-translate-inputs input[type="number"],input[type="text"]' )
+					.each( function() {
+						var preferredWidth = Math.round( ( $( this ).val().length * 7 / 12 ) + 1 );
+						$( this ).css( 'width', Math.max( preferredWidth, 3 ) + 'em' );
+					} );
 				form.find( '.mw-translate-inputs input[type="text"]' )
 					.change( function () { mw.translateSvg.updateThumbnailDelayed( form ); } );
 				form.find( '.mw-translate-inputs input[type="checkbox"],[type="number"]' )
@@ -175,6 +180,9 @@
 
 		addUnsavedWarning: function () {
 			if( $( '#translatesvg-warning' ).length === 0 ){
+				var saveLink = $( '<a>' )
+					.attr( 'href', $( '#ca-export a' ).attr( 'href' ) )
+					.text( mw.msg( 'translate-svg-warn-inner' ) );
 				$( '<div>' )
 					.attr( 'id', 'translatesvg-warning' )
 					.append(
@@ -187,8 +195,9 @@
 								.attr( 'src', '//upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Gnome-emblem-important.svg/50px-Gnome-emblem-important.svg.png' )
 							)
 					)
-					.append( $( '<p>' ).html( mw.msg( 'translate-svg-warn', mw.msg( 'translate-taction-export-svgmg' ) ) ) )
-					.insertAfter( $( '.mw-translate-helplink' ) );
+					.append( $( '<p>' ).html( mw.msg( 'translate-svg-warn', saveLink.clone().wrap( '<div>' ).parent().html() ) ) )
+					.insertAfter( $( '.mw-translate-helplink' ) )
+					.clone().insertBefore( $( '#mw-content-text fieldset' ).last() );
 			}
 		}
 	};

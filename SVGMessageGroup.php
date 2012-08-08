@@ -169,8 +169,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 		$reader = new SVGFormatReader( $this );
-		if( !$reader || !$reader->makeTranslationReady() ) {
-			// TODO: what happens after this?
+		if( !$reader ) {
 			return false;
 		}
 

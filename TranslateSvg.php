@@ -49,6 +49,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'translate-svg-instructions-desc',
 		'translate-svg-instructions-title',
 		'translate-svg-warn',
+		'translate-svg-warn-inner',
 		'translate-js-save',
 		'translate-js-next',
 		'go'
@@ -73,6 +74,7 @@ $wgResourceModules['ext.translatesvg.filepage'] = array(
 		'translate-svg-filepage-finish',
 		'translate-svg-filepage-item',
 		'translate-svg-filepage-another',
+		'translate-svg-filepage-other',
 		'translate-svg-filepage-invite',
 		'comma-separator'
 	),
