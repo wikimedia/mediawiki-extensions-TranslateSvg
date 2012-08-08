@@ -27,7 +27,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$this->outputHeader( 'translate-svg-new-summary' );
 
 		$req = $this->getRequest();
-		$groupName = $req->getVal( 'group' );
+		$groupName = str_replace( ' ', '_', $req->getVal( 'group' ) );
 
 		if( $groupName === null || isset( $wgTranslateCC[$groupName] ) ) {
 			$this->getOutput()->addHTML( wfMessage( 'translate-svg-new-error-group' )->parseAsBlock() );
