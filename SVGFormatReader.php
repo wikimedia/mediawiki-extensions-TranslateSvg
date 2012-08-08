@@ -32,13 +32,16 @@ class SVGFormatReader {
 	protected $started = array();
 	protected $expanded = array();
 	protected $overrides = array();
-	protected $translations = array();
 	protected $filteredTextNodes = array();
 	protected $savedLanguages = array();
+	protected $inFileTranslations = null;
+	protected $isTranslationReady = false;
 
 	/**
 	 * Initialise a new SVGFormatReader from an SVGMessageGroup and an optional array of translation overrides
-	 * 
+	 *
+	 * @param SVGMessageGroup $group
+	 * @param array $overrides Optional array of translation overrides to be folded in later
 	 */
 	public function __construct( SVGMessageGroup $group, $overrides = array() ) {
 		$this->group = $group;
@@ -47,11 +50,15 @@ class SVGFormatReader {
 		$title = Title::newFromText( $this->group->getLabel(), NS_FILE );
 		$file = wfFindFile( $title );
 		if( $title->exists() && $file && $file->exists() ) {
+			// Warnings need to be suppressed in case there are DOM warnings
 			wfSuppressWarnings();
 			$this->svg->load( $file->getLocalRefPath() );
 			$this->xpath = new DOMXpath( $this->svg );
 			wfRestoreWarnings();
 			$this->xpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
+			if( !$this->makeTranslationReady() ) {
+				return null;
+			}
 		} else {
 			return null;
 		}
@@ -63,9 +70,15 @@ class SVGFormatReader {
 	 *
 	 * @return bool False on failure, true on success
 	 */
-	public function makeTranslationReady() {
+	protected function makeTranslationReady() {
+		// TODO: add interlanguage consistency check
+		if( $this->isTranslationReady ) {
+			return true;
+		}
+
 		if( $this->svg->documentElement === null ) {
-			return false; // Empty or malformed file
+			// Empty or malformed file
+			return false;
 		}
 
 		$defaultNS = $this->svg->documentElement->lookupnamespaceURI( NULL );
@@ -82,7 +95,8 @@ class SVGFormatReader {
 		$texts = $this->svg->getElementsByTagName( 'text' );
 		$textLength = $texts->length;
 		if( $textLength === 0 ) {
-			return false; // Nothing to translate!
+			// Nothing to translate!
+			return false;
 		}
 
 		$styles = $this->svg->getElementsByTagName( 'style' );
@@ -106,73 +120,47 @@ class SVGFormatReader {
 		}
 
 		if( $this->svg->getElementsByTagName( 'tref' )->length !== 0 ) {
-			return false; // Tref tags not (yet) supported
+			// Tref tags not (yet) supported
+			return false;
 		}
 
 		// Strip empty tspans, texts, fill $idsInUse
-		// TODO: Should convert to array, treat spans, texts equally to reduce redundancy
 		$idsInUse = array( 0 );
+		$translatableNodes = array();
 		$tspans = $this->svg->getElementsByTagName( 'tspan' );
-		$tspanLength = $tspans->length;
-		for( $i = 0; $i < $tspanLength; $i++ ) {
-			$tspan = $tspans->item( $i );
-			if( $tspan->hasAttribute( 'id' ) ) {
-				$id = $tspan->getAttribute( 'id' );
-				if( strpos( $id, '|' ) !== false
-					|| strpos( $id, '/' ) !== false  ) {
-					return 4; // Will cause problems later
-				}
-				if( preg_match( '/^trsvg([0-9]+)$/', $id, $matches ) ) {
-					array_push( $idsInUse, $matches[1] );
-				}
-			}
-			if( !$tspan->hasChildNodes() ) {
-				$tspan->parentNode->removeChild( $tspan );
-				$i--;
-				$tspanLength--;
-			}
+		$texts = $this->svg->getElementsByTagName( 'text' );
+		foreach( $tspans as $tspan ) {
 			if( $tspan->childNodes->length > 1 ) {
 				return false; // Nested tspans not (yet) supported
 			}
+			$translatableNodes[] = $tspan;
 		}
-		for( $i = 0; $i < $textLength; $i++ ) {
-			$text = $texts->item( $i );
-			if( $text->hasAttribute( 'id' ) ) {
-				$id = $text->getAttribute( 'id' );
-				if( strpos( $id, '|' ) !== false
-					|| strpos( $id, '/' ) !== false  ) {
-					return false; // Will cause problems later
+		foreach( $texts as $text ) {
+			$translatableNodes[] = $text;
+		}
+
+		foreach( $translatableNodes as $translatableNode ) {		
+			if( $translatableNode->hasAttribute( 'id' ) ) {
+				$id = $translatableNode->getAttribute( 'id' );
+				if( strpos( $id, '|' ) !== false || strpos( $id, '/' ) !== false  ) {
+					// Will cause problems later
+					return false;
 				}
-				if( preg_match( '/^trsvg([0-9]+)$/', $id, $matches ) ) {
-					array_push( $idsInUse, $matches[1] );
+				if( preg_match( '/^trsvg([0-9]+)/', $id, $matches ) ) {
+					$idsInUse[] = $matches[1];
 				}
 			}
-			if( !$text->hasChildNodes() ) {
-				$text->parentNode->removeChild( $text );
-				$i--;
-				$textLength--;
+			if( !$translatableNode->hasChildNodes() ) {
+				$translatableNode->parentNode->removeChild( $translatableNode );
 			}
 		}
 
 		// Create id attributes for text, tspan nodes missing it
-		$texts = $this->svg->getElementsByTagName( 'text' );
-		$textLength = $texts->length;
-		for( $i = 0; $i < $textLength; $i++ ) {
-			$text = $texts->item( $i );
-			if( !$text->hasAttribute( 'id' ) ) {
+		foreach( $translatableNodes as $translatableNode ) {
+			if( !$translatableNode->hasAttribute( 'id' ) ) {
 				$newId = ( max( $idsInUse ) + 1 );
-				$text->setAttribute( 'id', 'trsvg' . $newId );
-				array_push( $idsInUse, $newId );
-			}
-		}
-		$tspans = $this->svg->getElementsByTagName( 'tspan' );
-		$tspanLength = $tspans->length;
-		for( $i = 0; $i < $tspanLength; $i++ ) {
-			$tspan = $tspans->item( $i );
-			if( !$tspan->hasAttribute( 'id' ) ) {
-				$newId = ( max( $idsInUse ) + 1 );
-				$tspan->setAttribute( 'id', 'trsvg' . $newId );
-				array_push( $idsInUse, $newId );
+				$$translatableNode->setAttribute( 'id', 'trsvg' . $newId );
+				$idsInUse[] = $newId;
 			}
 		}
 
@@ -190,11 +178,14 @@ class SVGFormatReader {
 			if( $ancestorSwitches->length === 0 ) {
 				$switch = $this->svg->createElementNS( $defaultNS, 'switch' );
 				$text->parentNode->insertBefore( $switch, $text );
-				$switch->appendChild( $text ); // Move node into new sibling <switch> element
+				// Move node into new sibling <switch> element
+				$switch->appendChild( $text );
 			} elseif( $ancestorSwitches->length > 1 ) {
-				return false; // Nested switches not (yet) supported
+				// Nested switches not (yet) supported
+				return false;
 			} elseif( $text->parentNode->nodeName !== "switch" ) {
-				return false; // Deep heirarchies inside switches not (yet) supported
+				// Deep heirarchies inside switches not (yet) supported
+				return false;
 			} else {
 				// Existing but valid switch e.g. from previous translations
 				$switch = $text->parentNode;
@@ -203,26 +194,23 @@ class SVGFormatReader {
 					$languagesPresent = array();
 					if( $sibling->nodeType === XML_TEXT_NODE ) {
 						if( trim( $sibling->textContent ) !== '' ) {
-							return false; // Text content outside text tags is awkward.
+							// Text content inside switch but outside text tags is awkward.
+							return false;
 						}
 					} elseif( $sibling->nodeType === XML_ELEMENT_NODE ) {
+						// Only text tags are allowed inside switches
 						if( $sibling->nodeName !== 'text' ) {
-							return false; // Only text tags are allowed inside switches
+							return false;
 						}
 						$language = $sibling->hasAttribute( 'systemLanguage' ) ? 
 							$sibling->getAttribute( 'systemLanguage' ) : 'fallback';
 						if( in_array( $language, $languagesPresent ) ) {
-							return false; // Two tags for the same language
+							// Two tags for the same language
+							return false;
 						}
-						array_push( $languagesPresent, $language );
+						$languagesPresent[] = $language;
 					}
 				}
-			}
-
-			// Transforms on individual texts are particular problematic, should move it to the <switch>
-			if( $text->hasAttribute( 'transform' ) ) {
-				$switch->setAttribute( 'transform', $text->getAttribute( 'transform' ) );
-				$text->removeAttribute( 'transform' );
 			}
 
 			if( $numChildren > 1 ) {
@@ -235,6 +223,13 @@ class SVGFormatReader {
 				}
 			}
 
+			// Transforms on individual texts are particular problematic, should move it to the <switch>
+			if( $text->hasAttribute( 'transform' ) ) {
+				$switch->setAttribute( 'transform', $text->getAttribute( 'transform' ) );
+				$text->removeAttribute( 'transform' );
+			}
+
+			// Non-translatable style elements on texts get lost, so bump up to switch
 			if( $text->hasAttribute( 'style' ) ) {
 				$style = $text->getAttribute( 'style' );
 				$text->parentNode->setAttribute( 'style', $style );
@@ -243,7 +238,13 @@ class SVGFormatReader {
 		return true;
 	}
 
-	protected function prepareTranslations() {
+	/*
+	 * Collate and prepare an array of translations from multiple sources:
+	 * in file, on wiki, $this->filteredTextNodes and from $this->overrides.
+	 *
+	 * return array Array of translations
+	 */
+	protected function getTranslations() {
 		$translations = $this->getInFileTranslations();
 		$newTranslations = $this->getOnWikiTranslations();
 
@@ -260,13 +261,17 @@ class SVGFormatReader {
 			foreach( $languages as $language => $translation ) {
 				$oldItem = isset( $translations[$key][$language] ) ? $translations[$key][$language] : array();
 				$translations[$key][$language] = $newTranslations[$key][$language] + $oldItem;
-				$translations[$key][$language]['id'] = $translations[$key]['fallback']['id'] . "-$language";
+				if( $language !== 'fallback' ) {
+					$translations[$key][$language]['id'] = $translations[$key]['fallback']['id'] . "-$language";
+				}
 			}
 		}
 
 		// "Unfilter" translations
 		$translations = array_merge( $translations, $this->filteredTextNodes );
+
 		// Ensure that child tspan translations prompt new <text>s to be created
+		// by duplicating the fallback version.
 		foreach( $translations as $key => $languages ) {
 			foreach( $languages as $language => $translation ) {
 				if( isset( $languages['fallback']['data-parent'] ) ) {
@@ -279,68 +284,17 @@ class SVGFormatReader {
 			}
 		}
 
-		$this->translations = $translations;
+		return $translations;
 	}
 
-	protected function extractTranslations() {
-		$svg = clone $this->svg; // Don't want to manipulate the real thing
-		$tempXpath = new DOMXpath( $svg );
-		$tempXpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
-
-		$switches = $svg->getElementsByTagName( 'switch' );
-		$number = $switches->length;
-		$translations = array();
-		$this->filteredTextNodes = array(); // Reset
-		for( $i = 0; $i < $number; $i++ ) {
-			$switch = $switches->item( $i );
-			$texts = $switch->getElementsByTagName( 'text' );
-			$count = $texts->length;
-			if( $count === 0 ) {
-				continue;
-			}
-			$fallback = $tempXpath->query(
-				"text[not(@systemLanguage)]|svg:text[not(@systemLanguage)]", $switch
-			);
-			$textId = $fallback->item( 0 )->getAttribute( 'id' );
-			for( $j = 0; $j < $count; $j++ ) {
-				$text = $texts->item( $j );
-				$numChildren = $text->childNodes->length;
-				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
-				// $textNodesHaveTextContent[$i] = $hasActualTextContent; // TODO: add consistency check to makeTranslationReady()
-				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
-				$counter = 1;
-				for( $k = 0; $k < $numChildren; $k++ ) {
-					$child = $text->childNodes->item( $k );
-					if( $child->nodeType === 1 ) {
-						// Per the checks in makeTranslationReady() this is a tspan
-						$childId = $fallback->item( 0 )->childNodes->item( $counter - 1 )->getAttribute( 'id' );
-						$translations[$childId][$lang] = TranslateSvgUtils::nodeToArray( $child );
-						$translations[$childId][$lang]['data-parent'] = $textId;
-						if( $text->hasAttribute( 'data-children' ) ) {
-							$existing = $text->getAttribute( 'data-children' );
-							$text->setAttribute( 'data-children', "$existing|$childId" );
-						} else {
-							$text->setAttribute( 'data-children', $childId );
-						}
-						$text->replaceChild ( $svg->createTextNode( '$' . $counter ), $child );
-						$counter++;
-					}
-				}
-				if( $hasActualTextContent ) {
-					$translations[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
-				} else {
-					$this->filteredTextNodes[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
-				}
-				array_push( $this->savedLanguages, $lang );
-			}
-		}
-		$this->translations = $translations;
-	}
-
-	protected function updateSVG() {
-		$currentLanguages = $this->getSavedLanguages();
-		$currentLanguages = array_merge( $currentLanguages['full'], $currentLanguages['partial'] );
-		$translations = $this->translations;
+	/*
+	 * Compile and return an update version of the SVG, including all new translations.
+	 *
+	 * @return DOMDocument New SVG file
+	 */
+	protected function getSVG() {
+		$translations = $this->getTranslations();
+		$currentLanguages = $this->getSavedLanguages( false );
 		$switches = $this->svg->getElementsByTagName( 'switch' );
 		$number = $switches->length;
 		$counter = 1;
@@ -408,21 +362,83 @@ class SVGFormatReader {
 		for( $i = 0; $i < $count; $i++ ) {
 			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
 		}
-	}
-
-	public function getSVG() {
-		$this->makeTranslationReady();
-		$this->prepareTranslations();
-		$this->updateSVG();
 		return $this->svg;
 	}
 
-	public function getInFileTranslations() {
-		$this->makeTranslationReady();
-		$this->extractTranslations();
-		return $this->translations;
+	/*
+	 * Extract translations from the SVG file
+	 *
+	 * @param bool $forceUpdate Definitely regenerate the list
+	 * @return array Array of translations (indexed by ID, then langcode, then property)
+	 */
+	public function getInFileTranslations( $forceUpdate = false ) {
+		if( isset( $this->inFileTranslations ) && !$forceUpdate ) {
+			return $this->inFileTranslations;
+		}
+
+		// Don't want to manipulate the real thing
+		$svg = clone $this->svg;
+		$tempXpath = new DOMXpath( $svg );
+		$tempXpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
+
+		$switches = $svg->getElementsByTagName( 'switch' );
+		$number = $switches->length;
+		$translations = array();
+		$this->filteredTextNodes = array(); // Reset
+		for( $i = 0; $i < $number; $i++ ) {
+			$switch = $switches->item( $i );
+			$texts = $switch->getElementsByTagName( 'text' );
+			$count = $texts->length;
+			if( $count === 0 ) {
+				continue;
+			}
+			$fallback = $tempXpath->query(
+				"text[not(@systemLanguage)]|svg:text[not(@systemLanguage)]", $switch
+			);
+			$textId = $fallback->item( 0 )->getAttribute( 'id' );
+			for( $j = 0; $j < $count; $j++ ) {
+				$text = $texts->item( $j );
+				$numChildren = $text->childNodes->length;
+				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
+				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
+				$counter = 1;
+				for( $k = 0; $k < $numChildren; $k++ ) {
+					$child = $text->childNodes->item( $k );
+					if( $child->nodeType === 1 ) {
+						// Per the checks in makeTranslationReady() this is a tspan so
+						// register it as a child node.
+						$childId = $fallback->item( 0 )->childNodes->item( $counter - 1 )->getAttribute( 'id' );
+						$translations[$childId][$lang] = TranslateSvgUtils::nodeToArray( $child );
+						$translations[$childId][$lang]['data-parent'] = $textId;
+						if( $text->hasAttribute( 'data-children' ) ) {
+							$existing = $text->getAttribute( 'data-children' );
+							$text->setAttribute( 'data-children', "$existing|$childId" );
+						} else {
+							$text->setAttribute( 'data-children', $childId );
+						}
+
+						// Replace with $1, $2 etc.
+						$text->replaceChild ( $svg->createTextNode( '$' . $counter ), $child );
+						$counter++;
+					}
+				}
+				if( $hasActualTextContent ) {
+					$translations[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
+				} else {
+					$this->filteredTextNodes[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
+				}
+				$this->savedLanguages[] = $lang;
+			}
+		}
+		$this->inFileTranslations = $translations;
+		return $this->inFileTranslations;
 	}
 
+	/*
+	 * Extract translations from on wiki
+	 *
+	 * @return array Array of translations (indexed by ID, then langcode, then property)
+	 */
 	public function getOnWikiTranslations() {
 		$onWikiTranslations = array();
 		$languages = $this->group->getOnWikiLanguages();
@@ -452,36 +468,56 @@ class SVGFormatReader {
 		}
 		return $onWikiTranslations;
 	}
-	public function getStarted() {
-		return $this->started;
-	}
 
-	public function getExpanded() {
-		return $this->expanded;
-	}
+	/*
+	 * Get a list of languages which have one or more translations in file
+	 *
+	 * @param bool $filter Whether to split into 'full' and 'partial'. Default true.
+	 * @return array Array of languages
+	 */
+	public function getSavedLanguages( $filter = true ) {
+		$translations = $this->getInFileTranslations();
 
-	public function getSavedLanguages() {
-		if( count( $this->savedLanguages ) === 0 ) {
-			$this->extractTranslations();
-		}
+		// $this->savedLanguages is set by $this->getInFileTranslations()
 		$savedLanguages = array_unique( $this->savedLanguages );
+		if( !$filter ) {
+			return $savedLanguages;
+		}
+
 		$full = array();
 		$partial = array();
 		foreach( $savedLanguages as $savedLanguage ) {
 			$fullSoFar = true;
-			foreach( $this->translations as $key => $languages ) {
+			foreach( $translations as $key => $languages ) {
 				if( !isset( $languages[$savedLanguage] ) ) {
 					$fullSoFar = false;
 					break;
 				}
 			}
 			if( $fullSoFar ) {
-				array_push( $full, $savedLanguage );
+				$full[] = $savedLanguage;
 			} else {
-				array_push( $partial, $savedLanguage );
+				$partial[] = $savedLanguage;
 			}
 		}
-
 		return array( 'full' => $full, 'partial' => $partial );
+	}
+
+	/*
+	 * Get array of languages which were started in the last SVG update
+	 *
+	 * @return array Array of languages
+	 */
+	public function getStarted() {
+		return $this->started;
+	}
+
+	/*
+	 * Get array of languages which were added to in the last SVG update
+	 *
+	 * @return array Array of languages
+	 */
+	public function getExpanded() {
+		return $this->expanded;
 	}
 }
