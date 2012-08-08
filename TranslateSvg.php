@@ -24,6 +24,7 @@ $wgAutoloadClasses['SVGMessageGroup'] = $dir . 'SVGMessageGroup.php';
 $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
 $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
+$wgAutoloadClasses['SpecialTranslateNewSVG'] = $dir . 'SpecialTranslateNewSVG.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 
 $wgResourceModules['jquery.colorpicker'] = array(
@@ -92,8 +93,12 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::makeFilePageGlobal
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::exposeTranslateSvgTemplateName';
 $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
 $wgHooks['TranslateBeforeSpecialTranslate'][] = 'TranslateSvgHooks::makeThumbnailPage';
-$wgHooks['TranslateNoSuchGroupFound'][] = 'TranslateSvgHooks::mimicSVGGroup';
+$wgHooks['TranslatePostInitGroups'][] = 'TranslateSvgHooks::loadSVGGroups';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'TranslateSvgHooks::schemaUpdates';
 $wgHooks['FileUpload'][] = 'TranslateSvgHooks::checkTranslationIntegrity';
+
+$wgSpecialPages['TranslateNewSVG'] = 'SpecialTranslateNewSVG';
+$wgSpecialPageGroups['TranslateNewSVG'] = 'wiki';
 
 /**
  * List of typefaces (or keywords) that can safely be incorporated into SVG

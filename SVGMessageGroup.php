@@ -19,6 +19,7 @@
  */
 class SVGMessageGroup extends WikiMessageGroup {
 	protected $source = null;
+	protected $sourceLanguage = null;
 	/**
 	 * Constructor.
 	 *
@@ -123,7 +124,15 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * @return \bool
 	 */
 	public function getSourceLanguage() {
-		return 'en';
+		if( !isset( $this->sourceLanguage ) ){
+			$this->sourceLanguage = TranslateMetadata::get( $this->source, 'sourcelang' );
+		}
+		return $this->sourceLanguage;
+	}
+
+	public function setSourceLanguage( $srcLang ) {
+		$this->sourceLanguage = $srcLang;
+		TranslateMetadata::set( $this->source, 'sourcelang', $srcLang );
 	}
 
 	/**

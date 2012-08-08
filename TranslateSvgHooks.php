@@ -324,30 +324,26 @@ class TranslateSvgHooks{
 		return true;
 	}
 
-	public static function mimicSVGGroup( &$group, $id ) {
-		// Is this an SVG?
-		if( substr( $id, -4 ) !== '.svg' ) {
-			return true;
+	public static function schemaUpdates( $updater ) {
+		$dir = dirname( __FILE__ ) . '/sql';
+
+		$updater->addExtensionUpdate( array( 'addTable', 'translate_svg', "$dir/translate_svg.sql", true ) );
+		return true;
+	}
+
+	public static function loadSVGGroups( &$wgTranslateCC, &$deps, &$autoload ){
+		$dbr = wfGetDB( DB_MASTER );
+
+		$tables = array( 'page', 'translate_svg' );
+		$vars   = array( 'page_title' );
+		$conds  = array( 'page_id=ts_page_id', 'page_namespace=' . NS_FILE );
+		$res = $dbr->select( $tables, $vars, $conds, __METHOD__ );
+
+		foreach ( $res as $r ) {
+			$group = $r->page_title;
+			$wgTranslateCC[$group] = new SVGMessageGroup( $group );
 		}
 
-		// Does this represent a file that exists?
-		$title = Title::newFromText( $id, NS_FILE );
-		if( !$title->exists() ) {
-			return true;
-		}
-		$file = wfFindFile( $title );
-		if( !$file->exists() ) {
-			return true;
-		}
-
-		// Looks like we'll mimic an SVG group then
-		$group = new SVGMessageGroup( $id );
-		// TODO: Next alwats evaluates to true at present
-		if( !isset( $wgTranslateCC[ $id ] ) ){
-			if( !$group->importTranslations() ) {
-				$group =  null;
-			}
-		}
 		return true;
 	}
 

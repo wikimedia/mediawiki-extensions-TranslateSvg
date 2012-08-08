@@ -61,19 +61,15 @@
 			}
 		},
 		getNoTranslationsSpan: function (){
-			var userLangCode = mw.config.get( 'wgUserLanguage' );
-			var userLangName = mw.config.get( 'wgUserLanguageName' );
-
-			var suggestions = [];
-			suggestions.push( mw.tSvgFileDesc.makeTranslateLink( userLangCode, userLangName ) );
-			suggestions.push( mw.tSvgFileDesc.makeTranslateLink(
-				false,
-				mw.message( 'translate-svg-filepage-another' )
-			) );
-
-			suggestions = suggestions.join( mw.message( 'comma-separator' ) );
-
-			return mw.message( 'translate-svg-filepage-invite', suggestions );
+			var filename = mw.config.get( 'wgTitle' );
+			filename = filename.replace( ' ', '+' );
+			var url = mw.util.wikiGetlink( 'Special:TranslateNewSvg' ) + '?group=' + filename;
+			var link = mw.html.element(
+				'a',
+				{ 'href': url },
+				mw.message( 'translate-svg-filepage-other' ).toString()
+			);
+			return mw.message( 'translate-svg-filepage-invite', link );
 		},
 		makeViewLink: function ( langCode, language ){
 			var pageName = mw.config.get( 'wgPageName' );
