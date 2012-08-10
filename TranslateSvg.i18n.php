@@ -5,7 +5,7 @@
  * @file
  * @ingroup Extensions
  */
- 
+
 $messages = array();
 
 /** English
@@ -37,16 +37,16 @@ $messages['en'] = array(
 	'translate-svg-upload-comment' => 'Updating translations (started: $1; modified/expanded: $2)',
 	'translate-svg-upload-none' => '(none)',
 	'translate-svg-chooselanguage-title' => 'Language selection',
-	'translate-svg-chooselanguage-desc' => 'Please select the language you wish you translate this SVG file into: ',
+	'translate-svg-chooselanguage-desc' => 'Please select the language you wish you translate this SVG file into:',
 	'translate-svg-instructions-title' => 'First time translating an SVG file this way?',
 	'translate-svg-instructions-desc' => 'To get started, click on a message identifier in first column of the table provided to begin translation of that message, using the "$1" and "$2" buttons to help navigate through the messages requiring translation. When you\'re done, remember to use the "$3" tab to save your translations back to the original file.',
 	'translate-svg-warn' => '<strong>Warning:</strong> Your changes to the SVG file will not be visible until you $1, which you should do whenever you are finished translating the file.',
 	'translate-svg-warn-inner' => 'save your changes back to the original file',
 	'translate-svg-new-title' => 'SVG translation',
 	'translate-svg-new-summary' => "To begin translation of this file, please select the language you are translating this file '''from''' (if ambiguous, select the most widely spoken language).",
-	'translate-svg-new-label' => 'Language: ',
-	'translate-svg-new-error-import' => "'''An error occured''': An unknown error occured whilst trying to create the pages required for translating this SVG.",
-	'translate-svg-new-error-group' => "'''An error occured''': An unknown error occured; perhaps you forgot to specifify a group in the URL?",
+	'translate-svg-new-label' => 'Language:',
+	'translate-svg-new-error-import' => "'''An error occurred:''' An unknown error occurred whilst trying to create the pages required for translating this SVG.",
+	'translate-svg-new-error-group' => "'''An error occurred:''' An unknown error occurred; perhaps you forgot to specifify a group in the URL?",
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',
