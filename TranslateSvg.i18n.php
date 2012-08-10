@@ -280,6 +280,7 @@ $messages['fa'] = array(
 );
 
 /** French (français)
+ * @author Brunoperel
  * @author Erkethan
  * @author Gomoko
  * @author Od1n
@@ -289,6 +290,8 @@ $messages['fr'] = array(
 	'translatesvg-desc' => 'Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1',
 	'translate-taskui-export-as-svg' => "Enregistrer dans le fichier SVG d'origine",
 	'translate-svg-nodesc' => "(Aucune description du fichier n'est fournie.)",
+	'translate-svg-thumbnail' => "Fichier d'origine",
+	'translate-svg-js-thumbnail' => '(la vignette se met à jour automatiquement)',
 	'translate-page-description-legend-svgmg' => 'Informations sur ce fichier',
 	'translate-taction-mstats-svgmg' => 'Statistiques du fichier',
 	'translate-taction-export-svgmg' => 'Téléverse une nouvelle version du fichier',
@@ -296,11 +299,22 @@ $messages['fr'] = array(
 	'translate-svg-filepage-edit' => 'modifier',
 	'translate-svg-filepage-finish' => 'terminer',
 	'translate-svg-filepage-another' => 'Autres langues',
-	'translate-svg-filepage-invite' => "Ce fichier peut facilement être traduit dans d'autres langues :$1",
+	'translate-svg-filepage-other' => 'autres langues',
+	'translate-svg-filepage-invite' => 'Ce fichier peut facilement être traduit en $1',
 	'translate-svg-autoedit' => 'Mise à jour automatique des traductions, basée sur les modifications du fichier source SVG',
+	'translate-svg-autofuzzy' => "Marquer automatiquement les traductions comme non fiables lorsque des changements ont été effectués sur le fichier SVG d'origine",
+	'translate-svg-upload-comment' => 'Mise à jour des traductions (traductions commencées : $1 ; traductions modifiées ou étendues : $2 )',
 	'translate-svg-upload-none' => '(aucun)',
 	'translate-svg-chooselanguage-title' => 'Sélection de la langue',
 	'translate-svg-chooselanguage-desc' => 'Veuillez sélectionner la langue dans laquelle vous souhaitez traduire ce fichier SVG :',
+	'translate-svg-instructions-desc' => "Pour commencer, cliquez sur un identifiant de message dans la première colonne de la table afin de commencer la traduction de ce message, à l'aide des boutons « $1 « et » $2 » qui vous aideront à naviguer parmi les messages nécessitant une traduction. Lorsque vous avez terminé, n'oubliez pas d'utiliser l'onglet « $3 » pour enregistrer vos traductions dans le fichier d'origine.",
+	'translate-svg-warn' => "<strong>Avertissement :</strong> Vos modifications sur le fichier SVG ne seront visibles qu'une fois que vous $1, ce que vous devez faire à chaque fois que vous terminez de traduire le fichier.",
+	'translate-svg-warn-inner' => "enregistrer vos modifications dans le fichier d'origine",
+	'translate-svg-new-title' => 'Traduction SVG',
+	'translate-svg-new-summary' => "Pour commencer la traduction de ce fichier, veuillez sélectionner la langue '''à partir de laquelle''' vous traduisez ce fichier (si vous n'êtes pas certain(e) de la langue à indiquer, sélectionnez la langue plus utilisée).",
+	'translate-svg-new-label' => 'Langue :',
+	'translate-svg-new-error-import' => "''' Une erreur s'est produite ''': Une erreur inconnue s'est produite lors de la tentative de création des pages nécessaires pour traduire ce SVG.",
+	'translate-svg-new-error-group' => "''' Une erreur s'est produite ''': Une erreur inconnue s'est produite ; vous avez peut-être oublié de spécifier un groupe dans l'URL ?",
 	'translate-js-properties-legend' => 'Propriétés',
 	'translate-js-label-x' => 'Coordonnée X :',
 	'translate-js-label-y' => 'Coordonnée Y :',
@@ -509,6 +523,7 @@ $messages['mk'] = array(
 	'translatesvg-desc' => 'Дава поредник за преведување на SVG податотеки во склад со одредбите на SVG1.1',
 	'translate-taskui-export-as-svg' => 'Зачувај врз изворната SVG-податотека',
 	'translate-svg-nodesc' => '(Податотеката нема опис.)',
+	'translate-svg-thumbnail' => 'Изворна податотека',
 	'translate-svg-js-thumbnail' => '(минијатурата се подновува сама)',
 	'translate-page-description-legend-svgmg' => 'Информации за податотеката',
 	'translate-taction-mstats-svgmg' => 'Податотечни статистики',
@@ -519,7 +534,8 @@ $messages['mk'] = array(
 	'translate-svg-filepage-edit' => 'уреди',
 	'translate-svg-filepage-finish' => 'заврши',
 	'translate-svg-filepage-another' => 'друг јазик',
-	'translate-svg-filepage-invite' => 'Оваа податотека може лесно да се преведува на други јазици: $1',
+	'translate-svg-filepage-other' => 'други јазици',
+	'translate-svg-filepage-invite' => 'Оваа податотека може лесно да се преведе на $1',
 	'translate-svg-autocreate' => 'Автоматско создавање на преводни единици согласно измените на изворната податотека',
 	'translate-svg-autodelete' => 'Автоматско бришење на непотребни преводни единици согласно измените на изворната податотека',
 	'translate-svg-autoedit' => 'Автоматска поднова на преводите согласно измените на изворната податотека',
@@ -528,6 +544,15 @@ $messages['mk'] = array(
 	'translate-svg-upload-none' => '(нема)',
 	'translate-svg-chooselanguage-title' => 'Избор на јазик',
 	'translate-svg-chooselanguage-desc' => 'Изберете на коој јазик сакате да ја преведете податотеката:',
+	'translate-svg-instructions-title' => 'Дали ви е прв пат да преведувате SVG-податотека на овој начин?',
+	'translate-svg-instructions-desc' => 'За да почнете со преведување на дадена порака, стиснете на назнаката на пораката во првата колона од табелата. Служете се со копчињта „$1“ и „$2“ за да се префрлате на следната порака. Кога ќе завршите, не заборавајте да се послужите со јазичето „$3“ за да ги зачувате преводите врз изворната податотека.',
+	'translate-svg-warn' => '<strong>Предупредување:</strong> Вашите промени во SVG-податотеката нема да бидат видливи сè додека не ги $1, што треба да правите секој пат кога ќе завршите со преведувањето на секоја податотека.',
+	'translate-svg-warn-inner' => 'зачувате промените врз изворната податотека',
+	'translate-svg-new-title' => 'Превод на SVG',
+	'translate-svg-new-summary' => "За да почнете со преведување на податотекава, најпрвин одберете '''од''' кој јазик ќе преведувате  (ако не е доволно јасно, одберете го најзастапениот јазик).",
+	'translate-svg-new-label' => 'Јазик',
+	'translate-svg-new-error-import' => "'''Се појави грешка''': Се појави непозната грешка при обидот да ги создадам страниците потребни за преведување на оваа SVG-податотека.",
+	'translate-svg-new-error-group' => "'''Се појави грешка''': Се појави непозната грешка; да не заборавивте да укажете група во URL-адресата?",
 	'translate-js-properties-legend' => 'Својства',
 	'translate-js-label-x' => 'X-координата:',
 	'translate-js-label-y' => 'Y-координата:',
@@ -631,6 +656,8 @@ $messages['ro'] = array(
 	'translate-svg-table-header' => 'Identificator al mesajului',
 	'translate-svg-filepage-edit' => 'modifică',
 	'translate-svg-filepage-another' => 'altă limbă',
+	'translate-svg-filepage-other' => 'alte limbi',
+	'translate-svg-filepage-invite' => 'Acest fișier poate fi tradus cu ușurință în $1',
 	'translate-svg-upload-none' => '(niciunul)',
 	'translate-svg-chooselanguage-title' => 'Selectarea limbii',
 	'translate-js-properties-legend' => 'Proprietăți',
@@ -653,6 +680,18 @@ $messages['ru'] = array(
 /** Swedish (svenska) */
 $messages['sv'] = array(
 	'translate-svg-nodesc' => '(Denna fil har inte en beskrivning.)',
+);
+
+/** Tamil (தமிழ்)
+ * @author Logicwiki
+ */
+$messages['ta'] = array(
+	'translate-svg-thumbnail' => 'மூலக்கோப்பு',
+	'translate-taction-mstats-svgmg' => 'கோப்பின் புள்ளிவிவரம்',
+	'translate-svg-filepage-edit' => 'தொகு',
+	'translate-svg-filepage-finish' => 'நிறைவு செய்',
+	'translate-svg-new-label' => 'மொழி:',
+	'translate-js-properties-legend' => 'பண்புகள்',
 );
 
 /** Tagalog (Tagalog)
@@ -711,7 +750,15 @@ $messages['uk'] = array(
 	'translatesvg-desc' => 'Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1',
 );
 
+/** Simplified Chinese (‪中文（简体）‬)
+ * @author Shirayuki
+ */
+$messages['zh-hans'] = array(
+	'translate-svg-new-label' => '语言：',
+);
+
 /** Traditional Chinese (‪中文（繁體）‬)
+ * @author Shirayuki
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
@@ -720,5 +767,9 @@ $messages['zh-hant'] = array(
 	'translate-svg-filepage-another' => '其他語言',
 	'translate-svg-filepage-other' => '其他語言',
 	'translate-svg-upload-none' => '（無）',
+	'translate-js-label-color' => '顏色：',
+	'translate-js-label-bold' => '粗體',
+	'translate-js-label-italic' => '斜體',
+	'translate-js-label-underline' => '底線',
 );
 
