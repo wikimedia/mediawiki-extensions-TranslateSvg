@@ -468,10 +468,11 @@ $messages['ia'] = array(
 
 /** Italian (italiano)
  * @author Beta16
+ * @author Darth Kule
  */
 $messages['it'] = array(
 	'translatesvg-desc' => "Fornisce un'interfaccia nativa per tradurre SVG con le specifiche SVG1.1",
-	'translate-svg-nodesc' => '(Questo file non ha una descrizione).',
+	'translate-svg-nodesc' => '(Non è stata fornita una descrizione del file).',
 );
 
 /** Korean (한국어)
@@ -651,6 +652,7 @@ $messages['pt'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
+	'translate-svg-thumbnail' => 'Fișier original',
 	'translate-page-description-legend-svgmg' => 'Informații despre acest fișier',
 	'translate-taction-mstats-svgmg' => 'Statistici despre fișier',
 	'translate-svg-table-header' => 'Identificator al mesajului',
@@ -660,6 +662,7 @@ $messages['ro'] = array(
 	'translate-svg-filepage-invite' => 'Acest fișier poate fi tradus cu ușurință în $1',
 	'translate-svg-upload-none' => '(niciunul)',
 	'translate-svg-chooselanguage-title' => 'Selectarea limbii',
+	'translate-svg-new-label' => 'Limbă:',
 	'translate-js-properties-legend' => 'Proprietăți',
 	'translate-js-label-x' => 'Coordonate X:',
 	'translate-js-label-y' => 'Coordonate Y:',
