@@ -119,6 +119,22 @@ $messages['qqq'] = array(
 	'translate-js-font-family-inherit' => 'Label used to imply that no specific typeface will be set for a string; instead, it will be inherited from the document default.',
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ */
+$messages['ar'] = array(
+	'translate-svg-thumbnail' => 'ملف أصلي',
+	'translate-taction-mstats-svgmg' => 'إحصاءات الملف',
+	'translate-svg-filepage-edit' => 'تعديل',
+	'translate-svg-filepage-another' => 'لغة أخرى',
+	'translate-svg-filepage-other' => 'لغات أخرى',
+	'translate-svg-chooselanguage-title' => 'اختيار اللغة',
+	'translate-js-properties-legend' => 'الخصائص',
+	'translate-js-label-color' => 'اللون:',
+	'translate-js-label-bold' => 'غليظ',
+	'translate-js-label-italic' => 'مائل',
+);
+
 /** Asturian (asturianu)
  * @author Xuacu
  */
@@ -475,6 +491,25 @@ $messages['it'] = array(
 	'translate-svg-nodesc' => '(Non è stata fornita una descrizione del file).',
 );
 
+/** Georgian (ქართული)
+ * @author David1010
+ */
+$messages['ka'] = array(
+	'translate-taction-mstats-svgmg' => 'ფაილის სტატისტიკა',
+	'translate-svg-filepage-edit' => 'რედაქტირება',
+	'translate-svg-filepage-finish' => 'დასრულება',
+	'translate-svg-filepage-other' => 'სხვა ენები',
+	'translate-svg-upload-none' => '(არა)',
+	'translate-svg-chooselanguage-title' => 'ენის არჩევა',
+	'translate-svg-new-title' => 'SVG თარგმანი',
+	'translate-svg-new-label' => 'ენა:',
+	'translate-js-label-x' => 'X-კოორდინატი:',
+	'translate-js-label-y' => 'Y-კოორდინატი:',
+	'translate-js-label-color' => 'ფერი:',
+	'translate-js-label-bold' => 'მუქი',
+	'translate-js-label-italic' => 'კურსივი',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  * @author 아라
@@ -680,6 +715,25 @@ $messages['ru'] = array(
 	'translatesvg-desc' => 'Предоставляет перевод файлов SVG в соответствии со спецификацией SVG1.1',
 );
 
+/** Sinhala (සිංහල)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['si'] = array(
+	'translate-svg-thumbnail' => 'නියම ගොනුව',
+	'translate-svg-filepage-edit' => 'සංස්කරණය',
+	'translate-svg-filepage-finish' => 'අවසාන කරන්න',
+	'translate-svg-filepage-another' => 'වෙනත් භාෂාව',
+	'translate-svg-filepage-other' => 'වෙනත් භාෂාවන්',
+	'translate-svg-upload-none' => '(කිසිවක් නැත)',
+	'translate-svg-chooselanguage-title' => 'භාෂා තේරීම',
+	'translate-svg-new-title' => 'SVG පරිවර්තනය',
+	'translate-svg-new-label' => 'භාෂාව:',
+	'translate-js-properties-legend' => 'ගුණ',
+	'translate-js-label-color' => 'වර්ණය:',
+	'translate-js-label-font-family' => 'අක්ෂරය:',
+	'translate-js-label-bold' => 'තද පැහැති',
+);
+
 /** Swedish (svenska) */
 $messages['sv'] = array(
 	'translate-svg-nodesc' => '(Denna fil har inte en beskrivning.)',
@@ -695,6 +749,24 @@ $messages['ta'] = array(
 	'translate-svg-filepage-finish' => 'நிறைவு செய்',
 	'translate-svg-new-label' => 'மொழி:',
 	'translate-js-properties-legend' => 'பண்புகள்',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'translate-svg-thumbnail' => 'అసలు దస్త్రం',
+	'translate-page-description-legend-svgmg' => 'ఈ దస్త్రం గురించిన సమాచారం',
+	'translate-svg-filepage-another' => 'మరొక భాష',
+	'translate-svg-filepage-other' => 'ఇతర భాషలు',
+	'translate-svg-upload-none' => '(ఏమీలేవు)',
+	'translate-svg-chooselanguage-title' => 'భాష ఎంపిక',
+	'translate-svg-new-title' => 'SVG అనువాదం',
+	'translate-svg-new-label' => 'భాష:',
+	'translate-js-label-color' => 'రంగు:',
+	'translate-js-label-bold' => 'బొద్దు',
+	'translate-js-label-italic' => 'వాలు',
+	'translate-js-label-underline' => 'క్రీగీత',
 );
 
 /** Tagalog (Tagalog)
