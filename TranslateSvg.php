@@ -18,5 +18,6 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = __DIR__ . '/';
 $wgAutoloadClasses['SVGMessageGroup'] = $dir . 'SVGMessageGroup.php';
+$wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 $wgResourceModules['ext.translateSvg'] = array();
