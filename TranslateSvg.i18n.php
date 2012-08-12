@@ -46,7 +46,7 @@ $messages['en'] = array(
 	'translate-svg-new-summary' => "To begin translation of this file, please select the language you are translating this file '''from''' (if ambiguous, select the most widely spoken language).",
 	'translate-svg-new-label' => 'Language:',
 	'translate-svg-new-error-import' => "'''An error occurred:''' An unknown error occurred whilst trying to create the pages required for translating this SVG.",
-	'translate-svg-new-error-group' => "'''An error occurred:''' An unknown error occurred; perhaps you forgot to specifify a group in the URL?",
+	'translate-svg-new-error-group' => "'''An error occurred:''' An unknown error occurred; perhaps you forgot to specify a group in the URL?",
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',
