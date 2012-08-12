@@ -150,6 +150,7 @@ $messages['be-tarask'] = array(
 	'translatesvg-desc' => 'Надае інтэрфэйс для перакладу SVG-файлаў, узгодненых са спэцыфікацыяй SVG1.1',
 	'translate-taskui-export-as-svg' => 'Захаваць у першапачатковы SVG-файл',
 	'translate-svg-nodesc' => '(Апісаньне не было пададзенае.)',
+	'translate-svg-thumbnail' => 'Арыгінальны файл',
 	'translate-svg-js-thumbnail' => '(мініяцюра абнаўляецца аўтаматычна)',
 	'translate-page-description-legend-svgmg' => 'Інфармацыя пра файл',
 	'translate-taction-mstats-svgmg' => 'Статыстыка файла',
@@ -160,7 +161,8 @@ $messages['be-tarask'] = array(
 	'translate-svg-filepage-edit' => 'рэд.',
 	'translate-svg-filepage-finish' => 'давяршыць',
 	'translate-svg-filepage-another' => 'іншыя мовы',
-	'translate-svg-filepage-invite' => 'Гэты файл можна лёгка перакласьці на іншыя мовы: $1',
+	'translate-svg-filepage-other' => 'іншыя мовы',
+	'translate-svg-filepage-invite' => 'Гэты файл можна лёгка перакласьці на $1',
 	'translate-svg-autocreate' => 'Аўтаматычнае стварэньне адзінак перакладу, грунтуючыся на зьменах у зыходным SVG-файле',
 	'translate-svg-autodelete' => 'Аўтаматычнае выдаленьне непатрэбных адзінак перакладу, грунтуючыся на зьменах у зыходным SVG-файле',
 	'translate-svg-autoedit' => 'Аўтаматычнае абнаўленьне адзінак перакладу, грунтуючыся на зьменах у зыходным SVG-файле',
@@ -169,6 +171,9 @@ $messages['be-tarask'] = array(
 	'translate-svg-upload-none' => '(няма)',
 	'translate-svg-chooselanguage-title' => 'Выбар мовы',
 	'translate-svg-chooselanguage-desc' => 'Калі ласка, выберыце мову, на якую жадаеце перакласьці гэты SVG-файл:',
+	'translate-svg-instructions-title' => 'Упершыню перакладаеце SVG-файл падобным чынам?',
+	'translate-svg-new-title' => 'Пераклад SVG',
+	'translate-svg-new-label' => 'Мова:',
 	'translate-js-properties-legend' => 'Уласьцівасьці',
 	'translate-js-label-x' => 'X-каардыната:',
 	'translate-js-label-y' => 'Y-каардыната:',
@@ -664,6 +669,26 @@ $messages['pfl'] = array(
 	'translatesvg-desc' => 'Hodä nadirlischi Schniddschdell fas Iwasedze vun SVG-Dadaije im Oinglong midde Oagab SVG1.1',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'translate-svg-thumbnail' => 'آرنۍ دوتنه',
+	'translate-svg-filepage-edit' => 'سمول',
+	'translate-svg-filepage-finish' => 'پای',
+	'translate-svg-filepage-another' => 'بله ژبه',
+	'translate-svg-filepage-other' => 'نورې ژبې',
+	'translate-svg-upload-none' => '(هېڅ)',
+	'translate-svg-chooselanguage-title' => 'ژبه ټاکنه',
+	'translate-svg-new-label' => 'ژبه:',
+	'translate-js-properties-legend' => 'ځانتياوې',
+	'translate-js-label-color' => 'رنګ:',
+	'translate-js-label-font-family' => 'ليکبڼه:',
+	'translate-js-label-bold' => 'زغرد',
+	'translate-js-label-italic' => 'رېوند',
+	'translate-js-label-underline' => 'کرښن',
+);
+
 /** Portuguese (português)
  * @author SandroHc
  */
@@ -715,6 +740,15 @@ $messages['ru'] = array(
 	'translatesvg-desc' => 'Предоставляет перевод файлов SVG в соответствии со спецификацией SVG1.1',
 );
 
+/** Rusyn (русиньскый)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'translate-svg-filepage-edit' => 'едітовати',
+	'translate-svg-filepage-finish' => 'конець',
+	'translate-svg-filepage-another' => 'іншый язык',
+);
+
 /** Sinhala (සිංහල)
  * @author පසිඳු කාවින්ද
  */
@@ -729,9 +763,12 @@ $messages['si'] = array(
 	'translate-svg-new-title' => 'SVG පරිවර්තනය',
 	'translate-svg-new-label' => 'භාෂාව:',
 	'translate-js-properties-legend' => 'ගුණ',
+	'translate-js-label-x' => 'X-සමකක්ෂය:',
+	'translate-js-label-y' => 'Y-සමකක්ෂය:',
 	'translate-js-label-color' => 'වර්ණය:',
 	'translate-js-label-font-family' => 'අක්ෂරය:',
 	'translate-js-label-bold' => 'තද පැහැති',
+	'translate-js-label-italic' => 'ඇළ අකුරු',
 );
 
 /** Swedish (svenska) */
@@ -740,15 +777,25 @@ $messages['sv'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Karthi.dr
  * @author Logicwiki
  */
 $messages['ta'] = array(
 	'translate-svg-thumbnail' => 'மூலக்கோப்பு',
+	'translate-page-description-legend-svgmg' => 'இக் கோப்பு குறித்த தகவல்',
 	'translate-taction-mstats-svgmg' => 'கோப்பின் புள்ளிவிவரம்',
 	'translate-svg-filepage-edit' => 'தொகு',
 	'translate-svg-filepage-finish' => 'நிறைவு செய்',
+	'translate-svg-filepage-another' => 'மற்றொரு மொழி',
+	'translate-svg-filepage-other' => 'பிற மொழிகள்',
+	'translate-svg-chooselanguage-title' => 'மொழித் தெரிவு',
 	'translate-svg-new-label' => 'மொழி:',
 	'translate-js-properties-legend' => 'பண்புகள்',
+	'translate-js-label-color' => 'வண்ணம்:',
+	'translate-js-label-font-family' => 'எழுத்துரு:',
+	'translate-js-label-bold' => 'தடித்த',
+	'translate-js-label-italic' => 'சாய்ந்த',
+	'translate-js-label-underline' => 'அடிக்கோடிட்ட',
 );
 
 /** Telugu (తెలుగు)
