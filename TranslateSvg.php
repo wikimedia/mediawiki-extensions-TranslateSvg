@@ -16,8 +16,21 @@ $wgExtensionCredits['specialpage'][] = array(
 	'version' => '2.0.0',
 );
 
-$dir = __DIR__ . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SVGMessageGroup'] = $dir . 'SVGMessageGroup.php';
 $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
+$wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
-$wgResourceModules['ext.translateSvg'] = array();
+
+$wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
+
+$wgResourceModules['ext.translatesvg'] = array(
+	'scripts' => array( 'resources/ext.translatesvg.core.js' ),
+	'messages' => array(
+		'translate-taction-mstats-svgmg',
+		'translate-taction-export-svgmg',
+		'translate-page-description-legend-svgmg'
+	),
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'TranslateSvg'
+);
