@@ -457,8 +457,10 @@ $messages['hsb'] = array(
 	'translate-svg-chooselanguage-title' => 'Wuběr rěčow',
 	'translate-svg-chooselanguage-desc' => 'Prošu wubjerće rěč, do kotrejež chceš SVG-dataju přełožić:',
 	'translate-svg-instructions-title' => 'Přełožuješ SVG-dataju prěni raz na tute wašnje?',
-	'translate-svg-warn-inner' => 'twoje změny wróćo do originalneje dataje składować',
+	'translate-svg-warn' => '<strong>Warnowanje:</strong> Twoje změny na SVG-dataji njebudú widźomne, doniž $1, štož ty měł činić, hdyž sy dataju dopřełožił.',
+	'translate-svg-warn-inner' => 'twoje změny wróćo do originalneje dataje njeskładuješ',
 	'translate-svg-new-title' => 'SVG-přełožk',
+	'translate-svg-new-summary' => "Zo by přełožowanje započał, wubjer prošu rěč, '''z''' kotrejež přełožuješ (jeli to je njejasne, wubjer najwjace rěčanu rěč).",
 	'translate-svg-new-label' => 'Rěč:',
 	'translate-js-properties-legend' => 'Kajkosće',
 	'translate-js-label-x' => 'X-koordinata:',
@@ -500,7 +502,11 @@ $messages['it'] = array(
  * @author David1010
  */
 $messages['ka'] = array(
+	'translate-svg-thumbnail' => 'საწყისი ფაილი',
+	'translate-svg-js-thumbnail' => '(მინიატურის ავტომატური განახლება)',
+	'translate-page-description-legend-svgmg' => 'ინფორმაცია ამ ფაილის შესახებ',
 	'translate-taction-mstats-svgmg' => 'ფაილის სტატისტიკა',
+	'translate-taction-export-svgmg' => 'ამ ფაილის განახლებული ვერსიის ატვირთვა',
 	'translate-svg-filepage-edit' => 'რედაქტირება',
 	'translate-svg-filepage-finish' => 'დასრულება',
 	'translate-svg-filepage-other' => 'სხვა ენები',
@@ -508,11 +514,14 @@ $messages['ka'] = array(
 	'translate-svg-chooselanguage-title' => 'ენის არჩევა',
 	'translate-svg-new-title' => 'SVG თარგმანი',
 	'translate-svg-new-label' => 'ენა:',
+	'translate-js-properties-legend' => 'პარამეტრები',
 	'translate-js-label-x' => 'X-კოორდინატი:',
 	'translate-js-label-y' => 'Y-კოორდინატი:',
 	'translate-js-label-color' => 'ფერი:',
+	'translate-js-label-font-family' => 'შრიფტი:',
 	'translate-js-label-bold' => 'მუქი',
 	'translate-js-label-italic' => 'კურსივი',
+	'translate-js-label-underline' => 'ხაზის ქვეშ',
 );
 
 /** Korean (한국어)
