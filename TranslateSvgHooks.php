@@ -39,7 +39,7 @@ class TranslateSvgHooks{
 			array( 'width' => 275, 'height' => 275 )
 		);
 		$newThumbnail = $writer->thumbnailExport( $language );
-		$thumbnail =  preg_replace( '/\<img .*?\/>/', $newThumbnail, $thumbnail, 1 );
+		$thumbnail =  preg_replace( '/src="[^"]+"/', 'src="' . $newThumbnail . '"', $thumbnail, 1 );
 		$boxes = array_merge( array( 'thumbnail' => $thumbnail ), $boxes );
 
 		return true;
@@ -243,27 +243,6 @@ class TranslateSvgHooks{
 		return true;
 	}
 
-	public static function makeThumbnailPage( $parameters, $group ) {
-		global $wgOut, $wgRequest;
-
-		if( $parameters !== 'thumbnailpage' || !$group ) {
-			return true;
-		}
-		$wgOut->disable();
-
-		$overrides = array();
-		$get = $wgRequest->getQueryValues();
-		foreach( $get as $name => $value ) {
-			if( preg_match( '/^override\/([^\/]+)\/([a-z-]{0,10})$/', $name, $result ) ) {
-				$overrides[$result[1]][$result[2]] = $value;
-			}
-		}
-
-		$writer = new SVGFormatWriter( $group, $overrides );
-		echo $writer->thumbnailExport( $wgRequest->getVal( 'language' ) );
-		return false;
-	}
-
 	public static function exposeTranslateSvgTemplateName( &$vars ) {
 		global $wgTitle, $wgTranslateSvgTemplateName;
 		if( $wgTitle->getFullText() === 'Special:Translate' ){
@@ -292,16 +271,18 @@ class TranslateSvgHooks{
 		);
 		$vars['wgUserCanTranslate'] = $wgUser->isAllowed( 'translate' );
 
-		$messageGroup = new SVGMessageGroup( $wgTitle->getText() );
+		$id = $wgTitle->getText();
+		$messageGroup = new SVGMessageGroup( $id );
 		$reader = new SVGFormatReader( $messageGroup );
 		$vars['wgFileCanBeTranslated'] = ( $reader !== null );
-		if( !$vars['wgFileCanBeTranslated'] ) {
+		if( !$vars['wgFileCanBeTranslated'] || !MessageGroups::getGroup( $id ) ) {
+			// Not yet translated
 			$vars['wgFileFullTranslations'] = array();
 			$vars['wgFilePartialTranslations'] = array();
 			return true;
 		}
 
-		$languages = $reader->getSavedLanguages();
+		$languages = $reader->getSavedLanguagesFiltered();
 		$full = array();
 		$partial = array();
 		foreach( $languages['full'] as $language ) {
@@ -331,13 +312,13 @@ class TranslateSvgHooks{
 	public static function loadSVGGroups( &$wgTranslateCC, &$deps, &$autoload ){
 		$dbr = wfGetDB( DB_MASTER );
 
-		$tables = array( 'page', 'translate_svg' );
-		$vars   = array( 'page_title' );
-		$conds  = array( 'page_id=ts_page_id', 'page_namespace=' . NS_FILE );
-		$res = $dbr->select( $tables, $vars, $conds, __METHOD__ );
+		$table = 'translate_svg';
+		$col = 'ts_page_id';
+		$res = $dbr->select( $table, $col );
 
 		foreach ( $res as $r ) {
-			$group = $r->page_title;
+			$id = $r->ts_page_id;
+			$group = Title::newFromID( $id )->getText();
 			$wgTranslateCC[$group] = new SVGMessageGroup( $group );
 		}
 
@@ -450,6 +431,47 @@ wfSuppressWarnings();
 			}
 		}
 wfRestoreWarnings();
+		return true;
+	}
+
+	public static function addAPIProperties( &$properties ) {
+		$properties['thumbnail'] = ' thumbnail     - Adds URL of up-to-date thumbnail';
+		return true;
+	}
+
+	public static function processAPIProperties( &$props, $propsToReturn, $params, $group ) {
+		if( !( $group instanceof SVGMessageGroup ) ){
+			return true;
+		}
+
+		if( isset( $propsToReturn['thumbnail'] ) ) {
+			$language = isset( $params['language'] ) ?
+				$params['language'] : $group->getSourceLanguage();
+
+			$overrides = array();
+			if( isset( $params['overrides'] ) ) {
+				$overrides = json_decode( $params['overrides'], true );
+			}
+		print_r( $overrides );
+			$writer = new SVGFormatWriter( $group, $overrides );
+			$props['thumbnail'] = $writer->thumbnailExport( $language );
+		}
+		return true;
+	}
+
+	public static function addAPIParams( &$params ) {
+		$params['overrides'] = array(
+			ApiBase::PARAM_DFLT => '',
+			ApiBase::PARAM_TYPE => 'string'
+		);
+		$params['language'] = array(
+			ApiBase::PARAM_DFLT => 'en',
+			ApiBase::PARAM_TYPE => 'string'
+		);
+		return true;
+	}
+
+	public static function addAPIParamDescs( &$paramDescs, $prefix ) {
 		return true;
 	}
 }

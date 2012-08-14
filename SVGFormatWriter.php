@@ -25,7 +25,7 @@ class SVGFormatWriter extends SimpleFormatWriter {
 	public function __construct( MessageGroup $group, $overrides = array() ) {
 		$this->group = $group;
 		$this->reader = new SVGFormatReader( $group, $overrides );
-		$this->filename = $this->group->getLabel();
+		$this->filename = $this->group->getId();
 		$this->file = wfFindFile( Title::newFromText( $this->filename, NS_FILE ) );
 	}
 
@@ -91,11 +91,7 @@ class SVGFormatWriter extends SimpleFormatWriter {
 			return wfMessage( 'thumbnail-dest-create' );
 		}
 
-		return Html::element( 'img', array(
-			'src' => "$hashPath/$newFilename",
-			'width' => $width,
-			'height' => $height
-		) );
+		return "$hashPath/$newFilename";
 	}
 
 	protected function uploadSVG( $svg ) {

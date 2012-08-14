@@ -27,7 +27,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$this->outputHeader( 'translate-svg-new-summary' );
 
 		$req = $this->getRequest();
-		$groupName = str_replace( ' ', '_', $req->getVal( 'group' ) );
+		$groupName = $req->getVal( 'group' );
 
 		if( $groupName === null || isset( $wgTranslateCC[$groupName] ) ) {
 			$this->getOutput()->addHTML( wfMessage( 'translate-svg-new-error-group' )->parseAsBlock() );
@@ -52,7 +52,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		global $wgTranslateCC;
 
 		// Does this represent a file that exists?
-		$title = Title::newFromText( $groupName, NS_FILE );
+		$title = Title::makeTitleSafe( NS_FILE, $groupName );
 		if( !$title->exists() ) {
 			return false;
 		}
@@ -60,6 +60,9 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		if( !$file->exists() ) {
 			return false;
 		}
+
+		// Pick up normalisations from makeTitleSafe()
+		$groupName = $title->getText();
 
 		$group = new SVGMessageGroup( $groupName );
 		$group->setSourceLanguage( $srcLang );
@@ -70,7 +73,11 @@ class SpecialTranslateNewSVG extends SpecialPage {
 			$row = array( 'ts_page_id' => $title->getArticleId() );
 			$dbw->insert( $table, $row, __METHOD__, array( 'IGNORE' ) );
 			MessageGroups::clearCache();
-			return ( $dbw->affectedRows() > 0 );
+			MessageIndexRebuildJob::newJob()->insert();
+
+			// If $dbw->affectedRows() == 0, something's not quite right, but it
+			// seems odd to actively error here.
+			return true;
 		} else {
 			return false;
 		}

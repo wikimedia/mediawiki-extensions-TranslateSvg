@@ -168,7 +168,7 @@ class SVGFormatReader {
 		foreach( $translatableNodes as $translatableNode ) {
 			if( !$translatableNode->hasAttribute( 'id' ) ) {
 				$newId = ( max( $idsInUse ) + 1 );
-				$$translatableNode->setAttribute( 'id', 'trsvg' . $newId );
+				$translatableNode->setAttribute( 'id', 'trsvg' . $newId );
 				$idsInUse[] = $newId;
 			}
 		}
@@ -196,18 +196,18 @@ class SVGFormatReader {
 					if( $sibling->nodeType === XML_TEXT_NODE ) {
 						if( trim( $sibling->textContent ) !== '' ) {
 							// Text content inside switch but outside text tags is awkward.
-							return 9;
+							return false;
 						}
 					} elseif( $sibling->nodeType === XML_ELEMENT_NODE ) {
 						// Only text tags are allowed inside switches
 						if( $sibling->nodeName !== 'text' || $sibling->nodeName !== 'svg:text' ) {
-							return 10;
+							return false;
 						}
 						$language = $sibling->hasAttribute( 'systemLanguage' ) ? 
 							$sibling->getAttribute( 'systemLanguage' ) : 'fallback';
 						if( in_array( $language, $languagesPresent ) ) {
 							// Two tags for the same language
-							return 11;
+							return false;
 						}
 						$languagesPresent[] = $language;
 					}
@@ -225,9 +225,8 @@ class SVGFormatReader {
 				if( $child->nodeType !== XML_TEXT_NODE
 					&& $child->nodeName !== 'tspan'
 					&& $child->nodeName !== 'svg:tspan' ) {
-					// Tags other than tspan inside text tags are not (yet) supportede
-					echo $child->nodeName;
-					return 12;
+					// Tags other than tspan inside text tags are not (yet) supported
+					return false;
 				}
 			}
 
@@ -300,7 +299,7 @@ class SVGFormatReader {
 	 *
 	 * @return DOMDocument New SVG file
 	 */
-	protected function getSVG() {
+	public function getSVG() {
 		$translations = $this->getTranslations();
 		$currentLanguages = $this->getSavedLanguages();
 		$switches = $this->svg->getElementsByTagName( 'switch' );

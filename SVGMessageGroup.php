@@ -116,20 +116,27 @@ class SVGMessageGroup extends WikiMessageGroup {
 		return $properties;
 	}
 
-
 	/**
-	 * Returns 'en', the source language for all SVGMessageGroups
-	 * Overrides erroenous parent method.
+	 * Returns the source language code of this message group by using
+	 * the TranslateMetadata framework, or 'en' (English) if none set.
+	 * Overrides parent method
 	 *
-	 * @return \bool
+	 * @return \string Language code
 	 */
 	public function getSourceLanguage() {
-		if( !isset( $this->sourceLanguage ) ){
-			$this->sourceLanguage = TranslateMetadata::get( $this->source, 'sourcelang' );
+		if( !isset( $this->sourceLanguage ) ) {
+			$databaseValue = TranslateMetadata::get( $this->source, 'sourcelang' );
+			$this->sourceLanguage = ( $databaseValue !== false ) ? $databaseValue : 'en';
 		}
 		return $this->sourceLanguage;
 	}
 
+	/**
+	 * Sets the source language code of this message group by using
+	 * the TranslateMetadata framework.
+	 *
+	 * @return \null
+	 */
 	public function setSourceLanguage( $srcLang ) {
 		$this->sourceLanguage = $srcLang;
 		TranslateMetadata::set( $this->source, 'sourcelang', $srcLang );
@@ -138,13 +145,15 @@ class SVGMessageGroup extends WikiMessageGroup {
 	/**
 	 * Returns a list of languages the file has been translated into *on wiki*
 	 * i.e. some of those may not have been saved back to the file yet.
+	 *
+	 * @return \array
 	 */
 	public function getOnWikiLanguages() {
 		$stats = MessageGroupStats::forGroup( $this->getId() );
 		$languages = array();
-		foreach( $stats as $language => $data ){
+		foreach( $stats as $language => $data ) {
 			list( $untranslated, $fuzzy, $translated ) = $data;
-			if( $fuzzy > 0 || $translated > 0 ){
+			if( $fuzzy > 0 || $translated > 0 ) {
 				array_push( $languages, $language );
 			}
 		}
@@ -156,34 +165,29 @@ class SVGMessageGroup extends WikiMessageGroup {
 		return $writer;
 	}
 
-	public function load( $code = 'all' ) {
-		if ( $this->isSourceLanguage( $code ) ) {
-			return $this->getDefinitions();
-		}
-
-		return array();
-	}
-
+	/*
+	 * Import translations from the file, onto the wiki
+	 *
+	 * return \bool True on success, false on failure
+	 */
 	public function importTranslations() {
-		global $wgContLang, $wgTranslateCC, $wgTranslateSvgBotName;
-
+		global $wgTranslateSvgBotName;
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
+
 		$reader = new SVGFormatReader( $this );
 		if( !$reader ) {
 			return false;
 		}
 
 		$translations = $reader->getInFileTranslations();
-		$newPages = array();
 		foreach( $translations as $key => $outerArray ) {
 			foreach( $outerArray as $language => $innerArray ) {
 				if( $language === 'fallback' ) {
 					$language = $this->getSourceLanguage();
 				}
 				$translation = TranslateSvgUtils::arrayToTranslation( $innerArray );
-				$ns = $this->getNamespace();
-				$fullKey = $wgContLang->getNsText( $ns ) . ':' . $this->source . '/' . $key . '/' . $language;
-				$title = Title::newFromText( $fullKey );
+				$fullKey = $this->source . '/' . $key . '/' . $language;
+				$title = Title::makeTitleSafe( $this->getNamespace(), $fullKey );
 				if( $title->exists() || !$title->userCan( 'create', $bot ) ) {
 					continue;
 				}
@@ -192,10 +196,6 @@ class SVGMessageGroup extends WikiMessageGroup {
 				$wikiPage->doEdit( $translation, $summary, 0, false, $bot );
 			}
 		}
-
-		$wgTranslateCC[ $this->getLabel() ] = $this;
-		MessageGroups::singleton()->invalidateClassList();
-		MessageIndex::singleton()->rebuild();
 		return true;
 	}
 }

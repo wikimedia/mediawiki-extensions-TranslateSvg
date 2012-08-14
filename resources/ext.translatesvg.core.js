@@ -165,16 +165,25 @@
 				return; // arclones
 			}
 			var identifiers = name.split( '/' );
-			var overrideName = 'override/' + identifiers[1] + '/' + identifiers[2];
 			var overrideValue = $( textarea ).val() + mw.translateSvg.propertiesToString( form );
-			var override = encodeURIComponent( overrideName ) + '=' + encodeURIComponent( overrideValue );
+			var overrides = {};
+			overrides[identifiers[1]] = {};
+			overrides[identifiers[1]][identifiers[2]] = overrideValue;
 			var group = identifiers[0];
-			group = group.substr( group.indexOf( ':' ) + 1 ).replace( '_', '+' );
-			var url = mw.config.get( 'wgScript' );
-			url += '?title=Special:Translate/thumbnailpage&group=$1&$2&language=$3';
-			url = url.replace( '$1', group ).replace( '$2', override ).replace( '$3', identifiers[2] );
-			$.post( url, {}, function ( thumbnail ) {
-				$( form ).find( '.mw-sp-translate-edit-fields a.image').html( thumbnail );
+			group = group.substr( group.indexOf( ':' ) + 1 ).replace( '_', ' ' );
+			var api = new mw.Api();
+			api.get( {
+				action: 'query',
+				prop: 'translateinfo',
+				tiprop: 'thumbnail',
+				tigroups: group,
+				tilanguage: identifiers[2],
+				tioverrides: $.toJSON( overrides )
+			}, {
+				ok: function ( data ) {
+					var newSrc = data.query.groups[0].thumbnail;
+					$( form ).find( '.mw-sp-translate-edit-fields a.image img').attr( 'src', newSrc );
+				}
 			} );
 		},
 

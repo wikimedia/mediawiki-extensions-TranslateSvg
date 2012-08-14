@@ -59,6 +59,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'jquery.ui.dialog',
 		'jquery.autoresize',
 		'jquery.colorpicker',
+		'jquery.json',
 		'ext.translate.hooks'
 	),
 	'localBasePath' => dirname( __FILE__ ),
@@ -94,8 +95,11 @@ $wgHooks['BeforePageDisplay'][] = 'TranslateSvgHooks::updateFileDescriptionPages
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::makeFilePageGlobalVariables';
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::exposeTranslateSvgTemplateName';
 $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
-$wgHooks['TranslateBeforeSpecialTranslate'][] = 'TranslateSvgHooks::makeThumbnailPage';
 $wgHooks['TranslatePostInitGroups'][] = 'TranslateSvgHooks::loadSVGGroups';
+$wgHooks['TranslateGetTranslateInfoPropertyList'][] = 'TranslateSvgHooks::addAPIProperties';
+$wgHooks['TranslateGetTranslateInfoParamDescs'][] = 'TranslateSvgHooks::addAPIParamDescs';
+$wgHooks['TranslateGetTranslateInfoParams'][] = 'TranslateSvgHooks::addAPIParams';
+$wgHooks['TranslateProcessTranslateInfoProperties'][] = 'TranslateSvgHooks::processAPIProperties';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'TranslateSvgHooks::schemaUpdates';
 $wgHooks['FileUpload'][] = 'TranslateSvgHooks::checkTranslationIntegrity';
 

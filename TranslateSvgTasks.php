@@ -5,6 +5,7 @@
 class ExportSVGMessagesTask extends ExportMessagesTask {
 	protected $id = 'export-as-svg';
 
+	// Override
 	protected function preinit() {}
 
 	// No paging should be done.
