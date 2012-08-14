@@ -293,6 +293,18 @@ $messages['es'] = array(
 	'translate-js-font-family-inherit' => '(heredar)',
 );
 
+/** Estonian (eesti)
+ * @author Avjoska
+ */
+$messages['et'] = array(
+	'translate-js-label-x' => 'X-koordinaat:',
+	'translate-js-label-y' => 'Y-koordinaat:',
+	'translate-js-label-color' => 'Värv:',
+	'translate-js-label-bold' => 'Rasvane kiri',
+	'translate-js-label-italic' => 'Kaldkiri',
+	'translate-js-label-underline' => 'Allajoonitud kiri',
+);
+
 /** Persian (فارسی)
  * @author ZxxZxxZ
  */
@@ -462,6 +474,8 @@ $messages['hsb'] = array(
 	'translate-svg-new-title' => 'SVG-přełožk',
 	'translate-svg-new-summary' => "Zo by přełožowanje započał, wubjer prošu rěč, '''z''' kotrejež přełožuješ (jeli to je njejasne, wubjer najwjace rěčanu rěč).",
 	'translate-svg-new-label' => 'Rěč:',
+	'translate-svg-new-error-import' => "'''Zmylk je wustupił:''' Njeznaty zmylk je wustupił, hdyž sy spytał, strony wutworić, kotrež su trěbne za přełožowanje tutoho SVG.",
+	'translate-svg-new-error-group' => "'''Zmylk je wustupił:''' Njeznaty zmylk je wustupił: snano sy zabył, skupinu w URL podać?",
 	'translate-js-properties-legend' => 'Kajkosće',
 	'translate-js-label-x' => 'X-koordinata:',
 	'translate-js-label-y' => 'Y-koordinata',
@@ -496,6 +510,21 @@ $messages['ia'] = array(
 $messages['it'] = array(
 	'translatesvg-desc' => "Fornisce un'interfaccia nativa per tradurre SVG con le specifiche SVG1.1",
 	'translate-svg-nodesc' => '(Non è stata fornita una descrizione del file).',
+	'translate-svg-thumbnail' => 'File originale',
+	'translate-page-description-legend-svgmg' => 'Informazioni su questo file',
+	'translate-svg-filepage-edit' => 'modifica',
+	'translate-svg-filepage-another' => "un'altra lingua",
+	'translate-svg-filepage-other' => 'altre lingue',
+	'translate-svg-chooselanguage-title' => 'Selezione lingua',
+	'translate-svg-new-label' => 'Lingua:',
+	'translate-js-properties-legend' => 'Proprietà',
+	'translate-js-label-x' => 'Coordinata x:',
+	'translate-js-label-y' => 'Coordinata y:',
+	'translate-js-label-color' => 'Colore:',
+	'translate-js-label-font-family' => 'Tipo di carattere:',
+	'translate-js-label-bold' => 'Grassetto',
+	'translate-js-label-italic' => 'Corsivo',
+	'translate-js-label-underline' => 'Sottolineato',
 );
 
 /** Georgian (ქართული)
