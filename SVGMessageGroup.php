@@ -142,4 +142,47 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 		return true;
 	}
+
+	/**
+	 * Returns the source language code of this message group by using
+	 * the TranslateMetadata framework, or 'en' (English) if none set.
+	 * Overrides parent method
+	 *
+	 * @return \string Language code
+	 */
+	public function getSourceLanguage() {
+		if( !isset( $this->sourceLanguage ) ){
+			$databaseValue = TranslateMetadata::get( $this->source, 'sourcelang' );
+			$this->sourceLanguage = ( $databaseValue !== false ) ? $databaseValue : 'en';
+		}
+		return $this->sourceLanguage;
+	}
+
+	/**
+	 * Sets the source language code of this message group by using
+	 * the TranslateMetadata framework.
+	 *
+	 * @return \null
+	 */
+	public function setSourceLanguage( $srcLang ) {
+		$this->sourceLanguage = $srcLang;
+		TranslateMetadata::set( $this->source, 'sourcelang', $srcLang );
+	}
+
+	/**
+	 * Returns a list of languages the file has been translated into *on wiki*
+	 * i.e. some of those may not have been saved back to the file yet.
+	 */
+	public function getOnWikiLanguages() {
+		$stats = MessageGroupStats::forGroup( $this->getId() );
+		$languages = array();
+		foreach( $stats as $language => $data ){
+			$translatedCount = $data[MessageGroupStats::TRANSLATED];
+			$fuzzyCount = $data[MessageGroupStats::FUZZY];
+			if( $translatedCount > 0 || $fuzzyCount > 0 ) {
+				$languages[] = $language;
+			}
+		}
+		return $languages;
+	}
 }
