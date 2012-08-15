@@ -217,7 +217,7 @@ $messages['de'] = array(
 	'translate-svg-chooselanguage-desc' => 'Bitte wähle die Sprache aus, in die du diese SVG-Datei übersetzen möchtest:',
 	'translate-svg-instructions-title' => 'Übersetzt du zum ersten Mal eine SVG-Datei auf diese Weise?',
 	'translate-svg-instructions-desc' => 'Um mit der Übersetzung einer Nachricht zu beginnen, klicke auf eine Nachrichtenkennung in der ersten Spalte der Tabelle, verwende die Schaltflächen „$1“ und „$2“, um durch die Nachrichten zu navigieren, die eine Übersetzung erfordern. Wenn du fertig bist, vergiss nicht, die Registerkarte „$3“ zu benutzen, um deine Übersetzungen zur Originaldatei zurückzusichern.',
-	'translate-svg-warn' => '<strong>Warnung:</strong> Deine Änderungen an der SVG-Datei werden nicht sichtbar sein, bis du $1. Mach dies sobald du mit dem Übersetzen der Datei fertig bist.',
+	'translate-svg-warn' => '<strong>Warnung:</strong> Es gibt derzeit ungesicherte Übersetzungen in dieser Sprache, die nicht sichtbar sein werden, bevor du oder jemand anders $1.',
 	'translate-svg-warn-inner' => 'deine Änderungen zur Originaldatei zurücksichern',
 	'translate-svg-new-title' => 'SVG-Übersetzung',
 	'translate-svg-new-summary' => "Um mit der Übersetzung anfangen zu können, wähle zunächst die Sprache aus '''aus''' der du diese Datei übersetzt. Wähle die am meisten gesprochene Sprache, sofern keine Sprache eindeutig auswählbar ist.",
@@ -295,14 +295,25 @@ $messages['es'] = array(
 
 /** Estonian (eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'translate-js-label-x' => 'X-koordinaat:',
 	'translate-js-label-y' => 'Y-koordinaat:',
-	'translate-js-label-color' => 'Värv:',
+	'translate-js-label-color' => 'Värvus:',
 	'translate-js-label-bold' => 'Rasvane kiri',
 	'translate-js-label-italic' => 'Kaldkiri',
 	'translate-js-label-underline' => 'Allajoonitud kiri',
+);
+
+/** Basque (euskara)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['eu'] = array(
+	'translate-svg-new-label' => 'Hizkuntza:',
+	'translate-js-label-color' => 'Kolorea:',
+	'translate-js-label-italic' => 'Etzana',
+	'translate-js-label-underline' => 'Azpimarratu',
 );
 
 /** Persian (فارسی)
@@ -414,6 +425,7 @@ $messages['he'] = array(
 	'translatesvg-desc' => 'מתן ממשק ילידי לתרגום קובצי SVG בהתאם לתקן SVG1.1',
 	'translate-taskui-export-as-svg' => 'שמירה לקובץ ה־SVG המקורי',
 	'translate-svg-nodesc' => '(לקובץ הזה אין תיאור.)',
+	'translate-svg-thumbnail' => 'הקובץ המקורי',
 	'translate-svg-js-thumbnail' => '(התמונה הממוזערת מתעדכנת אוטומטית.)',
 	'translate-page-description-legend-svgmg' => 'מידע על הקובץ הזה',
 	'translate-taction-mstats-svgmg' => 'סטטיסטיקות על הקובץ',
@@ -424,6 +436,7 @@ $messages['he'] = array(
 	'translate-svg-filepage-edit' => 'עריכה',
 	'translate-svg-filepage-finish' => 'סיום',
 	'translate-svg-filepage-another' => 'שפה אחרת',
+	'translate-svg-filepage-other' => 'שפות אחרות',
 	'translate-svg-filepage-invite' => 'אפשר לתרגם את הקובץ הזה בקלות ל$1',
 	'translate-svg-autocreate' => 'יצירה אוטומטית של יחידות תרגום בהתאם לשינויים בקובץ ה־SVG המקורי',
 	'translate-svg-autodelete' => 'מחיקה אוטומטית של יחידות תרגום לא נחוצות בהתאם לשינויים בקובץ ה־SVG המקורי',
@@ -433,6 +446,15 @@ $messages['he'] = array(
 	'translate-svg-upload-none' => '(אין)',
 	'translate-svg-chooselanguage-title' => 'בחירת שפה',
 	'translate-svg-chooselanguage-desc' => 'נא לבחור את השפה שברצונך לתרגם את קובץ ה־SVG הזה אליה:',
+	'translate-svg-instructions-title' => 'האם זה הניסיון הרישיון שלך לתרגם קובץ SVG בשיטה הזאת?',
+	'translate-svg-instructions-desc' => 'כדי להתחיל, נא ללחוץ על מזהה ההודעה בעמודה הראשונה של הטבלה כדי להתחיל לתרגם את אותה ההודעה. באמצעות הכפתורים "$1" ו"$2" אפשר לנווט בהודעות שדורשות תרגום. כשנראה לך שסיימת, חשוב להשתמש בלשונית "$3" כדי לשמור את התרוגמים שלך חזרה לקובץ המקורי.',
+	'translate-svg-warn' => '<strong>אזהרה:</strong> יש עכשיו שינויי שלא נשמרו בשפה הזאת, והם לא ייראו עד $1.',
+	'translate-svg-warn-inner' => 'שמירת השינויים שלך חזרה לקובץ המקורי',
+	'translate-svg-new-title' => 'תרגום SVG',
+	'translate-svg-new-summary' => "כדי להתחיל לתרגם את הקובץ הזה, נא לבחור בשפה ש'''ממנה''' נעשה התרגום (אם לא ברור באיזו שפה לבחור, מומלץ לבחור בנפוצה ביותר).",
+	'translate-svg-new-label' => 'שפה:',
+	'translate-svg-new-error-import' => "'''אירעה שגיעה:''' שגיאה לא ידועה אירעה בעת ניסיון ליצור את הדפים הדרושים לתרגום ה־SVG הזה.",
+	'translate-svg-new-error-group' => "'''אירעה שגיאה:''' אירעה שגיאה לא ידוע; אולי שכחת לציין קבוצה בכתובת?",
 	'translate-js-properties-legend' => 'מאפיינים',
 	'translate-js-label-x' => 'נקודת ציון על ציר X:',
 	'translate-js-label-y' => 'נקודת ציון על ציר Y:',
@@ -682,7 +704,7 @@ $messages['nl'] = array(
 	'translate-svg-chooselanguage-desc' => 'Selecteer de taal waar u dit SVG-bestand in wilt vertalen:',
 	'translate-svg-instructions-title' => 'Is dit de eerste keer dat u zo een SVG-bestand vertaalt?',
 	'translate-svg-instructions-desc' => 'Klik op een bericht-ID in de eerste kolom van de tabel om te beginnen met het vertalen van die tekst. Gebruik de knoppen "$1" en "$2" om door de berichten te navigeren die vertaald kunnen worden. Gebruik het tabblad "$3" om uw vertalingen in het oorspronkelijke bestand op te slaan als u klaar bent.',
-	'translate-svg-warn' => '<strong>Waarschuwing:</strong> Uw wijzigingen in het SVG-bestand zijn niet zichtbaar zijn totdat u $1. Doe dit als u klaar bent met vertalen.',
+	'translate-svg-warn' => '<strong>Waarschuwing:</strong> Er zijn op het moment nog niet opgeslagen wijzigingen in deze taal die niet zichtbaar zijn totdat u of iemand anders $1.',
 	'translate-svg-warn-inner' => 'uw wijzigingen opslaat in het oorspronkelijke bestand',
 	'translate-svg-new-title' => 'SVG-vertaling',
 	'translate-svg-new-summary' => "Selecteer de taal '''waaruit''' u dit bestand wilt vertalen om te beginnen met het vertalen van dit bestand. Als dit dubbelzinnig is, selecteer dan de meest gesproken taal.",
