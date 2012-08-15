@@ -108,4 +108,38 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 		return $properties;
 	}
+
+	/*
+	 * Import translations from the file, onto the wiki
+	 *
+	 * return \bool True on success, false on failure
+	 */
+	public function importTranslations() {
+		global $wgTranslateSvgBotName;
+		$bot = User::newFromName( $wgTranslateSvgBotName, false );
+
+		$reader = new SVGFormatReader( $this );
+		if( !$reader ) {
+			return false;
+		}
+
+		$translations = $reader->getInFileTranslations();
+		foreach( $translations as $key => $outerArray ) {
+			foreach( $outerArray as $language => $innerArray ) {
+				if( $language === 'fallback' ) {
+					$language = $this->getSourceLanguage();
+				}
+				$translation = TranslateSvgUtils::arrayToTranslation( $innerArray );
+				$fullKey = $this->source . '/' . $key . '/' . $language;
+				$title = Title::makeTitleSafe( $this->getNamespace(), $fullKey );
+				if( $title->exists() || !$title->userCan( 'create', $bot ) ) {
+					continue;
+				}
+				$wikiPage = new WikiPage( $title );
+				$summary = wfMessage( 'translate-svg-autocreate' )->inContentLanguage()->text();
+				$wikiPage->doEdit( $translation, $summary, 0, false, $bot );
+			}
+		}
+		return true;
+	}
 }

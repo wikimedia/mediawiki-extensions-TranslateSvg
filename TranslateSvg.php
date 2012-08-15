@@ -34,3 +34,6 @@ $wgResourceModules['ext.translatesvg'] = array(
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'TranslateSvg'
 );
+
+$wgTranslateSvgBotName = 'SVG translation updater';
+$wgReservedUsernames[] = &$wgTranslateSvgBotName;
