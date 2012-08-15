@@ -381,8 +381,17 @@ class SVGFormatReader {
 	 * @return array Array of translations (indexed by ID, then langcode, then property)
 	 */
 	public function getInFileTranslations( $forceUpdate = false ) {
-		if( isset( $this->inFileTranslations ) && !$forceUpdate ) {
-			return $this->inFileTranslations;
+		$cacheKey = wfMemcKey( 'translatesvg', 'infiletranslations', $this->group->getId() );
+
+		if( !$forceUpdate ) {
+			if( isset( $this->inFileTranslations ) ) {
+				return $this->inFileTranslations;
+			}
+
+			$cached = wfGetCache( CACHE_ANYTHING )->get( $cacheKey );
+			if( is_array( $cached ) ) {
+				return $cached;
+			}
 		}
 
 		$switches = $this->svg->getElementsByTagName( 'switch' );
@@ -443,6 +452,7 @@ class SVGFormatReader {
 		}
 		$this->inFileTranslations = $translations;
 		$this->savedLanguages = array_unique( $this->savedLanguages );
+		wfGetCache( CACHE_ANYTHING )->set( $cacheKey, $translations );
 		return $this->inFileTranslations;
 	}
 

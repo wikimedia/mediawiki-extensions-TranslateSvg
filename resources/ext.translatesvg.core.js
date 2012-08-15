@@ -129,6 +129,9 @@
 					resizeStop: function() { mw.translateSvg.dialogWidth = $( '#' + id ).width(); },
 				} );
 			}
+			if( $( '.justtranslated' ).length > 0 ) {
+				mw.translateSvg.addUnsavedWarning();
+			}
 		},
 
 		propertiesToString: function ( form ) {

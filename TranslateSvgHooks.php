@@ -148,8 +148,12 @@ class TranslateSvgHooks{
 					) . "&#160;";
 					break;
 				case 'font-family':
+					$typefaces = $wgTranslateSvgTypefaces;
 					if( $currentValue == 'inherit' ) {
 						$currentValue = wfMsg( 'translate-js-font-family-inherit' );
+					}
+					if( !in_array( $currentValue, $typefaces ) ) {
+						$typefaces[] = $currentValue;
 					}
 					$extraInputs .= Xml::label(
 						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index ) .
@@ -203,9 +207,24 @@ class TranslateSvgHooks{
 	 * @param &$attributes The set of attributes to apply to the row (not used)
 	 * @return \bool true
 	 */
-	public static function stripPropertyString( &$message, $translation, $original, &$attributes ) {
-		// TODO: mark as .justtranslated if not yet exported
+	public static function stripPropertyString( &$message, $m, $group, $targetLang, &$attributes ) {
 		$message = TranslateSvgUtils::stripPropertyString( $message );
+		if( $m->translation() === null ) {
+			return true;
+		}
+
+		$reader = new SVGFormatReader( $group );
+		// Cached
+		$translations = $reader->getInFileTranslations();
+		if( !isset( $translations[$m->key()][$targetLang] ) ) {
+			// Doesn't appear in the final file, eek
+			if( isset( $attributes['class'] ) && strlen( trim( $attributes['class'] ) ) > 0 ) {
+				$attributes['class'] .= ' justtranslated';
+			} else {
+				$attributes['class'] = ' justtranslated';
+			}
+		}
+
 		return true;
 	}
 
@@ -337,7 +356,11 @@ class TranslateSvgHooks{
 			return true;
 		}
 
+		// Clear cache
 		$messageGroup = new SVGMessageGroup( $title->getText() );
+		$cacheKey = wfMemcKey( 'translatesvg', 'infiletranslations', $messageGroup->getId() );
+		$cached = wfGetCache( CACHE_ANYTHING )->get( $cacheKey );
+
 		$reader = new SVGFormatReader( $messageGroup );
 		if( !$reader ) {
 			return true;
@@ -377,7 +400,7 @@ class TranslateSvgHooks{
 		if( count( $added ) > 0 ) {
 			$messageGroup->importTranslations();
 		}
-wfSuppressWarnings();
+
 		// Removed need deleting
 		$removed = array_diff(
 			array_keys( $previousTranslations ),
@@ -430,7 +453,7 @@ wfSuppressWarnings();
 				}
 			}
 		}
-wfRestoreWarnings();
+
 		return true;
 	}
 
