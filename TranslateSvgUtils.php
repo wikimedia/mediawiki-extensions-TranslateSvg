@@ -84,13 +84,13 @@ class TranslateSvgUtils {
 	 * @return \array Numerical array, [0] = attribute name, [1] = value
 	 */
 	public static function mapToAttribute( $parameter, $value ) {
-		global $wgTranslateSVGDefaultProperties, $wgTranslateSVGOptionalProperties;
+		global $wgTranslateSvgDefaultProperties, $wgTranslateSvgOptionalProperties;
 		$parameter = trim( $parameter );
 		$value = trim( $value );
 
 		$supported = array_merge(
-			array_keys( $wgTranslateSVGDefaultProperties ),
-			$wgTranslateSVGOptionalProperties
+			array_keys( $wgTranslateSvgDefaultProperties ),
+			$wgTranslateSvgOptionalProperties
 		);
 
 		if( !in_array( $parameter, $supported ) ) {
@@ -131,7 +131,7 @@ class TranslateSvgUtils {
 	 * @return \array Numerical array, [0] = parameter name, [1] = parameter value
 	 */
 	public static function mapFromAttribute( $parameter, $value ) {
-		global $wgTranslateSVGOptionalProperties;
+		global $wgTranslateSvgOptionalProperties;
 		$parameter = trim( $parameter );
 		$value = trim( $value );
 
@@ -141,7 +141,7 @@ class TranslateSvgUtils {
 				'text-decoration', 'font-family', 'fill', 'style',
 				'systemLanguage'
 			),
-			$wgTranslateSVGOptionalProperties
+			$wgTranslateSvgOptionalProperties
 		);
 		if( !in_array( $parameter, $supported ) ) {
 			// Not editable, so not suitable for extraction
@@ -219,14 +219,14 @@ class TranslateSvgUtils {
 	 * @return \string Translation e.g. Blah{{Properties|foo=bar}}
 	 */
 	public static function arrayToTranslation( $array ) {
-		global $wgTranslateSVGDefaultProperties, $wgTranslateSvgTemplateName;
+		global $wgTranslateSvgDefaultProperties, $wgTranslateSvgTemplateName;
 
 		// Start with text
 		$translation = $array['text'];
 		unset( $array['text'] );
 
 		// Fill $properties from defaults, array
-		$properties = $wgTranslateSVGDefaultProperties;
+		$properties = $wgTranslateSvgDefaultProperties;
 		foreach( $array as $attrName => $attrValue ) {
 			list( $attrName, $attrValue ) = self::mapFromAttribute( $attrName, $attrValue );
 			if( $attrValue !== false ) {
