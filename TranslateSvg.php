@@ -76,3 +76,16 @@ $wgTranslateSvgColors = array(
 
 $wgTranslateSvgBotName = 'SVG translation updater';
 $wgReservedUsernames[] = &$wgTranslateSvgBotName;
+
+$wgTranslateSvgDefaultProperties = array(
+	'x' => '', 'y' => '', 'font-family' => 'other',
+	'font-size' => '', 'units' => 'other', 'color' => '',
+	'underline' => '', 'italic' => '', 'bold' => ''
+);
+$wgTranslateSvgOptionalProperties = array(
+	'id',
+	'data-children',
+	'xml:space',
+	'sodipodi:role',
+	'sodipodi:linespacing'
+);
