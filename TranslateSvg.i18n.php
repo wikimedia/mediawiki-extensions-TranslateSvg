@@ -47,6 +47,8 @@ $messages['en'] = array(
 	'translate-svg-new-label' => 'Language:',
 	'translate-svg-new-error-import' => "'''An error occurred:''' An unknown error occurred whilst trying to create the pages required for translating this SVG.",
 	'translate-svg-new-error-group' => "'''An error occurred:''' An unknown error occurred; perhaps you forgot to specify a group in the URL?",
+	'translate-svg-export-unsupported' => 'Exporting back to an SVG is not supported for this message group. If it is not obvious why this has occurred, you may wish to file a bug about this at bugzilla.wikimedia.org.',
+	'translate-svg-export-error' => 'An unexpected error occurred trying to save your changes back to file. You may wish to file a bug about this at bugzilla.wikimedia.org.',
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',
@@ -67,7 +69,6 @@ $messages['en'] = array(
  * @author Jarry1250
  * @author Kghbln
  * @author Siebrand
- * @author jarry1250
  */
 $messages['qqq'] = array(
 	'translatesvg-desc' => '{{desc}}',
