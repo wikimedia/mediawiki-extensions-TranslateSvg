@@ -47,8 +47,8 @@ $messages['en'] = array(
 	'translate-svg-new-label' => 'Language:',
 	'translate-svg-new-error-import' => "'''An error occurred:''' An unknown error occurred whilst trying to create the pages required for translating this SVG.",
 	'translate-svg-new-error-group' => "'''An error occurred:''' An unknown error occurred; perhaps you forgot to specify a group in the URL?",
-	'translate-svg-export-unsupported' => 'Exporting back to an SVG is not supported for this message group. If it is not obvious why this has occurred, you may wish to file a bug about this at bugzilla.wikimedia.org.',
-	'translate-svg-export-error' => 'An unexpected error occurred trying to save your changes back to file. You may wish to file a bug about this at bugzilla.wikimedia.org.',
+	'translate-svg-export-unsupported' => 'Exporting back to an SVG is not supported for this message group. If it is not obvious why this has occurred, you may wish to file a bug about this at $1.',
+	'translate-svg-export-error' => 'An unexpected error occurred trying to save your changes back to file. You may wish to file a bug about this at $1.',
 
 	# Labels for potential properties attached to strings
 	'translate-js-properties-legend' => 'Properties',
@@ -110,6 +110,8 @@ $messages['qqq'] = array(
 	'translate-svg-new-label' => 'Label for a dropdown list of languages',
 	'translate-svg-new-error-import' => 'Text for a paragraph that appears whenever a certain type of error occurs',
 	'translate-svg-new-error-group' => 'Text for a paragraph that appears whenever a certain type of error occurs',
+	'translate-svg-export-unsupported' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
+	'translate-svg-export-error' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
 	'translate-js-properties-legend' => 'The legend for a fieldset which contains property controls',
 	'translate-js-label-x' => 'Label for textbox which sets the horizontal position of a string',
 	'translate-js-label-y' => 'Label for a textbox which sets the vertical position of a string',
