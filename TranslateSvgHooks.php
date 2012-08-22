@@ -481,7 +481,7 @@ class TranslateSvgHooks{
 			if( isset( $params['overrides'] ) ) {
 				$overrides = json_decode( $params['overrides'], true );
 			}
-		print_r( $overrides );
+
 			$writer = new SVGFormatWriter( $group, $overrides );
 			$props['thumbnail'] = $writer->thumbnailExport( $language );
 		}
@@ -490,7 +490,7 @@ class TranslateSvgHooks{
 
 	public static function addAPIParams( &$params ) {
 		$params['overrides'] = array(
-			ApiBase::PARAM_DFLT => '',
+			ApiBase::PARAM_DFLT => null,
 			ApiBase::PARAM_TYPE => 'string'
 		);
 		$params['language'] = array(
