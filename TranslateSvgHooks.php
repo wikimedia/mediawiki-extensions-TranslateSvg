@@ -218,11 +218,13 @@ class TranslateSvgHooks{
 			return true;
 		}
 
-		$lang = ( $targetLang === $group->getSourceLanguage() ) ? 'fallback' : $targetLang;
+		$lang = ( $targetLang === $group->getSourceLanguage() ) ?
+			'fallback' : $targetLang->getCode();
 		$reader = new SVGFormatReader( $group );
-		// Cached
+
 		$translations = $reader->getInFileTranslations();
-		if( !isset( $translations[$m->key()][$lang] ) ) {
+		$key = str_replace( $group->getId() . '/', '', $m->key() );
+		if( !isset( $translations[$key][$lang] ) ) {
 			// Doesn't appear in the final file, eek
 			if( isset( $attributes['class'] ) && strlen( trim( $attributes['class'] ) ) > 0 ) {
 				$attributes['class'] .= ' justtranslated';
@@ -276,6 +278,13 @@ class TranslateSvgHooks{
 		return true;
 	}
 
+	/*
+	 * Function used to add modules via the resource loader on
+	 * the file pages of SVG files via the BeforePageDisplay MediaWiki hook
+	 *
+	 * @param $out Contextual OutputPage instance
+	 * @return \bool true
+	 */
 	public static function updateFileDescriptionPages( $out ) {
 		$title = $out->getTitle();
 		if( TranslateSvgUtils::isSVGFilePage( $title ) ) {
@@ -284,24 +293,35 @@ class TranslateSvgHooks{
 		return true;
 	}
 
-	public static function makeFilePageGlobalVariables( &$vars ) {
-		global $wgTitle, $wgLanguageNames, $wgUser;
+	/**
+	 * Function used to expose various new globals to the
+	 * JavaScript of the file description pages of SVG files
+	 * via the MakeGlobalVariablesScript MediaWiki hook.
+	 *
+	 * @param &$vars Array of variables to be exposed to JavaScript
+	 * @param $out Contextual OutputPage instance
+	 * @return \bool true
+	 */
+	public static function makeFilePageGlobalVariables( &$vars, $out ) {
+		global $wgLanguageNames;
 
-		if( !TranslateSvgUtils::isSVGFilePage( $wgTitle ) ) {
+		$title = $out->getTitle();
+		if( !TranslateSvgUtils::isSVGFilePage( $title ) ) {
 			return true;
 		}
 
+		$user = $out->getUser();
 		$vars['wgUserLanguageName'] = Language::fetchLanguageName(
-			$wgUser->getOption( 'language' )
+			$user->getOption( 'language' )
 		);
-		$vars['wgUserCanTranslate'] = $wgUser->isAllowed( 'translate' );
+		$vars['wgUserCanTranslate'] = $user->isAllowed( 'translate' );
 
-		$id = $wgTitle->getText();
+		$id = $title->getText();
 		$messageGroup = new SVGMessageGroup( $id );
 		$reader = new SVGFormatReader( $messageGroup );
 		$vars['wgFileCanBeTranslated'] = ( $reader !== null );
 		if( !$vars['wgFileCanBeTranslated'] || !MessageGroups::getGroup( $id ) ) {
-			// Not yet translated
+			// Not translatable or not yet translated, let's save time and return immediately
 			$vars['wgFileFullTranslations'] = array();
 			$vars['wgFilePartialTranslations'] = array();
 			return true;

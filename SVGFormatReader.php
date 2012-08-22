@@ -392,9 +392,11 @@ class SVGFormatReader {
 			}
 
 			$cached = wfGetCache( CACHE_ANYTHING )->get( $cacheKey );
-			if( is_array( $cached ) ) {
-				$this->filteredTextNodes = wfGetCache( CACHE_ANYTHING )->get( $cacheKeyFiltered );
-				$this->savedLanguages = wfGetCache( CACHE_ANYTHING )->get( $cacheKeySaved );
+			$cachedFiltered = wfGetCache( CACHE_ANYTHING )->get( $cacheKeyFiltered );
+			$cachedSaved = wfGetCache( CACHE_ANYTHING )->get( $cacheKeySaved );
+			if( is_array( $cached ) && is_array( $cachedFiltered ) && is_array( $cachedSaved ) ) {
+				$this->filteredTextNodes = $cachedFiltered;
+				$this->savedLanguages = $cachedSaved;
 				return $cached;
 			}
 		}
