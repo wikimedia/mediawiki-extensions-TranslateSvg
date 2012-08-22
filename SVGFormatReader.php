@@ -381,8 +381,22 @@ class SVGFormatReader {
 	 * @return array Array of translations (indexed by ID, then langcode, then property)
 	 */
 	public function getInFileTranslations( $forceUpdate = false ) {
-		if( isset( $this->inFileTranslations ) && !$forceUpdate ) {
-			return $this->inFileTranslations;
+		$name = 'translatesvg';
+		$cacheKey = wfMemcKey( $name, 'infiletranslations', $this->group->getId() );
+		$cacheKeyFiltered = wfMemcKey( $name, 'filteredtranslations', $this->group->getId() );
+		$cacheKeySaved = wfMemcKey( $name, 'savedlanguages', $this->group->getId() );
+
+		if( !$forceUpdate ) {
+			if( isset( $this->inFileTranslations ) ) {
+				return $this->inFileTranslations;
+			}
+
+			$cached = wfGetCache( CACHE_ANYTHING )->get( $cacheKey );
+			if( is_array( $cached ) ) {
+				$this->filteredTextNodes = wfGetCache( CACHE_ANYTHING )->get( $cacheKeyFiltered );
+				$this->savedLanguages = wfGetCache( CACHE_ANYTHING )->get( $cacheKeySaved );
+				return $cached;
+			}
 		}
 
 		$switches = $this->svg->getElementsByTagName( 'switch' );
@@ -443,6 +457,9 @@ class SVGFormatReader {
 		}
 		$this->inFileTranslations = $translations;
 		$this->savedLanguages = array_unique( $this->savedLanguages );
+		wfGetCache( CACHE_ANYTHING )->set( $cacheKey, $translations );
+		wfGetCache( CACHE_ANYTHING )->set( $cacheKeyFiltered, $this->filteredTextNodes );
+		wfGetCache( CACHE_ANYTHING )->set( $cacheKeySaved, $this->savedLanguages );
 		return $this->inFileTranslations;
 	}
 
