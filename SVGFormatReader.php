@@ -4,7 +4,7 @@
  *
  * @file
  * @author Harry Burt
- * @copyright Copyright © 2012 Harry Burt
+ * @copyright Copyright Â© 2012 Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -176,7 +176,6 @@ class SVGFormatReader {
 		$textLength = $this->svg->getElementsByTagName( 'text' )->length;
 		for( $i = 0; $i < $textLength; $i++ ) {
 			$text = $texts->item( $i );
-			$numChildren = $text->childNodes->length;
 
 			// Text strings like $1, $2 will cause problems later because
 			// TranslateSvgUtils::replaceIndicesRecursive() will try to replace them
@@ -304,7 +303,7 @@ class SVGFormatReader {
 		$currentLanguages = $this->getSavedLanguages();
 		$switches = $this->svg->getElementsByTagName( 'switch' );
 		$number = $switches->length;
-		$counter = 1;
+
 		for( $i = 0; $i < $number; $i++ ) {
 			$switch = $switches->item( $i );
 			$fallback = $this->xpath->query(

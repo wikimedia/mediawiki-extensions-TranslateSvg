@@ -4,7 +4,7 @@
  *
  * @file
  * @author Harry Burt
- * @copyright Copyright © 2012, Harry Burt
+ * @copyright Copyright Â© 2012, Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -20,7 +20,7 @@ class TranslateSvgHooks{
 	 * @param $boxes \array The array to which the thumbnail helper is added
 	 * @return \bool true
 	 */
-	public static function addThumbnail( $group, $handle, $boxes ) {
+	public static function addThumbnail( $group, $handle, &$boxes ) {
 		global $wgLang;
 
 		if( !( $group instanceof SVGMessageGroup ) ) {
@@ -33,6 +33,7 @@ class TranslateSvgHooks{
 			$title, $file, wfMessage( 'translate-svg-js-thumbnail' ), '', $wgLang->alignEnd(),
 			array( 'width' => 275, 'height' => 275 )
 		);
+		// @todo Unused local variable?
 		$boxes = array_merge( array( 'thumbnail' => $thumbnail ), $boxes );
 
 		return true;
@@ -117,9 +118,8 @@ class TranslateSvgHooks{
 				case 'x':
 				case 'y':
 				case 'font-size':
-					$br = ( $index == 'x' ) ? '' : Xml::element( 'br' );
 					$extraInputs .= Xml::inputLabel(
-						wfMsg( 'translate-js-label-' . $index ),
+						wfMessage( 'translate-js-label-' . $index )->text(),
 						'mw-translate-prop-'.$index, 'mw-translate-prop-'.$index, 2, $currentValue,
 						array( 'type' => 'number', 'step' => 'any', 'style' => 'width:3em;' )
 					) . "&#160;";
@@ -127,20 +127,21 @@ class TranslateSvgHooks{
 				case 'font-family':
 					$typefaces = $wgTranslateSvgTypefaces;
 					if( $currentValue == 'inherit' ) {
-						$currentValue = wfMsg( 'translate-js-font-family-inherit' );
+						$currentValue = wfMessage( 'translate-js-font-family-inherit' )->text();
 					}
 					if( !in_array( $currentValue, $typefaces ) ) {
 						$typefaces[] = $currentValue;
 					}
 					$extraInputs .= Xml::label(
-						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index ) .
+						wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-'.$index ) .
 						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $wgTranslateSvgTypefaces ),
-						wfMsg( 'translate-js-font-family-inherit' ), $currentValue
+						wfMessage( 'translate-js-font-family-inherit' )->text(), $currentValue
 					) . "&#160;";
 					break;
 				case 'units':
 					$extraInputs .= Xml::label(
-						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index ) .
+						wfMessage( 'translate-js-label-' . $index )->text(),
+						'mw-translate-prop-'.$index ) .
 						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $allowedUnits ),
 						'', $currentValue
 					) . "&#160;";
@@ -151,14 +152,15 @@ class TranslateSvgHooks{
 					$checked = ( $currentValue === 'yes' );
 					$extraInputs .= Html::openElement( 'span', array( 'style' => 'white-space:nowrap;' ) )
 					. Xml::checkLabel(
-						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index, 'mw-translate-prop-'.$index, $checked
+							wfMessage( 'translate-js-label-' . $index )->text(),
+							'mw-translate-prop-'.$index, 'mw-translate-prop-'.$index, $checked
 					) . Html::closeElement( 'span' ) . " ";
 					break;
 				case 'color':
 					$colors = $wgTranslateSvgColors;
 					$colors[] = $currentValue;
 					$extraInputs .= Xml::label(
-						wfMsg( 'translate-js-label-' . $index ), 'mw-translate-prop-'.$index ) .
+						wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-'.$index ) .
 						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $colors ),
 						'', $currentValue
 					) . "&#160;";
