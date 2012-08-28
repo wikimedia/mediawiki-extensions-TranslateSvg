@@ -33,7 +33,6 @@ class TranslateSvgHooks{
 			$title, $file, wfMessage( 'translate-svg-js-thumbnail' ), '', $wgLang->alignEnd(),
 			array( 'width' => 275, 'height' => 275 )
 		);
-		// @todo Unused local variable?
 		$boxes = array_merge( array( 'thumbnail' => $thumbnail ), $boxes );
 
 		return true;
