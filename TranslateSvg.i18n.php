@@ -101,7 +101,7 @@ $messages['qqq'] = array(
 	'translate-svg-chooselanguage-title' => 'Title for a dialog box',
 	'translate-svg-chooselanguage-desc' => 'Content of a modal dialog box, immediately followed a by a language drop-down selector',
 	'translate-svg-instructions-title' => 'Title for a dialog box',
-	'translate-svg-instructions-desc' => 'Content of a modal dialog box, offering advice to the user',
+	'translate-svg-instructions-desc' => 'Content of a modal dialog box, offering advice to the user. $1, $2 and $3 all refer to the text of other interface messages, not linked.',
 	'translate-svg-warn' => 'The content of a warning message. Parameters:
 * $1 is a link, with the text of that link equal to the value of {{msg-mw|translate-svg-warn-inner}}.',
 	'translate-svg-warn-inner' => 'The content of a link that forms part of another sentence (see {{msg-mw|translate-svg-warn}}.',
