@@ -4,7 +4,7 @@
  *
  * @file
  * @author Harry Burt
- * @copyright Copyright © 2008-2012, Niklas Laxström, Siebrand Mazeland, Harry Burt
+ * @copyright Copyright Â© 2008-2012, Niklas LaxstrÃ¶m, Siebrand Mazeland, Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
