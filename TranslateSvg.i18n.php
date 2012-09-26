@@ -1241,14 +1241,23 @@ $messages['vi'] = array(
 	'translate-js-label-bold' => 'Đậm',
 );
 
-/** Simplified Chinese (‪中文（简体）‬)
+/** Simplified Chinese (中文（简体）‎)
  * @author Shirayuki
  */
 $messages['zh-hans'] = array(
+	'translate-svg-filepage-edit' => '编辑',
+	'translate-svg-filepage-finish' => '完成',
+	'translate-svg-filepage-another' => '其他语言',
+	'translate-svg-filepage-other' => '其他语言',
+	'translate-svg-upload-none' => '（无）',
 	'translate-svg-new-label' => '语言：',
+	'translate-js-label-color' => '颜色：',
+	'translate-js-label-bold' => '粗体',
+	'translate-js-label-italic' => '斜体',
+	'translate-js-label-underline' => '底线',
 );
 
-/** Traditional Chinese (‪中文（繁體）‬)
+/** Traditional Chinese (中文（繁體）‎)
  * @author Shirayuki
  * @author Simon Shek
  */
@@ -1258,6 +1267,7 @@ $messages['zh-hant'] = array(
 	'translate-svg-filepage-another' => '其他語言',
 	'translate-svg-filepage-other' => '其他語言',
 	'translate-svg-upload-none' => '（無）',
+	'translate-svg-new-label' => '語言：',
 	'translate-js-label-color' => '顏色：',
 	'translate-js-label-bold' => '粗體',
 	'translate-js-label-italic' => '斜體',
