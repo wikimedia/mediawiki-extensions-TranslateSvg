@@ -695,18 +695,34 @@ $messages['it'] = array(
  * @author Shirayuki
  */
 $messages['ja'] = array(
+	'translatesvg-desc' => 'SVG ファイルを翻訳するネイティブ スタイルのインターフェイス (SVG1.1 の仕様に準拠) を提供する',
+	'translate-taskui-export-as-svg' => '元の SVG ファイルに上書き保存',
+	'translate-svg-nodesc' => '(説明が入力されていません。)',
 	'translate-svg-thumbnail' => '元のファイル',
+	'translate-svg-js-thumbnail' => '(サムネイルは自動更新)',
 	'translate-page-description-legend-svgmg' => 'このファイルについての情報',
 	'translate-taction-mstats-svgmg' => 'ファイルの統計',
+	'translate-taction-export-svgmg' => '変更後のファイルのアップロード',
 	'translate-svg-table-header' => 'メッセージ識別子',
 	'translate-svg-filepage-edit' => '編集',
 	'translate-svg-filepage-finish' => '完了',
 	'translate-svg-filepage-another' => '別の言語',
 	'translate-svg-filepage-other' => '他の言語',
+	'translate-svg-filepage-invite' => 'このファイルは$1に簡単に翻訳できます',
+	'translate-svg-autocreate' => '元の SVG ファイルへの変更に基づいて翻訳単位を自動作成しています',
+	'translate-svg-autodelete' => '元の SVG ファイルへの変更に基づいて不要な翻訳単位を自動削除しています',
+	'translate-svg-autoedit' => '元の SVG ファイルへの変更に基づいて翻訳を自動更新しています',
+	'translate-svg-autofuzzy' => '元の SVG ファイルへの変更に基づいて翻訳に「要査読」の印を付けています',
+	'translate-svg-upload-comment' => '翻訳を更新 (開始: $1、変更/展開: $2)',
 	'translate-svg-upload-none' => '(なし)',
 	'translate-svg-chooselanguage-title' => '言語の選択',
+	'translate-svg-chooselanguage-desc' => 'この SVG ファイルの翻訳先言語を選択してください:',
+	'translate-svg-instructions-title' => 'この方法での SVG ファイルの翻訳は初めてですか?',
+	'translate-svg-new-title' => 'SVGの翻訳',
 	'translate-svg-new-label' => '言語:',
+	'translate-svg-new-error-import' => "'''エラーが発生しました:''' この SVG ファイルの翻訳に必要なページを作成する際に不明なエラーが発生しました。",
 	'translate-svg-new-error-group' => "'''エラーが発生しました:''' 不明なエラーが発生しました。URL 内でグループを指定し忘れた可能性があります。",
+	'translate-svg-export-unsupported' => 'このメッセージ群では、元の SVG ファイルへの上書き保存に対応していません。このエラーが発生した理由が不明な場合は、$1でバグとして報告してください。',
 	'translate-svg-export-error' => '編集をファイルに保存しようとした際に、予期しないエラーが発生しました。必要であれば $1 でバグを報告してください。',
 	'translate-js-properties-legend' => 'プロパティ',
 	'translate-js-label-x' => 'X 座標:',
@@ -794,6 +810,28 @@ $messages['ko'] = array(
 	'translate-js-label-italic' => '기울인 글씨',
 	'translate-js-label-underline' => '밑줄 글씨',
 	'translate-js-font-family-inherit' => '(상속)',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'translate-svg-thumbnail' => 'Original Fichier',
+	'translate-page-description-legend-svgmg' => 'Informatiounen iwwer dëse Fichier',
+	'translate-taction-mstats-svgmg' => 'Statistike vum Fichier',
+	'translate-svg-filepage-edit' => 'änneren',
+	'translate-svg-filepage-finish' => 'fäerdeg maachen',
+	'translate-svg-filepage-another' => 'eng aner Sprooch',
+	'translate-svg-filepage-other' => 'aner Sproochen',
+	'translate-svg-filepage-invite' => 'Dëse Fichier kann einfach op $1 iwwersat ginn',
+	'translate-svg-upload-none' => '(keng)',
+	'translate-svg-chooselanguage-title' => 'Eraussiche vun der Sprooch',
+	'translate-svg-new-title' => 'SVG-Iwwersetzung',
+	'translate-svg-new-label' => 'Sprooch:',
+	'translate-js-properties-legend' => 'Eegeschaften',
+	'translate-js-label-color' => 'Faarf:',
+	'translate-js-label-italic' => 'Kursiv',
+	'translate-js-label-underline' => 'Ënnerstrach',
 );
 
 /** Macedonian (македонски)
@@ -943,6 +981,29 @@ $messages['nn'] = array(
  */
 $messages['pfl'] = array(
 	'translatesvg-desc' => 'Hodä nadirlischi Schniddschdell fas Iwasedze vun SVG-Dadaije im Oinglong midde Oagab SVG1.1',
+);
+
+/** Polish (polski)
+ * @author BeginaFelicysym
+ */
+$messages['pl'] = array(
+	'translate-svg-thumbnail' => 'Oryginalny plik',
+	'translate-page-description-legend-svgmg' => 'Informacje na temat tego pliku',
+	'translate-taction-mstats-svgmg' => 'Statystyki pliku',
+	'translate-taction-export-svgmg' => 'Prześlij zaktualizowaną wersję pliku',
+	'translate-svg-table-header' => 'Identyfikator wiadomości',
+	'translate-svg-filepage-another' => 'inny język',
+	'translate-svg-filepage-other' => 'inne języki',
+	'translate-svg-chooselanguage-title' => 'Wybór języka',
+	'translate-svg-warn-inner' => 'zapisuje te zmiany z powrotem w oryginalnym pliku',
+	'translate-svg-new-label' => 'Język:',
+	'translate-js-label-x' => 'Współrzędna X:',
+	'translate-js-label-y' => 'Współrzędna Y:',
+	'translate-js-label-color' => 'Kolor:',
+	'translate-js-label-font-family' => 'Czcionka:',
+	'translate-js-label-bold' => 'Pogrubienie',
+	'translate-js-label-italic' => 'Kursywa',
+	'translate-js-label-underline' => 'Podkreślenie',
 );
 
 /** Pashto (پښتو)
