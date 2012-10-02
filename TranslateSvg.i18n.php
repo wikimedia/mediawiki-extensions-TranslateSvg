@@ -146,7 +146,7 @@ $messages['ast'] = array(
 	'translatesvg-desc' => "Ufre una interfaz d'estilu nativu pa traducir en llinia ficheros SVG cola especificación SVG1.1.",
 );
 
-/** Belarusian (Taraškievica orthography) (‪беларуская (тарашкевіца)‬)
+/** Belarusian (Taraškievica orthography) (беларуская (тарашкевіца)‎)
  * @author EugeneZelenko
  * @author Wizardist
  */
@@ -244,7 +244,7 @@ $messages['de'] = array(
 	'translate-js-font-family-inherit' => '(erben)',
 );
 
-/** German (formal address) (‪Deutsch (Sie-Form)‬)
+/** German (formal address) (Deutsch (Sie-Form)‎)
  * @author Kghbln
  */
 $messages['de-formal'] = array(
@@ -943,7 +943,7 @@ $messages['nl'] = array(
 	'translate-js-font-family-inherit' => '(overnemen)',
 );
 
-/** Norwegian Nynorsk (‪norsk (nynorsk)‬)
+/** Norwegian Nynorsk (norsk (nynorsk)‎)
  * @author Njardarlogar
  */
 $messages['nn'] = array(
