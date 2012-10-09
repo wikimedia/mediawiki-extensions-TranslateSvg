@@ -139,6 +139,17 @@ $messages['ar'] = array(
 	'translate-js-label-italic' => 'مائل',
 );
 
+/** Assamese (অসমীয়া)
+ * @author Bishnu Saikia
+ */
+$messages['as'] = array(
+	'translate-svg-filepage-edit' => 'সম্পাদনা',
+	'translate-svg-filepage-finish' => 'সমাপ্ত',
+	'translate-svg-filepage-another' => 'আন ভাষাত',
+	'translate-svg-filepage-other' => 'আন ভাষাসমূহত',
+	'translate-svg-upload-none' => '(একো নাই)',
+);
+
 /** Asturian (asturianu)
  * @author Xuacu
  */
@@ -816,9 +827,12 @@ $messages['ko'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'translate-svg-nodesc' => '(Et gouf keng Beschreiwung vum Fichier uginn)',
 	'translate-svg-thumbnail' => 'Original Fichier',
+	'translate-svg-js-thumbnail' => '(Miniatur gëtt automatesch aktualiséiert)',
 	'translate-page-description-legend-svgmg' => 'Informatiounen iwwer dëse Fichier',
 	'translate-taction-mstats-svgmg' => 'Statistike vum Fichier',
+	'translate-taction-export-svgmg' => 'Aktualiséiert Versioun vum Fichier eroplueden',
 	'translate-svg-filepage-edit' => 'änneren',
 	'translate-svg-filepage-finish' => 'fäerdeg maachen',
 	'translate-svg-filepage-another' => 'eng aner Sprooch',
@@ -826,6 +840,7 @@ $messages['lb'] = array(
 	'translate-svg-filepage-invite' => 'Dëse Fichier kann einfach op $1 iwwersat ginn',
 	'translate-svg-upload-none' => '(keng)',
 	'translate-svg-chooselanguage-title' => 'Eraussiche vun der Sprooch',
+	'translate-svg-chooselanguage-desc' => "Sicht w.e.g. d'Sprooch eraus an déi Dir dësen SVG-Fichier iwwersetze wëllt:",
 	'translate-svg-new-title' => 'SVG-Iwwersetzung',
 	'translate-svg-new-label' => 'Sprooch:',
 	'translate-js-properties-legend' => 'Eegeschaften',
