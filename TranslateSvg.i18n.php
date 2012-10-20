@@ -1026,6 +1026,7 @@ $messages['pl'] = array(
  */
 $messages['ps'] = array(
 	'translate-svg-thumbnail' => 'آرنۍ دوتنه',
+	'translate-page-description-legend-svgmg' => 'د دې دوتنې په اړه مالومات',
 	'translate-svg-filepage-edit' => 'سمول',
 	'translate-svg-filepage-finish' => 'پای',
 	'translate-svg-filepage-another' => 'بله ژبه',
