@@ -264,7 +264,6 @@ $messages['de-formal'] = array(
 	'translate-svg-instructions-title' => 'Übersetzen Sie zum ersten Mal eine SVG-Datei auf diese Weise?',
 	'translate-svg-instructions-desc' => 'Um mit der Übersetzung einer Nachricht zu beginnen, klicken Sie auf eine Nachrichtenkennung in der ersten Spalte der Tabelle und verwenden Sie die Schaltflächen „$1“ und „$2“, um durch die Nachrichten zu navigieren, die eine Übersetzung benötigen. Sobald Sie fertig sind, vergessen Sie bitte nicht, den Reiter „$3“ zu benutzen, um Ihre Übersetzungen in der Originaldatei zu speichern.',
 	'translate-svg-warn' => '<strong>Warnung:</strong> Es gibt derzeit ungespeicherte Übersetzungen in dieser Sprache, die nicht sichtbar sein werden, bevor Sie oder jemand anderes $1.',
-	'translate-svg-warn-inner' => 'Ihre Änderungen zur Originaldatei zurücksichern',
 	'translate-svg-new-summary' => "Um mit der Übersetzung anfangen zu können, wählen Sie zunächst die Sprache aus '''aus''' der Sie diese Datei übersetzen. Wählen Sie die am meisten gesprochene Sprache, sofern keine Sprache eindeutig auswählbar ist.",
 	'translate-svg-new-error-group' => "'''Es ist ein Fehler aufgetreten:''' Es ist ein unbekannter Fehler aufgetreten. Vielleicht haben Sie vergessen, in der URL eine Gruppe anzugeben?",
 	'translate-svg-export-unsupported' => 'Das Exportieren zu einer SVG-Datei wird für diese Nachrichtengruppe nicht unterstützt. Falls nicht eindeutig bekannt ist, warum dies passierte, können Sie einen Fehler auf $1 berichten.',
