@@ -117,6 +117,8 @@ $messages['qqq'] = array(
 	'translate-js-label-y' => 'Label for a textbox which sets the vertical position of a string',
 	'translate-js-label-color' => 'Label for a box which sets the (foreground) colour used for a string',
 	'translate-js-label-font-family' => 'Label for a dropdown "combobox" which sets the typeface used in a string',
+	'translate-js-label-font-size' => 'Label for a textbox which sets the size of the typeface used in a string',
+	'translate-js-label-units' => 'Label for a dropdown "combobox" which sets the units for the font-size used in a string',
 	'translate-js-label-bold' => 'Label for a checkbox governing the formatting of a string',
 	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string',
 	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string',
@@ -264,7 +266,6 @@ $messages['de-formal'] = array(
 	'translate-svg-instructions-title' => 'Übersetzen Sie zum ersten Mal eine SVG-Datei auf diese Weise?',
 	'translate-svg-instructions-desc' => 'Um mit der Übersetzung einer Nachricht zu beginnen, klicken Sie auf eine Nachrichtenkennung in der ersten Spalte der Tabelle und verwenden Sie die Schaltflächen „$1“ und „$2“, um durch die Nachrichten zu navigieren, die eine Übersetzung benötigen. Sobald Sie fertig sind, vergessen Sie bitte nicht, den Reiter „$3“ zu benutzen, um Ihre Übersetzungen in der Originaldatei zu speichern.',
 	'translate-svg-warn' => '<strong>Warnung:</strong> Es gibt derzeit ungespeicherte Übersetzungen in dieser Sprache, die nicht sichtbar sein werden, bevor Sie oder jemand anderes $1.',
-	'translate-svg-warn-inner' => 'Ihre Änderungen zur Originaldatei zurücksichern',
 	'translate-svg-new-summary' => "Um mit der Übersetzung anfangen zu können, wählen Sie zunächst die Sprache aus '''aus''' der Sie diese Datei übersetzen. Wählen Sie die am meisten gesprochene Sprache, sofern keine Sprache eindeutig auswählbar ist.",
 	'translate-svg-new-error-group' => "'''Es ist ein Fehler aufgetreten:''' Es ist ein unbekannter Fehler aufgetreten. Vielleicht haben Sie vergessen, in der URL eine Gruppe anzugeben?",
 	'translate-svg-export-unsupported' => 'Das Exportieren zu einer SVG-Datei wird für diese Nachrichtengruppe nicht unterstützt. Falls nicht eindeutig bekannt ist, warum dies passierte, können Sie einen Fehler auf $1 berichten.',
@@ -325,6 +326,7 @@ $messages['dsb'] = array(
  * @author Armando-Martin
  * @author Dferg
  * @author Jewbask
+ * @author Maor X
  */
 $messages['es'] = array(
 	'translatesvg-desc' => 'Proporciona una interfaz de estilo nativo para traducir archivos SVG en consonancia con la especificación SVG1.1',
@@ -444,7 +446,7 @@ $messages['fr'] = array(
 	'translate-svg-chooselanguage-title' => 'Sélection de la langue',
 	'translate-svg-chooselanguage-desc' => 'Veuillez sélectionner la langue dans laquelle vous souhaitez traduire ce fichier SVG :',
 	'translate-svg-instructions-desc' => "Pour commencer, cliquez sur un identifiant de message dans la première colonne de la table afin de commencer la traduction de ce message, à l'aide des boutons « $1 « et » $2 » qui vous aideront à naviguer parmi les messages nécessitant une traduction. Lorsque vous avez terminé, n'oubliez pas d'utiliser l'onglet « $3 » pour enregistrer vos traductions dans le fichier d'origine.",
-	'translate-svg-warn' => "<strong>Avertissement :</strong> Vos modifications sur le fichier SVG ne seront visibles qu'une fois que vous $1, ce que vous devez faire à chaque fois que vous terminez de traduire le fichier.",
+	'translate-svg-warn' => "<strong>Avertissement :</strong> Vos modifications sur le fichier SVG ne seront visibles qu'une fois que vous $1, ce que vous devez faire à chaque fois que vous terminez de traduire le fichier.", # Fuzzy
 	'translate-svg-warn-inner' => "enregistrer vos modifications dans le fichier d'origine",
 	'translate-svg-new-title' => 'Traduction SVG',
 	'translate-svg-new-summary' => "Pour commencer la traduction de ce fichier, veuillez sélectionner la langue '''à partir de laquelle''' vous traduisez ce fichier (si vous n'êtes pas certain(e) de la langue à indiquer, sélectionnez la langue plus utilisée).",
@@ -652,7 +654,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'translatesvg-desc' => 'Natív stílusú felületet biztosít az SVG vektorgrafikák fordítására az SVG 1.1 szabvány értelmében',
-	'translate-svg-nodesc' => '(Ennek a fájlnak nincs leírása.)',
+	'translate-svg-nodesc' => '(Ennek a fájlnak nincs leírása.)', # Fuzzy
 );
 
 /** Interlingua (interlingua)
@@ -660,7 +662,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'translatesvg-desc' => 'Forni un interfacie in stilo native pro traducer SVGs de maniera conforme al specification SVG1.1',
-	'translate-svg-nodesc' => '(Iste file non ha un description.)',
+	'translate-svg-nodesc' => '(Iste file non ha un description.)', # Fuzzy
 );
 
 /** Italian (italiano)
@@ -1321,6 +1323,8 @@ $messages['tl'] = array(
 	'translate-js-label-y' => 'tugma ng Y:',
 	'translate-js-label-color' => 'Kulay:',
 	'translate-js-label-font-family' => 'Estilo ng titik:',
+	'translate-js-label-font-size' => '',
+	'translate-js-label-units' => '',
 	'translate-js-label-bold' => 'Makapal',
 	'translate-js-label-italic' => 'Pahilis',
 	'translate-js-label-underline' => 'Salungguhitan',
@@ -1395,4 +1399,3 @@ $messages['zh-hant'] = array(
 	'translate-js-label-italic' => '斜體',
 	'translate-js-label-underline' => '底線',
 );
-
