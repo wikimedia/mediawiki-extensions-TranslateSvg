@@ -400,9 +400,16 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author ZxxZxxZ
+ * @author پاناروما
  */
 $messages['fa'] = array(
 	'translatesvg-desc' => 'رابطی بومی برای ترجمهٔ اس‌وی‌جی‌ها با مشخصات SVG1.1 فراهم می‌کند',
+	'translate-svg-filepage-edit' => 'ویرایش',
+	'translate-svg-filepage-finish' => 'اتمام',
+	'translate-svg-filepage-another' => 'زبان‌های دیگر',
+	'translate-js-label-color' => 'رنگ',
+	'translate-js-label-font-family' => 'قلم:',
+	'translate-js-label-bold' => 'پررنگ',
 );
 
 /** Finnish (suomi)
