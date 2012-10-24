@@ -693,16 +693,24 @@ $messages['it'] = array(
 	'translate-svg-filepage-another' => "un'altra lingua",
 	'translate-svg-filepage-other' => 'altre lingue',
 	'translate-svg-filepage-invite' => 'Questo file può facilmente essere tradotto in $1',
+	'translate-svg-autocreate' => 'Creazione automatica di unità di traduzione in base alle modifiche del file SVG di origine',
+	'translate-svg-autodelete' => 'Cancellazione automatica di unità di traduzione non necessarie in base alle modifiche del file SVG di origine',
+	'translate-svg-autoedit' => 'Aggiornamento automatico delle unità di traduzione in base alle modifiche del file SVG di origine',
+	'translate-svg-autofuzzy' => 'Contrassegno automatico delle unità di traduzione come "fuzzy" in base alle modifiche del file SVG di origine',
 	'translate-svg-upload-comment' => 'Aggiornamento traduzioni (iniziate: $1; modificate/ampliate: $2)',
 	'translate-svg-upload-none' => '(nessuna)',
 	'translate-svg-chooselanguage-title' => 'Selezione lingua',
 	'translate-svg-chooselanguage-desc' => 'Selezionare la lingua in cui si desidera tradurre questo file SVG:',
 	'translate-svg-instructions-title' => 'Prima volta che si traduce un file SVG in questo modo?',
+	'translate-svg-instructions-desc' => 'Per iniziare, clicca su un identificatore di messaggio nella prima colonna della tabella per incominciare la traduzione del messaggio, utilizzando i bottoni "$1" e "$2" che consentono di navigare attraverso i messaggi che richiedono la traduzione. Quando hai finito, ricordati di utilizzare la scheda "$3" per salvare le traduzioni nel file originale.',
+	'translate-svg-warn' => '<strong>Attenzione:</strong> attualmente sono presenti traduzioni non salvate in questa lingua, che non saranno visibili fino a quando tu o qualcun altro non $1.',
+	'translate-svg-warn-inner' => 'salvate le modifiche nel file originale',
 	'translate-svg-new-title' => 'Traduzione SVG',
 	'translate-svg-new-summary' => 'Per iniziare la traduzione di questo file, selezionare la lingua da cui si vuole tradurre (in caso di ambiguità, preferire quella più usata).',
 	'translate-svg-new-label' => 'Lingua:',
 	'translate-svg-new-error-import' => "'''Si è verificato un errore:''' Errore sconosciuto provando a creare le pagine richieste per tradurre questo SVG.",
 	'translate-svg-new-error-group' => "'''Si è verificato un errore:''' Errore sconosciuto, forse non è stato indicato un gruppo nell'URL?",
+	'translate-svg-export-error' => 'Si verificato un errore cercando di salvare le modifiche apportate nel file. Puoi segnalare il problema su $1.',
 	'translate-js-properties-legend' => 'Proprietà',
 	'translate-js-label-x' => 'Coordinata x:',
 	'translate-js-label-y' => 'Coordinata y:',
@@ -1375,6 +1383,22 @@ $messages['vi'] = array(
 	'translate-svg-filepage-finish' => 'Kết thúc',
 	'translate-svg-new-label' => 'Ngôn ngữ:',
 	'translate-js-label-bold' => 'Đậm',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'translate-taction-mstats-svgmg' => 'טעקע סטאטיסטיק',
+	'translate-taction-export-svgmg' => 'ארויפלאדן דערהיינטיקטע ווערסיע פון טעקע',
+	'translate-svg-filepage-edit' => 'רעדאַקטירן',
+	'translate-svg-filepage-finish' => 'קאנטשן',
+	'translate-svg-filepage-another' => 'אנדער שפראך',
+	'translate-svg-filepage-other' => 'אנדערע שפראַכן',
+	'translate-svg-filepage-invite' => 'די טעקע קען מען גרינג איבערזעצן אין $1',
+	'translate-svg-upload-none' => '(קיין)',
+	'translate-svg-chooselanguage-title' => 'שפראך אויסקלייב',
+	'translate-svg-chooselanguage-desc' => 'ביטע קלויבט די שפראך אין וואס איר ווילט איבערזעצן די SVG טעקע:',
 );
 
 /** Simplified Chinese (中文（简体）‎)
