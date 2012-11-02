@@ -1348,10 +1348,54 @@ $messages['tl'] = array(
 );
 
 /** Ukrainian (українська)
+ * @author Base
  * @author Olvin
  */
 $messages['uk'] = array(
 	'translatesvg-desc' => 'Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1',
+	'translate-taskui-export-as-svg' => 'Зберегти вихідний файл SVG',
+	'translate-svg-nodesc' => '(Опис файлу не було надано.)',
+	'translate-svg-thumbnail' => 'Вихідний файл',
+	'translate-svg-js-thumbnail' => '(мініатюра оновлюється автоматично)',
+	'translate-page-description-legend-svgmg' => 'Інформація про цей файл',
+	'translate-taction-mstats-svgmg' => 'Статистика файлу',
+	'translate-taction-export-svgmg' => 'Завантажити оновлену версію цього файлу',
+	'translate-svg-table-header' => 'Ідентифікатор повідомлення',
+	'translate-svg-filepage-caption' => 'Це зображення у PNG на інших мовах: $1',
+	'translate-svg-filepage-caption-translator' => 'Це зображення у PNG іншими мовами: $1; або перекласти його на $2',
+	'translate-svg-filepage-edit' => 'ред.',
+	'translate-svg-filepage-finish' => 'завершити',
+	'translate-svg-filepage-another' => 'іншу мову',
+	'translate-svg-filepage-other' => 'інші мови',
+	'translate-svg-filepage-invite' => 'Цей файл може бути легко перекладений на $1',
+	'translate-svg-autocreate' => 'Автоматичне створення елементів перекладу на основі змін у вихідному SVG-файлі',
+	'translate-svg-autodelete' => 'Автоматичне вилучення непотрібних елементів перекладу на основі змін у вихідному SVG-файлі',
+	'translate-svg-autoedit' => 'Автоматичне оновлення елементів перекладу на основі змін у вихідному SVG-файлі',
+	'translate-svg-autofuzzy' => 'Автоматична помітка перекладів як таких, що потребують перегляду на основі змін у вихідному SVG-файлі',
+	'translate-svg-upload-comment' => 'Оновлення перекладів (розпочато: $1; змінено/розширено: $2)',
+	'translate-svg-upload-none' => '(немає)',
+	'translate-svg-chooselanguage-title' => 'Вибір мови',
+	'translate-svg-chooselanguage-desc' => 'Будь ласка, оберіть мову на яку Ви бажаєте перекласти цей SVG файл:',
+	'translate-svg-instructions-title' => 'Ви вперше перекладаєте SVG-файл цим способом?',
+	'translate-svg-instructions-desc' => 'Щоб розпочати, натисніть на ідентифікаторі повідомлення у першій колонці таблиці передбаченої для початку перекладу повідомлення, використовуючи кнопки «$1» та «$2», для спрощення навігації через повідомлення, що потребують перекладу. Коли Ви завершите, не забудьте скористатись вкладкою «$3» для збереження Вашого перекладу у вихідному файлі.',
+	'translate-svg-warn' => '<strong>Увага:</strong> Є незбережені переклади цією мовою, які не буде видно, поки Ви чи хто-небудь ще не $1.',
+	'translate-svg-warn-inner' => 'збережете ці зміни у вихідному файлі',
+	'translate-svg-new-title' => 'Переклад SVG',
+	'translate-svg-new-summary' => "Щоб розпочати переклад цього файлу, будь ласка, оберіть мову '''з якої''' Ви його перекладаєте (у разі сумнівів оберіть найбільш поширену мову)",
+	'translate-svg-new-label' => 'Мова:',
+	'translate-svg-new-error-import' => "'''Сталася помилка:''' Сталась невідома помилка при спробі створити сторінки, що необхідні для перекладу цього SVG-файлу.",
+	'translate-svg-new-error-group' => "'''Сталася помилка:''' Сталась невідома помилка; можливо Ви забули додати групу до URL?",
+	'translate-svg-export-unsupported' => 'Експорт назад, у SVG не підтримується для цієї групи повідомлень. Якщо не очевидно чому це сталось, можливо Ви хочете повідомити що це баґ на $1.',
+	'translate-svg-export-error' => 'Неочікувана помилка при спробі зберегти Ваші зміни назад до файлу. Можливо, Ви хочете повідомити що це баґ на $1.',
+	'translate-js-properties-legend' => 'Всластивості',
+	'translate-js-label-x' => 'Координата X:',
+	'translate-js-label-y' => 'Координата Y:',
+	'translate-js-label-color' => 'Колір:',
+	'translate-js-label-font-family' => 'Шрифт:',
+	'translate-js-label-bold' => 'Жирний',
+	'translate-js-label-italic' => 'Курсив',
+	'translate-js-label-underline' => 'Підкреслений',
+	'translate-js-font-family-inherit' => '(успадкування)',
 );
 
 /** Urdu (اردو)
@@ -1374,13 +1418,31 @@ $messages['ur'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
+	'translate-svg-thumbnail' => 'Tập tin gốc',
+	'translate-page-description-legend-svgmg' => 'Thông tin về tập tin này',
+	'translate-taction-mstats-svgmg' => 'Thống kê tập tin',
+	'translate-svg-table-header' => 'Định danh thông điệp',
 	'translate-svg-filepage-edit' => 'sửa',
 	'translate-svg-filepage-finish' => 'Kết thúc',
+	'translate-svg-filepage-another' => 'ngôn ngữ khác',
+	'translate-svg-filepage-other' => 'các ngôn ngữ khác',
+	'translate-svg-filepage-invite' => 'Có thể dịch tập tin này ra $1 một cách dễ dàng',
+	'translate-svg-upload-none' => '(không có)',
+	'translate-svg-chooselanguage-title' => 'Lựa chọn ngôn ngữ',
+	'translate-svg-new-title' => 'Biên dịch SVG',
 	'translate-svg-new-label' => 'Ngôn ngữ:',
+	'translate-js-properties-legend' => 'Thuộc tính',
+	'translate-js-label-x' => 'Hoành độ:',
+	'translate-js-label-y' => 'Tung độ:',
+	'translate-js-label-color' => 'Màu:',
+	'translate-js-label-font-family' => 'Phông chữ:',
 	'translate-js-label-bold' => 'Đậm',
+	'translate-js-label-italic' => 'In xiên',
+	'translate-js-label-underline' => 'Gạch dưới',
 );
 
 /** Yiddish (ייִדיש)
