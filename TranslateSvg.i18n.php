@@ -1266,6 +1266,7 @@ $messages['sv'] = array(
 /** Tamil (தமிழ்)
  * @author Karthi.dr
  * @author Logicwiki
+ * @author மதனாஹரன்
  */
 $messages['ta'] = array(
 	'translate-svg-thumbnail' => 'மூலக்கோப்பு',
@@ -1275,6 +1276,7 @@ $messages['ta'] = array(
 	'translate-svg-filepage-finish' => 'நிறைவு செய்',
 	'translate-svg-filepage-another' => 'மற்றொரு மொழி',
 	'translate-svg-filepage-other' => 'பிற மொழிகள்',
+	'translate-svg-upload-none' => '(ஏதுமில்லை)',
 	'translate-svg-chooselanguage-title' => 'மொழித் தெரிவு',
 	'translate-svg-new-label' => 'மொழி:',
 	'translate-js-properties-legend' => 'பண்புகள்',
