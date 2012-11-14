@@ -205,6 +205,23 @@ $messages['be-tarask'] = array(
 	'translate-js-font-family-inherit' => '(спадкаваць)',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'translate-svg-thumbnail' => 'মূল ফাইল',
+	'translate-taction-mstats-svgmg' => 'ফাইল পরিসংখ্যান',
+	'translate-svg-filepage-edit' => 'সম্পাদনা',
+	'translate-svg-filepage-finish' => 'সমাপ্ত',
+	'translate-svg-filepage-another' => 'অন্য ভাষা',
+	'translate-svg-filepage-other' => 'অন্য ভাষা',
+	'translate-svg-upload-none' => '(কিছু নাই)',
+	'translate-svg-chooselanguage-title' => 'ভাষা নির্বাচন',
+	'translate-svg-new-title' => 'SVG অনুবাদ',
+	'translate-js-label-bold' => 'গাঢ়',
+	'translate-js-label-italic' => 'ইটালিক',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
