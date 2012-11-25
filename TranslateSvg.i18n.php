@@ -141,6 +141,13 @@ $messages['ar'] = array(
 	'translate-js-label-italic' => 'مائل',
 );
 
+/** Aramaic (ܐܪܡܝܐ)
+ * @author Basharh
+ */
+$messages['arc'] = array(
+	'translate-taction-mstats-svgmg' => 'ܚܒܝܫܘܬ ܡܢܝܢܐ ܕܠܦܦܐ',
+);
+
 /** Assamese (অসমীয়া)
  * @author Bishnu Saikia
  */
@@ -289,6 +296,30 @@ $messages['de-formal'] = array(
 	'translate-svg-export-error' => 'Beim Speichern Ihrer Änderungen an der Datei ist ein unerwarteter Fehler aufgetreten. Vielleicht möchten Sie diesen Fehler auf $1 berichten.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Erdemaslancan
+ */
+$messages['diq'] = array(
+	'translate-svg-thumbnail' => 'Oricinal dosya',
+	'translate-taction-mstats-svgmg' => 'İstatistikê dosya',
+	'translate-svg-filepage-edit' => 'bıvurne',
+	'translate-svg-filepage-finish' => 'qediya',
+	'translate-svg-filepage-another' => 'Zıwanê bini',
+	'translate-svg-filepage-other' => 'Zıwananê binan de',
+	'translate-svg-upload-none' => '(çini yo)',
+	'translate-svg-chooselanguage-title' => 'Zıwan weçinayış',
+	'translate-svg-new-title' => 'SVG açarnayış',
+	'translate-svg-new-label' => 'Zıwan:',
+	'translate-js-properties-legend' => 'Xısusiyey',
+	'translate-js-label-x' => 'X-koordinat:',
+	'translate-js-label-y' => 'Y-koordinat:',
+	'translate-js-label-color' => 'Dawte:',
+	'translate-js-label-font-family' => 'Tipe:',
+	'translate-js-label-bold' => 'Qalın',
+	'translate-js-label-italic' => 'İtalik',
+	'translate-js-label-underline' => 'Bınê cı xızine',
+);
+
 /** Lower Sorbian (dolnoserbski)
  * @author Michawiki
  */
@@ -421,12 +452,24 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'translatesvg-desc' => 'رابطی بومی برای ترجمهٔ اس‌وی‌جی‌ها با مشخصات SVG1.1 فراهم می‌کند',
+	'translate-svg-nodesc' => '(هیچ شرحی برای پرونده ارائه نشده‌است.)',
+	'translate-svg-thumbnail' => 'پروندهٔ اصلی',
+	'translate-page-description-legend-svgmg' => 'اطلاعات دربارهٔ این پرونده',
 	'translate-svg-filepage-edit' => 'ویرایش',
 	'translate-svg-filepage-finish' => 'اتمام',
 	'translate-svg-filepage-another' => 'زبان‌های دیگر',
+	'translate-svg-filepage-other' => 'زبان‌های دیگر',
+	'translate-svg-upload-none' => '(هیچ)',
+	'translate-svg-chooselanguage-title' => 'انتخاب زبان',
+	'translate-svg-new-title' => 'ترجمهٔ اس‌وی‌جی',
+	'translate-svg-new-label' => 'زبان:',
+	'translate-js-properties-legend' => 'ویژگی‌ها',
+	'translate-js-label-x' => 'مختصات X:',
+	'translate-js-label-y' => 'مختصات Y:',
 	'translate-js-label-color' => 'رنگ',
 	'translate-js-label-font-family' => 'قلم:',
 	'translate-js-label-bold' => 'پررنگ',
+	'translate-js-label-italic' => 'مورب',
 );
 
 /** Finnish (suomi)
