@@ -474,9 +474,27 @@ $messages['fa'] = array(
 
 /** Finnish (suomi)
  * @author Beluga
+ * @author Nedergard
  */
 $messages['fi'] = array(
+	'translate-taskui-export-as-svg' => 'Tallenna alkuperäiseen SVG-tiedostoon',
+	'translate-svg-thumbnail' => 'Alkuperäinen tiedosto',
+	'translate-page-description-legend-svgmg' => 'Tämän tiedoston tietoja',
+	'translate-taction-mstats-svgmg' => 'Tiedoston tilastot',
 	'translate-svg-filepage-edit' => 'muokkaa',
+	'translate-svg-filepage-finish' => 'lopeta',
+	'translate-svg-filepage-invite' => 'Tämän tiedoston voi kääntää helposti kielelle $1',
+	'translate-svg-autocreate' => 'Luodaan automaattisesti käännösyksikköjä alkuperäiseen SVG-tiedostoon tehtyjen muutosten perusteella',
+	'translate-svg-autodelete' => 'Poistetaan automaattisesti tarpeettomia käännösyksikköjä alkuperäiseen SVG-tiedostoon tehtyjen muutosten perusteella',
+	'translate-svg-autoedit' => 'Päivitetään automaattisesti käännösyksikköjä alkuperäiseen SVG-tiedostoon tehtyjen muutosten perusteella',
+	'translate-svg-chooselanguage-title' => 'Kielen valinta',
+	'translate-svg-chooselanguage-desc' => 'Valitse kieli, jolle haluat kääntää tämän SVG-tiedoston',
+	'translate-svg-instructions-title' => 'Käännätkö ensimmäistä kertaa SVG-tiedoston tällä tavalla?',
+	'translate-svg-new-title' => 'SVG:n kääntäminen',
+	'translate-svg-new-label' => 'Kieli',
+	'translate-js-properties-legend' => 'Ominaisuudet',
+	'translate-js-label-x' => 'X-koordinaatti',
+	'translate-js-label-y' => 'Y-koordinaatti',
 	'translate-js-label-color' => 'Väri:',
 	'translate-js-label-font-family' => 'Kirjasin:',
 	'translate-js-label-bold' => 'Lihavointi',
