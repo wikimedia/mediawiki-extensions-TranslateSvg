@@ -18,9 +18,12 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SVGFormatReader'] = $dir . 'SVGFormatReader.php';
+$wgAutoloadClasses['SVGFormatWriter'] = $dir . 'SVGFormatWriter.php';
 $wgAutoloadClasses['SVGMessageGroup'] = $dir . 'SVGMessageGroup.php';
 $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
 $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
+$wgAutoloadClasses['ExportSVGMessagesTask'] = $dir . 'TranslateSvgTasks.php';
+$wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 
 $wgResourceModules['jquery.colorpicker'] = array(
@@ -50,6 +53,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::addThumbnail';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeQQQ';
+$wgHooks['TranslateGetSpecialTranslateOptions'][] = 'TranslateSvgHooks::makeExportAsSvgOptionDefault';
 $wgHooks['TranslatePrefillTranslation'][] = 'TranslateSvgHooks::getDefaultPropertiesFromGroup';
 $wgHooks['TranslateGetExtraInputs'][] = 'TranslateSvgHooks::propertiesToExtraInputs';
 $wgHooks['TranslateFormatMessageBeforeTable'][] = 'TranslateSvgHooks::stripPropertyString';
@@ -63,6 +67,19 @@ $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
 $wgTranslateSvgTypefaces = array( 'serif', 'sans-serif', 'monospace' );
 
 $wgTranslateSvgTemplateName = 'Translation properties';
+
+/**
+ * Directory where TranslateSvg's "live" (temporary) thumbnails should be stored.
+ * If left false, defaults to "{$wgUploadDirectory}/translatesvg"
+ */
+$wgTranslateSvgDirectory = false;
+
+/**
+ * Server path equivalent to $wgTranslateSvgDirectory
+ * If left false, defaults to "{$wgUploadPath}/translatesvg"
+ */
+$wgTranslateSvgPath = false;
+
 $wgTranslateSvgColors = array(
 	'#ffffff', '#ffccc9', '#ffce93', '#fffc9e', '#ffffc7', '#9aff99', '#96fffb',
 	'#cdffff', '#cbcefb', '#cfcfcf', '#fd6864', '#fe996b', '#fffe65', '#fcff2f',
