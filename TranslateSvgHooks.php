@@ -77,7 +77,7 @@ class TranslateSvgHooks{
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, $handle ) {
 		$group = $handle->getGroup();
-		if( !( $group instanceof SVGMessageGroup || $properties !== null ) ) {
+		if( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
 			return true;
 		}
 		$properties = $group->getProperties(
