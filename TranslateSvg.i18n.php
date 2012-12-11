@@ -1536,8 +1536,15 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'translate-svg-nodesc' => '(די טעקע האט נישט קיין באשרייבונג.)',
+	'translate-svg-thumbnail' => 'ארגינעלע טעקע',
+	'translate-svg-js-thumbnail' => '(קליינבילד ווערט דערהיינטיקט אויטאמאטיש)',
+	'translate-page-description-legend-svgmg' => 'אינפֿארמאציע וועגן דער טעקע',
 	'translate-taction-mstats-svgmg' => 'טעקע סטאטיסטיק',
 	'translate-taction-export-svgmg' => 'ארויפלאדן דערהיינטיקטע ווערסיע פון טעקע',
+	'translate-svg-table-header' => 'מעלדונג אידענטיפיצירער',
+	'translate-svg-filepage-caption' => 'דאס בילד געוויזן ווי PNG אין אנדערע שפראכן: $1',
+	'translate-svg-filepage-caption-translator' => 'דאס בילד געוויזן ווי PNG אין אנדערע שפראכן: $1; אדער זעצט איבער אויף $2',
 	'translate-svg-filepage-edit' => 'רעדאַקטירן',
 	'translate-svg-filepage-finish' => 'קאנטשן',
 	'translate-svg-filepage-another' => 'אנדער שפראך',
@@ -1546,6 +1553,14 @@ $messages['yi'] = array(
 	'translate-svg-upload-none' => '(קיין)',
 	'translate-svg-chooselanguage-title' => 'שפראך אויסקלייב',
 	'translate-svg-chooselanguage-desc' => 'ביטע קלויבט די שפראך אין וואס איר ווילט איבערזעצן די SVG טעקע:',
+	'translate-svg-new-title' => 'SVG איבערזעצונג',
+	'translate-svg-new-label' => 'שפּראַך:',
+	'translate-js-label-color' => 'קאליר:',
+	'translate-js-label-font-family' => 'פֿאנט:',
+	'translate-js-label-bold' => 'דיק',
+	'translate-js-label-italic' => 'קורסיוו',
+	'translate-js-label-underline' => 'אונטערשטרײַכן',
+	'translate-js-font-family-inherit' => '(יַרשענען)',
 );
 
 /** Simplified Chinese (中文（简体）‎)
