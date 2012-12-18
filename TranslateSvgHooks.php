@@ -209,4 +209,21 @@ class TranslateSvgHooks{
 		}
 		return true;
 	}
+
+	/**
+	 * Function used to make "export as SVG" the default export option for SVG files
+	 *
+	 * @param $defaults \array Associative array of so-called "default" values supplied by Translate
+	 * @param $defaults \array Associative array of so-called "non-default" values supplied by Translate
+	 * @return \bool true
+	 */
+	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
+		if( isset( $nondefaults['group'] )
+			&& MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
+			&& isset( $nondefaults['taction'] )
+			&& $nondefaults['taction'] == 'export' ) {
+			$nondefaults['task'] = 'export-as-svg';
+		}
+		return true;
+	}
 }
