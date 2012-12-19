@@ -298,7 +298,7 @@ class SVGFormatReader {
 	 *
 	 * @return DOMDocument New SVG file
 	 */
-	protected function getSVG() {
+	public function getSVG() {
 		$translations = $this->getTranslations();
 		$currentLanguages = $this->getSavedLanguages();
 		$switches = $this->svg->getElementsByTagName( 'switch' );

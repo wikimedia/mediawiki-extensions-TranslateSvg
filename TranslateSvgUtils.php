@@ -364,15 +364,16 @@ class TranslateSvgUtils {
 		foreach( $newNodes as $index => $node ) {
 			// One-indexed (no $0)
 			$realIndex = $index + 1;
-			if( in_array( $realIndex, $matches[1] ) ) {
-				list( $before, $after ) = preg_split( '/$' . $realIndex . '(?=[^0-9]|$)/', $text );
-				$newNodeToProcess = $newNodes[ $index ];
-				unset( $newNodes[ $index ] );
-				self::replaceIndicesRecursive( $before, $newNodes, $svg, $parentNode );
-				$parentNode->appendChild( $newNodeToProcess );
-				self::replaceIndicesRecursive( $after, $newNodes, $svg, $parentNode );
+			if( !in_array( $realIndex, $matches[1] ) ) {
+				// Sanity check
 				continue;
 			}
+			list( $before, $after ) = preg_split( '/\$' . $realIndex . '(?=[^0-9]|$)/', $text );
+			$newNodeToProcess = $newNodes[ $index ];
+			unset( $newNodes[ $index ] );
+			self::replaceIndicesRecursive( $before, $newNodes, $svg, $parentNode );
+			$parentNode->appendChild( $newNodeToProcess );
+			self::replaceIndicesRecursive( $after, $newNodes, $svg, $parentNode );
 		}
 	}
 }
