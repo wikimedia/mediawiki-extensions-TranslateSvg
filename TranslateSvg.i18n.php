@@ -370,6 +370,29 @@ $messages['dsb'] = array(
 	'translate-js-font-family-inherit' => '(zderbnuś)',
 );
 
+/** Esperanto (Esperanto)
+ * @author Blahma
+ */
+$messages['eo'] = array(
+	'translatesvg-desc' => 'Provizas indiĝenan interfacon por tradukado de SVG-dosieroj konforme al la specifo SVG1.1',
+	'translate-taskui-export-as-svg' => 'Rekonservi en la fontan SVG-dosieron',
+	'translate-svg-nodesc' => '(Neniu dosiera priskribo estis provizita.)',
+	'translate-svg-thumbnail' => 'Fonta dosiero',
+	'translate-svg-js-thumbnail' => '(la antaŭvido ĝisdatiĝas aŭtomate)',
+	'translate-page-description-legend-svgmg' => 'Informoj pri tiu ĉi dosiero',
+	'translate-taction-mstats-svgmg' => 'Dosieraj statistikoj',
+	'translate-taction-export-svgmg' => 'Alŝuti ĝisdatan version de la dosiero',
+	'translate-svg-table-header' => 'Mesaĝa identigilo',
+	'translate-svg-filepage-caption' => 'Tiu ĉi bildo bildigita kiel PNG en aliaj lingvoj: $1',
+	'translate-svg-filepage-caption-translator' => 'Tiu ĉi bildo bildigita kiel PNG en aliaj lingvoj: $1; aŭ traduku ĝin al $2',
+	'translate-svg-filepage-edit' => 'redakti',
+	'translate-svg-filepage-finish' => 'fini',
+	'translate-svg-filepage-another' => 'alia lingvo',
+	'translate-svg-filepage-other' => 'aliaj lingvoj',
+	'translate-svg-filepage-invite' => 'Tiu ĉi dosiero estas facile tradukebla al $1',
+	'translate-svg-upload-none' => '(neniu)',
+);
+
 /** Spanish (español)
  * @author Armando-Martin
  * @author Dferg
@@ -428,6 +451,9 @@ $messages['es'] = array(
  * @author Pikne
  */
 $messages['et'] = array(
+	'translate-svg-filepage-finish' => 'lõpeta',
+	'translate-svg-filepage-another' => 'teine keel',
+	'translate-svg-filepage-other' => 'muud keeled',
 	'translate-js-label-x' => 'X-koordinaat:',
 	'translate-js-label-y' => 'Y-koordinaat:',
 	'translate-js-label-color' => 'Värvus:',
@@ -1614,9 +1640,12 @@ $messages['zh-hans'] = array(
 	'translate-svg-filepage-finish' => '完成',
 	'translate-svg-filepage-another' => '其他语言',
 	'translate-svg-filepage-other' => '其他语言',
+	'translate-svg-filepage-item' => '$1（$2）',
 	'translate-svg-upload-none' => '（无）',
 	'translate-svg-new-label' => '语言：',
+	'translate-js-properties-legend' => '属性',
 	'translate-js-label-color' => '颜色：',
+	'translate-js-label-font-family' => '字体：',
 	'translate-js-label-bold' => '粗体',
 	'translate-js-label-italic' => '斜体',
 	'translate-js-label-underline' => '底线',
