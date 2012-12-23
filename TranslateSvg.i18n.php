@@ -212,6 +212,14 @@ $messages['be-tarask'] = array(
 	'translate-js-font-family-inherit' => '(спадкаваць)',
 );
 
+/** Bulgarian (български)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['bg'] = array(
+	'translate-svg-filepage-edit' => 'редактиране',
+	'translate-svg-new-label' => 'Език:',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */
@@ -390,7 +398,34 @@ $messages['eo'] = array(
 	'translate-svg-filepage-another' => 'alia lingvo',
 	'translate-svg-filepage-other' => 'aliaj lingvoj',
 	'translate-svg-filepage-invite' => 'Tiu ĉi dosiero estas facile tradukebla al $1',
+	'translate-svg-autocreate' => 'Aŭtomate kreanta tradukajn unuojn surbaze de ŝanĝoj en la fonta SVG-dosiero',
+	'translate-svg-autodelete' => 'Aŭtomate foriganta nenecesajn tradukajn unuojn surbaze de ŝanĝoj en la fonta SVG-dosiero',
+	'translate-svg-autoedit' => 'Aŭtomate ĝisdatiganta tradukojn surbaze de ŝanĝoj en la fonta SVG-dosiero',
+	'translate-svg-autofuzzy' => 'Aŭtomate markanta tradukojn malprecizaj surbaze de ŝanĝoj en la fonta SVG-dosiero',
+	'translate-svg-upload-comment' => 'Ĝisdatiganta tradukojn (komencis: $1; modifis/etendis: $2)',
 	'translate-svg-upload-none' => '(neniu)',
+	'translate-svg-chooselanguage-title' => 'Lingvoelekto',
+	'translate-svg-chooselanguage-desc' => 'Bonvolu elekti la lingvon en kiun vi deziras traduki tiun ĉi SVG-dosieron:',
+	'translate-svg-instructions-title' => 'Ĉu vi unuafoje ĉi tiel tradukas SVG-dosieron?',
+	'translate-svg-instructions-desc' => 'Por komenci tradukadon de mesaĝo, klaku sur ĝian identigilon en la unua kolumno de la tabelo. Uzu la butonojn "$1" kaj "$2" por foliumi tra la tradukendaj mesaĝoj. Fininte ne forgesu uzi la panelon "$3" por rekonservi vian tradukaĵon en la fontan dosieron.',
+	'translate-svg-warn' => '<strong>Averto:</strong> Ekzistas nekonservitaj tradukoj en tiuj ĉi lingvo kiuj ne estos videblaj ĝis vi aŭ aliuo $1.',
+	'translate-svg-warn-inner' => 'rekonservas ilin en la fontan dosieron',
+	'translate-svg-new-title' => 'SVG-tradukado',
+	'translate-svg-new-summary' => "Por ektraduki tiun ĉi dosieron, bonvolu elekti la lingvon '''el''' kiu vi tradukas (do ne vian cellingvon).",
+	'translate-svg-new-label' => 'Lingvo:',
+	'translate-svg-new-error-import' => "'''Okazis eraro:''' Nekonata eraro okazis dum kreado de paĝoj necesaj por tradukado de tiu ĉi SVG.",
+	'translate-svg-new-error-group' => "'''Okazis eraro:''' Nekonata eraro okazis; eble vi forgesis specifi grupon en la URL?",
+	'translate-svg-export-unsupported' => 'Reelportado en SVG-n ne estas subtenata en tiu ĉi mesaĝgrupo. Se ne estas klare kial tiu ĉi eraro okazis, vi povas konsideri submeti cimraporton ĉe $1.',
+	'translate-svg-export-error' => 'Neantaŭvidata eraro okazis dum rekonservado de viaj ŝanĝoj en dosieron. Vi povas konsideri submeti cimraporton ĉe $1.',
+	'translate-js-properties-legend' => 'Atributoj',
+	'translate-js-label-x' => 'Koordinato X:',
+	'translate-js-label-y' => 'Koordinato Y:',
+	'translate-js-label-color' => 'Koloro:',
+	'translate-js-label-font-family' => 'Tiparo:',
+	'translate-js-label-bold' => 'Grasa',
+	'translate-js-label-italic' => 'Kursiva',
+	'translate-js-label-underline' => 'Substrekita',
+	'translate-js-font-family-inherit' => '(heredata)',
 );
 
 /** Spanish (español)
@@ -781,6 +816,14 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'translatesvg-desc' => 'Forni un interfacie in stilo native pro traducer SVGs de maniera conforme al specification SVG1.1',
 	'translate-svg-nodesc' => '(Iste file non ha un description.)', # Fuzzy
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author පසිඳු කාවින්ද
+ */
+$messages['id'] = array(
+	'translate-svg-filepage-edit' => 'sunting',
+	'translate-svg-new-label' => 'Bahasa:',
 );
 
 /** Italian (italiano)
@@ -1636,19 +1679,26 @@ $messages['yi'] = array(
  * @author Shirayuki
  */
 $messages['zh-hans'] = array(
+	'translate-svg-thumbnail' => '原始文件',
+	'translate-taction-mstats-svgmg' => '文件统计',
 	'translate-svg-filepage-edit' => '编辑',
 	'translate-svg-filepage-finish' => '完成',
 	'translate-svg-filepage-another' => '其他语言',
 	'translate-svg-filepage-other' => '其他语言',
 	'translate-svg-filepage-item' => '$1（$2）',
 	'translate-svg-upload-none' => '（无）',
+	'translate-svg-chooselanguage-title' => '语言选择',
+	'translate-svg-new-title' => 'SVG翻译',
 	'translate-svg-new-label' => '语言：',
 	'translate-js-properties-legend' => '属性',
+	'translate-js-label-x' => 'X坐标：',
+	'translate-js-label-y' => 'Y坐标：',
 	'translate-js-label-color' => '颜色：',
 	'translate-js-label-font-family' => '字体：',
 	'translate-js-label-bold' => '粗体',
 	'translate-js-label-italic' => '斜体',
 	'translate-js-label-underline' => '底线',
+	'translate-js-font-family-inherit' => '（继承）',
 );
 
 /** Traditional Chinese (中文（繁體）‎)
@@ -1656,14 +1706,23 @@ $messages['zh-hans'] = array(
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
+	'translate-svg-thumbnail' => '原本文件',
+	'translate-taction-mstats-svgmg' => '文件統計',
 	'translate-svg-filepage-edit' => '編輯',
 	'translate-svg-filepage-finish' => '完成',
 	'translate-svg-filepage-another' => '其他語言',
 	'translate-svg-filepage-other' => '其他語言',
 	'translate-svg-upload-none' => '（無）',
+	'translate-svg-chooselanguage-title' => '語言選擇',
+	'translate-svg-new-title' => 'SVG翻譯',
 	'translate-svg-new-label' => '語言：',
+	'translate-js-properties-legend' => '屬性',
+	'translate-js-label-x' => 'X坐標：',
+	'translate-js-label-y' => 'Y坐標：',
 	'translate-js-label-color' => '顏色：',
+	'translate-js-label-font-family' => '字型：',
 	'translate-js-label-bold' => '粗體',
 	'translate-js-label-italic' => '斜體',
 	'translate-js-label-underline' => '底線',
+	'translate-js-font-family-inherit' => '（繼承）',
 );
