@@ -997,6 +997,56 @@ $messages['ko'] = array(
 	'translate-js-font-family-inherit' => '(상속)',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
+$messages['ksh'] = array(
+	'translatesvg-desc' => 'Brängg en Schnettschtäll för <i lang="en">SVG</i>-Datteije ze övversäze, wi en dä Norrem SVG1.1 faßjelaat.',
+	'translate-taskui-export-as-svg' => 'En de ojjenaal <i lang="en">SVG</i>-Dattei zeröckschriive',
+	'translate-svg-nodesc' => '(Et sinn-er kein Aanjaabe övve di Dattei jemaat woode)',
+	'translate-svg-thumbnail' => 'Ojinaal-Dattei',
+	'translate-svg-js-thumbnail' => '(dat Minnibelsche weed automattesch aanjepaß)',
+	'translate-page-description-legend-svgmg' => 'Aanjaabe övver heh di Dattei',
+	'translate-taction-mstats-svgmg' => 'Schtatistike övver de Dattei',
+	'translate-taction-export-svgmg' => 'Donn di veränderte Dattei huh laade',
+	'translate-svg-table-header' => 'Kännzeische fö dä Täx udder di Nohreesch',
+	'translate-svg-filepage-caption' => 'Heh dat Beld als <i lang="en">PNG</i> en ander Schprooche: $1',
+	'translate-svg-filepage-caption-translator' => 'Heh dat Beld, ußjejovve als <i lang="en">PNG</i> en ander Schprooche: $1 - udder övversäds_et op $2.',
+	'translate-svg-filepage-edit' => 'ändere',
+	'translate-svg-filepage-finish' => 'ophüüre',
+	'translate-svg-filepage-another' => 'en ander Schprooche',
+	'translate-svg-filepage-other' => 'ander Schprooche',
+	'translate-svg-filepage-invite' => 'Di Dattei heh kam_mer leisch op $1 övversäze.',
+	'translate-svg-autocreate' => 'Neue Övversäzongsaffschnedde wääde automattesch aanjelaat, zopaß zoh dä Veränderonge aan dä Ojjenaal-<i lang="en">SVG</i>-Dattei.',
+	'translate-svg-autodelete' => 'Onnüüdeje Övversäzongsaffschnedde wääde automattesch fottjeschmeße, zopaß zoh dä Veränderonge aan dä Ojjenaal-<i lang="en">SVG</i>-Dattei.',
+	'translate-svg-autoedit' => 'Övversäzonge wääde automattesch aanjepß, wann se en dä Ojjenaal-<i lang="en">SVG</i>-Dattei verändert woodte.',
+	'translate-svg-autofuzzy' => 'Övversäzonge wääde automattesch als ovverhollt makkeet, je noh dä Veränderonge en dä Ojjenaal-<i lang="en">SVG</i>-Dattei.',
+	'translate-svg-upload-comment' => 'Övversäzonge op der neue Schtand aam bränge - $1 aanjefange - $2 aanjepaß.',
+	'translate-svg-upload-none' => '(keine)',
+	'translate-svg-chooselanguage-title' => 'Schprooche-Wahl',
+	'translate-svg-chooselanguage-desc' => 'Bes esu jood un söhk di Schprooch uß, en di di <i lang="en">SVG</i>-Dattei övversaz wääde sull:',
+	'translate-svg-instructions-title' => 'Es dat et eezde Mohl, dat De en <i lang="en">SVG</i>-Dattei esu övversäz?',
+	'translate-svg-instructions-desc' => 'Öm loßzelääje, kleck mer op ene Kännzeischner en de eezde Kolonn en dä Tabäll un deiht di Nohreesch övversäze, di dann kütt. Met dä Knöpp „$1“ un „$2“ jeiht mer dorsch di Nohreeschte zom Övversäze. Aam Ängk kritt mer met däm Knopp „$3“ di Övversäzonge en de Ojjenaal-Dattei eren jeschrevve.',
+	'translate-svg-warn' => '<strong>Opjepaß:</strong> Mer han em Momang onjesescherte Övversäzonge en dä Schprooch, di ävver eez seeschbaa wääde, wam_mer $1.',
+	'translate-svg-warn-inner' => 'se en de Ojinaal_Dattei seschert',
+	'translate-svg-new-title' => ' <i lang="en">SVG</i>-Övversäzong',
+	'translate-svg-new-summary' => "Öm mem Övversäze aanzefange, donn et eez di Schprooch beschtemme, '''vun''' woh di Dattei övversäz wääde sull. Em Zweivel, nämm di miehzjebruchte Schprooch.",
+	'translate-svg-new-label' => 'De Schprooch:',
+	'translate-svg-new-error-import' => "'''Ene Fähler es opjetrodde,''' beim Versohch, di Sigge aanzelääje, di för et Övversäzze vun dä <i lang=\"en\">SVG</i>-Dattei nüüdesch sin.",
+	'translate-svg-new-error-group' => "'''Ene Fähler es opjetrodde,''' wat jenou es nit kloh, velleisch had_Er verjäße, en Jropp em <i lang=\"en\">URL</i> aanzejävve?",
+	'translate-svg-export-unsupported' => 'Övversäzonge en de <i lang="en">SVG</i>-Dattei zerökschriive künne mer för heh di Nohreeschtejropp nit. Wann nit kloh es, woröm dadd_esu es, künnts De en Fählermäldong maache op $1.',
+	'translate-svg-export-error' => 'Ene onklohre Fähler es opjetrodde wi mer versöhk han, di Övversäzonge en de <i lang="en">SVG</i>-Dattei zerökzeschriive. Do künnds en Fählermäldong doh drövver maache op $1.',
+	'translate-js-properties-legend' => 'Eijeschaffte',
+	'translate-js-label-x' => "x-Ko'odenaate:",
+	'translate-js-label-y' => "y-Ko'odenaate:",
+	'translate-js-label-color' => 'Färv:',
+	'translate-js-label-font-family' => 'Schreff-Zoot:',
+	'translate-js-label-bold' => 'Fätte Schreff',
+	'translate-js-label-italic' => 'Scheive Schreff',
+	'translate-js-label-underline' => 'Ongerschtresche',
+	'translate-js-font-family-inherit' => '(ärve)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -1401,6 +1451,7 @@ $messages['si'] = array(
 	'translate-js-label-font-family' => 'අක්ෂරය:',
 	'translate-js-label-bold' => 'තද පැහැති',
 	'translate-js-label-italic' => 'ඇළ අකුරු',
+	'translate-js-label-underline' => 'යට ඉරි ගසන්න',
 );
 
 /** Swedish (svenska)
