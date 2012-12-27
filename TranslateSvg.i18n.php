@@ -1288,6 +1288,56 @@ $messages['pl'] = array(
 	'translate-js-label-underline' => 'Podkreślenie',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'translatesvg-desc' => "A dà n'antërfacia an stil nativ për volté SVG an linia con la specificassion SVG1.1",
+	'translate-taskui-export-as-svg' => "Salva andré dzora l'archivi original SVG",
+	'translate-svg-nodesc' => "(Gnun-a descrission d'archivi a l'é stàit dàit.)",
+	'translate-svg-thumbnail' => 'Archivi original',
+	'translate-svg-js-thumbnail' => "(la miniadura a s'agiorna automaticament)",
+	'translate-page-description-legend-svgmg' => 'Anformassion a propòsit dë sto archivi',
+	'translate-taction-mstats-svgmg' => "Statìstiche d'archivi",
+	'translate-taction-export-svgmg' => "Caria na vërsion agiornà dl'archivi",
+	'translate-svg-table-header' => 'Identificador dël mëssagi',
+	'translate-svg-filepage-caption' => "Sta figura a l'é rëndùa com PNG an àutre lenghe: $1",
+	'translate-svg-filepage-caption-translator' => "Sta figura a l'é rëndùa com PNG an àutre lenghe: $1; o vòltla an $2",
+	'translate-svg-filepage-edit' => 'modìfica',
+	'translate-svg-filepage-finish' => 'finiss',
+	'translate-svg-filepage-another' => 'Àutra lenga',
+	'translate-svg-filepage-other' => 'àutre lenghe',
+	'translate-svg-filepage-invite' => "St'archivi a peul esse voltà facilment an $1",
+	'translate-svg-autocreate' => "Creé automaticament unità ëd tradussion dzora cambi a l'archivi sorziss SVG",
+	'translate-svg-autodelete' => "Scanselé automaticament unità ëd tradussion pa necessarie basà su cambi a l'archivi sorziss SVG",
+	'translate-svg-autoedit' => "Agiorné automaticament dle tradussion basà su cambi a l'archivi sorziss SVG",
+	'translate-svg-autofuzzy' => 'Marché automaticament dle tradussion com "fuzzy" basà su cambi a l\'archivi sorziss SVG',
+	'translate-svg-upload-comment' => 'Modifiché tradussion (ancaminà: $1; modificà/espandù: $2)',
+	'translate-svg-upload-none' => '(gnun)',
+	'translate-svg-chooselanguage-title' => 'Selession ëd lenga',
+	'translate-svg-chooselanguage-desc' => "Për piasì selession-a la lenga anté it veule volté st'archivi SVG:",
+	'translate-svg-instructions-title' => "Prima vira ch'it traduve n'archivi SVG an sta manera?",
+	'translate-svg-instructions-desc' => 'Për ancaminé, sgnaca dzora n\'identificador ëd mëssagi ant la prima colòna dla tàula dàita për ancaminé la tradussion dël mëssagi, dovrand ij boton "$1" e "$2" për giuté a navighé travers ai mëssagi ch\'a ciamo tradussion. Quand it l\'has fàit, arcòrdte ëd dovré la scheda "$3" për salvé toe tradussion andré ant l\'archivi original.',
+	'translate-svg-warn' => '<strong>Avis:</strong> A-i son al moment dle tradussion pa salvà an costa lenga, che a saran pa visible fin che ti o quaidun àutr $1.',
+	'translate-svg-warn-inner' => "a salva sti cambi andré ant l'archivi original",
+	'translate-svg-new-title' => 'Tradussion SVG',
+	'translate-svg-new-summary' => "Për ancaminé la tradussion dë st'archivi, për piasì selession-a la lenga anté it të stas voltand sto archivi '''da''' (se pa ciàir, selession-a la lenga pi largament parlà).",
+	'translate-svg-new-label' => 'Lenghe',
+	'translate-svg-new-error-import' => "'''A l'é capitaje n'eror:''' N'eror pa conossù a l'é capità an mente it provave a creé le pagine ciamà për volté sto SVG.",
+	'translate-svg-new-error-group' => "'''A l'é capitaje n'eror:''' A l'é capitaje n'eror pa conossù; miraco it l'has-to dësmentià dë specifiché na partìa ant l'anliura?",
+	'translate-svg-export-unsupported' => "Esporté andré a un SVG a l'é pa apogià për sta partìa ëd mëssagi. S'a l'é pa ciàir përché sòn a l'é capità, it peule signalé n'eror a propòsit ëd sòn a $1.",
+	'translate-svg-export-error' => "N'eror pa spetà a l'é capità provand a salvé it tò cambi andré dzora l'archivi. It peule signalé n'eror a propòsit ëd sòn a $1.",
+	'translate-js-properties-legend' => 'Proprietà',
+	'translate-js-label-x' => 'X-coordinà:',
+	'translate-js-label-y' => 'Y-coordinà:',
+	'translate-js-label-color' => 'Color:',
+	'translate-js-label-font-family' => 'Font (caràter):',
+	'translate-js-label-bold' => 'Grassèt',
+	'translate-js-label-italic' => 'Corsiv',
+	'translate-js-label-underline' => 'Sotlineà',
+	'translate-js-font-family-inherit' => '(ardità)',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -1436,6 +1486,9 @@ $messages['rue'] = array(
  */
 $messages['si'] = array(
 	'translate-svg-thumbnail' => 'නියම ගොනුව',
+	'translate-page-description-legend-svgmg' => 'මෙම ගොනුව පිළිබඳ තොරතුරු',
+	'translate-taction-mstats-svgmg' => 'ගොනු සංඛ්‍යාන දත්ත',
+	'translate-svg-table-header' => 'පණිවුඩ හඳුන්වනය',
 	'translate-svg-filepage-edit' => 'සංස්කරණය',
 	'translate-svg-filepage-finish' => 'අවසාන කරන්න',
 	'translate-svg-filepage-another' => 'වෙනත් භාෂාව',
@@ -1452,6 +1505,7 @@ $messages['si'] = array(
 	'translate-js-label-bold' => 'තද පැහැති',
 	'translate-js-label-italic' => 'ඇළ අකුරු',
 	'translate-js-label-underline' => 'යට ඉරි ගසන්න',
+	'translate-js-font-family-inherit' => '(උරුමවීම)',
 );
 
 /** Swedish (svenska)
