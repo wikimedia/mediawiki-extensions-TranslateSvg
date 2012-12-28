@@ -40,6 +40,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'jquery.ui.dialog',
 		'jquery.autoresize',
 		'jquery.colorpicker',
+		'jquery.json',
 		'ext.translate.hooks'
 	),
 	'messages' => array(
@@ -59,6 +60,10 @@ $wgHooks['TranslateGetExtraInputs'][] = 'TranslateSvgHooks::propertiesToExtraInp
 $wgHooks['TranslateFormatMessageBeforeTable'][] = 'TranslateSvgHooks::stripPropertyString';
 $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::exposeTranslateSvgTemplateName';
 $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
+$wgHooks['TranslateGetAPIMessageGroupsPropertyDescs'][] = 'TranslateSvgHooks::addAPIProperties';
+$wgHooks['TranslateGetAPIMessageGroupsParameterDescs'][] = 'TranslateSvgHooks::addAPIParamDescs';
+$wgHooks['TranslateGetAPIMessageGroupsParameterList'][] = 'TranslateSvgHooks::addAPIParams';
+$wgHooks['TranslateProcessAPIMessageGroupsProperties'][] = 'TranslateSvgHooks::processAPIProperties';
 
 /**
  * List of typefaces (or keywords) that can safely be incorporated into SVG

@@ -76,6 +76,8 @@ class TranslateSvgHooks{
 	 * @return \bool true
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, $handle ) {
+		if( !$handle->isValid() ) return true;
+
 		$group = $handle->getGroup();
 		if( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
 			return true;
@@ -212,6 +214,7 @@ class TranslateSvgHooks{
 
 	/**
 	 * Function used to make "export as SVG" the default export option for SVG files
+	 * Used with the TranslateGetSpecialTranslateOptions hook
 	 *
 	 * @param $defaults \array Associative array of so-called "default" values supplied by Translate
 	 * @param $defaults \array Associative array of so-called "non-default" values supplied by Translate
@@ -224,6 +227,81 @@ class TranslateSvgHooks{
 			&& $nondefaults['taction'] == 'export' ) {
 			$nondefaults['task'] = 'export-as-svg';
 		}
+		return true;
+	}
+
+	/**
+	 * Define the thumbnail property for use with the mgprop parameter of
+	 * action=query&meta=messagegroups API queries.
+	 * Used with the TranslateGetAPIMessageGroupsPropertyDescs hook
+	 *
+	 * @param $properties \array An associative array of properties (name => details)
+	 */
+	public static function addAPIProperties( &$properties ) {
+		$properties['thumbnail'] = ' thumbnail    - Include URL of up-to-date thumbnail (SVG message groups only)';
+		return true;
+	}
+
+	/**
+	 * Process the thumbnail property for use with the mgprop parameter of
+	 * action=query&meta=messagegroups API queries.
+	 * Used with the TranslateProcessAPIMessageGroupsProperties hook
+	 *
+	 * @param $a \array Associative array of the properties of $group that will be returned
+	 * @param $props \array Associative array ($name => true) of properties the user has specifically requested
+	 * @param $params \array Parameter input by the user (unprefixed name => value)
+	 * @param $g: \MessageGroup The group in question
+	 */
+	public static function processAPIProperties( &$a, $props, $params, $g ) {
+		if( !( $g instanceof SVGMessageGroup ) ) {
+			return true;
+		}
+
+		if( isset( $props['thumbnail'] ) ) {
+			$language = isset( $params['language'] ) ?
+				$params['language'] : $g->getSourceLanguage();
+
+			$overrides = array();
+			if( isset( $params['overrides'] ) ) {
+				$overrides = json_decode( $params['overrides'], true );
+			}
+
+			$writer = new SVGFormatWriter( $g, $overrides );
+			$a['thumbnail'] = $writer->thumbnailExport( $language );
+		}
+		return true;
+	}
+
+	/**
+	 * Define mgoverrides and mglanguage parameters for use with
+	 * action=query&meta=messagegroups API queries.
+	 * Used with the TranslateGetAPIMessageGroupsParameterList hook
+	 *
+	 * @param $params \array An associative array of possible parameters (name => details)
+	 */
+	public static function addAPIParams( &$params ) {
+		$params['overrides'] = array(
+			ApiBase::PARAM_TYPE => 'string'
+		);
+		$params['language'] = array(
+			ApiBase::PARAM_TYPE => 'string'
+		);
+		return true;
+	}
+
+	/**
+	 * Document the mgoverrides and mglanguage parameters
+	 * Used with the TranslateGetAPIMessageGroupsParameterDescs hook
+	 *
+	 * @param $paramDescs \array An associative array of parameters, name => description.
+	 * @param $p \string The prefix for action=query&meta=messagegroups (unused)
+	 */
+	public static function addAPIParamDescs( &$paramDescs, $p ) {
+		$paramDescs['overrides'] =
+			'Possible array of overriddes (unsaved translations that should take preference'
+			. ' over saved ones). SVG message groups only.';
+		$paramDescs['language'] =
+			'Language to render the thumbnail in. SVG message groups only.';
 		return true;
 	}
 }
