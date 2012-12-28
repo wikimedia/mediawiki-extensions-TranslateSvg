@@ -99,13 +99,11 @@ class SVGMessageGroup extends WikiMessageGroup {
 	public function getProperties( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
 		if ( !$title->exists() ) {
-			return null;
+			return '';
 		}
 		$translation = Revision::newFromTitle( $title )->getText();
 		$properties = TranslateSvgUtils::extractPropertyString( $translation );
-		if( $properties === '' ){
-			return null;
-		}
+
 		return $properties;
 	}
 
