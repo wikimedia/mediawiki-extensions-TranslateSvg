@@ -237,6 +237,14 @@ $messages['bn'] = array(
 	'translate-js-label-italic' => 'ইটালিক',
 );
 
+/** Czech (česky)
+ * @author Vks
+ */
+$messages['cs'] = array(
+	'translate-js-label-color' => 'Barva:',
+	'translate-js-label-font-family' => 'Písmo:',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
@@ -1485,9 +1493,13 @@ $messages['rue'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['si'] = array(
+	'translate-taskui-export-as-svg' => 'නියම SVG ගොනුව වෙත නැවත සුරකින්න',
+	'translate-svg-nodesc' => '(ගොනු විස්තරයක් ඉදිරිපත් කොට නොමැත.)',
 	'translate-svg-thumbnail' => 'නියම ගොනුව',
+	'translate-svg-js-thumbnail' => '(සංක්ෂිප්ත නිරූපකය ස්වයංක්‍රීයව යාවත්කාලීන වේ)',
 	'translate-page-description-legend-svgmg' => 'මෙම ගොනුව පිළිබඳ තොරතුරු',
 	'translate-taction-mstats-svgmg' => 'ගොනු සංඛ්‍යාන දත්ත',
+	'translate-taction-export-svgmg' => 'ගොනුවේ යාවත්කාලීන කෙරූ අනුවාදයක් උඩුගත කරන්න',
 	'translate-svg-table-header' => 'පණිවුඩ හඳුන්වනය',
 	'translate-svg-filepage-edit' => 'සංස්කරණය',
 	'translate-svg-filepage-finish' => 'අවසාන කරන්න',
@@ -1495,6 +1507,7 @@ $messages['si'] = array(
 	'translate-svg-filepage-other' => 'වෙනත් භාෂාවන්',
 	'translate-svg-upload-none' => '(කිසිවක් නැත)',
 	'translate-svg-chooselanguage-title' => 'භාෂා තේරීම',
+	'translate-svg-warn-inner' => 'එම වෙනස්කම් නැවතත් නියම ගොනුවට සුරකින්න',
 	'translate-svg-new-title' => 'SVG පරිවර්තනය',
 	'translate-svg-new-label' => 'භාෂාව:',
 	'translate-js-properties-legend' => 'ගුණ',
