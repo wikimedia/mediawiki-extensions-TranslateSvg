@@ -17,6 +17,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 $dir = dirname( __FILE__ ) . '/';
+$wgAutoloadClasses['SpecialTranslateNewSVG'] = $dir . 'SpecialTranslateNewSVG.php';
 $wgAutoloadClasses['SVGFormatReader'] = $dir . 'SVGFormatReader.php';
 $wgAutoloadClasses['SVGFormatWriter'] = $dir . 'SVGFormatWriter.php';
 $wgAutoloadClasses['SVGMessageGroup'] = $dir . 'SVGMessageGroup.php';
@@ -52,6 +53,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 	'remoteExtPath' => 'TranslateSvg'
 );
 
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'TranslateSvgHooks::schemaUpdates';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::addThumbnail';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeQQQ';
 $wgHooks['TranslateGetSpecialTranslateOptions'][] = 'TranslateSvgHooks::makeExportAsSvgOptionDefault';
@@ -63,7 +65,11 @@ $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
 $wgHooks['TranslateGetAPIMessageGroupsPropertyDescs'][] = 'TranslateSvgHooks::addAPIProperties';
 $wgHooks['TranslateGetAPIMessageGroupsParameterDescs'][] = 'TranslateSvgHooks::addAPIParamDescs';
 $wgHooks['TranslateGetAPIMessageGroupsParameterList'][] = 'TranslateSvgHooks::addAPIParams';
+$wgHooks['TranslatePostInitGroups'][] = 'TranslateSvgHooks::loadSVGGroups';
 $wgHooks['TranslateProcessAPIMessageGroupsProperties'][] = 'TranslateSvgHooks::processAPIProperties';
+
+$wgSpecialPages['TranslateNewSVG'] = 'SpecialTranslateNewSVG';
+$wgSpecialPageGroups['TranslateNewSVG'] = 'wiki';
 
 /**
  * List of typefaces (or keywords) that can safely be incorporated into SVG
