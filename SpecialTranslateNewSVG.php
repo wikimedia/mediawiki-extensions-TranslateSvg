@@ -25,10 +25,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader( 'translate-svg-new-summary' );
 
-		if( !$this->checkPermissions() ) {
-			$this->getOutput()->addWikiMsg( 'translate-edit-nopermission' );
-			return;
-		}
+		$this->checkPermissions();
 
 		$req = $this->getRequest();
 		$groupName = $req->getVal( 'group' );
@@ -91,8 +88,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 
 	protected function showForm( $groupName, $srcLang ) {
 		global $wgScript;
-
-		$default = ( $srcLang === null ) ? $this->getLanguage() : $srcLang;
+		$default = ( $srcLang === null ) ? $this->getLanguage()->getCode() : $srcLang;
 		$this->getOutput()->addHTML(
 			Html::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript, 'id' => 'specialtranslateNewSVG' ) ) .
 			Html::openElement( 'fieldset' ) .

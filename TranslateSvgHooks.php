@@ -200,13 +200,15 @@ class TranslateSvgHooks{
 
 	/**
 	 * Function used to expose the $wgTranslateSvgTemplateName global to
-	 * JavaScript via the MakeGlobalVariablesScript hook
+	 * JavaScript via the MakeGlobalVariablesScript MediaWiki hook
 	 *
+	 * @param &$vars Array of variables to be exposed to JavaScript
+	 * @param $out Contextual OutputPage instance
 	 * @return \bool true
 	 */
-	public static function exposeTranslateSvgTemplateName( &$vars ) {
-		global $wgTitle, $wgTranslateSvgTemplateName;
-		if( $wgTitle->isSpecial( 'Translate' ) ) {
+	public static function exposeTranslateSvgTemplateName( &$vars, $out ) {
+		global $wgTranslateSvgTemplateName;
+		if( $out->getTitle()->isSpecial( 'Translate' ) ){
 			$vars['wgTranslateSvgTemplateName'] = $wgTranslateSvgTemplateName;
 		}
 		return true;
@@ -332,10 +334,10 @@ class TranslateSvgHooks{
 	public static function loadSVGGroups( &$list, &$deps, &$autoload ) {
 		$dbr = wfGetDB( DB_MASTER );
 
-		$table = array( 'page', 'translate_svg' );
-		$col = 'page.*';
-		$conds = array( 'page_id' => 'ts_page_id' );
-		$res = $dbr->select( $table, $col, '', __METHOD__ );
+		$tables = array( 'translate_svg', 'page' );
+		$col = '*';
+		$conds = array( 'page_id = ts_page_id' );
+		$res = $dbr->select( $tables, $col, $conds, __METHOD__ );
 
 		foreach ( $res as $r ) {
 			// Get a sanitised, normalised form of the title
