@@ -259,6 +259,21 @@ class TranslateSvgHooks{
 		return true;
 	}
 
+	/*
+	 * Function used to add modules via the resource loader on
+	 * the file pages of SVG files via the BeforePageDisplay MediaWiki hook
+	 *
+	 * @param $out Contextual OutputPage instance
+	 * @return \bool true
+	 */
+	public static function updateFileDescriptionPages( $out ) {
+		$title = $out->getTitle();
+		if( TranslateSvgUtils::isSVGFilePage( $title ) ) {
+			$out->addModules( 'ext.translatesvg.filepage' );
+		}
+		return true;
+	}
+
 	/**
 	 * Process the thumbnail property for use with the mgprop parameter of
 	 * action=query&meta=messagegroups API queries.
@@ -344,7 +359,60 @@ class TranslateSvgHooks{
 			$group = Title::newFromRow( $r )->getText();
 			$list[$group] = new SVGMessageGroup( $group );
 		}
+		return true;
+	}
 
+	/**
+	 * Function used to expose various new globals to the
+	 * JavaScript of the file description pages of SVG files
+	 * via the MakeGlobalVariablesScript MediaWiki hook.
+	 *
+	 * @param &$vars Array of variables to be exposed to JavaScript
+	 * @param $out Contextual OutputPage instance
+	 * @return \bool true
+	 */
+	public static function makeFilePageGlobalVariables( &$vars, $out ) {
+		global $wgLanguageNames;
+
+		$title = $out->getTitle();
+		if( !TranslateSvgUtils::isSVGFilePage( $title ) ) {
+			return true;
+		}
+
+		$user = $out->getUser();
+		$vars['wgUserLanguageName'] = Language::fetchLanguageName(
+			$user->getOption( 'language' )
+		);
+		$vars['wgUserCanTranslate'] = $user->isAllowed( 'translate' );
+
+		$id = $title->getText();
+		$messageGroup = new SVGMessageGroup( $id );
+		$reader = new SVGFormatReader( $messageGroup );
+		$vars['wgFileCanBeTranslated'] = ( $reader !== null );
+		if( !$vars['wgFileCanBeTranslated'] || !MessageGroups::getGroup( $id ) ) {
+			// Not translatable or not yet translated, let's save time and return immediately
+			$vars['wgFileFullTranslations'] = array();
+			$vars['wgFilePartialTranslations'] = array();
+			return true;
+		}
+
+		$languages = $reader->getSavedLanguagesFiltered();
+		$full = array();
+		$partial = array();
+		foreach( $languages['full'] as $language ) {
+			array_push( $full, array(
+				'name' => Language::fetchLanguageName( $language ),
+				'code' => $language
+			) );
+		}
+		foreach( $languages['partial'] as $language ) {
+			array_push( $partial, array(
+				'name' => Language::fetchLanguageName( $language ),
+				'code' => $language
+			) );
+		}
+		$vars['wgFileFullTranslations'] = $full;
+		$vars['wgFilePartialTranslations'] = $partial;
 		return true;
 	}
 }
