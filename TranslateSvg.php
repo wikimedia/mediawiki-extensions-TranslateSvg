@@ -26,6 +26,7 @@ $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgAutoloadClasses['ExportSVGMessagesTask'] = $dir . 'TranslateSvgTasks.php';
 $wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
+$wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
 
 $wgResourceModules['jquery.colorpicker'] = array(
 	'scripts' => array( 'resources/jquery.colorpicker.js' ),
