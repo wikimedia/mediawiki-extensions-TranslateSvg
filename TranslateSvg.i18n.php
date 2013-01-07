@@ -237,6 +237,14 @@ $messages['bn'] = array(
 	'translate-js-label-italic' => 'ইটালিক',
 );
 
+/** Sorani Kurdish (کوردی)
+ * @author Calak
+ */
+$messages['ckb'] = array(
+	'translate-svg-upload-none' => '(ھیچ)',
+	'translate-js-label-color' => 'ڕەنگ:',
+);
+
 /** Czech (česky)
  * @author Vks
  */
