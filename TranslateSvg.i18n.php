@@ -1749,10 +1749,17 @@ $messages['ur'] = array(
  * @author පසිඳු කාවින්ද
  */
 $messages['vi'] = array(
+	'translatesvg-desc' => 'Cung cấp giao diện giống dạng thuần để biên dịch các tập tin SVG theo tiêu chuẩn SVG 1.1',
+	'translate-taskui-export-as-svg' => 'Lưu vào tập tin SVG gốc',
+	'translate-svg-nodesc' => '(Không cung cấp lời miêu tả tập tin.)',
 	'translate-svg-thumbnail' => 'Tập tin gốc',
+	'translate-svg-js-thumbnail' => '(hình nhỏ sẽ được cập nhật tự động)',
 	'translate-page-description-legend-svgmg' => 'Thông tin về tập tin này',
 	'translate-taction-mstats-svgmg' => 'Thống kê tập tin',
+	'translate-taction-export-svgmg' => 'Tải lên tập tin cập nhật',
 	'translate-svg-table-header' => 'Định danh thông điệp',
+	'translate-svg-filepage-caption' => 'Hình này được kết xuất dưới dạng PNG trong ngôn ngữ khác: $1',
+	'translate-svg-filepage-caption-translator' => 'Hình này được kết xuất dưới dạng PNG trong ngôn ngữ khác: $1; hoặc dịch nó ra $2',
 	'translate-svg-filepage-edit' => 'sửa',
 	'translate-svg-filepage-finish' => 'Kết thúc',
 	'translate-svg-filepage-another' => 'ngôn ngữ khác',
@@ -1760,6 +1767,8 @@ $messages['vi'] = array(
 	'translate-svg-filepage-invite' => 'Có thể dịch tập tin này ra $1 một cách dễ dàng',
 	'translate-svg-upload-none' => '(không có)',
 	'translate-svg-chooselanguage-title' => 'Lựa chọn ngôn ngữ',
+	'translate-svg-warn' => '<strong>Cảnh báo:</strong> Hiện có bản dịch chưa lưu trong ngôn ngữ này. Để hiển thị các bản dịch này, bạn hoặc người khác phải $1.',
+	'translate-svg-warn-inner' => 'lưu các thay đổi vào tập tin gốc',
 	'translate-svg-new-title' => 'Biên dịch SVG',
 	'translate-svg-new-label' => 'Ngôn ngữ:',
 	'translate-js-properties-legend' => 'Thuộc tính',
