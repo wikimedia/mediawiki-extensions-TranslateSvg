@@ -10,3 +10,8 @@ $specialPageAliases = array();
 $specialPageAliases['en'] = array(
 	'TranslateNewSVG' => array( 'TranslateNewSVG' ),
 );
+
+/** Korean (한국어) */
+$specialPageAliases['ko'] = array(
+	'TranslateNewSVG' => array( '새SVG번역' ),
+);
