@@ -68,6 +68,7 @@ $messages['en'] = array(
  * @author F. Cosoleto
  * @author Jarry1250
  * @author Kghbln
+ * @author Shirayuki
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -120,7 +121,8 @@ $messages['qqq'] = array(
 	'translate-js-label-font-size' => 'Label for a textbox which sets the size of the typeface used in a string',
 	'translate-js-label-units' => 'Label for a dropdown "combobox" which sets the units for the font-size used in a string',
 	'translate-js-label-bold' => 'Label for a checkbox governing the formatting of a string',
-	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string',
+	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string.
+{{Identical|Italic}}',
 	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string',
 	'translate-js-font-family-inherit' => 'Label used to imply that no specific typeface will be set for a string; instead, it will be inherited from the document default.',
 );

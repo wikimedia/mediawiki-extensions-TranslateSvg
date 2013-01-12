@@ -15,3 +15,8 @@ $specialPageAliases['en'] = array(
 $specialPageAliases['ko'] = array(
 	'TranslateNewSVG' => array( '새SVG번역' ),
 );
+
+/** Macedonian (македонски) */
+$specialPageAliases['mk'] = array(
+	'TranslateNewSVG' => array( 'ПреведиНовSVG' ),
+);
