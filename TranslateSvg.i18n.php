@@ -1307,26 +1307,27 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'translatesvg-desc' => "A dà n'antërfacia an stil nativ për volté SVG an linia con la specificassion SVG1.1",
 	'translate-taskui-export-as-svg' => "Salva andré dzora l'archivi original SVG",
-	'translate-svg-nodesc' => "(Gnun-a descrission d'archivi a l'é stàit dàit.)",
+	'translate-svg-nodesc' => "(Gnun-a descrission dl'archivi a l'é stàita dàita.)",
 	'translate-svg-thumbnail' => 'Archivi original',
 	'translate-svg-js-thumbnail' => "(la miniadura a s'agiorna automaticament)",
-	'translate-page-description-legend-svgmg' => 'Anformassion a propòsit dë sto archivi',
-	'translate-taction-mstats-svgmg' => "Statìstiche d'archivi",
-	'translate-taction-export-svgmg' => "Caria na vërsion agiornà dl'archivi",
-	'translate-svg-table-header' => 'Identificador dël mëssagi',
-	'translate-svg-filepage-caption' => "Sta figura a l'é rëndùa com PNG an àutre lenghe: $1",
-	'translate-svg-filepage-caption-translator' => "Sta figura a l'é rëndùa com PNG an àutre lenghe: $1; o vòltla an $2",
+	'translate-page-description-legend-svgmg' => 'Anformassion a propòsit ëdë cost archivi',
+	'translate-taction-mstats-svgmg' => "Statìstiche dl'archivi",
+	'translate-taction-export-svgmg' => "Carié na version agiornà dl'archivi",
+	'translate-svg-table-header' => 'Identificativ dël mëssagi',
+	'translate-svg-filepage-caption' => "Sta figura a l'é rendùa com PNG an d'àutre lenghe: $1",
+	'translate-svg-filepage-caption-translator' => "Costa figura rendùa com PNG an d'àutre lenghe: $1; opura voltela an $2",
 	'translate-svg-filepage-edit' => 'modìfica',
 	'translate-svg-filepage-finish' => 'finiss',
 	'translate-svg-filepage-another' => 'Àutra lenga',
 	'translate-svg-filepage-other' => 'àutre lenghe',
 	'translate-svg-filepage-invite' => "St'archivi a peul esse voltà facilment an $1",
-	'translate-svg-autocreate' => "Creé automaticament unità ëd tradussion dzora cambi a l'archivi sorziss SVG",
+	'translate-svg-autocreate' => "Creé automaticament dj'unità ëd tradussion basà ansima ai cangiament a l'archivi sorgiss SVG",
 	'translate-svg-autodelete' => "Scanselé automaticament unità ëd tradussion pa necessarie basà su cambi a l'archivi sorziss SVG",
 	'translate-svg-autoedit' => "Agiorné automaticament dle tradussion basà su cambi a l'archivi sorziss SVG",
 	'translate-svg-autofuzzy' => 'Marché automaticament dle tradussion com "fuzzy" basà su cambi a l\'archivi sorziss SVG',
