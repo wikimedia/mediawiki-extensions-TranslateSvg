@@ -1348,12 +1348,12 @@ $messages['pms'] = array(
 	'translate-svg-export-error' => "N'eror pa spetà a l'é capità provand a salvé ij sò cangiament dzora l'archivi. A peul signalé n'eror a propòsit ëd sòn a $1.",
 	'translate-js-properties-legend' => 'Proprietà',
 	'translate-js-label-x' => 'Coordinà X:',
-	'translate-js-label-y' => 'Y-coordinà:',
+	'translate-js-label-y' => 'Coordinà Y:',
 	'translate-js-label-color' => 'Color:',
-	'translate-js-label-font-family' => 'Font (caràter):',
+	'translate-js-label-font-family' => 'Tipo ëd caràter:',
 	'translate-js-label-bold' => 'Grassèt',
 	'translate-js-label-italic' => 'Corsiv',
-	'translate-js-label-underline' => 'Sotlineà',
+	'translate-js-label-underline' => 'Sot-linià',
 	'translate-js-font-family-inherit' => '(ardità)',
 );
 
