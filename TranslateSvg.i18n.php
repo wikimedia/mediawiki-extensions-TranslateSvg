@@ -1442,6 +1442,17 @@ $messages['ro'] = array(
 	'translate-js-label-underline' => 'Subliniere',
 );
 
+/** tarandíne (tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'translate-svg-filepage-edit' => 'cange',
+	'translate-svg-filepage-finish' => 'spicce',
+	'translate-svg-filepage-another' => "'n'otra lènghe",
+	'translate-svg-filepage-other' => 'otre lènghe',
+	'translate-svg-upload-none' => '(ninde)',
+);
+
 /** Russian (русский)
  * @author Express2000
  * @author Kalan
