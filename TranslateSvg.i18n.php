@@ -86,7 +86,8 @@ $messages['qqq'] = array(
 	'translate-svg-filepage-edit' => 'Call to action, used as link text',
 	'translate-svg-filepage-finish' => 'Call to action, used as link text',
 	'translate-svg-filepage-another' => 'Fragment, takes the place of a language name in a list; used as link text, links to a language selection dialog',
-	'translate-svg-filepage-other' => 'Fragment, used as link text in [[MediaWiki:Translate-svg-filepage-invite]], links to a language selection dialog',
+	'translate-svg-filepage-other' => 'Fragment, used as link text in [[MediaWiki:Translate-svg-filepage-invite]], links to a language selection dialog.
+{{Identical|Otherlanguages}}',
 	'translate-svg-filepage-item' => 'The format for each item in a comma-separated list; $1 represents a language name, $2 a call to action.
 
 {{optional}}',
