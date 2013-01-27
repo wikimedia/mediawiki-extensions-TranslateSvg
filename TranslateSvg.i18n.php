@@ -1829,10 +1829,19 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (中文（简体）‎)
  * @author Shirayuki
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
+	'translatesvg-desc' => '为转译符合SVG1.1规范的SVG提供一个原生样式接口',
+	'translate-taskui-export-as-svg' => '保存回原始SVG文件',
+	'translate-svg-nodesc' => '（没有提供文件描述。）',
 	'translate-svg-thumbnail' => '原始文件',
+	'translate-svg-js-thumbnail' => '（自动更新缩略图）',
+	'translate-page-description-legend-svgmg' => '有关此文件的信息',
 	'translate-taction-mstats-svgmg' => '文件统计',
+	'translate-taction-export-svgmg' => '上传已上传文件的版本',
+	'translate-svg-table-header' => '消息标识符',
+	'translate-svg-filepage-caption' => '此图像在某些语言中呈现为PNG，包括语言：$1',
 	'translate-svg-filepage-edit' => '编辑',
 	'translate-svg-filepage-finish' => '完成',
 	'translate-svg-filepage-another' => '其他语言',
