@@ -25,3 +25,13 @@ $specialPageAliases['ko'] = array(
 $specialPageAliases['mk'] = array(
 	'TranslateNewSVG' => array( 'ПреведиНовSVG' ),
 );
+
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = array(
+	'TranslateNewSVG' => array( 'പുതിയഎസ്.വി.ജി.പരിഭാഷ' ),
+);
+
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = array(
+	'TranslateNewSVG' => array( 'NieuweSVGVertalen' ),
+);
