@@ -950,6 +950,7 @@ $messages['ka'] = array(
 	'translate-taction-export-svgmg' => 'ამ ფაილის განახლებული ვერსიის ატვირთვა',
 	'translate-svg-filepage-edit' => 'რედაქტირება',
 	'translate-svg-filepage-finish' => 'დასრულება',
+	'translate-svg-filepage-another' => 'სხვა ენა',
 	'translate-svg-filepage-other' => 'სხვა ენები',
 	'translate-svg-upload-none' => '(არა)',
 	'translate-svg-chooselanguage-title' => 'ენის არჩევა',
