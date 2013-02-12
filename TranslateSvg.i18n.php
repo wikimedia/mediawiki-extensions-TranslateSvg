@@ -1453,6 +1453,16 @@ $messages['roa-tara'] = array(
 	'translate-svg-filepage-another' => "'n'otra lènghe",
 	'translate-svg-filepage-other' => 'otre lènghe',
 	'translate-svg-upload-none' => '(ninde)',
+	'translate-svg-new-label' => 'Lènghe:',
+	'translate-js-properties-legend' => 'Probbietà',
+	'translate-js-label-x' => 'Coordinate X:',
+	'translate-js-label-y' => 'Coordinate Y:',
+	'translate-js-label-color' => 'Culore:',
+	'translate-js-label-font-family' => 'Carattere:',
+	'translate-js-label-bold' => 'Grascette',
+	'translate-js-label-italic' => 'Corsive',
+	'translate-js-label-underline' => 'Sottolineate',
+	'translate-js-font-family-inherit' => '(ereditate)',
 );
 
 /** Russian (русский)
