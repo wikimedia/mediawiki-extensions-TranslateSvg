@@ -114,7 +114,8 @@ $messages['qqq'] = array(
 	'translate-svg-new-error-group' => 'Text for a paragraph that appears whenever a certain type of error occurs',
 	'translate-svg-export-unsupported' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
 	'translate-svg-export-error' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
-	'translate-js-properties-legend' => 'The legend for a fieldset which contains property controls',
+	'translate-js-properties-legend' => 'The legend for a fieldset which contains property controls.
+{{Identical|Property}}',
 	'translate-js-label-x' => 'Label for textbox which sets the horizontal position of a string',
 	'translate-js-label-y' => 'Label for a textbox which sets the vertical position of a string',
 	'translate-js-label-color' => 'Label for a box which sets the (foreground) colour used for a string',
