@@ -1069,6 +1069,17 @@ $messages['ksh'] = array(
 	'translate-js-font-family-inherit' => '(ärve)',
 );
 
+/** Kurdish (Latin script) (Kurdî (latînî)‎)
+ * @author George Animal
+ */
+$messages['ku-latn'] = array(
+	'translate-svg-filepage-edit' => 'biguherîne',
+	'translate-svg-filepage-finish' => 'bi dawî bike',
+	'translate-svg-filepage-another' => 'zimanê din',
+	'translate-svg-filepage-other' => 'zimanên din',
+	'translate-svg-new-label' => 'Ziman:',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
