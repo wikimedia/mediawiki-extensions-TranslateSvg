@@ -35,3 +35,8 @@ $specialPageAliases['ml'] = array(
 $specialPageAliases['nl'] = array(
 	'TranslateNewSVG' => array( 'NieuweSVGVertalen' ),
 );
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = array(
+	'TranslateNewSVG' => array( 'Biên_dịch_SVG_mới' ),
+);
