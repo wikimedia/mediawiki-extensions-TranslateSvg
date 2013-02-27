@@ -40,3 +40,8 @@ $specialPageAliases['nl'] = array(
 $specialPageAliases['vi'] = array(
 	'TranslateNewSVG' => array( 'Biên_dịch_SVG_mới' ),
 );
+
+/** Traditional Chinese (中文（繁體）‎) */
+$specialPageAliases['zh-hant'] = array(
+	'TranslateNewSVG' => array( '翻譯SVG' ),
+);
