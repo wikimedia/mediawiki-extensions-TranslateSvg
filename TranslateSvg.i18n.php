@@ -72,7 +72,7 @@ $messages['en'] = array(
  * @author Siebrand
  */
 $messages['qqq'] = array(
-	'translatesvg-desc' => '{{desc}}',
+	'translatesvg-desc' => '{{desc|name=Translate Svg|url=http://www.mediawiki.org/wiki/Extension:TranslateSvg}}',
 	'translate-taskui-export-as-svg' => 'Label for a radio button, not currently displayed since no other options',
 	'translate-svg-nodesc' => 'Text that displays under the heading "Information about the file" if no information/description could be found.',
 	'translate-svg-thumbnail' => 'Caption for a thumbnail that appears immediately before any strings are translated.',
@@ -1480,6 +1480,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (русский)
  * @author Express2000
+ * @author Kaganer
  * @author Kalan
  */
 $messages['ru'] = array(
@@ -1516,6 +1517,8 @@ $messages['ru'] = array(
 	'translate-svg-new-label' => 'Язык:',
 	'translate-svg-new-error-import' => "'''Ошибка:''' Произошла неизвестная ошибка при попытке создать страницы, необходимые для перевода этого SVG-файла.",
 	'translate-svg-new-error-group' => "'''Ошибка:''' Произошла неизвестная ошибка; может, вы забыли добавить группу в URL?",
+	'translate-svg-export-unsupported' => 'Для этой группы сообщений не поддерживается обратный экспорт в SVG. Если не очевидно, почему это произошло, вы можете оставить сообщение об этой ошибке по ссылке $1.',
+	'translate-svg-export-error' => 'При попытке сохранить изменения в файле произошла непредвиденная ошибка. Вы можете оставить сообщение об этой ошибке по ссылке $1.',
 	'translate-js-properties-legend' => 'Свойства',
 	'translate-js-label-x' => 'Координата X:',
 	'translate-js-label-y' => 'Координата Y:',
