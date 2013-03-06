@@ -399,6 +399,13 @@ $messages['dsb'] = array(
 	'translate-js-font-family-inherit' => '(zderbnuś)',
 );
 
+/** British English (British English)
+ * @author Shirayuki
+ */
+$messages['en-gb'] = array(
+	'translate-js-label-color' => 'Colour:',
+);
+
 /** Esperanto (Esperanto)
  * @author Blahma
  */
