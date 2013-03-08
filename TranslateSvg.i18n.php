@@ -242,6 +242,28 @@ $messages['bn'] = array(
 	'translate-js-label-italic' => 'ইটালিক',
 );
 
+/** Breton (brezhoneg)
+ * @author Fohanno
+ */
+$messages['br'] = array(
+	'translate-svg-thumbnail' => 'Restr orin',
+	'translate-taction-mstats-svgmg' => 'Stadegoù ar restr',
+	'translate-svg-filepage-edit' => 'aozañ',
+	'translate-svg-filepage-finish' => 'echuiñ',
+	'translate-svg-filepage-another' => 'yezh all',
+	'translate-svg-filepage-other' => 'yezhoù all',
+	'translate-svg-upload-none' => '(hini ebet)',
+	'translate-svg-chooselanguage-title' => 'Diuzañ ar yezh',
+	'translate-svg-new-title' => 'Troidigezh SVG',
+	'translate-svg-new-label' => 'Yezh :',
+	'translate-js-label-x' => 'Daveenn X :',
+	'translate-js-label-y' => 'Daveenn Y :',
+	'translate-js-label-color' => 'Liv :',
+	'translate-js-label-font-family' => 'Font :',
+	'translate-js-label-bold' => 'Tev',
+	'translate-js-label-italic' => 'Italek',
+);
+
 /** Sorani Kurdish (کوردی)
  * @author Calak
  */
