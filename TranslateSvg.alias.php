@@ -16,6 +16,11 @@ $specialPageAliases['de'] = array(
 	'TranslateNewSVG' => array( 'SVG_übersetzen' ),
 );
 
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = array(
+	'TranslateNewSVG' => array( '新規SVG変換' ),
+);
+
 /** Korean (한국어) */
 $specialPageAliases['ko'] = array(
 	'TranslateNewSVG' => array( '새SVG번역' ),
