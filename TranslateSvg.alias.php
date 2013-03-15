@@ -46,6 +46,11 @@ $specialPageAliases['vi'] = array(
 	'TranslateNewSVG' => array( 'Biên_dịch_SVG_mới' ),
 );
 
+/** Simplified Chinese (中文（简体）‎) */
+$specialPageAliases['zh-hans'] = array(
+	'TranslateNewSVG' => array( '翻译新SVG' ),
+);
+
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
 	'TranslateNewSVG' => array( '翻譯SVG' ),
