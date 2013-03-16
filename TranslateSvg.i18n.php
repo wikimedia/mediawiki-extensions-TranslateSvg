@@ -1113,6 +1113,7 @@ $messages['ku-latn'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'translate-taskui-export-as-svg' => 'Am Original SVG-Fichier späicheren',
 	'translate-svg-nodesc' => '(Et gouf keng Beschreiwung vum Fichier uginn)',
 	'translate-svg-thumbnail' => 'Original Fichier',
 	'translate-svg-js-thumbnail' => '(Miniatur gëtt automatesch aktualiséiert)',
@@ -1127,6 +1128,7 @@ $messages['lb'] = array(
 	'translate-svg-upload-none' => '(keng)',
 	'translate-svg-chooselanguage-title' => 'Eraussiche vun der Sprooch',
 	'translate-svg-chooselanguage-desc' => "Sicht w.e.g. d'Sprooch eraus an déi Dir dësen SVG-Fichier iwwersetze wëllt:",
+	'translate-svg-instructions-title' => 'Iwwersetzt Dir déi éischte Kéier en SVG-Fichier op dës Manéier?',
 	'translate-svg-warn-inner' => 'Späichert dës Ännerungen am Original-Fichier',
 	'translate-svg-new-title' => 'SVG-Iwwersetzung',
 	'translate-svg-new-label' => 'Sprooch:',
@@ -1907,8 +1909,11 @@ $messages['zh-hans'] = array(
 	'translate-svg-filepage-another' => '其他语言',
 	'translate-svg-filepage-other' => '其他语言',
 	'translate-svg-filepage-item' => '$1（$2）',
+	'translate-svg-filepage-invite' => '这个文件可以很容易地被翻译到$1',
 	'translate-svg-upload-none' => '（无）',
 	'translate-svg-chooselanguage-title' => '语言选择',
+	'translate-svg-instructions-title' => '第一次以这种方式翻译一个 SVG 文件吗？',
+	'translate-svg-warn-inner' => '保存这些更改到原始文件',
 	'translate-svg-new-title' => 'SVG翻译',
 	'translate-svg-new-label' => '语言：',
 	'translate-js-properties-legend' => '属性',

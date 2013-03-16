@@ -26,6 +26,11 @@ $specialPageAliases['ko'] = array(
 	'TranslateNewSVG' => array( '새SVG번역' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
+$specialPageAliases['lb'] = array(
+	'TranslateNewSVG' => array( 'Nei_SVGen_iwwersetzen' ),
+);
+
 /** Macedonian (македонски) */
 $specialPageAliases['mk'] = array(
 	'TranslateNewSVG' => array( 'ПреведиНовSVG' ),
