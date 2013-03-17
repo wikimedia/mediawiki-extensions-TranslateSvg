@@ -1608,6 +1608,22 @@ $messages['si'] = array(
 	'translate-js-font-family-inherit' => '(උරුමවීම)',
 );
 
+/** Serbian (Cyrillic script) (српски (ћирилица)‎)
+ * @author Милан Јелисавчић
+ */
+$messages['sr-ec'] = array(
+	'translate-svg-export-error' => 'Дошло је до неочекиване грешке приликом покушаја чувања ваших измена на датотеку. Ако желите, можете пријавити грешку у вези са тим на $1.',
+	'translate-js-properties-legend' => 'Својства',
+	'translate-js-label-x' => 'X координата:',
+	'translate-js-label-y' => 'Y координата:',
+	'translate-js-label-color' => 'Боја:',
+	'translate-js-label-font-family' => 'Фонт:',
+	'translate-js-label-bold' => 'Подебљано',
+	'translate-js-label-italic' => 'Искошено',
+	'translate-js-label-underline' => 'Подвучено',
+	'translate-js-font-family-inherit' => '(наслеђено)',
+);
+
 /** Swedish (svenska)
  * @author Ainali
  */
