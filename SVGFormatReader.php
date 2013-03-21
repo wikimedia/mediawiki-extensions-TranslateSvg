@@ -534,7 +534,7 @@ class SVGFormatReader {
 					break;
 				}
 			}
-			if( $fullSoFar ) {
+			if( $fullSoFar || $savedLanguage == $this->group->getSourceLanguage() ) {
 				$full[] = $savedLanguage;
 			} else {
 				$partial[] = $savedLanguage;

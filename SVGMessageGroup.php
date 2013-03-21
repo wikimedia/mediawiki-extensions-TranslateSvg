@@ -33,7 +33,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$title = Title::newFromText( $prefixedFilename );
 		$rev = '';
 		if( $title->exists() ) {
-			$rev = Revision::newFromTitle( $title )->getContent()->getDefaultFormat();
+			$rev = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
 			$revsections = explode( "\n==", $rev );
 			foreach( $revsections as $revsection ) {
 				// Attempt to trim the file description page down to only the most relevant content
@@ -69,7 +69,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		foreach( $subpages as $subpage ) {
 			/** @var Title $subpage */
 			if( $this->isSourceLanguage( $subpage->getSubpageText() ) ) {
-				$definition = Revision::newFromTitle( $subpage )->getContent()->getDefaultFormat();
+				$definition = Revision::newFromTitle( $subpage )->getContent()->getWikitextForTransclusion();
 				$definition = TranslateSvgUtils::stripPropertyString( $definition );
 
 				// Is there really not an easier way to get the parent page than:
@@ -94,7 +94,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 		$rev = Revision::newFromTitle( $title );
 
-		$definition = $rev->getContent()->getDefaultFormat();
+		$definition = $rev->getContent()->getWikitextForTransclusion();
 		$definition = TranslateSvgUtils::stripPropertyString( $definition );
 		return $definition;
 	}
@@ -111,7 +111,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		if ( !$title->exists() ) {
 			return '';
 		}
-		$translation = Revision::newFromTitle( $title )->getContent()->getDefaultFormat();
+		$translation = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
 		$properties = TranslateSvgUtils::extractPropertyString( $translation );
 
 		return $properties;

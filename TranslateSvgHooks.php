@@ -57,6 +57,25 @@ class TranslateSvgHooks{
 	}
 
 	/**
+	 * Function used to remove the translation memory suggestions helper box via
+	 * the TranslateGetBoxes hook
+	 *
+	 * @todo Replace this with a better helper rather than no helper
+	 * @param $group \MessageGroup The message group to which the message being translated belongs
+	 * @param $handle \MessageHandle The MessageHandle of the message being translated
+	 * @param $boxes \array The array from which the thumbnail helper is removed
+	 * @return \bool True
+	 */
+	public static function removeSuggestions( MessageGroup $group, MessageHandle $handle, &$boxes ) {
+		if( !( $group instanceof SVGMessageGroup ) ) {
+			return true;
+		}
+
+		unset( $boxes['translation-memory'] );
+		return true;
+	}
+
+	/**
 	 * Function used to add modules to the ResourceLoader via the
 	 * TranslateBeforeAddModules hook
 	 *
