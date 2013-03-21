@@ -143,8 +143,8 @@ class SVGFormatReader {
 		foreach( $texts as $text ) {
 			$translatableNodes[] = $text;
 		}
-
 		foreach( $translatableNodes as $translatableNode ) {
+			/** @var DOMElement $translatableNode */
 			if( $translatableNode->hasAttribute( 'id' ) ) {
 				$id = trim( $translatableNode->getAttribute( 'id' ) );
 				$translatableNode->setAttribute( 'id', $id );
@@ -175,6 +175,7 @@ class SVGFormatReader {
 
 		$textLength = $this->svg->getElementsByTagName( 'text' )->length;
 		for( $i = 0; $i < $textLength; $i++ ) {
+			/** @var DOMElement $text */
 			$text = $texts->item( $i );
 
 			// Text strings like $1, $2 will cause problems later because
@@ -191,6 +192,8 @@ class SVGFormatReader {
 				$switch = $text->parentNode;
 				$siblings = $switch->childNodes;
 				foreach( $siblings as $sibling ) {
+					/** @var DOMElement $sibling */
+
 					$languagesPresent = array();
 					if( $sibling->nodeType === XML_TEXT_NODE ) {
 						if( trim( $sibling->textContent ) !== '' ) {
@@ -278,7 +281,7 @@ class SVGFormatReader {
 
 		// Ensure that child tspan translations prompt new <text>s to be created
 		// by duplicating the fallback version.
-		foreach( $translations as $key => $languages ) {
+		foreach( $translations as $languages ) {
 			foreach( $languages as $language => $translation ) {
 				if( isset( $languages['fallback']['data-parent'] ) ) {
 					$parent = $languages['fallback']['data-parent'];
@@ -313,7 +316,11 @@ class SVGFormatReader {
 				// Some sort of deep hierarchy, can't translate
 				continue;
 			}
-			$textId = $fallback->item( 0 )->getAttribute( 'id' );
+
+			/** @var DOMElement $fallbackText */
+			$fallbackText = $fallback->item( 0 );
+			$textId = $fallbackText->getAttribute( 'id' );
+
 			foreach( $translations[$textId] as $language => $translation ) {
 				// Sort out systemLanguage attribute
 				if( $language !== 'fallback' ) {
@@ -389,7 +396,9 @@ class SVGFormatReader {
 		$translations = array();
 		$this->filteredTextNodes = array(); // Reset
 		for( $i = 0; $i < $number; $i++ ) {
+			/** @var DOMElement $switch */
 			$switch = $switches->item( $i );
+
 			$texts = $switch->getElementsByTagName( 'text' );
 			$count = $texts->length;
 			if( $count === 0 ) {
@@ -402,10 +411,16 @@ class SVGFormatReader {
 				// Some sort of deep hierarchy, can't translate
 				continue;
 			}
-			$textId = $fallback->item( 0 )->getAttribute( 'id' );
+
+			/** @var DOMElement $fallbackText */
+			$fallbackText = $fallback->item( 0 );
+			$textId = $fallbackText->getAttribute( 'id' );
+
 			for( $j = 0; $j < $count; $j++ ) {
 				// Don't want to manipulate actual node
-				$text = clone $texts->item( $j );
+				/** @var DOMElement $actualNode */
+				$actualNode = $texts->item( $j );
+				$text = clone $actualNode;
 				$numChildren = $text->childNodes->length;
 				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
@@ -415,8 +430,11 @@ class SVGFormatReader {
 					if( $child->nodeType === 1 ) {
 						// Per the checks in makeTranslationReady() this is a tspan so
 						// register it as a child node.
-						$childId = $fallback->item( 0 )->getElementsByTagName( 'tspan' )
-							->item( $counter - 1 )->getAttribute( 'id' );
+
+						/** @var DOMElement $childTspan */
+						$childTspan = $fallbackText->getElementsByTagName( 'tspan' )->item( $counter - 1 );
+
+						$childId = $childTspan->getAttribute( 'id' );
 						$translations[$childId][$lang] = TranslateSvgUtils::nodeToArray( $child );
 						$translations[$childId][$lang]['data-parent'] = $textId;
 						if( $text->hasAttribute( 'data-children' ) ) {
@@ -460,6 +478,7 @@ class SVGFormatReader {
 			$collection->loadTranslations();
 			$mangler = $this->group->getMangler();
 			foreach ( $collection as $item ) {
+				/** @var TMessage $item */
 				$key = explode( '/', $mangler->unMangle( $item->key() ) );
 				$key = array_pop( $key );
 				$translation = str_replace( TRANSLATE_FUZZY, '', $item->translation() );
@@ -509,7 +528,7 @@ class SVGFormatReader {
 		$partial = array();
 		foreach( $savedLanguages as $savedLanguage ) {
 			$fullSoFar = true;
-			foreach( $translations as $key => $languages ) {
+			foreach( $translations as $languages ) {
 				if( !isset( $languages[$savedLanguage] ) ) {
 					$fullSoFar = false;
 					break;

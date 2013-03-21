@@ -110,12 +110,11 @@
 			var pageName = mw.config.get( 'wgPageName' );
 			var uri = new mw.Uri( window.location.href )
 				.extend( { 'lang': langCode } ).toString();
-			var link = mw.html.element(
+			return mw.html.element(
 				'a',
 				{ 'href': uri },
 				langName
 			);
-			return link;
 		},
 
 		makeTranslateLink: function ( langCode, label ) {
@@ -132,12 +131,11 @@
 			var uri = new mw.Uri(
 				mw.util.wikiGetlink( 'Special:Translate' )
 			).extend( opts ).toString();
-			var link = mw.html.element(
+			return mw.html.element(
 				'a',
 				{ 'href': uri },
 				label
 			);
-			return link;
 		}
 	};
 

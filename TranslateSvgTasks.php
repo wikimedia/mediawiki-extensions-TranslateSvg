@@ -24,11 +24,13 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 			return $this->errorOutput( wfMessage( 'translate-svg-export-unsupported', $link ) );
 		}
 
-		// Redirects on success
-		$ret = $this->group->getWriter()->exportToSVG( $this->context->getUser() ) );
+		/** @var SVGFormatWriter $writer */
+		$writer = $this->group->getWriter();
+		$ret = $writer->exportToSVG( $this->context->getUser() );
 		if( $ret === true ) {
 			global $wgOut;
-			$wgOut->redirect( $this->url );
+			$wgOut->redirect( $this->group->getUrl() );
+			return true;
 		} else {
 			// Error output
 			return $this->errorOutput( $ret );
