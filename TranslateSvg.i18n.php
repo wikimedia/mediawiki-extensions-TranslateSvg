@@ -1107,6 +1107,8 @@ $messages['ku-latn'] = array(
 	'translate-svg-filepage-another' => 'zimanê din',
 	'translate-svg-filepage-other' => 'zimanên din',
 	'translate-svg-new-label' => 'Ziman:',
+	'translate-js-label-color' => 'Reng:',
+	'translate-js-label-italic' => 'Xwahr',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
