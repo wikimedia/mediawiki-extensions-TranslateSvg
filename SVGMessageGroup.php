@@ -15,6 +15,7 @@
  */
 class SVGMessageGroup extends WikiMessageGroup {
 	protected $source = null;
+	protected $sourceLanguage = null;
 	/**
 	 * Constructor.
 	 *
@@ -32,7 +33,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$title = Title::newFromText( $prefixedFilename );
 		$rev = '';
 		if( $title->exists() ) {
-			$rev = Revision::newFromTitle( $title )->getText();
+			$rev = Revision::newFromTitle( $title )->getContent()->getDefaultFormat();
 			$revsections = explode( "\n==", $rev );
 			foreach( $revsections as $revsection ) {
 				// Attempt to trim the file description page down to only the most relevant content
@@ -51,6 +52,14 @@ class SVGMessageGroup extends WikiMessageGroup {
 	}
 
 	/**
+	 * Return a full URL to the file page of the SVG
+	 * @return String
+	 */
+	public function getUrl() {
+		return Title::makeTitleSafe( $this->getNamespace(), $this->source )->getFullURL();
+	}
+
+	/**
 	 * Fetch definitions from database.
 	 * @return \array Array of messages keys with definitions.
 	 */
@@ -58,8 +67,9 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$definitions = array();
 		$subpages = Title::makeTitleSafe( $this->getNamespace(), $this->source )->getSubpages();
 		foreach( $subpages as $subpage ) {
+			/** @var Title $subpage */
 			if( $this->isSourceLanguage( $subpage->getSubpageText() ) ) {
-				$definition = Revision::newFromTitle( $subpage )->getText();
+				$definition = Revision::newFromTitle( $subpage )->getContent()->getDefaultFormat();
 				$definition = TranslateSvgUtils::stripPropertyString( $definition );
 
 				// Is there really not an easier way to get the parent page than:
@@ -84,7 +94,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 		$rev = Revision::newFromTitle( $title );
 
-		$definition = $rev->getText();
+		$definition = $rev->getContent()->getDefaultFormat();
 		$definition = TranslateSvgUtils::stripPropertyString( $definition );
 		return $definition;
 	}
@@ -101,7 +111,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		if ( !$title->exists() ) {
 			return '';
 		}
-		$translation = Revision::newFromTitle( $title )->getText();
+		$translation = Revision::newFromTitle( $title )->getContent()->getDefaultFormat();
 		$properties = TranslateSvgUtils::extractPropertyString( $translation );
 
 		return $properties;
@@ -160,6 +170,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * Sets the source language code of this message group by using
 	 * the TranslateMetadata framework.
 	 *
+	 * @param \string $srcLang The source language code
 	 * @return \null
 	 */
 	public function setSourceLanguage( $srcLang ) {

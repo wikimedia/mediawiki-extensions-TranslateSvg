@@ -41,8 +41,8 @@ class SVGFormatWriter {
 	 * The thumbnail will include all translations, including overrides and
 	 * onwiki translations, rather than just those uploaded.
 	 *
-	 * @param $language \string Code of the language to translate into
-	 * @param $size \float The length (in px) of one side of a bounding box square: aspect ratio will always be preserved. Default 275.
+	 * @param $language \string|\bool Code of the language to translate into
+	 * @param $size \int The length (in px) of one side of a bounding box square: aspect ratio will always be preserved. Default 275.
 	 * @return \array Array with keys 'success'=>true|false and 'message'=>/web/friendly/path/to/the/new/thumbnail.png|error output
 	 */
 	public function thumbnailExport( $language, $size = 275 ) {
@@ -116,8 +116,8 @@ class SVGFormatWriter {
 	 * @param $svg \DOMDocument The object representing the SVG to be uploaded
 	 * @return \mixed{\bool,\string} True on success, error message on failure
 	 */
-	protected function exportToSVG( $user ) {
-		global $wgTranslateSvgBotName, $wgContLang;
+	public function exportToSVG( User $user ) {
+		global $wgTranslateSvgBotName, $wgContLang, $wgOut;
 
 		$svg = $this->reader->getSVG();
 
@@ -165,7 +165,7 @@ class SVGFormatWriter {
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 		$status = $uploader->performUpload( $comment, false, false, $bot );
 		if ( !$status->isGood() ) {
-			return $this->getOutput()->parse( $status->getWikiText() );
+			return $wgOut->parse( $status->getWikiText() );
 		}
 
 		// If the user would have watched a normal reupload, watch this
@@ -182,13 +182,12 @@ class SVGFormatWriter {
 	 * Copied from SpecialUpload (c) Authors
 	 *
 	 * @param $details \array Result of UploadBase::verifyUpload
+	 * @return \Message
 	 */
 	protected function processVerificationError( $details ) {
-		global $wgFileExtensions;
-
 		switch( $details['status'] ) {
 			case UploadBase::FILE_TOO_LARGE:
-				return wfMessage( 'largefileserver' )->html();
+				return wfMessage( 'largefileserver' )->plain();
 			case UploadBase::VERIFICATION_ERROR:
 				unset( $details['status'] );
 				$code = array_shift( $details['details'] );
