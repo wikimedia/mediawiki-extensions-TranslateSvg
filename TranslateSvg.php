@@ -77,6 +77,7 @@ $wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::makeFilePageGlobal
 $wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::addThumbnail';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeQQQ';
+$wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeSuggestions';
 $wgHooks['TranslateGetSpecialTranslateOptions'][] = 'TranslateSvgHooks::makeExportAsSvgOptionDefault';
 $wgHooks['TranslatePrefillTranslation'][] = 'TranslateSvgHooks::getDefaultPropertiesFromGroup';
 $wgHooks['TranslateGetExtraInputs'][] = 'TranslateSvgHooks::propertiesToExtraInputs';
@@ -91,6 +92,7 @@ $wgHooks['TranslateProcessAPIMessageGroupsProperties'][] = 'TranslateSvgHooks::p
 
 $wgSpecialPages['TranslateNewSVG'] = 'SpecialTranslateNewSVG';
 $wgSpecialPageGroups['TranslateNewSVG'] = 'wiki';
+$wgTranslateMessageNamespaces[] = NS_FILE;
 
 /**
  * List of typefaces (or keywords) that can safely be incorporated into SVG
