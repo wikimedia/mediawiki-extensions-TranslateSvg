@@ -54,7 +54,28 @@ $wgResourceModules['ext.translatesvg'] = array(
 	'remoteExtPath' => 'TranslateSvg'
 );
 
+$wgResourceModules['ext.translatesvg.filepage'] = array(
+	'scripts' => array( 'resources/ext.translatesvg.filepage.js' ),
+	'dependencies' => array( 'mediawiki.Uri' ),
+	'messages' => array(
+		'translate-svg-filepage-caption',
+		'translate-svg-filepage-caption-translator',
+		'translate-svg-filepage-edit',
+		'translate-svg-filepage-finish',
+		'translate-svg-filepage-item',
+		'translate-svg-filepage-another',
+		'translate-svg-filepage-other',
+		'translate-svg-filepage-invite',
+		'comma-separator'
+	),
+	'localBasePath' => dirname( __FILE__ ),
+	'remoteExtPath' => 'TranslateSvg'
+);
+
+$wgHooks['BeforePageDisplay'][] = 'TranslateSvgHooks::updateFileDescriptionPages';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'TranslateSvgHooks::schemaUpdates';
+$wgHooks['MakeGlobalVariablesScript'][] = 'TranslateSvgHooks::makeFilePageGlobalVariables';
+$wgHooks['TranslateBeforeAddModules'][] = 'TranslateSvgHooks::addModules';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::addThumbnail';
 $wgHooks['TranslateGetBoxes'][] = 'TranslateSvgHooks::removeQQQ';
 $wgHooks['TranslateGetSpecialTranslateOptions'][] = 'TranslateSvgHooks::makeExportAsSvgOptionDefault';
