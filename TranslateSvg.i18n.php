@@ -132,9 +132,11 @@ $messages['qqq'] = array(
 
 /** Arabic (العربية)
  * @author Meno25
+ * @author ترجمان05
  */
 $messages['ar'] = array(
 	'translate-svg-thumbnail' => 'ملف أصلي',
+	'translate-page-description-legend-svgmg' => 'معلومات حول هذا الملف',
 	'translate-taction-mstats-svgmg' => 'إحصاءات الملف',
 	'translate-svg-filepage-edit' => 'تعديل',
 	'translate-svg-filepage-another' => 'لغة أخرى',
