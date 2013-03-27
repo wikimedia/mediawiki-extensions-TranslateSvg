@@ -107,7 +107,7 @@ $messages['qqq'] = array(
 	'translate-svg-warn' => 'The content of a warning message. Parameters:
 * $1 is a link, with the text of that link equal to the value of {{msg-mw|translate-svg-warn-inner}}.',
 	'translate-svg-warn-inner' => 'The content of a link that forms part of another sentence (see {{msg-mw|translate-svg-warn}}.',
-	'translate-svg-new-title' => 'Title of a special page',
+	'translate-svg-new-title' => '{{doc-special|TranslateNewSVG}}',
 	'translate-svg-new-summary' => 'Introductory paragraph on a special page. Attention is drawn to the fact that the user is asked to provide the original language the file is being translated FROM, rather than the language they are translating it INTO.',
 	'translate-svg-new-label' => 'Label for a dropdown list of languages',
 	'translate-svg-new-error-import' => 'Text for a paragraph that appears whenever a certain type of error occurs',
