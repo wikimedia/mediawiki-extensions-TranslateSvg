@@ -1129,6 +1129,7 @@ $messages['lb'] = array(
 	'translate-svg-filepage-another' => 'eng aner Sprooch',
 	'translate-svg-filepage-other' => 'aner Sproochen',
 	'translate-svg-filepage-invite' => 'Dëse Fichier kann einfach op $1 iwwersat ginn',
+	'translate-svg-upload-comment' => 'Iwwersetzungen aktualiséiert (ugefaang: $1 geännert/erweidert: $2)',
 	'translate-svg-upload-none' => '(keng)',
 	'translate-svg-chooselanguage-title' => 'Eraussiche vun der Sprooch',
 	'translate-svg-chooselanguage-desc' => "Sicht w.e.g. d'Sprooch eraus an déi Dir dësen SVG-Fichier iwwersetze wëllt:",
@@ -1140,6 +1141,7 @@ $messages['lb'] = array(
 	'translate-js-label-x' => 'X-Koordinat:',
 	'translate-js-label-y' => 'Y-Koordinat:',
 	'translate-js-label-color' => 'Faarf:',
+	'translate-js-label-font-family' => 'Schrëftart:',
 	'translate-js-label-bold' => 'Fett',
 	'translate-js-label-italic' => 'Kursiv',
 	'translate-js-label-underline' => 'Ënnerstrach',
@@ -1339,6 +1341,7 @@ $messages['pfl'] = array(
 
 /** Polish (polski)
  * @author BeginaFelicysym
+ * @author Chrumps
  */
 $messages['pl'] = array(
 	'translate-svg-thumbnail' => 'Oryginalny plik',
@@ -1351,6 +1354,7 @@ $messages['pl'] = array(
 	'translate-svg-chooselanguage-title' => 'Wybór języka',
 	'translate-svg-warn-inner' => 'zapisuje te zmiany z powrotem w oryginalnym pliku',
 	'translate-svg-new-label' => 'Język:',
+	'translate-js-properties-legend' => 'Właściwości',
 	'translate-js-label-x' => 'Współrzędna X:',
 	'translate-js-label-y' => 'Współrzędna Y:',
 	'translate-js-label-color' => 'Kolor:',
