@@ -1147,6 +1147,13 @@ $messages['lb'] = array(
 	'translate-js-label-underline' => 'Ënnerstrach',
 );
 
+/** Latvian (latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'translate-svg-filepage-edit' => 'labot',
+);
+
 /** Macedonian (македонски)
  * @author Bjankuloski06
  */
