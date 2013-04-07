@@ -591,12 +591,14 @@ $messages['fa'] = array(
 /** Finnish (suomi)
  * @author Beluga
  * @author Nedergard
+ * @author Silvonen
  */
 $messages['fi'] = array(
 	'translate-taskui-export-as-svg' => 'Tallenna alkuperäiseen SVG-tiedostoon',
 	'translate-svg-thumbnail' => 'Alkuperäinen tiedosto',
 	'translate-page-description-legend-svgmg' => 'Tämän tiedoston tietoja',
 	'translate-taction-mstats-svgmg' => 'Tiedoston tilastot',
+	'translate-svg-table-header' => 'Viestin tunnus',
 	'translate-svg-filepage-edit' => 'muokkaa',
 	'translate-svg-filepage-finish' => 'lopeta',
 	'translate-svg-filepage-invite' => 'Tämän tiedoston voi kääntää helposti kielelle $1',
@@ -616,6 +618,7 @@ $messages['fi'] = array(
 	'translate-js-label-bold' => 'Lihavointi',
 	'translate-js-label-italic' => 'Kursivointi',
 	'translate-js-label-underline' => 'Alleviivaus',
+	'translate-js-font-family-inherit' => '(peri)',
 );
 
 /** French (français)
