@@ -64,10 +64,7 @@ $messages['en'] = array(
 	'translate-js-font-family-inherit' => '(inherit)',
 );
 
-/** Message documentation (This is the name of the message documentation language code (qqq). Follow the rules of your languages and use small first letter if it doesn't capitalize language names always.
-
-It might be easier to translate it as "translation guidelines" or "translation help".
-{{Identical|Message documentation}})
+/** Message documentation (Message documentation)
  * @author F. Cosoleto
  * @author Jarry1250
  * @author Kghbln
@@ -98,7 +95,7 @@ $messages['qqq'] = array(
 	'translate-svg-autocreate' => 'Edit summary used by a bot during page creation',
 	'translate-svg-autodelete' => 'Log reason/summary used a bot during page deletion',
 	'translate-svg-autoedit' => 'Edit summary used by a bot',
-	'translate-svg-autofuzzy' => 'Edit summary used by a bot. "Fuzzy" here is a Extension:Translate term meaning "mark translations for review"',
+	'translate-svg-autofuzzy' => 'Edit summary used by a bot. "Fuzzy" here is an Extension:Translate term meaning "mark translations for review"',
 	'translate-svg-upload-comment' => 'Upload summary used by a bot. Parameters:
 * $1 is a comma-separated lists of languages
 * $2 is a comma-separated lists of languages',
