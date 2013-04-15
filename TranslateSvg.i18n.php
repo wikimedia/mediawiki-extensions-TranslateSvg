@@ -1666,6 +1666,18 @@ $messages['si'] = array(
  * @author Милан Јелисавчић
  */
 $messages['sr-ec'] = array(
+	'translate-svg-thumbnail' => 'Изворна датотека',
+	'translate-page-description-legend-svgmg' => 'Информације о овој датотеци',
+	'translate-taction-mstats-svgmg' => 'Статистике датотеке',
+	'translate-svg-table-header' => 'Идентификатор поруке',
+	'translate-svg-filepage-edit' => 'уреди',
+	'translate-svg-filepage-finish' => 'заврши',
+	'translate-svg-filepage-another' => 'други језик',
+	'translate-svg-filepage-other' => 'остали језици',
+	'translate-svg-upload-none' => '(нема)',
+	'translate-svg-chooselanguage-title' => 'Избор језика',
+	'translate-svg-new-title' => 'SVG превод',
+	'translate-svg-new-label' => 'Језик:',
 	'translate-svg-export-error' => 'Дошло је до неочекиване грешке приликом покушаја чувања ваших измена на датотеку. Ако желите, можете пријавити грешку у вези са тим на $1.',
 	'translate-js-properties-legend' => 'Својства',
 	'translate-js-label-x' => 'X координата:',
