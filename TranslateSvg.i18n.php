@@ -84,7 +84,8 @@ $messages['qqq'] = array(
 	'translate-svg-filepage-caption' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
 	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages (the generic text "another language" may appear as an item in $2).',
 	'translate-svg-filepage-edit' => 'Call to action, used as link text',
-	'translate-svg-filepage-finish' => 'Call to action, used as link text',
+	'translate-svg-filepage-finish' => 'Call to action, used as link text.
+{{Identical|Finish}}',
 	'translate-svg-filepage-another' => 'Fragment, takes the place of a language name in a list; used as link text, links to a language selection dialog',
 	'translate-svg-filepage-other' => 'Fragment, used as link text in [[MediaWiki:Translate-svg-filepage-invite]], links to a language selection dialog.
 {{Identical|Otherlanguages}}',
@@ -109,7 +110,8 @@ $messages['qqq'] = array(
 	'translate-svg-warn-inner' => 'The content of a link that forms part of another sentence (see {{msg-mw|translate-svg-warn}}.',
 	'translate-svg-new-title' => '{{doc-special|TranslateNewSVG}}',
 	'translate-svg-new-summary' => 'Introductory paragraph on a special page. Attention is drawn to the fact that the user is asked to provide the original language the file is being translated FROM, rather than the language they are translating it INTO.',
-	'translate-svg-new-label' => 'Label for a dropdown list of languages',
+	'translate-svg-new-label' => 'Label for a dropdown list of languages.
+{{Identical|Language}}',
 	'translate-svg-new-error-import' => 'Text for a paragraph that appears whenever a certain type of error occurs',
 	'translate-svg-new-error-group' => 'Text for a paragraph that appears whenever a certain type of error occurs',
 	'translate-svg-export-unsupported' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
