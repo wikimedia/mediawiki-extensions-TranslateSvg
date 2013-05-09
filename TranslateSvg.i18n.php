@@ -1172,6 +1172,8 @@ $messages['lb'] = array(
 	'translate-page-description-legend-svgmg' => 'Informatiounen iwwer dëse Fichier',
 	'translate-taction-mstats-svgmg' => 'Statistike vum Fichier',
 	'translate-taction-export-svgmg' => 'Aktualiséiert Versioun vum Fichier eroplueden',
+	'translate-svg-filepage-caption' => 'Dës Bild als PNG an anere Sproochen: $1',
+	'translate-svg-filepage-caption-translator' => 'Dëst Bild als PNG an anere Sproochen: $1; oder Iwwersetzt et op $2',
 	'translate-svg-filepage-edit' => 'änneren',
 	'translate-svg-filepage-finish' => 'fäerdeg maachen',
 	'translate-svg-filepage-another' => 'eng aner Sprooch',
@@ -1182,6 +1184,7 @@ $messages['lb'] = array(
 	'translate-svg-chooselanguage-title' => 'Eraussiche vun der Sprooch',
 	'translate-svg-chooselanguage-desc' => "Sicht w.e.g. d'Sprooch eraus an déi Dir dësen SVG-Fichier iwwersetze wëllt:",
 	'translate-svg-instructions-title' => 'Iwwersetzt Dir déi éischte Kéier en SVG-Fichier op dës Manéier?',
+	'translate-svg-warn' => '<strong>OPgepasst:</strong> Et gëtt elo net gespäichert Iwwersetzungen an dëser Sprooch, déi net ze gesi sinn bis Dir oder een Aneren se $1.',
 	'translate-svg-warn-inner' => 'Späichert dës Ännerungen am Original-Fichier',
 	'translate-svg-new-title' => 'SVG-Iwwersetzung',
 	'translate-svg-new-label' => 'Sprooch:',
@@ -1193,6 +1196,7 @@ $messages['lb'] = array(
 	'translate-js-label-bold' => 'Fett',
 	'translate-js-label-italic' => 'Kursiv',
 	'translate-js-label-underline' => 'Ënnerstrach',
+	'translate-js-font-family-inherit' => '(iwwerhuelen)',
 );
 
 /** Latvian (latviešu)
