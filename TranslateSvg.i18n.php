@@ -1684,6 +1684,13 @@ $messages['si'] = array(
 	'translate-js-font-family-inherit' => '(උරුමවීම)',
 );
 
+/** Slovenian (slovenščina)
+ * @author Eleassar
+ */
+$messages['sl'] = array(
+	'translate-svg-export-error' => 'Ob shranjevanju vnesenih sprememb v datoteko se je pojavila nepričakovana napaka. Če želite, lahko o tem na strani $1 dodate poročilo o hrošču.',
+);
+
 /** Serbian (Cyrillic script) (српски (ћирилица)‎)
  * @author Милан Јелисавчић
  */
