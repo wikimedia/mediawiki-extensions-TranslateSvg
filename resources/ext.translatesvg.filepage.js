@@ -19,6 +19,7 @@
 				return;
 			}
 
+			var translationStarted = mw.config.get( 'wgFileTranslationStarted' );
 			var full = mw.config.get( 'wgFileFullTranslations' );
 			var partial = mw.config.get( 'wgFilePartialTranslations' );
 
@@ -26,15 +27,19 @@
 			// other wikis.
 			var parent = ( $( 'p.SVGThumbs' ).length > 0 )
 				? $( 'p.SVGThumbs' ) : $( 'div.fullMedia' );
-			if ( full.length === 0 && partial.length === 0 ) {
+			if ( !translationStarted ) {
 				if ( mw.config.get( 'wgFileCanBeTranslated' ) && mw.config.get( 'wgUserCanTranslate' ) ) {
-					// No existing translations, can't translate
-					// TODO: suggest "log in to translate"?
+					// No existing translations, can translate
+					// TODO: suggest "log in to translate" if not?
 					parent.append( '<br />' + this.getNoTranslationsString() );
 				}
 			} else {
-				// Existing translations, show view link and/or translate links
-				parent.append( '<br />' + this.getHasTranslationsString( full, partial ) );
+				if ( full.length > 0 || partial.length > 0 ) {
+					// Existing translations, show view link and/or translate links
+					parent.append( '<br />' + this.getHasTranslationsString( full, partial ) );
+				} else {
+					// TODO: Awkward
+				}
 			}
 		},
 
