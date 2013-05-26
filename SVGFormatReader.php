@@ -324,6 +324,10 @@ class SVGFormatReader {
 			foreach( $translations[$textId] as $language => $translation ) {
 				// Sort out systemLanguage attribute
 				if( $language !== 'fallback' ) {
+					if ( strpos( $language, '-' ) !== false ) {
+						list( $before, $after ) = explode( '-', $language );
+						$language = $before . '_' . strtoupper( $after );
+					}
 					$translation['systemLanguage'] = $language;
 				}
 
@@ -370,9 +374,19 @@ class SVGFormatReader {
 				}
 			}
 		}
-
+		// Move sublocales to the beginning of their switch elements
+		$sublocales = $this->xpath->query(
+			"//text[contains(@systemLanguage,'_')]" . "|" . "//svg:text[contains(@systemLanguage,'_')]"
+		);
+		$count = $sublocales->length;
+		for( $i = 0; $i < $count; $i++ ) {
+			$firstSibling = $sublocales->item( $i )->parentNode->childNodes->item( 0 );
+			$sublocales->item( $i )->parentNode->insertBefore( $sublocales->item( $i ), $firstSibling );
+		}
 		// Move fallbacks to the end of their switch elements
-		$fallbacks = $this->xpath->query("//text[not(@systemLanguage)]|//svg:text[not(@systemLanguage)]");
+		$fallbacks = $this->xpath->query(
+			"//text[not(@systemLanguage)]" . "|" . "//svg:text[not(@systemLanguage)]"
+		);
 		$count = $fallbacks->length;
 		for( $i = 0; $i < $count; $i++ ) {
 			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
@@ -424,6 +438,7 @@ class SVGFormatReader {
 				$numChildren = $text->childNodes->length;
 				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
+				$lang = str_replace( '_', '-', strtolower( $lang ) );
 				$counter = 1;
 				for( $k = 0; $k < $numChildren; $k++ ) {
 					$child = $text->childNodes->item( $k );
