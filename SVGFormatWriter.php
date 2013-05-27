@@ -66,7 +66,17 @@ class SVGFormatWriter {
 		$nameHash = md5( $this->filename );
 		$nameHashPath = substr( $nameHash, 0, 1 ) . '/' . substr( $nameHash, 0, 2 );
 		$dstPath = $this->getBackend()->getRootStoragePath() .
-			'/translatesvg-render/' . "$nameHashPath/";
+			'/translatesvg-render/';
+		$dstName = "$nameHashPath/$contentsHash-" . $this->filename . '.png';
+		$dstUrl = $wgTranslateSvgPath . '/' . $dstName;
+
+		if( $this->getBackend()->fileExists( array( 'src' => $dstPath . $dstName ) ) ) {
+			// We've already generated this SVG; no point regenerating
+			return array(
+				'success' => true,
+				'message' => $dstUrl,
+			);
+		}
 
 		// Save the SVG to a temporary file
 		if( !$svg->save( $srcPath ) ) {
@@ -94,19 +104,19 @@ class SVGFormatWriter {
 
 		// Create any containers/directories as needed...
 		$backend = $this->getBackend();
-		if ( !$backend->prepare( array( 'dir' => $dstPath ) )->isOK() ) {
+		if ( !$backend->prepare( array( 'dir' => "$dstPath/$nameHashPath/" ) )->isOK() ) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail_dest_directory' )->text());
 		}
 		// Store the file at the final storage path...
 		if ( !$backend->quickStore( array(
-			'src' => $intPath, 'dst' => "$dstPath$contentsHash-" . $this->filename . '.png'
+			'src' => $intPath, 'dst' => $dstPath . $dstName
 			) )->isOK()
 		) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() );
 		}
 		return array(
 			'success' => true,
-			'message' => $wgTranslateSvgPath . '/' . $nameHashPath . "/$contentsHash-" . $this->filename . '.png'
+			'message' => $dstUrl
 		);
 	}
 
