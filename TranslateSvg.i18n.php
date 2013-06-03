@@ -274,6 +274,7 @@ $messages['bg'] = array(
 
 /** Bengali (বাংলা)
  * @author Bellayet
+ * @author Nasir8891
  */
 $messages['bn'] = array(
 	'translate-svg-thumbnail' => 'মূল ফাইল',
@@ -285,8 +286,15 @@ $messages['bn'] = array(
 	'translate-svg-upload-none' => '(কিছু নাই)',
 	'translate-svg-chooselanguage-title' => 'ভাষা নির্বাচন',
 	'translate-svg-new-title' => 'SVG অনুবাদ',
+	'translate-svg-new-label' => 'ভাষা:',
+	'translate-js-properties-legend' => 'বৈশিষ্টসমূহ',
+	'translate-js-label-x' => 'X-স্থানাঙ্ক:',
+	'translate-js-label-y' => 'Y-স্থানাঙ্ক:',
+	'translate-js-label-color' => 'বর্ণ:',
+	'translate-js-label-font-family' => 'ফন্ট:',
 	'translate-js-label-bold' => 'গাঢ়',
 	'translate-js-label-italic' => 'ইটালিক',
+	'translate-js-label-underline' => 'আন্ডারলাইন',
 );
 
 /** Breton (brezhoneg)
@@ -309,6 +317,13 @@ $messages['br'] = array(
 	'translate-js-label-font-family' => 'Font :',
 	'translate-js-label-bold' => 'Tev',
 	'translate-js-label-italic' => 'Italek',
+);
+
+/** Chechen (нохчийн)
+ * @author Умар
+ */
+$messages['ce'] = array(
+	'translate-svg-new-label' => 'Мотт:',
 );
 
 /** Sorani Kurdish (کوردی)
@@ -2041,20 +2056,45 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (中文（繁體）‎)
+ * @author Justincheng12345
  * @author Shirayuki
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
+	'translate-taskui-export-as-svg' => '儲存至原SVG檔案',
+	'translate-svg-nodesc' => '（没有提供檔案描述。）',
 	'translate-svg-thumbnail' => '原本文件',
+	'translate-svg-js-thumbnail' => '（自動更新縮略圖）',
+	'translate-page-description-legend-svgmg' => '有關此檔案的資訊',
 	'translate-taction-mstats-svgmg' => '文件統計',
+	'translate-taction-export-svgmg' => '上載檔案的新版本',
+	'translate-svg-table-header' => '訊息識別碼',
+	'translate-svg-filepage-caption' => '此圖像於下列語言中顯示為PNG：$1',
+	'translate-svg-filepage-caption-translator' => '此圖像於下列語言中顯示為PNG：$1；或將其翻譯至$2',
 	'translate-svg-filepage-edit' => '編輯',
 	'translate-svg-filepage-finish' => '完成',
 	'translate-svg-filepage-another' => '其他語言',
 	'translate-svg-filepage-other' => '其他語言',
+	'translate-svg-filepage-invite' => '此檔案可以輕鬆翻譯成$1',
+	'translate-svg-autocreate' => '自動對應原始SVG檔案的修改創建翻譯單位',
+	'translate-svg-autodelete' => '自動對應原始SVG檔案的修改刪除翻譯單位',
+	'translate-svg-autoedit' => '自動對應原始SVG檔案的修改更改翻譯單位',
+	'translate-svg-autofuzzy' => '自動對應原始SVG檔案的修改標記翻譯已過時',
+	'translate-svg-upload-comment' => '正在更新翻譯（開始：$1；修改或擴展： $2）',
 	'translate-svg-upload-none' => '（無）',
 	'translate-svg-chooselanguage-title' => '語言選擇',
+	'translate-svg-chooselanguage-desc' => '請選擇您希望翻譯此SVG檔案至的語言：',
+	'translate-svg-instructions-title' => '第一次以這種方式翻譯SVG檔案？',
+	'translate-svg-instructions-desc' => '若要開始，請按下第一行的訊息識別碼，使用「$1」及「$2」按鈕以幫助尋找需要翻譯的訊息。完成時，記得需要使用「$3」選項卡將翻譯儲存回原始檔案。',
+	'translate-svg-warn' => '<strong>警告：</strong>此語言目前有尚未儲存的翻譯，於你或其它人$1之前將不可見。',
+	'translate-svg-warn-inner' => '將這些更改儲存至原始檔案',
 	'translate-svg-new-title' => 'SVG翻譯',
+	'translate-svg-new-summary' => "要開始此檔案的翻譯，請選擇你要'''從'''哪種語言開始翻譯（若有歧義，選擇最廣泛使用的語言）。",
 	'translate-svg-new-label' => '語言：',
+	'translate-svg-new-error-import' => "'''出錯：'''嘗試創建翻譯此SVG檔案所需的頁面時出現未知錯誤。",
+	'translate-svg-new-error-group' => "'''出錯：'''出現未知錯誤；也許你忘了於網址中指定組？",
+	'translate-svg-export-unsupported' => '此消息組不支援SVG重新匯入。如果發生原因不明顯，您可能希望為此於$1提報錯誤。',
+	'translate-svg-export-error' => '嘗試儲存您的更改時發生意外錯誤。您可能希望於$1報告此錯誤。',
 	'translate-js-properties-legend' => '屬性',
 	'translate-js-label-x' => 'X坐標：',
 	'translate-js-label-y' => 'Y坐標：',
