@@ -157,7 +157,7 @@ $messages['arc'] = array(
 	'translate-taction-mstats-svgmg' => 'ܚܒܝܫܘܬ ܡܢܝܢܐ ܕܠܦܦܐ',
 );
 
-/** Assamese (অসমীয়া)
+/** Assamese (অসমীয়া)
  * @author Bishnu Saikia
  */
 $messages['as'] = array(
@@ -545,6 +545,7 @@ $messages['eo'] = array(
  * @author Dferg
  * @author Jewbask
  * @author Maor X
+ * @author MarcoAurelio
  */
 $messages['es'] = array(
 	'translatesvg-desc' => 'Proporciona una interfaz de estilo nativo para traducir archivos SVG en consonancia con la especificación SVG1.1',
@@ -1375,7 +1376,7 @@ $messages['nl'] = array(
 	'translate-js-font-family-inherit' => '(overnemen)',
 );
 
-/** Norwegian Nynorsk (norsk (nynorsk)‎)
+/** Norwegian Nynorsk (norsk nynorsk)
  * @author Njardarlogar
  */
 $messages['nn'] = array(
@@ -1532,6 +1533,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Luckas
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
