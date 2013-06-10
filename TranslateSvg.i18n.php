@@ -1714,6 +1714,7 @@ $messages['sl'] = array(
  * @author Милан Јелисавчић
  */
 $messages['sr-ec'] = array(
+	'translate-svg-nodesc' => '(Опис датотеке није достављен.)',
 	'translate-svg-thumbnail' => 'Изворна датотека',
 	'translate-page-description-legend-svgmg' => 'Информације о овој датотеци',
 	'translate-taction-mstats-svgmg' => 'Статистике датотеке',
@@ -1724,6 +1725,10 @@ $messages['sr-ec'] = array(
 	'translate-svg-filepage-other' => 'остали језици',
 	'translate-svg-upload-none' => '(нема)',
 	'translate-svg-chooselanguage-title' => 'Избор језика',
+	'translate-svg-chooselanguage-desc' => 'Изаберите језик на који желите да преведете ову SVG датотеку:',
+	'translate-svg-instructions-title' => 'Први пут преводите SVG датотеку на овај начин?',
+	'translate-svg-warn' => '<strong>Упозорење:</strong> Тренутно постоје несачувани преводи на овом језику, који неће бити видљиви све док ви или неко други не $1.',
+	'translate-svg-warn-inner' => 'сачува измене назад у првобитну датотеку',
 	'translate-svg-new-title' => 'SVG превод',
 	'translate-svg-new-label' => 'Језик:',
 	'translate-svg-export-error' => 'Дошло је до неочекиване грешке приликом покушаја чувања ваших измена на датотеку. Ако желите, можете пријавити грешку у вези са тим на $1.',
@@ -2063,6 +2068,7 @@ $messages['zh-hans'] = array(
  * @author Simon Shek
  */
 $messages['zh-hant'] = array(
+	'translatesvg-desc' => '為轉譯符合SVG1.1規範的SVG提供一個原生樣式接口',
 	'translate-taskui-export-as-svg' => '儲存至原SVG檔案',
 	'translate-svg-nodesc' => '（没有提供檔案描述。）',
 	'translate-svg-thumbnail' => '原本文件',
