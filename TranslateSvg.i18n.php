@@ -1204,6 +1204,7 @@ $messages['lb'] = array(
 	'translate-svg-warn' => '<strong>OPgepasst:</strong> Et gëtt elo net gespäichert Iwwersetzungen an dëser Sprooch, déi net ze gesi sinn bis Dir oder een Aneren se $1.',
 	'translate-svg-warn-inner' => 'Späichert dës Ännerungen am Original-Fichier',
 	'translate-svg-new-title' => 'SVG-Iwwersetzung',
+	'translate-svg-new-summary' => "Fir unzefänken dëse Fichier z'iwwersetzen, sich d'Sprooch eraus '''vun där aus''' Dir dëse Fichier iwwersetzt (wann dat net eendeiteg ass, sicht déi Sprooch eraus déi Dir am beschte verstitt)",
 	'translate-svg-new-label' => 'Sprooch:',
 	'translate-svg-export-error' => 'Beim Späichere vun Ären Ännerungen an dësem Fichier ass en onerwaarte Feeler geschitt. Dir kënnt dëse Feeler op $1 mellen.',
 	'translate-js-properties-legend' => 'Eegeschaften',
