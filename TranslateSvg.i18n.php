@@ -323,6 +323,7 @@ $messages['br'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
+	'translate-svg-filepage-edit' => 'нисйé',
 	'translate-svg-new-label' => 'Мотт:',
 );
 
