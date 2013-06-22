@@ -1958,6 +1958,13 @@ $messages['ur'] = array(
 	'translate-js-label-bold' => 'بولڈ',
 );
 
+/** Uzbek (oʻzbekcha)
+ * @author Sociologist
+ */
+$messages['uz'] = array(
+	'translate-svg-new-label' => 'Til:',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author පසිඳු කාවින්ද
