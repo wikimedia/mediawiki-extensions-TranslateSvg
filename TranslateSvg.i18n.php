@@ -325,6 +325,7 @@ $messages['br'] = array(
 $messages['ce'] = array(
 	'translate-svg-filepage-edit' => 'нисйé',
 	'translate-svg-new-label' => 'Мотт:',
+	'translate-js-font-family-inherit' => '(Iад йитарца)',
 );
 
 /** Sorani Kurdish (کوردی)
