@@ -1208,6 +1208,7 @@ $messages['lb'] = array(
 	'translate-svg-new-title' => 'SVG-Iwwersetzung',
 	'translate-svg-new-summary' => "Fir unzefänken dëse Fichier z'iwwersetzen, sich d'Sprooch eraus '''vun där aus''' Dir dëse Fichier iwwersetzt (wann dat net eendeiteg ass, sicht déi Sprooch eraus déi Dir am beschte verstitt)",
 	'translate-svg-new-label' => 'Sprooch:',
+	'translate-svg-new-error-import' => "'''Et ass e Feeler geschitt:''' En onbekannte Feeler ass beim Versuch vum Uleeë vun de Säite geschitt, déi gebraucht gi fir d'Iwwersetze vun dësem SVG.",
 	'translate-svg-export-error' => 'Beim Späichere vun Ären Ännerungen an dësem Fichier ass en onerwaarte Feeler geschitt. Dir kënnt dëse Feeler op $1 mellen.',
 	'translate-js-properties-legend' => 'Eegeschaften',
 	'translate-js-label-x' => 'X-Koordinat:',
