@@ -347,6 +347,13 @@ $messages['cs'] = array(
 	'translate-js-label-font-family' => 'Písmo:',
 );
 
+/** Church Slavic (словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'translate-svg-new-label' => 'ѩꙁꙑкъ :',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  * @author Metalhead64
@@ -1073,7 +1080,7 @@ $messages['ka'] = array(
  * @author 아라
  */
 $messages['ko'] = array(
-	'translatesvg-desc' => 'SVG 1.1 규격에 따라 SVG 파일을 번역하는 인터페이스를 제공',
+	'translatesvg-desc' => 'SVG 1.1 규격에 따라 SVG 파일을 번역하는 인터페이스를 제공합니다',
 	'translate-taskui-export-as-svg' => '원본 SVG 파일에 다시 저장',
 	'translate-svg-nodesc' => '(이 파일은 설명을 제공하지 않았습니다.)',
 	'translate-svg-thumbnail' => '원본 파일',
