@@ -327,6 +327,7 @@ $messages['ce'] = array(
 	'translate-svg-filepage-edit' => 'нисйé',
 	'translate-svg-filepage-another' => 'кхин мотт',
 	'translate-svg-filepage-other' => 'кхин меттанаш:',
+	'translate-svg-chooselanguage-title' => 'Мотт харжар',
 	'translate-svg-new-label' => 'Мотт:',
 	'translate-js-label-font-family' => 'Шрифт:',
 	'translate-js-font-family-inherit' => '(Iад йитарца)',
