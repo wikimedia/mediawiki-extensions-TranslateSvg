@@ -120,12 +120,14 @@ $messages['qqq'] = array(
 {{Identical|Property}}',
 	'translate-js-label-x' => 'Label for textbox which sets the horizontal position of a string',
 	'translate-js-label-y' => 'Label for a textbox which sets the vertical position of a string',
-	'translate-js-label-color' => 'Label for a box which sets the (foreground) colour used for a string',
+	'translate-js-label-color' => 'Label for a box which sets the (foreground) colour used for a string.
+{{Identical|Color}}',
 	'translate-js-label-font-family' => 'Label for a dropdown "combobox" which sets the typeface used in a string.
 {{Identical|Font}}',
 	'translate-js-label-font-size' => 'Label for a textbox which sets the size of the typeface used in a string',
 	'translate-js-label-units' => 'Label for a dropdown "combobox" which sets the units for the font-size used in a string',
-	'translate-js-label-bold' => 'Label for a checkbox governing the formatting of a string',
+	'translate-js-label-bold' => 'Label for a checkbox governing the formatting of a string.
+{{Identical|Bold}}',
 	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string.
 {{Identical|Italic}}',
 	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string',
