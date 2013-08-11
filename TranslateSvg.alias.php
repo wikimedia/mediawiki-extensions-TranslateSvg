@@ -11,6 +11,11 @@ $specialPageAliases['en'] = array(
 	'TranslateNewSVG' => array( 'TranslateNewSVG' ),
 );
 
+/** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
+$specialPageAliases['cdo'] = array(
+	'TranslateNewSVG' => array( '翻譯新其SVG' ),
+);
+
 /** German (Deutsch) */
 $specialPageAliases['de'] = array(
 	'TranslateNewSVG' => array( 'SVG_übersetzen' ),
