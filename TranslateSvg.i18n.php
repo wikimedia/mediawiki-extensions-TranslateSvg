@@ -130,7 +130,8 @@ $messages['qqq'] = array(
 {{Identical|Bold}}',
 	'translate-js-label-italic' => 'Label for a checkbox governing the formatting of a string.
 {{Identical|Italic}}',
-	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string',
+	'translate-js-label-underline' => 'Label for a checkbox governing the formatting of a string.
+{{Identical|Underline}}',
 	'translate-js-font-family-inherit' => 'Label used to imply that no specific typeface will be set for a string; instead, it will be inherited from the document default.',
 );
 
