@@ -1127,7 +1127,7 @@ $messages['ko'] = array(
 	'translate-js-label-font-family' => '글꼴:',
 	'translate-js-label-bold' => '굵은 글씨',
 	'translate-js-label-italic' => '기울인 글씨',
-	'translate-js-label-underline' => '밑줄 글씨',
+	'translate-js-label-underline' => '밑줄',
 	'translate-js-font-family-inherit' => '(상속)',
 );
 
