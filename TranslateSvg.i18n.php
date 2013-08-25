@@ -1558,10 +1558,12 @@ $messages['pt'] = array(
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'translate-svg-thumbnail' => 'Arquivo original',
 	'translate-svg-filepage-edit' => 'editar',
 	'translate-svg-filepage-finish' => 'finalizar',
 	'translate-svg-filepage-another' => 'outra língua',
 	'translate-svg-filepage-other' => 'outras línguas',
+	'translate-svg-new-label' => 'Língua:',
 	'translate-js-properties-legend' => 'Propriedades',
 	'translate-js-label-x' => 'Coordenada X:',
 	'translate-js-label-y' => 'Coordenada Y:',
