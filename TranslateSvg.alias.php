@@ -21,6 +21,11 @@ $specialPageAliases['de'] = array(
 	'TranslateNewSVG' => array( 'SVG_übersetzen' ),
 );
 
+/** Greek (Ελληνικά) */
+$specialPageAliases['el'] = array(
+	'TranslateNewSVG' => array( 'ΜετάφρασηΝέουSVG' ),
+);
+
 /** Esperanto (Esperanto) */
 $specialPageAliases['eo'] = array(
 	'TranslateNewSVG' => array( 'Traduki_novan_SVG' ),
