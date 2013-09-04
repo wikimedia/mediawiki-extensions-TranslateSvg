@@ -963,9 +963,11 @@ $messages['id'] = array(
  * @author Beta16
  * @author Darth Kule
  * @author F. Cosoleto
+ * @author Gianfranco
  */
 $messages['it'] = array(
 	'translatesvg-desc' => "Fornisce un'interfaccia nativa per tradurre SVG con le specifiche SVG1.1",
+	'translate-taskui-export-as-svg' => 'Salvataggio file in formato SVG originale',
 	'translate-svg-nodesc' => '(Non è stata fornita una descrizione del file).',
 	'translate-svg-thumbnail' => 'File originale',
 	'translate-svg-js-thumbnail' => '(la miniatura si aggiorna automaticamente)',
