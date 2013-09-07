@@ -1556,15 +1556,23 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (português do Brasil)
+ * @author Cainamarques
  * @author Luckas
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'translate-svg-thumbnail' => 'Arquivo original',
+	'translate-svg-js-thumbnail' => '(as miniaturas são atualizadas automaticamente)',
+	'translate-page-description-legend-svgmg' => 'Informação sobre este arquivo',
+	'translate-taction-export-svgmg' => 'Carregar versão atualizada do arquivo',
 	'translate-svg-filepage-edit' => 'editar',
 	'translate-svg-filepage-finish' => 'finalizar',
 	'translate-svg-filepage-another' => 'outra língua',
 	'translate-svg-filepage-other' => 'outras línguas',
+	'translate-svg-upload-none' => '(nenhum)',
+	'translate-svg-chooselanguage-desc' => 'Por favor selecione o idioma para o qual deseja traduzir este arquivo SVG:',
+	'translate-svg-warn' => '<strong>Atenção:</strong> Atualmente há traduções não salvas neste idioma, as quais não serão visíveis até você ou outra pessoa $1.',
+	'translate-svg-warn-inner' => 'salvar estas alterações para o arquivo original',
 	'translate-svg-new-label' => 'Língua:',
 	'translate-js-properties-legend' => 'Propriedades',
 	'translate-js-label-x' => 'Coordenada X:',
