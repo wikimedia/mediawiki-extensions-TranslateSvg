@@ -1217,6 +1217,7 @@ $messages['lb'] = array(
 	'translate-svg-autocreate' => 'Iwwersetzungen-Eenheeten, op Basis vun de Ännerungen am SVG-Quellfichier, automatesch uleeën',
 	'translate-svg-autodelete' => 'Net méi gebrauchten Iwwersetzungen automatesch, op Basis vun den Ännerungen am SVG-Quellfichier, läschen',
 	'translate-svg-autoedit' => 'Iwwersetzungen, op Basis vun de Verännerungen am SVG-Quellfichier, automatesch aktualiséieren',
+	'translate-svg-autofuzzy' => 'Iwwersetzungen automatesch als fuzzy markéieren op Basis vun de Ännerungen am SVG-Quellfichier',
 	'translate-svg-upload-comment' => 'Iwwersetzungen aktualiséiert (ugefaang: $1 geännert/erweidert: $2)',
 	'translate-svg-upload-none' => '(keng)',
 	'translate-svg-chooselanguage-title' => 'Eraussiche vun der Sprooch',

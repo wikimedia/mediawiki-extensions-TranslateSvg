@@ -31,6 +31,11 @@ $specialPageAliases['eo'] = array(
 	'TranslateNewSVG' => array( 'Traduki_novan_SVG' ),
 );
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = array(
+	'TranslateNewSVG' => array( 'ترجمهٔ_اس‌وی‌جی_جدید' ),
+);
+
 /** Japanese (日本語) */
 $specialPageAliases['ja'] = array(
 	'TranslateNewSVG' => array( '新規SVG変換' ),
