@@ -1558,6 +1558,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (português do Brasil)
  * @author Cainamarques
+ * @author Hamilton Abreu
  * @author Luckas
  * @author Luckas Blade
  */
