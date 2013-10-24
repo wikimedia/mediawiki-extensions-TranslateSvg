@@ -333,6 +333,7 @@ $messages['ce'] = array(
 	'translate-svg-chooselanguage-title' => 'Мотт харжар',
 	'translate-svg-new-label' => 'Мотт:',
 	'translate-js-label-font-family' => 'Шрифт:',
+	'translate-js-label-underline' => 'Бухахь сиз хьаькхна',
 	'translate-js-font-family-inherit' => '(Iад йитарца)',
 );
 
