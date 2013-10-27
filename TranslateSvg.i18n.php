@@ -666,6 +666,7 @@ $messages['fa'] = array(
 
 /** Finnish (suomi)
  * @author Beluga
+ * @author Crt
  * @author Nedergard
  * @author Silvonen
  */
