@@ -83,7 +83,8 @@ $messages['qqq'] = array(
 	'translate-svg-table-header' => 'Content for a column title/header cell',
 	'translate-svg-filepage-caption' => 'Paragraph displayed on file description pages; $1 is a comma-separated list of languages',
 	'translate-svg-filepage-caption-translator' => 'Paragraph displayed on file description pages; $1 and $2 are comma-separated lists of languages (the generic text "another language" may appear as an item in $2).',
-	'translate-svg-filepage-edit' => 'Call to action, used as link text',
+	'translate-svg-filepage-edit' => 'Call to action, used as link text.
+{{Identical|Edit}}',
 	'translate-svg-filepage-finish' => 'Call to action, used as link text.
 {{Identical|Finish}}',
 	'translate-svg-filepage-another' => 'Fragment, takes the place of a language name in a list; used as link text, links to a language selection dialog',
