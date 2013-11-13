@@ -1002,6 +1002,7 @@ $messages['it'] = array(
 	'translate-svg-new-label' => 'Lingua:',
 	'translate-svg-new-error-import' => "'''Si è verificato un errore:''' Errore sconosciuto provando a creare le pagine richieste per tradurre questo SVG.",
 	'translate-svg-new-error-group' => "'''Si è verificato un errore:''' Errore sconosciuto, forse non è stato indicato un gruppo nell'URL?",
+	'translate-svg-export-unsupported' => "L'esportazione verso SVG non è supportata per questo gruppo di messaggi. Se non è ovvio perché ciò si è verificato, forse vorresti aprire un bug su $1.",
 	'translate-svg-export-error' => 'Si verificato un errore cercando di salvare le modifiche apportate nel file. Puoi segnalare il problema su $1.',
 	'translate-js-properties-legend' => 'Proprietà',
 	'translate-js-label-x' => 'Coordinata x:',
