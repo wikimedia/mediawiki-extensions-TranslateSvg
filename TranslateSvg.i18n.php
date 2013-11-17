@@ -75,7 +75,8 @@ $messages['qqq'] = array(
 	'translatesvg-desc' => '{{desc|name=Translate Svg|url=http://www.mediawiki.org/wiki/Extension:TranslateSvg}}',
 	'translate-taskui-export-as-svg' => 'Label for a radio button, not currently displayed since no other options',
 	'translate-svg-nodesc' => 'Text that displays under the heading "Information about the file" if no information/description could be found.',
-	'translate-svg-thumbnail' => 'Caption for a thumbnail that appears immediately before any strings are translated.',
+	'translate-svg-thumbnail' => 'Caption for a thumbnail that appears immediately before any strings are translated.
+{{Identical|Original file}}',
 	'translate-svg-js-thumbnail' => 'Caption for a thumbnail that accompanies the translation of a string.',
 	'translate-page-description-legend-svgmg' => 'Caption for a box that contains file description information.',
 	'translate-taction-mstats-svgmg' => 'Interface message for a tab displayed at the top of the screen',
