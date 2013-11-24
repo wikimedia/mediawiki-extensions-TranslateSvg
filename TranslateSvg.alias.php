@@ -67,6 +67,11 @@ $specialPageAliases['nl'] = array(
 	'TranslateNewSVG' => array( 'NieuweSVGVertalen' ),
 );
 
+/** Norwegian Nynorsk (norsk nynorsk) */
+$specialPageAliases['nn'] = array(
+	'TranslateNewSVG' => array( 'Set_om_ny_SVG' ),
+);
+
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = array(
 	'TranslateNewSVG' => array( 'Biên_dịch_SVG_mới' ),
