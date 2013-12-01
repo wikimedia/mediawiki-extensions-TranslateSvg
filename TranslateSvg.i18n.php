@@ -1783,6 +1783,13 @@ $messages['sr-ec'] = array(
 	'translate-js-font-family-inherit' => '(наслеђено)',
 );
 
+/** Serbian (Latin script) (srpski (latinica)‎)
+ * @author Milicevic01
+ */
+$messages['sr-el'] = array(
+	'translate-svg-new-label' => 'Jezik:',
+);
+
 /** Swedish (svenska)
  * @author Ainali
  */
