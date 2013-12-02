@@ -1246,6 +1246,24 @@ $messages['lb'] = array(
 	'translate-js-font-family-inherit' => '(iwwerhuelen)',
 );
 
+/** لوری (لوری)
+ * @author Mogoeilor
+ */
+$messages['lrc'] = array(
+	'translate-svg-filepage-edit' => 'ويرايشت',
+	'translate-svg-filepage-finish' => 'تموم بین',
+	'translate-svg-filepage-another' => 'د زونيا هنی',
+	'translate-svg-filepage-other' => 'د زونيا هنی',
+	'translate-svg-upload-none' => '(هيش كوم)',
+	'translate-svg-chooselanguage-title' => 'انتخاو زون',
+	'translate-svg-new-label' => 'زون:',
+	'translate-js-label-color' => 'رن',
+	'translate-js-label-font-family' => 'فونت:',
+	'translate-js-label-bold' => 'مئن پر',
+	'translate-js-label-italic' => 'كج كوله',
+	'translate-js-label-underline' => 'زیرخط',
+);
+
 /** Latvian (latviešu)
  * @author Papuass
  */
