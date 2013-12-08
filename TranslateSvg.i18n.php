@@ -1231,7 +1231,7 @@ $messages['lb'] = array(
 	'translate-svg-warn' => '<strong>OPgepasst:</strong> Et gëtt elo net gespäichert Iwwersetzungen an dëser Sprooch, déi net ze gesi sinn bis Dir oder een Aneren se $1.',
 	'translate-svg-warn-inner' => 'Späichert dës Ännerungen am Original-Fichier',
 	'translate-svg-new-title' => 'SVG-Iwwersetzung',
-	'translate-svg-new-summary' => "Fir unzefänken dëse Fichier z'iwwersetzen, sich d'Sprooch eraus <strong>vun där aus</strong> Dir dëse Fichier iwwersetzt (wann dat net eendeiteg ass, sicht déi Sprooch eraus déi Dir am beschte verstitt)",
+	'translate-svg-new-summary' => "Fir unzefänken dëse Fichier z'iwwersetzen, sicht d'Sprooch eraus <strong>vun där aus</strong> Dir dëse Fichier iwwersetzt (wann dat net eendeiteg ass, sicht déi Sprooch eraus déi Dir am beschte verstitt).",
 	'translate-svg-new-label' => 'Sprooch:',
 	'translate-svg-new-error-import' => "<strong>Et ass e Feeler geschitt:</strong> En onbekannte Feeler ass beim Versuch vum Uleeë vun de Säite geschitt, déi gebraucht gi fir d'Iwwersetze vun dësem SVG.",
 	'translate-svg-export-error' => 'Beim Späichere vun Ären Ännerungen an dësem Fichier ass en onerwaarte Feeler geschitt. Dir kënnt dëse Feeler op $1 mellen.',
@@ -1810,6 +1810,7 @@ $messages['sr-el'] = array(
 
 /** Swedish (svenska)
  * @author Ainali
+ * @author Jopparn
  */
 $messages['sv'] = array(
 	'translatesvg-desc' => 'Innehåller en gränssnitt för att översätta SVGs enligt SVG1.1 specifikation',
@@ -1841,9 +1842,9 @@ $messages['sv'] = array(
 	'translate-svg-warn' => '<strong>Varning:</strong> Det finns för närvarande osparade översättningar på detta språk som inte syns förrän du eller någon annan  $1.',
 	'translate-svg-warn-inner' => 'sparar ändringarna tillbaka till den ursprungliga filen',
 	'translate-svg-new-title' => 'SVG-översättning',
-	'translate-svg-new-summary' => 'Om du vill börja översättning av denna fil, välj det språk du översätter den här filen <strong> från </strong> (om tvetydigt, välj det mest talade språket).',
+	'translate-svg-new-summary' => 'Om du vill börja översättning av denna fil, välj det språk du översätter den här filen <strong>från</strong> (om tvetydigt, välj det mest talade språket).',
 	'translate-svg-new-label' => 'Språk:',
-	'translate-svg-new-error-import' => '<strong>Ett fel uppstod:</strong> Ett okänt fel inträffade under tiden som det försöktes skapa sidorna som krävs för att översätta denna SVG.',
+	'translate-svg-new-error-import' => '<strong>Ett fel uppstod:</strong> Ett okänt fel inträffade under tiden som de sidor som krävs för att översätta denna SVG försökte skapas.',
 	'translate-svg-new-error-group' => '<strong>Ett fel uppstod:</strong> Ett okänt fel inträffade; du har kanske glömt att ange en grupp i URL-adressen?',
 	'translate-svg-export-unsupported' => 'Exportera tillbaka till en SVG stöds inte för denna meddelandegrupp. Om det inte är uppenbart varför detta skett, kanske du vill rapportera ett fel om detta vid  $1.',
 	'translate-svg-export-error' => 'Ett oväntat fel inträffade vid försök att spara ändringarna tillbaka till filen. Du kan rapportera ett fel om detta vid  $1.',
