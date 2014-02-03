@@ -641,6 +641,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Armin1392
  * @author ZxxZxxZ
  * @author پاناروما
  */
@@ -649,10 +650,13 @@ $messages['fa'] = array(
 	'translate-svg-nodesc' => '(هیچ شرحی برای پرونده ارائه نشده‌است.)',
 	'translate-svg-thumbnail' => 'پروندهٔ اصلی',
 	'translate-page-description-legend-svgmg' => 'اطلاعات دربارهٔ این پرونده',
+	'translate-taction-mstats-svgmg' => 'آمارهای پوشه',
+	'translate-svg-table-header' => 'پیغام شناسانه',
 	'translate-svg-filepage-edit' => 'ویرایش',
 	'translate-svg-filepage-finish' => 'اتمام',
 	'translate-svg-filepage-another' => 'زبان‌های دیگر',
 	'translate-svg-filepage-other' => 'زبان‌های دیگر',
+	'translate-svg-filepage-invite' => 'این پوشه به راحتی می تواند به $1 ترجمه شود',
 	'translate-svg-upload-none' => '(هیچ)',
 	'translate-svg-chooselanguage-title' => 'انتخاب زبان',
 	'translate-svg-new-title' => 'ترجمهٔ اس‌وی‌جی',
@@ -664,6 +668,8 @@ $messages['fa'] = array(
 	'translate-js-label-font-family' => 'قلم:',
 	'translate-js-label-bold' => 'پررنگ',
 	'translate-js-label-italic' => 'مورب',
+	'translate-js-label-underline' => 'زیر خط',
+	'translate-js-font-family-inherit' => '(به ارث بردن)',
 );
 
 /** Finnish (suomi)
