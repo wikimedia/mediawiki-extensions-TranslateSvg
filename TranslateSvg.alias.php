@@ -17,6 +17,11 @@ $specialPageAliases['ar'] = array(
 	'TranslateNewSVG' => array( 'ترجمة_إس_في_جي_جديدة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
+$specialPageAliases['arz'] = array(
+	'TranslateNewSVG' => array( 'ترجمه_اس_فى_جى_جديد' ),
+);
+
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $specialPageAliases['cdo'] = array(
 	'TranslateNewSVG' => array( '翻譯新其SVG' ),
@@ -65,6 +70,11 @@ $specialPageAliases['mk'] = array(
 /** Malayalam (മലയാളം) */
 $specialPageAliases['ml'] = array(
 	'TranslateNewSVG' => array( 'പുതിയഎസ്.വി.ജി.പരിഭാഷ' ),
+);
+
+/** Norwegian Bokmål (norsk bokmål) */
+$specialPageAliases['nb'] = array(
+	'TranslateNewSVG' => array( 'Oversett_ny_SVG' ),
 );
 
 /** Dutch (Nederlands) */
