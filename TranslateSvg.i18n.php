@@ -329,7 +329,7 @@ $messages['br'] = array(
  * @author Умар
  */
 $messages['ce'] = array(
-	'translate-svg-filepage-edit' => 'нисйé',
+	'translate-svg-filepage-edit' => 'нисъе',
 	'translate-svg-filepage-another' => 'кхин мотт',
 	'translate-svg-filepage-other' => 'кхин меттанаш:',
 	'translate-svg-chooselanguage-title' => 'Мотт харжар',
