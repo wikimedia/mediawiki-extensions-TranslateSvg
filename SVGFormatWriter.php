@@ -4,7 +4,7 @@
  *
  * @file
  * @author Harry Burt
- * @copyright Copyright © 2012 Harry Burt
+ * @copyright Copyright Â© 2012 Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
