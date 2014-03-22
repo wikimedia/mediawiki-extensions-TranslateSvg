@@ -431,9 +431,10 @@ $messages['de-formal'] = array(
 
 /** Zazaki (Zazaki)
  * @author Erdemaslancan
+ * @author Mirzali
  */
 $messages['diq'] = array(
-	'translate-svg-thumbnail' => 'Oricinal dosya',
+	'translate-svg-thumbnail' => 'Dosyaya oricinale',
 	'translate-taction-mstats-svgmg' => 'İstatistikê dosya',
 	'translate-svg-filepage-edit' => 'bıvurne',
 	'translate-svg-filepage-finish' => 'qediya',
