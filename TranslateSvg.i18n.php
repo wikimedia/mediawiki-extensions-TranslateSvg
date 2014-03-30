@@ -114,8 +114,14 @@ $messages['qqq'] = array(
 	'translate-svg-new-summary' => 'Introductory paragraph on a special page. Attention is drawn to the fact that the user is asked to provide the original language the file is being translated FROM, rather than the language they are translating it INTO.',
 	'translate-svg-new-label' => 'Label for a dropdown list of languages.
 {{Identical|Language}}',
-	'translate-svg-new-error-import' => 'Text for a paragraph that appears whenever a certain type of error occurs',
-	'translate-svg-new-error-group' => 'Text for a paragraph that appears whenever a certain type of error occurs',
+	'translate-svg-new-error-import' => 'Text for a paragraph that appears whenever a certain type of error occurs.
+
+See also:
+* {{msg-mw|Translate-svg-new-error-group}}',
+	'translate-svg-new-error-group' => 'Text for a paragraph that appears whenever a certain type of error occurs.
+
+See also:
+* {{msg-mw|Translate-svg-new-error-import}}',
 	'translate-svg-export-unsupported' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
 	'translate-svg-export-error' => 'Text for a paragraph that appears whenever a certain type of error occurs. $1 is a link, with link text "bugzilla.wikimedia.org".',
 	'translate-js-properties-legend' => 'The legend for a fieldset which contains property controls.
@@ -1072,9 +1078,10 @@ $messages['ja'] = array(
 	'translate-svg-chooselanguage-desc' => 'この SVG ファイルの翻訳先言語を選択してください:',
 	'translate-svg-instructions-title' => 'この方法での SVG ファイルの翻訳は初めてですか?',
 	'translate-svg-new-title' => 'SVGの翻訳',
+	'translate-svg-new-summary' => "このファイルの翻訳を開始するには、このファイルの'''翻訳元'''の言語を選択してください (不明な場合は、最も広く話されている言語を選択してください)。",
 	'translate-svg-new-label' => '言語:',
-	'translate-svg-new-error-import' => '<strong>エラーが発生しました:</strong> この SVG ファイルの翻訳に必要なページを作成する際に不明なエラーが発生しました。',
-	'translate-svg-new-error-group' => '<strong>エラーが発生しました:</strong> 不明なエラーが発生しました。URL 内でグループを指定し忘れた可能性があります。',
+	'translate-svg-new-error-import' => "'''エラーが発生しました:''' この SVG ファイルの翻訳に必要なページを作成する際に不明なエラーが発生しました。",
+	'translate-svg-new-error-group' => "'''エラーが発生しました:''' 不明なエラーが発生しました。URL 内でグループを指定し忘れた可能性があります。",
 	'translate-svg-export-unsupported' => 'このメッセージ群では、元の SVG ファイルへの上書き保存に対応していません。このエラーが発生した理由が不明な場合は、$1でバグとして報告してください。',
 	'translate-svg-export-error' => '編集をファイルに保存しようとした際に、予期しないエラーが発生しました。必要であれば $1 でバグを報告してください。',
 	'translate-js-properties-legend' => 'プロパティ',
@@ -1113,6 +1120,14 @@ $messages['ka'] = array(
 	'translate-js-label-bold' => 'მუქი',
 	'translate-js-label-italic' => 'კურსივი',
 	'translate-js-label-underline' => 'ხაზის ქვეშ',
+);
+
+/** Kazakh (Cyrillic script) (қазақша (кирил)‎)
+ * @author Габдулгани НИШ ХБН
+ */
+$messages['kk-cyrl'] = array(
+	'translate-svg-new-summary' => 'Аударуды бастар алдында бұл файлды қай тілге (немесе қай тілдерге) аударатыныңызды таңдаңыз',
+	'translate-svg-new-error-group' => '"Қате жібердіңіз": Белгісіз қате жібердіңіз. URL-дағы топты  көрсеттіңіз бе? Тексеріңіз.',
 );
 
 /** Korean (한국어)
@@ -1755,6 +1770,15 @@ $messages['rue'] = array(
 	'translate-svg-filepage-edit' => 'едітовати',
 	'translate-svg-filepage-finish' => 'конець',
 	'translate-svg-filepage-another' => 'іншый язык',
+);
+
+/** Scots (Scots)
+ * @author John Reid
+ */
+$messages['sco'] = array(
+	'translate-svg-new-summary' => "Tae begin the owersetin o this file, please select the leid that ye'r owersetin this file '''fae''' (gif ambeeguis, select the maist widelie spoken leid).",
+	'translate-svg-new-error-import' => "'''Ae mistak occurred:''' Aen onkent mistak occurred while ettlin tae cræft the pages needit fer owersetin this SVG.",
+	'translate-svg-new-error-group' => "'''Ae mistak occurred:''' Aen onkent mistak occurred; perhaps ye fergot tae speceefie ae groop in the URL?",
 );
 
 /** Sinhala (සිංහල)
