@@ -13,7 +13,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Harry Burt',
 	'url' => 'https://www.mediawiki.org/wiki/Extension:TranslateSvg/2.0',
 	'descriptionmsg' => 'translatesvg-desc',
-	'version' => '2.0.0',
+	'version' => '2.1.0',
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -25,6 +25,7 @@ $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
 $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgAutoloadClasses['ExportSVGMessagesTask'] = $dir . 'TranslateSvgTasks.php';
 $wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
+$wgMessagesDirs['TranslateSvg'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 $wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
 
