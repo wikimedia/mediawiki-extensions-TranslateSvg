@@ -30,12 +30,16 @@
     "translate-svg-chooselanguage-title": "Lựa chọn ngôn ngữ",
     "translate-svg-chooselanguage-desc": "Xin vui lòng chọn ngôn ngữ để dịch tập tin SVG này ra:",
     "translate-svg-instructions-title": "Có phải là lần đầu tiên bạn dịch một tập tin SVG theo cách này?",
+    "translate-svg-instructions-desc": "Để bắt đầu dịch một thông điệp, nhấn chuột vào định danh của thông điệp đó ở cột đầu tiên của bảng. Bấm các nút “$1” và “$2” để chuyển tới lui qua các thông điệp đang cần dịch. Sau khi dịch xong, hãy nhớ bấm thẻ “$3” để lưu các bản dịch của bạn vào tập tin gốc.",
     "translate-svg-warn": "<strong>Cảnh báo:</strong> Hiện có bản dịch chưa lưu trong ngôn ngữ này. Để hiển thị các bản dịch này, bạn hoặc người khác phải $1.",
     "translate-svg-warn-inner": "lưu các thay đổi vào tập tin gốc",
     "translate-svg-new-title": "Biên dịch SVG",
+    "translate-svg-new-summary": "Để bắt đầu dịch tập tin này, xin hãy chọn ngôn ngữ '''gốc''' của tập tin (nếu không rõ, chọn ngôn ngữ phổ biến nhất).",
     "translate-svg-new-label": "Ngôn ngữ:",
     "translate-svg-new-error-import": "'''Lỗi đã xảy ra:''' Đã xuất hiện một lỗi không rõ khi tạo các trang cần để dịch hình SVG này.",
     "translate-svg-new-error-group": "'''Lỗi đã xảy ra:''' Đã xuất hiện một lỗi không rõ; có lẽ bạn đã quên định rõ một nhóm trong URL?",
+    "translate-svg-export-unsupported": "Không hỗ trợ xuất lại nhóm thông điệp này ra SVG. Nếu bạn không ngờ lỗi này, gợi ý bạn báo cáo lỗi tại $1.",
+    "translate-svg-export-error": "Đã xuất hiện lỗi bất ngờ khi lưu các thay đổi của bạn vào tập tin. Gợi ý bạn báo cáo lỗi tại $1.",
     "translate-js-properties-legend": "Thuộc tính",
     "translate-js-label-x": "Hoành độ:",
     "translate-js-label-y": "Tung độ:",
@@ -43,5 +47,6 @@
     "translate-js-label-font-family": "Phông chữ:",
     "translate-js-label-bold": "Đậm",
     "translate-js-label-italic": "In xiên",
-    "translate-js-label-underline": "Gạch dưới"
+    "translate-js-label-underline": "Gạch dưới",
+    "translate-js-font-family-inherit": "(thừa kế)"
 }
