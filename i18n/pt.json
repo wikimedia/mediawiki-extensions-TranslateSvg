@@ -1,20 +1,20 @@
 {
-    "@metadata": {
-        "authors": [
-            "SandroHc"
-        ]
-    },
-    "translate-page-description-legend-svgmg": "Informação sobre este ficheiro",
-    "translate-taction-mstats-svgmg": "Estatísticas do ficheiro",
-    "translate-svg-filepage-edit": "editar",
-    "translate-svg-filepage-finish": "finalizar",
-    "translate-svg-filepage-another": "outra linguagem",
-    "translate-svg-upload-none": "(nenhum)",
-    "translate-svg-chooselanguage-title": "Seleção de linguagem",
-    "translate-js-properties-legend": "Propriedades",
-    "translate-js-label-color": "Cor:",
-    "translate-js-label-font-family": "Tipo de letra:",
-    "translate-js-label-bold": "Negrito",
-    "translate-js-label-italic": "Itálico",
-    "translate-js-label-underline": "Sublinhado"
+	"@metadata": {
+		"authors": [
+			"SandroHc"
+		]
+	},
+	"translate-page-description-legend-svgmg": "Informação sobre este ficheiro",
+	"translate-taction-mstats-svgmg": "Estatísticas do ficheiro",
+	"translate-svg-filepage-edit": "editar",
+	"translate-svg-filepage-finish": "finalizar",
+	"translate-svg-filepage-another": "outra linguagem",
+	"translate-svg-upload-none": "(nenhum)",
+	"translate-svg-chooselanguage-title": "Seleção de linguagem",
+	"translate-js-properties-legend": "Propriedades",
+	"translate-js-label-color": "Cor:",
+	"translate-js-label-font-family": "Tipo de letra:",
+	"translate-js-label-bold": "Negrito",
+	"translate-js-label-italic": "Itálico",
+	"translate-js-label-underline": "Sublinhado"
 }

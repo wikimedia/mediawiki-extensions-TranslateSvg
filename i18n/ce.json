@@ -1,15 +1,15 @@
 {
-    "@metadata": {
-        "authors": [
-            "Умар"
-        ]
-    },
-    "translate-svg-filepage-edit": "нисъе",
-    "translate-svg-filepage-another": "кхин мотт",
-    "translate-svg-filepage-other": "кхин меттанаш:",
-    "translate-svg-chooselanguage-title": "Мотт харжар",
-    "translate-svg-new-label": "Мотт:",
-    "translate-js-label-font-family": "Шрифт:",
-    "translate-js-label-underline": "Бухахь сиз хьаькхна",
-    "translate-js-font-family-inherit": "(Iад йитарца)"
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"translate-svg-filepage-edit": "нисъе",
+	"translate-svg-filepage-another": "кхин мотт",
+	"translate-svg-filepage-other": "кхин меттанаш:",
+	"translate-svg-chooselanguage-title": "Мотт харжар",
+	"translate-svg-new-label": "Мотт:",
+	"translate-js-label-font-family": "Шрифт:",
+	"translate-js-label-underline": "Бухахь сиз хьаькхна",
+	"translate-js-font-family-inherit": "(Iад йитарца)"
 }

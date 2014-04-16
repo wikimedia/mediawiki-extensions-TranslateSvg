@@ -1,9 +1,9 @@
 {
-    "@metadata": {
-        "authors": [
-            "Vks"
-        ]
-    },
-    "translate-js-label-color": "Barva:",
-    "translate-js-label-font-family": "Písmo:"
+	"@metadata": {
+		"authors": [
+			"Vks"
+		]
+	},
+	"translate-js-label-color": "Barva:",
+	"translate-js-label-font-family": "Písmo:"
 }

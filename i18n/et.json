@@ -1,17 +1,17 @@
 {
-    "@metadata": {
-        "authors": [
-            "Avjoska",
-            "Pikne"
-        ]
-    },
-    "translate-svg-filepage-finish": "lõpeta",
-    "translate-svg-filepage-another": "teine keel",
-    "translate-svg-filepage-other": "muud keeled",
-    "translate-js-label-x": "X-koordinaat:",
-    "translate-js-label-y": "Y-koordinaat:",
-    "translate-js-label-color": "Värvus:",
-    "translate-js-label-bold": "Rasvane kiri",
-    "translate-js-label-italic": "Kaldkiri",
-    "translate-js-label-underline": "Allajoonitud kiri"
+	"@metadata": {
+		"authors": [
+			"Avjoska",
+			"Pikne"
+		]
+	},
+	"translate-svg-filepage-finish": "lõpeta",
+	"translate-svg-filepage-another": "teine keel",
+	"translate-svg-filepage-other": "muud keeled",
+	"translate-js-label-x": "X-koordinaat:",
+	"translate-js-label-y": "Y-koordinaat:",
+	"translate-js-label-color": "Värvus:",
+	"translate-js-label-bold": "Rasvane kiri",
+	"translate-js-label-italic": "Kaldkiri",
+	"translate-js-label-underline": "Allajoonitud kiri"
 }

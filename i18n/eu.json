@@ -1,11 +1,11 @@
 {
-    "@metadata": {
-        "authors": [
-            "පසිඳු කාවින්ද"
-        ]
-    },
-    "translate-svg-new-label": "Hizkuntza:",
-    "translate-js-label-color": "Kolorea:",
-    "translate-js-label-italic": "Etzana",
-    "translate-js-label-underline": "Azpimarratu"
+	"@metadata": {
+		"authors": [
+			"පසිඳු කාවින්ද"
+		]
+	},
+	"translate-svg-new-label": "Hizkuntza:",
+	"translate-js-label-color": "Kolorea:",
+	"translate-js-label-italic": "Etzana",
+	"translate-js-label-underline": "Azpimarratu"
 }
