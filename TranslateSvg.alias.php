@@ -32,6 +32,11 @@ $specialPageAliases['de'] = array(
 	'TranslateNewSVG' => array( 'SVG_übersetzen' ),
 );
 
+/** Zazaki (Zazaki) */
+$specialPageAliases['diq'] = array(
+	'TranslateNewSVG' => array( 'SVGyoNeweAçarnayış' ),
+);
+
 /** Greek (Ελληνικά) */
 $specialPageAliases['el'] = array(
 	'TranslateNewSVG' => array( 'ΜετάφρασηΝέουSVG' ),
