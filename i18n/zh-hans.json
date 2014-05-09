@@ -24,6 +24,7 @@
 	"translate-svg-filepage-other": "其他语言",
 	"translate-svg-filepage-item": "$1（$2）",
 	"translate-svg-filepage-invite": "这个文件可以很容易地被翻译到$1",
+	"translate-svg-autocreate": "基于对源SVG文件的更改自动创建翻译部件",
 	"translate-svg-upload-comment": "翻译更新中（开始：$1；修改扩充：$2）",
 	"translate-svg-upload-none": "（无）",
 	"translate-svg-chooselanguage-title": "语言选择",
