@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Exports messages to their native format with embedded textarea.
  */
@@ -6,16 +7,16 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 	protected $id = 'export-as-svg';
 
 	// Override
-	protected function preinit() {}
+	protected function preinit() { }
 
 	// No paging should be done
-	protected function doPaging() {}
+	protected function doPaging() { }
 
 	// Override
-	protected function postinit() {}
+	protected function postinit() { }
 
 	public function output() {
-		if ( !$this->group instanceof SVGMessageGroup ) {
+		if( !$this->group instanceof SVGMessageGroup ) {
 			$link = Html::element(
 				'a',
 				array( 'href' => 'http://bugzilla.wikimedia.org' ),
@@ -44,7 +45,7 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 	 */
 	protected function errorOutput( $content ) {
 		$output = '<h2>' . wfMessage( 'uploadwarning' )->plain() . "</h2>\n" .
-			'<div class="error">' . $content . "</div>\n";
+		          '<div class="error">' . $content . "</div>\n";
 		return $output;
 	}
 }

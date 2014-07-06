@@ -47,10 +47,14 @@ class SVGFormatWriter {
 	 */
 	public function thumbnailExport( $language, $size = 275 ) {
 		global $wgTranslateSvgDirectory, $wgTranslateSvgPath,
-			$wgUploadDirectory, $wgUploadPath;
+		       $wgUploadDirectory, $wgUploadPath;
 
-		if( !$wgTranslateSvgDirectory ) $wgTranslateSvgDirectory = "{$wgUploadDirectory}/translatesvg";
-		if( !$wgTranslateSvgPath ) $wgTranslateSvgPath = "{$wgUploadPath}/translatesvg";
+		if( !$wgTranslateSvgDirectory ) {
+			$wgTranslateSvgDirectory = "{$wgUploadDirectory}/translatesvg";
+		}
+		if( !$wgTranslateSvgPath ) {
+			$wgTranslateSvgPath = "{$wgUploadPath}/translatesvg";
+		}
 
 		$svg = $this->reader->getSVG();
 
@@ -66,7 +70,7 @@ class SVGFormatWriter {
 		$nameHash = md5( $this->filename );
 		$nameHashPath = substr( $nameHash, 0, 1 ) . '/' . substr( $nameHash, 0, 2 );
 		$dstPath = $this->getBackend()->getRootStoragePath() .
-			'/translatesvg-render/';
+		           '/translatesvg-render/';
 		$dstName = "$nameHashPath/$contentsHash-" . $this->filename . '.png';
 		$dstUrl = $wgTranslateSvgPath . '/' . $dstName;
 
@@ -104,13 +108,15 @@ class SVGFormatWriter {
 
 		// Create any containers/directories as needed...
 		$backend = $this->getBackend();
-		if ( !$backend->prepare( array( 'dir' => "$dstPath/$nameHashPath/" ) )->isOK() ) {
-			return array( 'success' => false, 'message' => wfMessage( 'thumbnail_dest_directory' )->text());
+		if( !$backend->prepare( array( 'dir' => "$dstPath/$nameHashPath/" ) )->isOK() ) {
+			return array( 'success' => false, 'message' => wfMessage( 'thumbnail_dest_directory' )->text() );
 		}
 		// Store the file at the final storage path...
-		if ( !$backend->quickStore( array(
-			'src' => $intPath, 'dst' => $dstPath . $dstName
-			) )->isOK()
+		if( !$backend->quickStore(
+			array(
+				'src' => $intPath, 'dst' => $dstPath . $dstName
+			)
+		)->isOK()
 		) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() );
 		}
@@ -143,7 +149,7 @@ class SVGFormatWriter {
 
 		// Prepare edit summary accordingly
 		$startedString =
-			$expandedString = wfMessage( 'translate-svg-upload-none' )->inContentLanguage();
+		$expandedString = wfMessage( 'translate-svg-upload-none' )->inContentLanguage();
 		if( count( $started ) !== 0 ) {
 			$startedString = $wgContLang->commaList( array_keys( $started ) );
 		}
@@ -164,7 +170,7 @@ class SVGFormatWriter {
 		$filePath = $this->file->getLocalRefPath();
 		$uploader->initializePathInfo( $this->filename, $temp, filesize( $filePath ), true );
 		$details = $uploader->verifyUpload();
-		if ( $details['status'] != UploadBase::OK ) {
+		if( $details['status'] != UploadBase::OK ) {
 			return $this->processVerificationError( $details );
 		}
 
@@ -174,13 +180,13 @@ class SVGFormatWriter {
 		// Actually perform upload
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 		$status = $uploader->performUpload( $comment, false, false, $bot );
-		if ( !$status->isGood() ) {
+		if( !$status->isGood() ) {
 			return $wgOut->parse( $status->getWikiText() );
 		}
 
 		// If the user would have watched a normal reupload, watch this
 		// reupload.
-		if( $user->getOption( 'watchcreations' ) ){
+		if( $user->getOption( 'watchcreations' ) ) {
 			$user->addWatch( $uploader->getLocalFile()->getTitle() );
 		}
 
@@ -223,11 +229,11 @@ class SVGFormatWriter {
 	protected function getBackend() {
 		global $wgTranslateSvgBackend, $wgTranslateSvgDirectory;
 
-		if ( $wgTranslateSvgBackend ) {
+		if( $wgTranslateSvgBackend ) {
 			return FileBackendGroup::singleton()->get( $wgTranslateSvgDirectory );
 		} else {
 			static $backend = null;
-			if ( !$backend ) {
+			if( !$backend ) {
 				$backend = new FSFileBackend( array(
 					'name'           => 'translatesvg-backend',
 					'lockManager'    => 'nullLockManager',
@@ -244,6 +250,7 @@ class SVGFormatWriter {
  * Empty class used to instantiate an instance of the otherwise abstract UploadBase
  * class.
  */
+
 class TranslateSvgUpload extends UploadBase {
-	public function initializeFromRequest( &$request ) {}
+	public function initializeFromRequest( &$request ) { }
 }

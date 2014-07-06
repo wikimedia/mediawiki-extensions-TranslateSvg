@@ -163,7 +163,7 @@ class TranslateSvgUtils {
 				break;
 			case 'font-family':
 				$map = array( 'Sans' => 'sans-serif' );
-				$value = isset( $map[ $value ] ) ? $map[ $value ] : $value;
+				$value = isset( $map[$value] ) ? $map[$value] : $value;
 				break;
 			case 'fill':
 				$parameter = 'color';
@@ -263,7 +263,7 @@ class TranslateSvgUtils {
 	public static function nodeToArray( DOMNode $node ) {
 		$array = array( 'text' => $node->textContent );
 		$attributes = ( $node->hasAttributes() ) ? $node->attributes : array();
-		foreach ( $attributes as $attribute ) {
+		foreach( $attributes as $attribute ) {
 			$prefix = ( $attribute->prefix === '' ) ? '' : ( $attribute->prefix . ':' );
 			if( $attribute->name === 'space' ) {
 				// XML namespace prefix seems to disappear: TODO?
@@ -290,7 +290,7 @@ class TranslateSvgUtils {
 	 * @return \DOMNode A new DOMNode ready to be inserted, complete with text child
 	 */
 	public static function arrayToNode( $array, DOMDocument $svg, $nodeName = 'text' ) {
-		$defaultNS = $svg->documentElement->lookupnamespaceURI( NULL );
+		$defaultNS = $svg->documentElement->lookupnamespaceURI( null );
 		$newNode = $svg->createElementNS( $defaultNS, $nodeName );
 
 		// Handle the text property first...
@@ -331,7 +331,8 @@ class TranslateSvgUtils {
 				// Whitespace at beginning and end doesn't count, but
 				// otherwise we have a match
 				if( !( $i === 0 || $i === ( $numChildren - 1 ) )
-					|| !( strlen( trim( $children->item( $i )->textContent ) ) === 0 ) ) {
+				    || !( strlen( trim( $children->item( $i )->textContent ) ) === 0 )
+				) {
 					return true;
 				}
 			}
@@ -369,8 +370,8 @@ class TranslateSvgUtils {
 				continue;
 			}
 			list( $before, $after ) = preg_split( '/\$' . $realIndex . '(?=[^0-9]|$)/', $text );
-			$newNodeToProcess = $newNodes[ $index ];
-			unset( $newNodes[ $index ] );
+			$newNodeToProcess = $newNodes[$index];
+			unset( $newNodes[$index] );
 			self::replaceIndicesRecursive( $before, $newNodes, $svg, $parentNode );
 			$parentNode->appendChild( $newNodeToProcess );
 			self::replaceIndicesRecursive( $after, $newNodes, $svg, $parentNode );

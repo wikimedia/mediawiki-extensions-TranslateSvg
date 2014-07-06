@@ -5,7 +5,7 @@
  * @file
  * @author Harry Burt
  * @author Siebrand Mazeland
- * @copyright Copyright © 2012, Harry Burt
+ * @copyright Copyright © 2012-2014, Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -90,7 +90,11 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		global $wgScript;
 		$default = ( $srcLang === null ) ? $this->getLanguage()->getCode() : $srcLang;
 		$this->getOutput()->addHTML(
-			Html::openElement( 'form', array( 'method' => 'post', 'action' => $wgScript, 'id' => 'specialtranslateNewSVG' ) ) .
+			Html::openElement(
+				'form', array(
+					'method' => 'post', 'action' => $wgScript, 'id' => 'specialtranslateNewSVG'
+				)
+			) .
 			Html::openElement( 'fieldset' ) .
 			Html::element( 'legend', null, $this->msg( 'translate-svg-chooselanguage-title' )->text() ) .
 			Html::hidden( 'group', $groupName ) .

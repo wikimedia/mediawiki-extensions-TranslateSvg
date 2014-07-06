@@ -4,14 +4,14 @@
  *
  * @file
  * @author Harry Burt
- * @copyright Copyright © 2012, Harry Burt
+ * @copyright Copyright © 2012-2014, Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
 /**
  * Some hooks for TranslateSvg extension.
  */
-class TranslateSvgHooks{
+class TranslateSvgHooks {
 	/**
 	 * Function used to add a translation helper box via the TranslateGetBoxes hook
 	 *
@@ -95,7 +95,9 @@ class TranslateSvgHooks{
 	 * @return \bool True
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, MessageHandle $handle ) {
-		if( !$handle->isValid() ) return true;
+		if( !$handle->isValid() ) {
+			return true;
+		}
 
 		$group = $handle->getGroup();
 		if( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
@@ -139,10 +141,10 @@ class TranslateSvgHooks{
 				case 'y':
 				case 'font-size':
 					$extraInputs .= Xml::inputLabel(
-						wfMessage( 'translate-js-label-' . $index )->text(),
-						'mw-translate-prop-'.$index, 'mw-translate-prop-'.$index, 2, $currentValue,
-						array( 'type' => 'number', 'step' => 'any', 'style' => 'width:3em;' )
-					) . "&#160;";
+						                wfMessage( 'translate-js-label-' . $index )->text(),
+						                'mw-translate-prop-' . $index, 'mw-translate-prop-' . $index, 2, $currentValue,
+						                array( 'type' => 'number', 'step' => 'any', 'style' => 'width:3em;' )
+					                ) . "&#160;";
 					break;
 				case 'font-family':
 					$typefaces = $wgTranslateSvgTypefaces;
@@ -153,37 +155,43 @@ class TranslateSvgHooks{
 						$typefaces[] = $currentValue;
 					}
 					$extraInputs .= Xml::label(
-						wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-'.$index ) .
-						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $wgTranslateSvgTypefaces ),
-						wfMessage( 'translate-js-font-family-inherit' )->text(), $currentValue
-					) . "&#160;";
+						                wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
+					                ) .
+					                "&#160;" . Xml::listDropDown(
+						                'mw-translate-prop-' . $index, implode( "\n", $wgTranslateSvgTypefaces ),
+						                wfMessage( 'translate-js-font-family-inherit' )->text(), $currentValue
+					                ) . "&#160;";
 					break;
 				case 'units':
 					$extraInputs .= Xml::label(
-						wfMessage( 'translate-js-label-' . $index )->text(),
-						'mw-translate-prop-'.$index ) .
-						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $allowedUnits ),
-						'', $currentValue
-					) . "&#160;";
+						                wfMessage( 'translate-js-label-' . $index )->text(),
+						                'mw-translate-prop-' . $index
+					                ) .
+					                "&#160;" . Xml::listDropDown(
+						                'mw-translate-prop-' . $index, implode( "\n", $allowedUnits ),
+						                '', $currentValue
+					                ) . "&#160;";
 					break;
 				case 'bold':
 				case 'italic':
 				case 'underline':
 					$checked = ( $currentValue === 'yes' );
 					$extraInputs .= Html::openElement( 'span', array( 'style' => 'white-space:nowrap;' ) )
-					. Xml::checkLabel(
+					                . Xml::checkLabel(
 							wfMessage( 'translate-js-label-' . $index )->text(),
-							'mw-translate-prop-'.$index, 'mw-translate-prop-'.$index, $checked
-					) . Html::closeElement( 'span' ) . " ";
+							'mw-translate-prop-' . $index, 'mw-translate-prop-' . $index, $checked
+						) . Html::closeElement( 'span' ) . " ";
 					break;
 				case 'color':
 					$colors = $wgTranslateSvgColors;
 					$colors[] = $currentValue;
 					$extraInputs .= Xml::label(
-						wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-'.$index ) .
-						"&#160;" . Xml::listDropDown( 'mw-translate-prop-'.$index, implode( "\n", $colors ),
-						'', $currentValue
-					) . "&#160;";
+						                wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
+					                ) .
+					                "&#160;" . Xml::listDropDown(
+						                'mw-translate-prop-' . $index, implode( "\n", $colors ),
+						                '', $currentValue
+					                ) . "&#160;";
 					break;
 			}
 		}
@@ -227,7 +235,7 @@ class TranslateSvgHooks{
 	 */
 	public static function exposeTranslateSvgTemplateName( &$vars, OutputPage $out ) {
 		global $wgTranslateSvgTemplateName;
-		if( $out->getTitle()->isSpecial( 'Translate' ) ){
+		if( $out->getTitle()->isSpecial( 'Translate' ) ) {
 			$vars['wgTranslateSvgTemplateName'] = $wgTranslateSvgTemplateName;
 		}
 		return true;
@@ -243,9 +251,10 @@ class TranslateSvgHooks{
 	 */
 	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
 		if( isset( $nondefaults['group'] )
-			&& MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
-			&& isset( $nondefaults['taction'] )
-			&& $nondefaults['taction'] == 'export' ) {
+		    && MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
+		    && isset( $nondefaults['taction'] )
+		    && $nondefaults['taction'] == 'export'
+		) {
 			$nondefaults['task'] = 'export-as-svg';
 		}
 		return true;
@@ -376,7 +385,7 @@ class TranslateSvgHooks{
 		$conds = array( 'page_id = ts_page_id' );
 		$res = $dbr->select( $tables, $col, $conds, __METHOD__ );
 
-		foreach ( $res as $r ) {
+		foreach( $res as $r ) {
 			// Get a sanitised, normalised form of the title
 			$group = Title::newFromRow( $r )->getText();
 			$list[$group] = new SVGMessageGroup( $group );
@@ -421,16 +430,20 @@ class TranslateSvgHooks{
 		$full = array();
 		$partial = array();
 		foreach( $languages['full'] as $language ) {
-			array_push( $full, array(
-				'name' => Language::fetchLanguageName( $language ),
-				'code' => $language
-			) );
+			array_push(
+				$full, array(
+					'name' => Language::fetchLanguageName( $language ),
+					'code' => $language
+				)
+			);
 		}
 		foreach( $languages['partial'] as $language ) {
-			array_push( $partial, array(
-				'name' => Language::fetchLanguageName( $language ),
-				'code' => $language
-			) );
+			array_push(
+				$partial, array(
+					'name' => Language::fetchLanguageName( $language ),
+					'code' => $language
+				)
+			);
 		}
 		$vars['wgFileFullTranslations'] = $full;
 		$vars['wgFilePartialTranslations'] = $partial;

@@ -16,6 +16,7 @@
 class SVGMessageGroup extends WikiMessageGroup {
 	protected $source = null;
 	protected $sourceLanguage = null;
+
 	/**
 	 * Constructor.
 	 *
@@ -47,7 +48,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 
 		$desc = "[[$prefixedFilename|thumb|" . $wgLang->alignEnd() . "|upright|275x275px]]" . "\n" .
-			Html::rawElement( 'div', array( 'style' => 'overflow:auto; padding:2px;' ), $rev );
+		        Html::rawElement( 'div', array( 'style' => 'overflow:auto; padding:2px;' ), $rev );
 		$this->setDescription( $desc );
 	}
 
@@ -89,7 +90,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 */
 	public function getMessage( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
-		if ( !$title->exists() ) {
+		if( !$title->exists() ) {
 			return null;
 		}
 		$rev = Revision::newFromTitle( $title );
@@ -108,7 +109,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 */
 	public function getProperties( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
-		if ( !$title->exists() ) {
+		if( !$title->exists() ) {
 			return '';
 		}
 		$translation = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
@@ -159,7 +160,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * @return \string Language code
 	 */
 	public function getSourceLanguage() {
-		if( !isset( $this->sourceLanguage ) ){
+		if( !isset( $this->sourceLanguage ) ) {
 			$databaseValue = TranslateMetadata::get( $this->source, 'sourcelang' );
 			$this->sourceLanguage = ( $databaseValue !== false ) ? $databaseValue : 'en';
 		}
@@ -185,7 +186,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	public function getOnWikiLanguages() {
 		$stats = MessageGroupStats::forGroup( $this->getId() );
 		$languages = array();
-		foreach( $stats as $language => $data ){
+		foreach( $stats as $language => $data ) {
 			$translatedCount = $data[MessageGroupStats::TRANSLATED];
 			$fuzzyCount = $data[MessageGroupStats::FUZZY];
 			if( $translatedCount > 0 || $fuzzyCount > 0 ) {

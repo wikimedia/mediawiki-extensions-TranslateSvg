@@ -8,12 +8,12 @@
 */
 
 $wgExtensionCredits['specialpage'][] = array(
-	'path' => __FILE__,
-	'name' => 'TranslateSVG',
-	'author' => 'Harry Burt',
-	'url' => 'https://www.mediawiki.org/wiki/Extension:TranslateSvg/2.0',
+	'path'           => __FILE__,
+	'name'           => 'TranslateSVG',
+	'author'         => 'Harry Burt',
+	'url'            => 'https://www.mediawiki.org/wiki/Extension:TranslateSvg/2.0',
 	'descriptionmsg' => 'translatesvg-desc',
-	'version' => '2.1.0',
+	'version'        => '2.1.0',
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -30,15 +30,15 @@ $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 $wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
 
 $wgResourceModules['jquery.colorpicker'] = array(
-	'scripts' => array( 'resources/jquery.colorpicker.js' ),
-	'styles' => array( 'resources/jquery.colorpicker.css' ),
+	'scripts'       => array( 'resources/jquery.colorpicker.js' ),
+	'styles'        => array( 'resources/jquery.colorpicker.css' ),
 	'localBasePath' => dirname( __FILE__ ),
 	'remoteExtPath' => 'TranslateSvg'
 );
 
 $wgResourceModules['ext.translatesvg'] = array(
-	'scripts' => array( 'resources/ext.translatesvg.core.js' ),
-	'dependencies' => array(
+	'scripts'       => array( 'resources/ext.translatesvg.core.js' ),
+	'dependencies'  => array(
 		'jquery.form',
 		'jquery.ui.dialog',
 		'jquery.autoresize',
@@ -46,7 +46,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'jquery.json',
 		'ext.translate.hooks'
 	),
-	'messages' => array(
+	'messages'      => array(
 		'translate-taction-mstats-svgmg',
 		'translate-taction-export-svgmg',
 		'translate-page-description-legend-svgmg'
@@ -56,9 +56,9 @@ $wgResourceModules['ext.translatesvg'] = array(
 );
 
 $wgResourceModules['ext.translatesvg.filepage'] = array(
-	'scripts' => array( 'resources/ext.translatesvg.filepage.js' ),
-	'dependencies' => array( 'mediawiki.Uri' ),
-	'messages' => array(
+	'scripts'       => array( 'resources/ext.translatesvg.filepage.js' ),
+	'dependencies'  => array( 'mediawiki.Uri' ),
+	'messages'      => array(
 		'translate-svg-filepage-caption',
 		'translate-svg-filepage-caption-translator',
 		'translate-svg-filepage-edit',
@@ -129,10 +129,10 @@ $wgTranslateSvgColors = array(
 );
 
 $wgTranslateSvgBotName = 'SVG translation updater';
-$wgReservedUsernames[] = &$wgTranslateSvgBotName;
+$wgReservedUsernames[] = & $wgTranslateSvgBotName;
 
 $wgTranslateSvgDefaultProperties = array(
-	'x' => '', 'y' => '', 'font-family' => 'other',
+	'x'         => '', 'y' => '', 'font-family' => 'other',
 	'font-size' => '', 'units' => 'other', 'color' => '',
 	'underline' => '', 'italic' => '', 'bold' => ''
 );

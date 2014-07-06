@@ -86,7 +86,7 @@ class SVGFormatReader {
 
 		// Automated editors have a habit of using XML entity references in the SVG namespace
 		// declaration or simply forgetting to set one at all. Both need to be fixed.
-		$defaultNS = $this->svg->documentElement->lookupnamespaceURI( NULL );
+		$defaultNS = $this->svg->documentElement->lookupnamespaceURI( null );
 		if( $defaultNS === null || preg_match( '/^(&[^;]+;)+$/', $defaultNS, $match ) ) {
 			// Bad or nonexistent default namespace set, fill in sensible default
 			$this->svg->documentElement->setAttributeNS(
@@ -148,7 +148,7 @@ class SVGFormatReader {
 			if( $translatableNode->hasAttribute( 'id' ) ) {
 				$id = trim( $translatableNode->getAttribute( 'id' ) );
 				$translatableNode->setAttribute( 'id', $id );
-				if( strpos( $id, '|' ) !== false || strpos( $id, '/' ) !== false  ) {
+				if( strpos( $id, '|' ) !== false || strpos( $id, '/' ) !== false ) {
 					// Will cause problems later
 					return false;
 				}
@@ -187,7 +187,8 @@ class SVGFormatReader {
 
 			// Sort out switches
 			if( $text->parentNode->nodeName === 'switch'
-				|| $text->parentNode->nodeName === 'svg:switch' ) {
+			    || $text->parentNode->nodeName === 'svg:switch'
+			) {
 				// Existing but valid switch e.g. from previous translations
 				$switch = $text->parentNode;
 				$siblings = $switch->childNodes;
@@ -225,8 +226,9 @@ class SVGFormatReader {
 			for( $j = 0; $j < $numChildren; $j++ ) {
 				$child = $text->childNodes->item( $j );
 				if( $child->nodeType !== XML_TEXT_NODE
-					&& $child->nodeName !== 'tspan'
-					&& $child->nodeName !== 'svg:tspan' ) {
+				    && $child->nodeName !== 'tspan'
+				    && $child->nodeName !== 'svg:tspan'
+				) {
 					// Tags other than tspan inside text tags are not (yet) supported
 					return false;
 				}
@@ -324,7 +326,7 @@ class SVGFormatReader {
 			foreach( $translations[$textId] as $language => $translation ) {
 				// Sort out systemLanguage attribute
 				if( $language !== 'fallback' ) {
-					if ( strpos( $language, '-' ) !== false ) {
+					if( strpos( $language, '-' ) !== false ) {
 						list( $before, $after ) = explode( '-', $language );
 						$language = $before . '_' . strtoupper( $after );
 					}
@@ -460,7 +462,7 @@ class SVGFormatReader {
 						}
 
 						// Replace with $1, $2 etc.
-						$text->replaceChild ( $this->svg->createTextNode( '$' . $counter ), $child );
+						$text->replaceChild( $this->svg->createTextNode( '$' . $counter ), $child );
 						$counter++;
 					}
 				}
@@ -492,7 +494,7 @@ class SVGFormatReader {
 			$collection = $this->group->initCollection( $language );
 			$collection->loadTranslations();
 			$mangler = $this->group->getMangler();
-			foreach ( $collection as $item ) {
+			foreach( $collection as $item ) {
 				/** @var TMessage $item */
 				$key = explode( '/', $mangler->unMangle( $item->key() ) );
 				$key = array_pop( $key );
