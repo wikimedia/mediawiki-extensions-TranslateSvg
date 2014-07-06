@@ -49,10 +49,10 @@ class SVGFormatWriter {
 		global $wgTranslateSvgDirectory, $wgTranslateSvgPath,
 		       $wgUploadDirectory, $wgUploadPath;
 
-		if( !$wgTranslateSvgDirectory ) {
+		if ( !$wgTranslateSvgDirectory ) {
 			$wgTranslateSvgDirectory = "{$wgUploadDirectory}/translatesvg";
 		}
-		if( !$wgTranslateSvgPath ) {
+		if ( !$wgTranslateSvgPath ) {
 			$wgTranslateSvgPath = "{$wgUploadPath}/translatesvg";
 		}
 
@@ -74,7 +74,7 @@ class SVGFormatWriter {
 		$dstName = "$nameHashPath/$contentsHash-" . $this->filename . '.png';
 		$dstUrl = $wgTranslateSvgPath . '/' . $dstName;
 
-		if( $this->getBackend()->fileExists( array( 'src' => $dstPath . $dstName ) ) ) {
+		if ( $this->getBackend()->fileExists( array( 'src' => $dstPath . $dstName ) ) ) {
 			// We've already generated this SVG; no point regenerating
 			return array(
 				'success' => true,
@@ -83,7 +83,7 @@ class SVGFormatWriter {
 		}
 
 		// Save the SVG to a temporary file
-		if( !$svg->save( $srcPath ) ) {
+		if ( !$svg->save( $srcPath ) ) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-temp-create' )->text() );
 		}
 
@@ -91,7 +91,7 @@ class SVGFormatWriter {
 		$width = $this->file->getWidth();
 		$height = $this->file->getHeight();
 		$ratio = $width / $height;
-		if( $width > $height ) {
+		if ( $width > $height ) {
 			$width = $size;
 			$height = round( $size / $ratio );
 		} else {
@@ -102,17 +102,17 @@ class SVGFormatWriter {
 		// MediaWiki's SvgHandler() class, not to be confused with SVGFormatReader
 		// Used to rasterize the SVG into a PNG of a thumbnail size
 		$svgHandler = new SvgHandler();
-		if( !$svgHandler->rasterize( $srcPath, $intPath, $width, $height, $language ) ) {
+		if ( !$svgHandler->rasterize( $srcPath, $intPath, $width, $height, $language ) ) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() );
 		}
 
 		// Create any containers/directories as needed...
 		$backend = $this->getBackend();
-		if( !$backend->prepare( array( 'dir' => "$dstPath/$nameHashPath/" ) )->isOK() ) {
+		if ( !$backend->prepare( array( 'dir' => "$dstPath/$nameHashPath/" ) )->isOK() ) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail_dest_directory' )->text() );
 		}
 		// Store the file at the final storage path...
-		if( !$backend->quickStore(
+		if ( !$backend->quickStore(
 			array(
 				'src' => $intPath, 'dst' => $dstPath . $dstName
 			)
@@ -142,7 +142,7 @@ class SVGFormatWriter {
 		// * $expanded contains old languages with new translations
 		$started = $this->reader->getStarted();
 		$expanded = $this->reader->getExpanded();
-		if( count( $started ) === 0 && count( $expanded ) === 0 ) {
+		if ( count( $started ) === 0 && count( $expanded ) === 0 ) {
 			// No real change, jump to save just a a null edit might
 			return true;
 		}
@@ -150,10 +150,10 @@ class SVGFormatWriter {
 		// Prepare edit summary accordingly
 		$startedString =
 		$expandedString = wfMessage( 'translate-svg-upload-none' )->inContentLanguage();
-		if( count( $started ) !== 0 ) {
+		if ( count( $started ) !== 0 ) {
 			$startedString = $wgContLang->commaList( array_keys( $started ) );
 		}
-		if( count( $expanded ) !== 0 ) {
+		if ( count( $expanded ) !== 0 ) {
 			$expandedString = $wgContLang->commaList( array_keys( $expanded ) );
 		}
 		$comment = wfMessage(
@@ -170,7 +170,7 @@ class SVGFormatWriter {
 		$filePath = $this->file->getLocalRefPath();
 		$uploader->initializePathInfo( $this->filename, $temp, filesize( $filePath ), true );
 		$details = $uploader->verifyUpload();
-		if( $details['status'] != UploadBase::OK ) {
+		if ( $details['status'] != UploadBase::OK ) {
 			return $this->processVerificationError( $details );
 		}
 
@@ -180,13 +180,13 @@ class SVGFormatWriter {
 		// Actually perform upload
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 		$status = $uploader->performUpload( $comment, false, false, $bot );
-		if( !$status->isGood() ) {
+		if ( !$status->isGood() ) {
 			return $wgOut->parse( $status->getWikiText() );
 		}
 
 		// If the user would have watched a normal reupload, watch this
 		// reupload.
-		if( $user->getOption( 'watchcreations' ) ) {
+		if ( $user->getOption( 'watchcreations' ) ) {
 			$user->addWatch( $uploader->getLocalFile()->getTitle() );
 		}
 
@@ -201,7 +201,7 @@ class SVGFormatWriter {
 	 * @return \Message
 	 */
 	protected function processVerificationError( $details ) {
-		switch( $details['status'] ) {
+		switch ( $details['status'] ) {
 			case UploadBase::FILE_TOO_LARGE:
 				return wfMessage( 'largefileserver' )->plain();
 			case UploadBase::VERIFICATION_ERROR:
@@ -229,11 +229,11 @@ class SVGFormatWriter {
 	protected function getBackend() {
 		global $wgTranslateSvgBackend, $wgTranslateSvgDirectory;
 
-		if( $wgTranslateSvgBackend ) {
+		if ( $wgTranslateSvgBackend ) {
 			return FileBackendGroup::singleton()->get( $wgTranslateSvgDirectory );
 		} else {
 			static $backend = null;
-			if( !$backend ) {
+			if ( !$backend ) {
 				$backend = new FSFileBackend( array(
 					'name'           => 'translatesvg-backend',
 					'lockManager'    => 'nullLockManager',

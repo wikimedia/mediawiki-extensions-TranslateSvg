@@ -16,7 +16,7 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 	protected function postinit() { }
 
 	public function output() {
-		if( !$this->group instanceof SVGMessageGroup ) {
+		if ( !$this->group instanceof SVGMessageGroup ) {
 			$link = Html::element(
 				'a',
 				array( 'href' => 'http://bugzilla.wikimedia.org' ),
@@ -28,7 +28,7 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 		/** @var SVGFormatWriter $writer */
 		$writer = $this->group->getWriter();
 		$ret = $writer->exportToSVG( $this->context->getUser() );
-		if( $ret === true ) {
+		if ( $ret === true ) {
 			global $wgOut;
 			$wgOut->redirect( $this->group->getUrl() );
 			return true;

@@ -30,7 +30,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$req = $this->getRequest();
 		$groupName = $req->getVal( 'group' );
 
-		if( $groupName === null || MessageGroups::getGroup( $groupName ) ) {
+		if ( $groupName === null || MessageGroups::getGroup( $groupName ) ) {
 			$this->getOutput()->addWikiMsg( 'translate-svg-new-error-group' );
 			return;
 		}
@@ -38,9 +38,9 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$srcLang = $req->getVal( 'language' );
 
 		// Language::isValidBuiltInCode() isn't technically ideal, but it's probably
-		// close enough.
-		if( $srcLang !== null && Language::isValidBuiltInCode( $srcLang ) ) {
-			if( $this->addSVGGroup( $groupName, $srcLang ) ) {
+		// close enough for now.
+		if ( $srcLang !== null && Language::isValidBuiltInCode( $srcLang ) ) {
+			if ( $this->addSVGGroup( $groupName, $srcLang ) ) {
 				$target = SpecialPage::getTitleFor( 'Translate' );
 				$params = array( 'group' => $groupName, 'chooselanguage' => true );
 				$this->getOutput()->redirect( $target->getLocalUrl( $params ) );
@@ -56,11 +56,11 @@ class SpecialTranslateNewSVG extends SpecialPage {
 	protected function addSVGGroup( $groupName, $srcLang ) {
 		// Does this represent a file that exists?
 		$title = Title::makeTitleSafe( NS_FILE, $groupName );
-		if( !$title->exists() ) {
+		if ( !$title->exists() ) {
 			return false;
 		}
 		$file = wfFindFile( $title );
-		if( !$file->exists() ) {
+		if ( !$file->exists() ) {
 			return false;
 		}
 
@@ -69,7 +69,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 
 		$group = new SVGMessageGroup( $groupName );
 		$group->setSourceLanguage( $srcLang );
-		if( $group->importTranslations() ) {
+		if ( $group->importTranslations() ) {
 			TranslateMetadata::set( $groupName, 'sourcelang', $srcLang );
 			$dbw = wfGetDB( DB_MASTER );
 			$table = 'translate_svg';

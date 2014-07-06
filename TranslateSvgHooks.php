@@ -23,7 +23,7 @@ class TranslateSvgHooks {
 	public static function addThumbnail( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		global $wgLang;
 
-		if( !( $group instanceof SVGMessageGroup ) ) {
+		if ( !( $group instanceof SVGMessageGroup ) ) {
 			return true;
 		}
 
@@ -48,7 +48,7 @@ class TranslateSvgHooks {
 	 * @return \bool True
 	 */
 	public static function removeQQQ( MessageGroup $group, MessageHandle $handle, &$boxes ) {
-		if( !( $group instanceof SVGMessageGroup ) ) {
+		if ( !( $group instanceof SVGMessageGroup ) ) {
 			return true;
 		}
 
@@ -67,7 +67,7 @@ class TranslateSvgHooks {
 	 * @return \bool True
 	 */
 	public static function removeSuggestions( MessageGroup $group, MessageHandle $handle, &$boxes ) {
-		if( !( $group instanceof SVGMessageGroup ) ) {
+		if ( !( $group instanceof SVGMessageGroup ) ) {
 			return true;
 		}
 
@@ -95,12 +95,12 @@ class TranslateSvgHooks {
 	 * @return \bool True
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, MessageHandle $handle ) {
-		if( !$handle->isValid() ) {
+		if ( !$handle->isValid() ) {
 			return true;
 		}
 
 		$group = $handle->getGroup();
-		if( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
+		if ( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
 			return true;
 		}
 		$properties = $group->getProperties(
@@ -124,7 +124,7 @@ class TranslateSvgHooks {
 		global $wgTranslateSvgTypefaces, $wgTranslateSvgColors;
 		$allowedUnits = array( 'px', 'pt', '%', 'em' );
 
-		if( !TranslateSvgUtils::hasPropertyString( $message ) ) {
+		if ( !TranslateSvgUtils::hasPropertyString( $message ) ) {
 			return true;
 		}
 
@@ -133,10 +133,10 @@ class TranslateSvgHooks {
 
 		preg_match_all( '/\| *([a-z-]+) *= *([^|}]*)/', $propertyString, $parameters );
 		$count = count( $parameters[0] );
-		for( $i = 0; $i < $count; $i++ ) {
+		for ( $i = 0; $i < $count; $i++ ) {
 			$index = $parameters[1][$i];
 			$currentValue = trim( $parameters[2][$i] );
-			switch( $index ) {
+			switch ( $index ) {
 				case 'x':
 				case 'y':
 				case 'font-size':
@@ -148,10 +148,10 @@ class TranslateSvgHooks {
 					break;
 				case 'font-family':
 					$typefaces = $wgTranslateSvgTypefaces;
-					if( $currentValue == 'inherit' ) {
+					if ( $currentValue == 'inherit' ) {
 						$currentValue = wfMessage( 'translate-js-font-family-inherit' )->text();
 					}
-					if( !in_array( $currentValue, $typefaces ) ) {
+					if ( !in_array( $currentValue, $typefaces ) ) {
 						$typefaces[] = $currentValue;
 					}
 					$extraInputs .= Xml::label(
@@ -217,7 +217,7 @@ class TranslateSvgHooks {
 	 */
 	public static function stripPropertyString( &$message, ThinMessage $m, MessageGroup $group, $targetLang, &$attrs ) {
 		// TODO: mark as .justtranslated if not yet exported
-		if( !( $group instanceof SVGMessageGroup ) ) {
+		if ( !( $group instanceof SVGMessageGroup ) ) {
 			return true;
 		}
 
@@ -235,7 +235,7 @@ class TranslateSvgHooks {
 	 */
 	public static function exposeTranslateSvgTemplateName( &$vars, OutputPage $out ) {
 		global $wgTranslateSvgTemplateName;
-		if( $out->getTitle()->isSpecial( 'Translate' ) ) {
+		if ( $out->getTitle()->isSpecial( 'Translate' ) ) {
 			$vars['wgTranslateSvgTemplateName'] = $wgTranslateSvgTemplateName;
 		}
 		return true;
@@ -250,10 +250,10 @@ class TranslateSvgHooks {
 	 * @return \bool True
 	 */
 	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
-		if( isset( $nondefaults['group'] )
-		    && MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
-		    && isset( $nondefaults['taction'] )
-		    && $nondefaults['taction'] == 'export'
+		if ( isset( $nondefaults['group'] )
+		     && MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
+		     && isset( $nondefaults['taction'] )
+		     && $nondefaults['taction'] == 'export'
 		) {
 			$nondefaults['task'] = 'export-as-svg';
 		}
@@ -296,7 +296,7 @@ class TranslateSvgHooks {
 	 */
 	public static function updateFileDescriptionPages( OutputPage $out ) {
 		$title = $out->getTitle();
-		if( TranslateSvgUtils::isSVGFilePage( $title ) ) {
+		if ( TranslateSvgUtils::isSVGFilePage( $title ) ) {
 			$out->addModules( 'ext.translatesvg.filepage' );
 		}
 		return true;
@@ -314,16 +314,16 @@ class TranslateSvgHooks {
 	 * @return \bool True
 	 */
 	public static function processAPIProperties( &$a, $props, $params, MessageGroup $g ) {
-		if( !( $g instanceof SVGMessageGroup ) ) {
+		if ( !( $g instanceof SVGMessageGroup ) ) {
 			return true;
 		}
 
-		if( isset( $props['thumbnail'] ) ) {
+		if ( isset( $props['thumbnail'] ) ) {
 			$language = isset( $params['language'] ) ?
 				$params['language'] : $g->getSourceLanguage();
 
 			$overrides = array();
-			if( isset( $params['overrides'] ) ) {
+			if ( isset( $params['overrides'] ) ) {
 				$overrides = json_decode( $params['overrides'], true );
 			}
 
@@ -385,7 +385,7 @@ class TranslateSvgHooks {
 		$conds = array( 'page_id = ts_page_id' );
 		$res = $dbr->select( $tables, $col, $conds, __METHOD__ );
 
-		foreach( $res as $r ) {
+		foreach ( $res as $r ) {
 			// Get a sanitised, normalised form of the title
 			$group = Title::newFromRow( $r )->getText();
 			$list[$group] = new SVGMessageGroup( $group );
@@ -404,7 +404,7 @@ class TranslateSvgHooks {
 	 */
 	public static function makeFilePageGlobalVariables( &$vars, OutputPage $out ) {
 		$title = $out->getTitle();
-		if( !TranslateSvgUtils::isSVGFilePage( $title ) ) {
+		if ( !TranslateSvgUtils::isSVGFilePage( $title ) ) {
 			return true;
 		}
 
@@ -418,7 +418,7 @@ class TranslateSvgHooks {
 		$messageGroup = new SVGMessageGroup( $id );
 		$reader = new SVGFormatReader( $messageGroup );
 		$vars['wgFileCanBeTranslated'] = ( $reader !== null );
-		if( !$vars['wgFileCanBeTranslated'] || MessageGroups::getGroup( $id ) === null ) {
+		if ( !$vars['wgFileCanBeTranslated'] || MessageGroups::getGroup( $id ) === null ) {
 			// Not translatable or not yet translated, let's save time and return immediately
 			$vars['wgFileTranslationStarted'] = false;
 			$vars['wgFileFullTranslations'] = array();
@@ -429,7 +429,7 @@ class TranslateSvgHooks {
 		$languages = $reader->getSavedLanguagesFiltered();
 		$full = array();
 		$partial = array();
-		foreach( $languages['full'] as $language ) {
+		foreach ( $languages['full'] as $language ) {
 			array_push(
 				$full, array(
 					'name' => Language::fetchLanguageName( $language ),
@@ -437,7 +437,7 @@ class TranslateSvgHooks {
 				)
 			);
 		}
-		foreach( $languages['partial'] as $language ) {
+		foreach ( $languages['partial'] as $language ) {
 			array_push(
 				$partial, array(
 					'name' => Language::fetchLanguageName( $language ),

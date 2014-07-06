@@ -33,17 +33,17 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$this->setLabel( $filename );
 		$title = Title::newFromText( $prefixedFilename );
 		$rev = '';
-		if( $title->exists() ) {
+		if ( $title->exists() ) {
 			$rev = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
 			$revsections = explode( "\n==", $rev );
-			foreach( $revsections as $revsection ) {
+			foreach ( $revsections as $revsection ) {
 				// Attempt to trim the file description page down to only the most relevant content
-				if( strpos( $revsection, '{{Information' ) !== false ) {
+				if ( strpos( $revsection, '{{Information' ) !== false ) {
 					$rev = trim( preg_replace( "/==+[^=]+==+/", "", $revsection ) );
 				}
 			}
 		}
-		if( trim( $rev ) === '' ) {
+		if ( trim( $rev ) === '' ) {
 			$rev = wfMessage( 'translate-svg-nodesc' )->plain();
 		}
 
@@ -67,9 +67,9 @@ class SVGMessageGroup extends WikiMessageGroup {
 	public function getDefinitions() {
 		$definitions = array();
 		$subpages = Title::makeTitleSafe( $this->getNamespace(), $this->source )->getSubpages();
-		foreach( $subpages as $subpage ) {
+		foreach ( $subpages as $subpage ) {
 			/** @var Title $subpage */
-			if( $this->isSourceLanguage( $subpage->getSubpageText() ) ) {
+			if ( $this->isSourceLanguage( $subpage->getSubpageText() ) ) {
 				$definition = Revision::newFromTitle( $subpage )->getContent()->getWikitextForTransclusion();
 				$definition = TranslateSvgUtils::stripPropertyString( $definition );
 
@@ -90,7 +90,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 */
 	public function getMessage( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
-		if( !$title->exists() ) {
+		if ( !$title->exists() ) {
 			return null;
 		}
 		$rev = Revision::newFromTitle( $title );
@@ -109,7 +109,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 */
 	public function getProperties( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
-		if( !$title->exists() ) {
+		if ( !$title->exists() ) {
 			return '';
 		}
 		$translation = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
@@ -128,20 +128,20 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 
 		$reader = new SVGFormatReader( $this );
-		if( !$reader ) {
+		if ( !$reader ) {
 			return false;
 		}
 
 		$translations = $reader->getInFileTranslations();
-		foreach( $translations as $key => $outerArray ) {
-			foreach( $outerArray as $language => $innerArray ) {
-				if( $language === 'fallback' ) {
+		foreach ( $translations as $key => $outerArray ) {
+			foreach ( $outerArray as $language => $innerArray ) {
+				if ( $language === 'fallback' ) {
 					$language = $this->getSourceLanguage();
 				}
 				$translation = TranslateSvgUtils::arrayToTranslation( $innerArray );
 				$fullKey = $this->source . '/' . $key . '/' . $language;
 				$title = Title::makeTitleSafe( $this->getNamespace(), $fullKey );
-				if( $title->exists() || !$title->userCan( 'create', $bot ) ) {
+				if ( $title->exists() || !$title->userCan( 'create', $bot ) ) {
 					continue;
 				}
 				$wikiPage = new WikiPage( $title );
@@ -160,7 +160,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * @return \string Language code
 	 */
 	public function getSourceLanguage() {
-		if( !isset( $this->sourceLanguage ) ) {
+		if ( !isset( $this->sourceLanguage ) ) {
 			$databaseValue = TranslateMetadata::get( $this->source, 'sourcelang' );
 			$this->sourceLanguage = ( $databaseValue !== false ) ? $databaseValue : 'en';
 		}
@@ -186,10 +186,10 @@ class SVGMessageGroup extends WikiMessageGroup {
 	public function getOnWikiLanguages() {
 		$stats = MessageGroupStats::forGroup( $this->getId() );
 		$languages = array();
-		foreach( $stats as $language => $data ) {
+		foreach ( $stats as $language => $data ) {
 			$translatedCount = $data[MessageGroupStats::TRANSLATED];
 			$fuzzyCount = $data[MessageGroupStats::FUZZY];
-			if( $translatedCount > 0 || $fuzzyCount > 0 ) {
+			if ( $translatedCount > 0 || $fuzzyCount > 0 ) {
 				$languages[] = $language;
 			}
 		}

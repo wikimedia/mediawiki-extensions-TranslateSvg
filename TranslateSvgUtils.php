@@ -20,7 +20,7 @@ class TranslateSvgUtils {
 	 */
 	public static function hasPropertyString( $message ) {
 		global $wgTranslateSvgTemplateName;
-		if( strpos( $message, '{{' . $wgTranslateSvgTemplateName ) !== false ) {
+		if ( strpos( $message, '{{' . $wgTranslateSvgTemplateName ) !== false ) {
 			return true;
 		} else {
 			return false;
@@ -35,7 +35,7 @@ class TranslateSvgUtils {
 	 */
 	public static function extractPropertyString( $message ) {
 		global $wgTranslateSvgTemplateName;
-		if( self::hasPropertyString( $message ) ) {
+		if ( self::hasPropertyString( $message ) ) {
 			return substr( $message, ( strrpos( $message, '{{' . $wgTranslateSvgTemplateName ) ) );
 		}
 		return '';
@@ -50,7 +50,7 @@ class TranslateSvgUtils {
 	 */
 	public static function stripPropertyString( $message ) {
 		global $wgTranslateSvgTemplateName;
-		if( self::hasPropertyString( $message ) ) {
+		if ( self::hasPropertyString( $message ) ) {
 			return substr( $message, 0, ( strrpos( $message, '{{' . $wgTranslateSvgTemplateName ) ) );
 		}
 		return $message;
@@ -64,7 +64,7 @@ class TranslateSvgUtils {
 	 * @return bool True if it is, false if it isn't.
 	 */
 	public static function isSVGFilePage( Title $title ) {
-		if( $title->getNamespace() === NS_FILE ) {
+		if ( $title->getNamespace() === NS_FILE ) {
 			$file = wfFindFile( $title );
 			return ( $file && $file->getMimeType() === 'image/svg+xml' );
 		} else {
@@ -93,11 +93,11 @@ class TranslateSvgUtils {
 			$wgTranslateSvgOptionalProperties
 		);
 
-		if( !in_array( $parameter, $supported ) ) {
+		if ( !in_array( $parameter, $supported ) ) {
 			// Quietly drop: injection attempt?
 			return array( false, false );
 		}
-		switch( $parameter ) {
+		switch ( $parameter ) {
 			case 'bold':
 				$parameter = 'font-weight';
 				$value = ( $value === 'yes' ) ? 'bold' : 'normal';
@@ -114,7 +114,7 @@ class TranslateSvgUtils {
 				$parameter = 'fill';
 				break;
 		}
-		if( $value === '' ) {
+		if ( $value === '' ) {
 			$value = false;
 		}
 		return array( $parameter, $value );
@@ -143,12 +143,12 @@ class TranslateSvgUtils {
 			),
 			$wgTranslateSvgOptionalProperties
 		);
-		if( !in_array( $parameter, $supported ) ) {
+		if ( !in_array( $parameter, $supported ) ) {
 			// Not editable, so not suitable for extraction
 			return array( false, false );
 		}
 
-		switch( $parameter ) {
+		switch ( $parameter ) {
 			case 'font-weight':
 				$parameter = 'bold';
 				$value = ( $value === 'bold' ) ? 'yes' : 'no';
@@ -169,7 +169,7 @@ class TranslateSvgUtils {
 				$parameter = 'color';
 				break;
 		}
-		if( $value == '' ) {
+		if ( $value == '' ) {
 			// Drop empty attributes altogether
 			$value = false;
 		}
@@ -192,17 +192,17 @@ class TranslateSvgUtils {
 		$propertyString = self::extractPropertyString( $translation );
 		preg_match_all( '/\| *([a-z-]+) *= *([^|}]*)/', $propertyString, $parameters );
 		$count = count( $parameters[0] );
-		for( $i = 0; $i < $count; $i++ ) {
+		for ( $i = 0; $i < $count; $i++ ) {
 			list( $attrName, $attrValue ) = self::mapToAttribute(
 				$parameters[1][$i], $parameters[2][$i]
 			);
-			if( $attrName !== false && $attrValue !== false && $attrValue !== 'other' ) {
+			if ( $attrName !== false && $attrValue !== false && $attrValue !== 'other' ) {
 				$array[$attrName] = $attrValue;
 			}
 		}
-		if( isset( $array['units'] ) ) {
+		if ( isset( $array['units'] ) ) {
 			// Tack units onto font-size
-			if( isset( $array['font-size'] ) ) {
+			if ( isset( $array['font-size'] ) ) {
 				$array['font-size'] .= $array['units'];
 			}
 			unset( $array['units'] );
@@ -227,15 +227,15 @@ class TranslateSvgUtils {
 
 		// Fill $properties from defaults, array
 		$properties = $wgTranslateSvgDefaultProperties;
-		foreach( $array as $attrName => $attrValue ) {
+		foreach ( $array as $attrName => $attrValue ) {
 			list( $attrName, $attrValue ) = self::mapFromAttribute( $attrName, $attrValue );
-			if( $attrValue !== false ) {
+			if ( $attrValue !== false ) {
 				$properties[$attrName] = $attrValue;
 			}
 		}
-		if( isset( $properties['font-size'] ) ) {
+		if ( isset( $properties['font-size'] ) ) {
 			// Split font-size into font-size, units
-			if( preg_match( '/^([0-9]+)(.*)$/', $properties['font-size'], $matches ) ) {
+			if ( preg_match( '/^([0-9]+)(.*)$/', $properties['font-size'], $matches ) ) {
 				$properties['font-size'] = $matches[1];
 				$properties['units'] = ( strlen( $matches[2] ) > 0 ) ? $matches[2] : 'px';
 			}
@@ -243,7 +243,7 @@ class TranslateSvgUtils {
 
 		// Build translation from properties
 		$translation .= '{{' . $wgTranslateSvgTemplateName;
-		foreach( $properties as $attrName => $attrValue ) {
+		foreach ( $properties as $attrName => $attrValue ) {
 			$translation .= "|$attrName=$attrValue";
 		}
 		$translation .= '}}';
@@ -263,16 +263,16 @@ class TranslateSvgUtils {
 	public static function nodeToArray( DOMNode $node ) {
 		$array = array( 'text' => $node->textContent );
 		$attributes = ( $node->hasAttributes() ) ? $node->attributes : array();
-		foreach( $attributes as $attribute ) {
+		foreach ( $attributes as $attribute ) {
 			$prefix = ( $attribute->prefix === '' ) ? '' : ( $attribute->prefix . ':' );
-			if( $attribute->name === 'space' ) {
+			if ( $attribute->name === 'space' ) {
 				// XML namespace prefix seems to disappear: TODO?
 				$prefix = 'xml:';
 			}
 			list( $attrName, $attrValue ) = self::mapToAttribute(
 				$prefix . $attribute->name, $attribute->value
 			);
-			if( $attrName !== false && $attrValue !== false ) {
+			if ( $attrName !== false && $attrValue !== false ) {
 				$array[$attrName] = $attrValue;
 			}
 		}
@@ -294,15 +294,15 @@ class TranslateSvgUtils {
 		$newNode = $svg->createElementNS( $defaultNS, $nodeName );
 
 		// Handle the text property first...
-		if( isset( $array['text'] ) ) {
+		if ( isset( $array['text'] ) ) {
 			$textContent = $svg->createTextNode( $array['text'] );
 			$newNode->appendChild( $textContent );
 			unset( $array['text'] );
 		}
 
 		// ...then all other properties
-		foreach( $array as $attrName => $attrValue ) {
-			if( $attrName !== false && !preg_match( '/^data\-/', $attrName ) ) {
+		foreach ( $array as $attrName => $attrValue ) {
+			if ( $attrName !== false && !preg_match( '/^data\-/', $attrName ) ) {
 				$newNode->setAttribute( $attrName, $attrValue );
 			}
 		}
@@ -319,19 +319,19 @@ class TranslateSvgUtils {
 	 */
 	public static function hasActualTextContent( DOMNode $node ) {
 		//No text nodes means no text content
-		if( !$node->hasChildNodes() ) {
+		if ( !$node->hasChildNodes() ) {
 			return false;
 		}
 
 		// Search child nodes looking for matching content
 		$children = $node->childNodes;
 		$numChildren = $children->length;
-		for( $i = 0; $i < $numChildren; $i++ ) {
-			if( $children->item( $i )->nodeType == XML_TEXT_NODE ) {
+		for ( $i = 0; $i < $numChildren; $i++ ) {
+			if ( $children->item( $i )->nodeType == XML_TEXT_NODE ) {
 				// Whitespace at beginning and end doesn't count, but
 				// otherwise we have a match
-				if( !( $i === 0 || $i === ( $numChildren - 1 ) )
-				    || !( strlen( trim( $children->item( $i )->textContent ) ) === 0 )
+				if ( !( $i === 0 || $i === ( $numChildren - 1 ) )
+				     || !( strlen( trim( $children->item( $i )->textContent ) ) === 0 )
 				) {
 					return true;
 				}
@@ -354,18 +354,18 @@ class TranslateSvgUtils {
 	 */
 	public static function replaceIndicesRecursive( $text, &$newNodes, DOMDocument $svg, DOMNode &$parentNode ) {
 		// If nothing to replace, just fire back a text node
-		if( count( $newNodes ) === 0 ) {
-			if( strlen( $text ) > 0 ) {
+		if ( count( $newNodes ) === 0 ) {
+			if ( strlen( $text ) > 0 ) {
 				$parentNode->appendChild( $svg->createTextNode( $text ) );
 			}
 		}
 
 		// Otherwise, loop through $1, $2, etc. replacing each
 		preg_match_all( '/\$([0-9]+)/', $text, $matches );
-		foreach( $newNodes as $index => $node ) {
+		foreach ( $newNodes as $index => $node ) {
 			// One-indexed (no $0)
 			$realIndex = $index + 1;
-			if( !in_array( $realIndex, $matches[1] ) ) {
+			if ( !in_array( $realIndex, $matches[1] ) ) {
 				// Sanity check
 				continue;
 			}
