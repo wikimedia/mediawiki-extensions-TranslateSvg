@@ -97,7 +97,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 			Html::hidden( 'title', $this->getPageTitle()->getPrefixedText() ) .
 			Html::openElement( 'p' ) .
 			$this->msg( 'translate-svg-new-label' )->escaped() .
-			TranslateUtils::languageSelector( $this->getLanguage(), $default ) . '&#160;' .
+			TranslateUtils::languageSelector( $this->getLanguage()->getCode(), $default ) . '&#160;' .
 			Xml::submitButton( $this->msg( 'go' )->text() ) . "\n" .
 			Html::closeElement( 'p' ) .
 			Html::closeElement( 'fieldset' ) .
