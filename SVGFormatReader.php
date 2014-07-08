@@ -207,7 +207,7 @@ class SVGFormatReader {
 						}
 					} elseif ( $sibling->nodeType === XML_ELEMENT_NODE ) {
 						// Only text tags are allowed inside switches
-						if ( $sibling->nodeName !== 'text' || $sibling->nodeName !== 'svg:text' ) {
+						if ( $sibling->nodeName !== 'text' && $sibling->nodeName !== 'svg:text' ) {
 							return false;
 						}
 						$language = $sibling->hasAttribute( 'systemLanguage' ) ?
