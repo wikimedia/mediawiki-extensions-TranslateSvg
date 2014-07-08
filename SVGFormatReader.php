@@ -31,11 +31,13 @@ class SVGFormatReader {
 
 	protected $started = array();
 	protected $expanded = array();
-	protected $overrides = array();
 	protected $filteredTextNodes = array();
 	protected $savedLanguages = array();
-	protected $inFileTranslations = null;
 	protected $isTranslationReady = false;
+
+	protected $inProgressTranslations = array();
+	protected $inFileTranslations = null;
+	protected $onWikiTranslations = null;
 
 	/**
 	 * Initialise a new SVGFormatReader from an SVGMessageGroup and an optional array of translation overrides
@@ -44,9 +46,9 @@ class SVGFormatReader {
 	 * @param array $inProgressTranslations Optional array of translation overrides to be folded in later
 	 * @throws MWException if file not found
 	 */
-	public function __construct( SVGMessageGroup $group, $overrides = array() ) {
+	public function __construct( SVGMessageGroup $group, $inProgressTranslations = array() ) {
 		$this->group = $group;
-		$this->overrides = $overrides;
+		$this->inProgressTranslations = $inProgressTranslations;
 
 		$title = Title::makeTitleSafe( NS_FILE, $this->group->getId() );
 		$file = wfFindFile( $title );
@@ -73,7 +75,7 @@ class SVGFormatReader {
 	 * Also works as a check on the compatibility of the file since it will return false if it fails.
 	 *
 	 * @todo: Find a way of making isTranslationReady a proper check
-	 * @todo: add interlanguage consistency check=
+	 * @todo: add interlanguage consistency check
 	 * @return bool False on failure, true on success
 	 */
 	protected function makeTranslationReady() {
@@ -248,56 +250,66 @@ class SVGFormatReader {
 				$text->parentNode->setAttribute( 'style', $style );
 			}
 		}
+		$this->isTranslationReady = true;
 		return true;
 	}
 
 	/*
 	 * Collate and prepare an array of translations from multiple sources:
-	 * in file, on wiki, $this->filteredTextNodes and from $this->overrides.
+	 * in file, on wiki, $this->filteredTextNodes and in-progress.
 	 *
 	 * return array Array of translations
 	 */
-	protected function getTranslations() {
-		$translations = $this->getInFileTranslations();
-		$newTranslations = $this->getOnWikiTranslations();
+	protected function getPreferredTranslations() {
+		$inFileTranslations = $this->getInFileTranslations();
+		$onWikiTranslations = $this->getOnWikiTranslations();
+		$inProgressTranslations = $this->getInProgressTranslations();
 
 		// Collapse in-progress translations into on-wiki translations
 		foreach ( $inProgressTranslations as $key => $languages ) {
 			foreach ( $languages as $language => $translation ) {
 				$language = ( $this->group->getSourceLanguage() === $language ) ? 'fallback' : $language;
-				$newTranslations[$key][$language] = TranslateSvgUtils::translationToArray( $translation );
+				$onWikiTranslations[$key][$language] = TranslateSvgUtils::translationToArray( $translation );
 			}
 		}
 
 		// Collapse on-wiki translations translations into in-progress translations
 		foreach ( $onWikiTranslations as $key => $languages ) {
 			foreach ( $languages as $language => $translation ) {
-				$oldItem = isset( $translations[$key][$language] ) ? $translations[$key][$language] : array();
-				$translations[$key][$language] = $newTranslations[$key][$language] + $oldItem;
+				$oldItem = isset( $inFileTranslations[$key][$language] ) ? $inFileTranslations[$key][$language] : array();
+				$inFileTranslations[$key][$language] = $onWikiTranslations[$key][$language] + $oldItem;
 				if ( $language !== 'fallback' ) {
-					$translations[$key][$language]['id'] = $translations[$key]['fallback']['id'] . "-$language";
+					$inFileTranslations[$key][$language]['id'] = $inFileTranslations[$key]['fallback']['id'] . "-$language";
 				}
 			}
 		}
 
 		// "Unfilter" translations
-		$translations = array_merge( $translations, $this->filteredTextNodes );
+		$inFileTranslations = array_merge( $inFileTranslations, $this->filteredTextNodes );
 
 		// Ensure that child tspan translations prompt new <text>s to be created
 		// by duplicating the fallback version.
-		foreach ( $translations as $languages ) {
+		foreach ( $inFileTranslations as $languages ) {
 			foreach ( $languages as $language => $translation ) {
 				if ( isset( $languages['fallback']['data-parent'] ) ) {
 					$parent = $languages['fallback']['data-parent'];
-					$translations[$parent][$language] = $translations[$parent]['fallback'];
+					$inFileTranslations[$parent][$language] = $inFileTranslations[$parent]['fallback'];
 					if ( $language !== 'fallback' ) {
-						$translations[$parent][$language]['id'] .= "-$language";
+						$inFileTranslations[$parent][$language]['id'] .= "-$language";
 					}
 				}
 			}
 		}
 
-		return $translations;
+		return $inFileTranslations;
+	}
+
+	/**
+	 * Get the array of in-progress translations
+	 * @return array
+	 */
+	public function getInProgressTranslations() {
+		return $this->inProgressTranslations;
 	}
 
 	/*
@@ -306,7 +318,7 @@ class SVGFormatReader {
 	 * @return DOMDocument New SVG file
 	 */
 	public function getSVG() {
-		$translations = $this->getTranslations();
+		$translations = $this->getPreferredTranslations();
 		$currentLanguages = $this->getSavedLanguages();
 		$switches = $this->svg->getElementsByTagName( 'switch' );
 		$number = $switches->length;
@@ -401,11 +413,11 @@ class SVGFormatReader {
 	/*
 	 * Extract translations from the SVG file
 	 *
-	 * @param bool $forceUpdate Definitely regenerate the list
+	 * @param bool $forceUpdate Force the regeneration the list (default: false)
 	 * @return array Array of translations (indexed by ID, then langcode, then property)
 	 */
 	public function getInFileTranslations( $forceUpdate = false ) {
-		if ( isset( $this->inFileTranslations ) && !$forceUpdate ) {
+		if ( $this->inFileTranslations !== null && !$forceUpdate ) {
 			return $this->inFileTranslations;
 		}
 
@@ -491,9 +503,14 @@ class SVGFormatReader {
 	/*
 	 * Extract translations from on wiki
 	 *
+	 * @param bool $forceUpdate Force the regeneration the list (default: false)
 	 * @return array Array of translations (indexed by ID, then langcode, then property)
 	 */
-	public function getOnWikiTranslations() {
+	public function getOnWikiTranslations( $forceUpdate = false ) {
+		if( $this->onWikiTranslations !== null && !$forceUpdate ) {
+			return $this->onWikiTranslations;
+		}
+
 		$onWikiTranslations = array();
 		$languages = $this->group->getOnWikiLanguages();
 
@@ -521,7 +538,9 @@ class SVGFormatReader {
 				$onWikiTranslations[$key][$language] = $item;
 			}
 		}
-		return $onWikiTranslations;
+
+		$this->onWikiTranslations = $onWikiTranslations;
+		return $this->onWikiTranslations;
 	}
 
 	/*
