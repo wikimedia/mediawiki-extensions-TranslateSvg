@@ -52,6 +52,11 @@ $specialPageAliases['fa'] = array(
 	'TranslateNewSVG' => array( 'ترجمهٔ_اس‌وی‌جی_جدید' ),
 );
 
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = array(
+	'TranslateNewSVG' => array( 'תרגום_SVG_חדש' ),
+);
+
 /** Upper Sorbian (hornjoserbsce) */
 $specialPageAliases['hsb'] = array(
 	'TranslateNewSVG' => array( 'SVG_přełožować' ),
