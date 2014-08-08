@@ -53,7 +53,8 @@ class SVGFormatReader {
 		$title = Title::makeTitleSafe( NS_FILE, $this->group->getId() );
 		$file = wfFindFile( $title );
 		if ( !$file || !$file->exists() ) {
-			return null;
+			// Double-check it definitely exists
+			throw new MWException( 'File not found' );
 		}
 
 		$this->svg = new DOMDocument( '1.0' );
@@ -486,6 +487,7 @@ class SVGFormatReader {
 				}
 				foreach( $realLangs as $realLang ) {
 					if ( $hasActualTextContent ) {
+						// @todo: work out what this does
 						$translations[$textId][$realLang] = TranslateSvgUtils::nodeToArray( $text );
 					} else {
 						$this->filteredTextNodes[$textId][$realLang] = TranslateSvgUtils::nodeToArray( $text );

@@ -21,19 +21,35 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * Constructor.
 	 *
 	 * @param $filename \string Name of the file to be translated (no namespace)
+	 * @throws MWException if file not found
 	 */
 	public function __construct( $filename ) {
 		global $wgLang, $wgContLang;
 
+		$title = Title::newFromText( $filename, NS_FILE );
+
+		if( $title === null || !$title->exists() ) {
+			throw new MWException( 'File not found ' . $filename );
+		}
+
+		// Pick up normalisation
+		$filename = $title->getText();
+		$this->setNamespace( NS_FILE );
+		$this->setLabel( $filename );
+		$this->setId( $filename );
+		$prefixedFilename = $wgContLang->getNsText( NS_FILE ) . ':' . $filename;
+
 		// Parental constructor. Sets $this->source.
 		parent::__construct( $filename, $filename );
 
-		$prefixedFilename = $wgContLang->getNsText( NS_FILE ) . ':' . $filename;
-		$this->setNamespace( NS_FILE );
-		$this->setLabel( $filename );
-		$title = Title::newFromText( $prefixedFilename );
+		$file = wfFindFile( $title );
+		if ( !$file || !$file->exists() ) {
+			throw new MWException( 'File not found' );
+		}
+
 		$rev = '';
 		if ( $title->exists() ) {
+			// If the *page* associated with the file exists, grab its content
 			$rev = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
 			$revsections = explode( "\n==", $rev );
 			foreach ( $revsections as $revsection ) {
@@ -43,6 +59,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 				}
 			}
 		}
+
 		if ( trim( $rev ) === '' ) {
 			$rev = wfMessage( 'translate-svg-nodesc' )->plain();
 		}
@@ -141,13 +158,22 @@ class SVGMessageGroup extends WikiMessageGroup {
 				$translation = TranslateSvgUtils::arrayToTranslation( $innerArray );
 				$fullKey = $this->source . '/' . $key . '/' . $language;
 				$title = Title::makeTitleSafe( $this->getNamespace(), $fullKey );
-				if ( $title->exists() || !$title->userCan( 'create', $bot ) ) {
+				if ( $title->exists() ) {
+					// @todo: consider whether an update of the page is in order
 					continue;
+				}
+				if( !$title->userCan( 'create', $bot ) ) {
+					// Needs to be created, can't be, so fail
+					return false;
 				}
 				$wikiPage = new WikiPage( $title );
 				$summary = wfMessage( 'translate-svg-autocreate' )->inContentLanguage()->text();
 				$content = ContentHandler::makeContent( $translation, $title );
-				$wikiPage->doEditContent( $content, $summary, 0, false, $bot );
+				$status = $wikiPage->doEditContent( $content, $summary, 0, false, $bot );
+				if( !$status->isOK() ) {
+					// Needs to be created, couldn't, so fail
+					return false;
+				}
 			}
 		}
 		return true;
