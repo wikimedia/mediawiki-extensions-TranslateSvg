@@ -443,6 +443,8 @@ class SVGFormatReader {
 				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
 				$lang = str_replace( '_', '-', strtolower( $lang ) );
+				$realLangs = preg_split( '/, */', $lang );
+
 				$counter = 1;
 				for ( $k = 0; $k < $numChildren; $k++ ) {
 					$child = $text->childNodes->item( $k );
@@ -454,8 +456,10 @@ class SVGFormatReader {
 						$childTspan = $fallbackText->getElementsByTagName( 'tspan' )->item( $counter - 1 );
 
 						$childId = $childTspan->getAttribute( 'id' );
-						$translations[$childId][$lang] = TranslateSvgUtils::nodeToArray( $child );
-						$translations[$childId][$lang]['data-parent'] = $textId;
+						foreach( $realLangs as $realLang ) {
+							$translations[$childId][$realLang] = TranslateSvgUtils::nodeToArray( $child );
+							$translations[$childId][$realLang]['data-parent'] = $textId;
+						}
 						if ( $text->hasAttribute( 'data-children' ) ) {
 							$existing = $text->getAttribute( 'data-children' );
 							$text->setAttribute( 'data-children', "$existing|$childId" );
@@ -468,13 +472,15 @@ class SVGFormatReader {
 						$counter++;
 					}
 				}
-				if ( $hasActualTextContent ) {
-					$translations[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
-				} else {
-					$this->filteredTextNodes[$textId][$lang] = TranslateSvgUtils::nodeToArray( $text );
+				foreach( $realLangs as $realLang ) {
+					if ( $hasActualTextContent ) {
+						$translations[$textId][$realLang] = TranslateSvgUtils::nodeToArray( $text );
+					} else {
+						$this->filteredTextNodes[$textId][$realLang] = TranslateSvgUtils::nodeToArray( $text );
+					}
+					$savedLang = ( $realLang === 'fallback' ) ? $this->group->getSourceLanguage() : $realLang;
+					$this->savedLanguages[] = $savedLang;
 				}
-				$savedLang = ( $lang === 'fallback' ) ? $this->group->getSourceLanguage() : $lang;
-				$this->savedLanguages[] = $savedLang;
 			}
 		}
 		$this->inFileTranslations = $translations;
