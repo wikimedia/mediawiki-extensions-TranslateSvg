@@ -146,7 +146,8 @@ class SVGMessageGroup extends WikiMessageGroup {
 				}
 				$wikiPage = new WikiPage( $title );
 				$summary = wfMessage( 'translate-svg-autocreate' )->inContentLanguage()->text();
-				$wikiPage->doEdit( $translation, $summary, 0, false, $bot );
+				$content = ContentHandler::makeContent( $translation, $title );
+				$wikiPage->doEditContent( $content, $summary, 0, false, $bot );
 			}
 		}
 		return true;
