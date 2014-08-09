@@ -41,7 +41,8 @@ class SVGFormatReader {
 	 * Initialise a new SVGFormatReader from an SVGMessageGroup and an optional array of translation overrides
 	 *
 	 * @param SVGMessageGroup $group
-	 * @param array $overrides Optional array of translation overrides to be folded in later
+	 * @param array $inProgressTranslations Optional array of translation overrides to be folded in later
+	 * @throws MWException if file not found
 	 */
 	public function __construct( SVGMessageGroup $group, $overrides = array() ) {
 		$this->group = $group;
@@ -49,7 +50,7 @@ class SVGFormatReader {
 
 		$title = Title::makeTitleSafe( NS_FILE, $this->group->getId() );
 		$file = wfFindFile( $title );
-		if ( !$title->exists() || !$file || !$file->exists() ) {
+		if ( !$file || !$file->exists() ) {
 			return null;
 		}
 
@@ -63,7 +64,7 @@ class SVGFormatReader {
 
 		$this->xpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
 		if ( !$this->makeTranslationReady() ) {
-			return null;
+			throw new MWException( 'file not found' );
 		}
 	}
 
@@ -71,10 +72,11 @@ class SVGFormatReader {
 	 * Makes $this->svg ready for translation by inserting <switch> tags where they need to be, etc.
 	 * Also works as a check on the compatibility of the file since it will return false if it fails.
 	 *
+	 * @todo: Find a way of making isTranslationReady a proper check
+	 * @todo: add interlanguage consistency check=
 	 * @return bool False on failure, true on success
 	 */
 	protected function makeTranslationReady() {
-		// TODO: add interlanguage consistency check
 		if ( $this->isTranslationReady ) {
 			return true;
 		}
@@ -259,16 +261,16 @@ class SVGFormatReader {
 		$translations = $this->getInFileTranslations();
 		$newTranslations = $this->getOnWikiTranslations();
 
-		// Collapse overrides into new translations
-		foreach ( $this->overrides as $key => $languages ) {
+		// Collapse in-progress translations into on-wiki translations
+		foreach ( $inProgressTranslations as $key => $languages ) {
 			foreach ( $languages as $language => $translation ) {
 				$language = ( $this->group->getSourceLanguage() === $language ) ? 'fallback' : $language;
 				$newTranslations[$key][$language] = TranslateSvgUtils::translationToArray( $translation );
 			}
 		}
 
-		// Collapse new translations into old translations
-		foreach ( $newTranslations as $key => $languages ) {
+		// Collapse on-wiki translations translations into in-progress translations
+		foreach ( $onWikiTranslations as $key => $languages ) {
 			foreach ( $languages as $language => $translation ) {
 				$oldItem = isset( $translations[$key][$language] ) ? $translations[$key][$language] : array();
 				$translations[$key][$language] = $newTranslations[$key][$language] + $oldItem;
