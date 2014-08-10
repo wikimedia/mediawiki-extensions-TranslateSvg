@@ -54,36 +54,12 @@ class SpecialTranslateNewSVG extends SpecialPage {
 	}
 
 	protected function addSVGGroup( $groupName, $srcLang ) {
-		// Does this represent a file that exists?
-		$title = Title::makeTitleSafe( NS_FILE, $groupName );
-		if ( !$title->exists() ) {
-			return false;
-		}
-		$file = wfFindFile( $title );
-		if ( !$file->exists() ) {
-			return false;
-		}
-
-		// Pick up normalisations from makeTitleSafe()
-		$groupName = $title->getText();
-
 		$group = new SVGMessageGroup( $groupName );
-		$group->setSourceLanguage( $srcLang );
-		if ( $group->importTranslations() ) {
-			TranslateMetadata::set( $groupName, 'sourcelang', $srcLang );
-			$dbw = wfGetDB( DB_MASTER );
-			$table = 'translate_svg';
-			$row = array( 'ts_page_id' => $title->getArticleId() );
-			$dbw->insert( $table, $row, __METHOD__, array( 'IGNORE' ) );
-			MessageGroups::clearCache();
-			MessageIndexRebuildJob::newJob()->insert();
-
-			// If $dbw->affectedRows() == 0, something's not quite right, but it
-			// seems odd to actively error here.
-			return true;
-		} else {
+		if( $group === false ) {
 			return false;
 		}
+		$group->setSourceLanguage( $srcLang );
+		return $group->importTranslations() && $group->register();
 	}
 
 	protected function showForm( $groupName, $srcLang ) {

@@ -196,4 +196,23 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 		return $languages;
 	}
+
+	public function register( $useJobQueue = true ) {
+		$articleId = Title::newFromText( $this->getLabel(), NS_FILE )->getArticleId();
+
+		$dbw = wfGetDB( DB_MASTER );
+		$row = array( 'ts_page_id' => $articleId );
+
+		// If $dbw->affectedRows() == 0, it already exists,
+		// but no particular reason to error out
+		$dbw->insert( 'translate_svg', $row, __METHOD__, array( 'IGNORE' ) );
+
+		MessageGroups::clearCache();
+		if( $useJobQueue ) {
+			MessageIndexRebuildJob::newJob()->insert();
+		} else {
+			MessageIndex::singleton()->rebuild();
+		}
+		return true;
+	}
 }
