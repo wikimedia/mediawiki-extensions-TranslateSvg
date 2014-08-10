@@ -67,6 +67,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$desc = "[[$prefixedFilename|thumb|" . $wgLang->alignEnd() . "|upright|275x275px]]" . "\n" .
 		        Html::rawElement( 'div', array( 'style' => 'overflow:auto; padding:2px;' ), $rev );
 		$this->setDescription( $desc );
+
 	}
 
 	/**
@@ -229,9 +230,13 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$dbw = wfGetDB( DB_MASTER );
 		$row = array( 'ts_page_id' => $articleId );
 
-		// If $dbw->affectedRows() == 0, it already exists,
-		// but no particular reason to error out
 		$dbw->insert( 'translate_svg', $row, __METHOD__, array( 'IGNORE' ) );
+
+		if( $dbw->affectedRows() === 0 ) {
+			// If $dbw->affectedRows() == 0, it already exists,
+			// but no particular reason to error out
+			return true;
+		}
 
 		MessageGroups::clearCache();
 		if( $useJobQueue ) {
