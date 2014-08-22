@@ -25,6 +25,12 @@ $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
 $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgAutoloadClasses['ExportSVGMessagesTask'] = $dir . 'TranslateSvgTasks.php';
 $wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
+
+if( defined( 'MW_PHPUNIT_TEST' ) ) {
+	define( 'MW_PHPUNIT_USE_AUTOLOAD', true );
+	require_once $dir . 'tests/phpunit/bootstrap.php';
+}
+
 $wgMessagesDirs['TranslateSvg'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 $wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
@@ -91,6 +97,7 @@ $wgHooks['TranslateGetAPIMessageGroupsParameterDescs'][] = 'TranslateSvgHooks::a
 $wgHooks['TranslateGetAPIMessageGroupsParameterList'][] = 'TranslateSvgHooks::addAPIParams';
 $wgHooks['TranslatePostInitGroups'][] = 'TranslateSvgHooks::loadSVGGroups';
 $wgHooks['TranslateProcessAPIMessageGroupsProperties'][] = 'TranslateSvgHooks::processAPIProperties';
+$wgHooks['UnitTestsList'][] = 'TranslateSvgHooks::onUnitTestsList';
 
 $wgSpecialPages['TranslateNewSVG'] = 'SpecialTranslateNewSVG';
 $wgSpecialPageGroups['TranslateNewSVG'] = 'wiki';

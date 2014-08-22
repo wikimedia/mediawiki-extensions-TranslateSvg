@@ -450,4 +450,15 @@ class TranslateSvgHooks {
 		$vars['wgFileTranslationStarted'] = true;
 		return true;
 	}
+
+	/**
+	 * Register our unit tests so Jenkins can run them
+	 *
+	 * @param &$files \array Array of tests (test files) to be run
+	 * @return \bool True
+	 */
+	public static function onUnitTestsList( &$files ) {
+		$files = array_merge( $files, glob( __DIR__ . '/tests/phpunit/*Test.php' ) );
+		return true;
+	}
 }

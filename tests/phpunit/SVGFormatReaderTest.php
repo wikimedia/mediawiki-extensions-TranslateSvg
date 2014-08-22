@@ -1,0 +1,259 @@
+<?php
+/**
+ * Unit tests.
+ *
+ * @file
+ * @author Harry Burt
+ * @copyright Copyright © 2014, Harry Burt
+ * @license GPL-2.0+
+ * @group database
+ */
+
+/**
+ * Unit tests for SVGFormatReader class.
+ * @covers SVGFormatReader
+ */
+class SVGFormatReaderTest extends TranslateSvgTestCase {
+
+	/**
+	 * @var SVGFormatReader
+	 */
+	private $reader;
+
+	public static function setUpBeforeClass() {
+		parent::setUpBeforeClass();
+		self::prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
+	}
+
+	public function setUp() {
+		parent::setUp();
+		$this->reader = new SVGFormatReader( $this->messageGroup );
+	}
+
+	public function testGetInFileTranslations() {
+		$expected = array (
+			'tspan2987' =>
+				array (
+					'de' =>
+						array (
+							'text' => 'Hallo!',
+							'id' => 'tspan2987-de',
+							'data-parent' => 'text2985',
+						),
+					'fr' =>
+						array (
+							'text' => 'Bonjour',
+							'x' => '80',
+							'y' => '108.07646',
+							'id' => 'tspan2987-fr',
+							'data-parent' => 'text2985',
+						),
+					'nl' =>
+						array (
+							'text' => 'Hallo!',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'tspan2987-nl',
+							'data-parent' => 'text2985',
+						),
+					'tlh-ca' =>
+						array (
+							'text' => 'Hallo!',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'tspan2987-nl',
+							'data-parent' => 'text2985',
+						),
+					'fallback' =>
+						array (
+							'text' => 'Hello!',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'tspan2987',
+							'sodipodi:role' => 'line',
+							'data-parent' => 'text2985',
+						),
+				),
+			'tspan2991' =>
+				array (
+					'de' =>
+						array (
+							'text' => 'Hallo! Wie',
+							'x' => '323',
+							'y' => '188.07648',
+							'id' => 'tspan2991-de',
+							'data-parent' => 'text2989',
+						),
+					'fr' =>
+						array (
+							'text' => 'Bonjour,',
+							'x' => '335',
+							'y' => '188.07648',
+							'id' => 'tspan2991-fr',
+							'data-parent' => 'text2989',
+						),
+					'nl' =>
+						array (
+							'text' => 'Hallo! Hoe',
+							'x' => '310',
+							'y' => '188.07648',
+							'id' => 'tspan2991-nl',
+							'data-parent' => 'text2989',
+						),
+					'tlh-ca' =>
+						array (
+							'text' => 'Hallo! Hoe',
+							'x' => '310',
+							'y' => '188.07648',
+							'id' => 'tspan2991-nl',
+							'data-parent' => 'text2989',
+						),
+					'fallback' =>
+						array (
+							'text' => 'Hello! How',
+							'x' => '330',
+							'y' => '188.07648',
+							'id' => 'tspan2991',
+							'sodipodi:role' => 'line',
+							'data-parent' => 'text2989',
+						),
+				),
+			'tspan2993' =>
+				array (
+					'de' =>
+						array (
+							'text' => 'geht\'s?',
+							'x' => '350',
+							'y' => '238.07648',
+							'id' => 'tspan2993-de',
+							'sodipodi:role' => 'line',
+							'data-parent' => 'text2989',
+						),
+					'fr' =>
+						array (
+							'text' => 'ça va?',
+							'x' => '350',
+							'y' => '238.07648',
+							'id' => 'tspan2993-fr',
+							'data-parent' => 'text2989',
+						),
+					'nl' =>
+						array (
+							'text' => 'gaat het?',
+							'x' => '330',
+							'y' => '238.07648',
+							'id' => 'tspan2993-nl',
+							'data-parent' => 'text2989',
+						),
+					'tlh-ca' =>
+						array (
+							'text' => 'gaat het?',
+							'x' => '330',
+							'y' => '238.07648',
+							'id' => 'tspan2993-nl',
+							'data-parent' => 'text2989',
+						),
+					'fallback' =>
+						array (
+							'text' => 'are you?',
+							'x' => '330',
+							'y' => '238.07648',
+							'id' => 'tspan2993',
+							'sodipodi:role' => 'line',
+							'data-parent' => 'text2989',
+						),
+				),
+			'tspan2997' =>
+				array (
+					'fr' =>
+						array (
+							'text' => 'Ça va bien,',
+							'x' => '82',
+							'y' => '323',
+							'id' => 'tspan2997-fr',
+							'data-parent' => 'text2995',
+						),
+					'nl' =>
+						array (
+							'text' => 'Goed,',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'tspan2997-nl',
+							'data-parent' => 'text2995',
+						),
+					'tlh-ca' =>
+						array (
+							'text' => 'Goed,',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'tspan2997-nl',
+							'data-parent' => 'text2995',
+						),
+					'fallback' =>
+						array (
+							'text' => 'I\'m well,',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'tspan2997',
+							'sodipodi:role' => 'line',
+							'data-parent' => 'text2995',
+						),
+				),
+			'tspan2999' =>
+				array (
+					'fr' =>
+						array (
+							'text' => 'et toi?',
+							'x' => '117.42857',
+							'y' => '368.64789',
+							'id' => 'tspan2999-fr',
+							'data-parent' => 'text2995',
+						),
+					'nl' =>
+						array (
+							'text' => 'met jou?',
+							'x' => '101.42857',
+							'y' => '368.64789',
+							'font-size' => '90%',
+							'id' => 'tspan2999-nl',
+							'data-parent' => 'text2995',
+						),
+					'tlh-ca' =>
+						array (
+							'text' => 'met jou?',
+							'x' => '101.42857',
+							'y' => '368.64789',
+							'font-size' => '90%',
+							'id' => 'tspan2999-nl',
+							'data-parent' => 'text2995',
+						),
+					'fallback' =>
+						array (
+							'text' => '   you?',
+							'x' => '101.42857',
+							'y' => '368.64789',
+							'id' => 'tspan2999',
+							'sodipodi:role' => 'line',
+							'data-parent' => 'text2995',
+						),
+				)
+		);
+		$this->assertEquals( $expected, $this->reader->getInFileTranslations() );
+	}
+
+	public function testGetSavedLanguages() {
+		$expected = array(
+			'de', 'fr', 'nl', 'tlh-ca', 'en'
+		);
+		$this->assertEquals( $expected, $this->reader->getSavedLanguages() );
+	}
+
+	public function testGetSavedLanguagesFiltered() {
+		$expected = array(
+			'full' => array( 'fr', 'nl', 'tlh-ca', 'en' ),
+			'partial' => array( 'de' )
+		);
+		$this->assertEquals( $expected, $this->reader->getSavedLanguagesFiltered() );
+	}
+
+}
