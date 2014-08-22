@@ -43,12 +43,8 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 			die( 'Could not upload test file ' . $name );
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		$table = 'translate_svg';
-		$row = array( 'ts_page_id' => $title->getArticleId() );
-		$dbw->insert( $table, $row, __METHOD__, array( 'IGNORE' ) );
-		MessageGroups::clearCache();
-		MessageIndex::singleton()->rebuild();
+		$messageGroup = new SVGMessageGroup( $name );
+		$messageGroup->register( false );
 
 		self::$name = $name;
 	}

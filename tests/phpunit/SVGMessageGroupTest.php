@@ -18,6 +18,19 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		self::prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
 	}
 
+	public function testRegistration() {
+		// In order that a lot of the tests function, prepareFile() calls register()
+		// but we should check now that it's worked
+		$name = str_replace( '_', ' ', self::$name );
+		$group = MessageGroups::getGroup( $name );
+
+		// $group is either of type SVGMessageGroup (success) or null (failure)
+		$this->assertInstanceOf( 'SVGMessageGroup', $group );
+
+		// This should be equivalent to running:
+		$this->assertInstanceOf( 'SVGMessageGroup', $this->messageGroup );
+	}
+
 	public function testGetSourceLanguage() {
 		$this->assertEquals(
 			'en',
