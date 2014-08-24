@@ -15,10 +15,10 @@ class TranslateSvgHooks {
 	/**
 	 * Function used to add a translation helper box via the TranslateGetBoxes hook
 	 *
-	 * @param $group \MessageGroup The MessageGroup of the page being translated
-	 * @param $handle \MessageHandle The MessageHandle of the page being translated
-	 * @param $boxes \array The array to which the thumbnail helper is added
-	 * @return \bool True
+	 * @param MessageGroup $group The MessageGroup of the page being translated
+	 * @param MessageHandle $handle The MessageHandle of the page being translated
+	 * @param array $boxes The array to which the thumbnail helper is added
+	 * @return bool True
 	 */
 	public static function addThumbnail( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		global $wgLang;
@@ -42,10 +42,10 @@ class TranslateSvgHooks {
 	 * Function used to remove the QQQ (documentation) translation helper box via
 	 * the TranslateGetBoxes hook
 	 *
-	 * @param $group \MessageGroup The message group to which the message being translated belongs
-	 * @param $handle \MessageHandle The MessageHandle of the message being translated
-	 * @param $boxes \array The array from which the thumbnail helper is removed
-	 * @return \bool True
+	 * @param MessageGroup $group The message group to which the message being translated belongs
+	 * @param MessageHandle $handle The MessageHandle of the message being translated
+	 * @param array $boxes The array from which the thumbnail helper is removed
+	 * @return bool True
 	 */
 	public static function removeQQQ( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		if ( !( $group instanceof SVGMessageGroup ) ) {
@@ -61,10 +61,10 @@ class TranslateSvgHooks {
 	 * the TranslateGetBoxes hook
 	 *
 	 * @todo Replace this with a better helper rather than no helper
-	 * @param $group \MessageGroup The message group to which the message being translated belongs
-	 * @param $handle \MessageHandle The MessageHandle of the message being translated
-	 * @param $boxes \array The array from which the thumbnail helper is removed
-	 * @return \bool True
+	 * @param MessageGroup $group The message group to which the message being translated belongs
+	 * @param MessageHandle $handle The MessageHandle of the message being translated
+	 * @param array $boxes The array from which the thumbnail helper is removed
+	 * @return bool True
 	 */
 	public static function removeSuggestions( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		if ( !( $group instanceof SVGMessageGroup ) ) {
@@ -79,8 +79,8 @@ class TranslateSvgHooks {
 	 * Function used to add modules to the ResourceLoader via the
 	 * TranslateBeforeAddModules hook
 	 *
-	 * @param $modules \array The current array of modules
-	 * @return \bool True
+	 * @param array $modules The current array of modules
+	 * @return bool True
 	 */
 	public static function addModules( &$modules ) {
 		$modules[] = 'ext.translatesvg';
@@ -90,9 +90,9 @@ class TranslateSvgHooks {
 	/**
 	 * Function used to preload properties via the TranslatePrefillTranslation hook
 	 *
-	 * @param $properties \string To be filled with the preloaded property string
-	 * @param $handle \MessageHandle $handle
-	 * @return \bool True
+	 * @param string $properties To be filled with the preloaded property string
+	 * @param MessageHandle $handle $handle
+	 * @return bool True
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, MessageHandle $handle ) {
 		if ( !$handle->isValid() ) {
@@ -116,9 +116,9 @@ class TranslateSvgHooks {
 	 * a series of HTML form elements (extraInputs). Used for the
 	 * TranslateGetExtraInputs hook.
 	 *
-	 * @param $message \string Input/output translation string, passed by reference
-	 * @param $extraInputs \string Extra form elements required
-	 * @return \bool True
+	 * @param string $message Input/output translation string, passed by reference
+	 * @param string $extraInputs Extra form elements required
+	 * @return bool True
 	 */
 	public static function propertiesToExtraInputs( &$message, &$extraInputs ) {
 		global $wgTranslateSvgTypefaces, $wgTranslateSvgColors;
@@ -208,12 +208,12 @@ class TranslateSvgHooks {
 	 * Function that replaces a message with a no-property-string version.
 	 * Used for the TranslateFormatMessageBeforeTable hook
 	 *
-	 * @param &$message \string Message which may or may not include a property string
-	 * @param $m \ThinMessage The source message object
-	 * @param $group \MessageGroup The source message group
-	 * @param $targetLang \string The language for which translations are being shown
-	 * @param &$attrs \array The set of attributes to apply to the row (not used)
-	 * @return \bool True
+	 * @param string &$message Message which may or may not include a property string
+	 * @param ThinMessage $m The source message object
+	 * @param MessageGroup $group The source message group
+	 * @param string $targetLang The language for which translations are being shown
+	 * @param array &$attrs The set of attributes to apply to the row (not used)
+	 * @return bool True
 	 */
 	public static function stripPropertyString( &$message, ThinMessage $m, MessageGroup $group, $targetLang, &$attrs ) {
 		// TODO: mark as .justtranslated if not yet exported
@@ -229,9 +229,9 @@ class TranslateSvgHooks {
 	 * Function used to expose the $wgTranslateSvgTemplateName global to
 	 * JavaScript via the MakeGlobalVariablesScript MediaWiki hook
 	 *
-	 * @param &$vars \array of variables to be exposed to JavaScript
-	 * @param $out \OutputPage Contextual OutputPage instance
-	 * @return \bool True
+	 * @param array &$vars of variables to be exposed to JavaScript
+	 * @param OutputPage $out Contextual OutputPage instance
+	 * @return bool True
 	 */
 	public static function exposeTranslateSvgTemplateName( &$vars, OutputPage $out ) {
 		global $wgTranslateSvgTemplateName;
@@ -245,9 +245,9 @@ class TranslateSvgHooks {
 	 * Function used to make "export as SVG" the default export option for SVG files
 	 * Used with the TranslateGetSpecialTranslateOptions hook
 	 *
-	 * @param $defaults \array Associative array of so-called "default" values supplied by Translate
-	 * @param $nondefaults \array Associative array of so-called "non-default" values supplied by Translate
-	 * @return \bool True
+	 * @param array $defaults Associative array of so-called "default" values supplied by Translate
+	 * @param array $nondefaults Associative array of so-called "non-default" values supplied by Translate
+	 * @return bool True
 	 */
 	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
 		if ( isset( $nondefaults['group'] )
@@ -265,8 +265,8 @@ class TranslateSvgHooks {
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateGetAPIMessageGroupsPropertyDescs hook
 	 *
-	 * @param \array $properties An associative array of properties (name => details)
-	 * @return \bool True
+	 * @param array $properties An associative array of properties (name => details)
+	 * @return bool True
 	 */
 	public static function addAPIProperties( &$properties ) {
 		$properties['thumbnail'] = ' thumbnail    - Include URL of up-to-date thumbnail (SVG message groups only)';
@@ -278,7 +278,7 @@ class TranslateSvgHooks {
 	 * MediaWiki's 'LoadExtensionSchemaUpdates' hook.
 	 *
 	 * @param $updater DatabaseUpdater The MediaWiki-provided updater instance
-	 * @return \bool True
+	 * @return bool True
 	 */
 	public static function schemaUpdates( $updater ) {
 		$dir = __DIR__ . '/sql';
@@ -292,7 +292,7 @@ class TranslateSvgHooks {
 	 * the file pages of SVG files via the BeforePageDisplay MediaWiki hook
 	 *
 	 * @param $out Contextual OutputPage instance
-	 * @return \bool
+	 * @return bool
 	 */
 	public static function updateFileDescriptionPages( OutputPage $out ) {
 		$title = $out->getTitle();
@@ -307,11 +307,11 @@ class TranslateSvgHooks {
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateProcessAPIMessageGroupsProperties hook
 	 *
-	 * @param $a \array Associative array of the properties of $group that will be returned
-	 * @param $props \array Associative array ($name => true) of properties the user has specifically requested
-	 * @param $params \array Parameter input by the user (unprefixed name => value)
-	 * @param $g \MessageGroup The group in question
-	 * @return \bool True
+	 * @param array $a Associative array of the properties of $group that will be returned
+	 * @param array $props Associative array ($name => true) of properties the user has specifically requested
+	 * @param array $params Parameter input by the user (unprefixed name => value)
+	 * @param MessageGroup $g The group in question
+	 * @return bool True
 	 */
 	public static function processAPIProperties( &$a, $props, $params, MessageGroup $g ) {
 		if ( !( $g instanceof SVGMessageGroup ) ) {
@@ -338,8 +338,8 @@ class TranslateSvgHooks {
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateGetAPIMessageGroupsParameterList hook
 	 *
-	 * @param $params \array An associative array of possible parameters (name => details)
-	 * @return \bool True
+	 * @param array $params An associative array of possible parameters (name => details)
+	 * @return bool True
 	 */
 	public static function addAPIParams( &$params ) {
 		$params['overrides'] = array(
@@ -355,9 +355,9 @@ class TranslateSvgHooks {
 	 * Document the mgoverrides and mglanguage parameters
 	 * Used with the TranslateGetAPIMessageGroupsParameterDescs hook
 	 *
-	 * @param $paramDescs \array An associative array of parameters, name => description.
-	 * @param $p \string The prefix for action=query&meta=messagegroups (unused)
-	 * @return \bool True
+	 * @param array $paramDescs An associative array of parameters, name => description.
+	 * @param string $p The prefix for action=query&meta=messagegroups (unused)
+	 * @return bool True
 	 */
 	public static function addAPIParamDescs( &$paramDescs, $p ) {
 		$paramDescs['overrides'] =
@@ -372,10 +372,10 @@ class TranslateSvgHooks {
 	 * Function used to load groups registered by TranslateSvg into the
 	 * lists generated by Translate. Uses the 'TranslatePostInitGroups' hook.
 	 *
-	 * @param &$list \array Array of groups to append to.
-	 * @param &$deps \array Not used at present.
-	 * @param &$autoload \array Not used at present.
-	 * @return \bool True
+	 * @param array &$list Array of groups to append to.
+	 * @param array &$deps Not used at present.
+	 * @param array &$autoload Not used at present.
+	 * @return bool True
 	 */
 	public static function loadSVGGroups( &$list, &$deps, &$autoload ) {
 		$dbr = wfGetDB( DB_MASTER );
@@ -398,9 +398,9 @@ class TranslateSvgHooks {
 	 * JavaScript of the file description pages of SVG files
 	 * via the MakeGlobalVariablesScript MediaWiki hook.
 	 *
-	 * @param &$vars \array Array of variables to be exposed to JavaScript
-	 * @param $out \OutputPage Contextual OutputPage instance
-	 * @return \bool True
+	 * @param array &$vars Array of variables to be exposed to JavaScript
+	 * @param OutputPage $out Contextual OutputPage instance
+	 * @return bool True
 	 */
 	public static function makeFilePageGlobalVariables( &$vars, OutputPage $out ) {
 		$title = $out->getTitle();
@@ -454,8 +454,8 @@ class TranslateSvgHooks {
 	/**
 	 * Register our unit tests so Jenkins can run them
 	 *
-	 * @param &$files \array Array of tests (test files) to be run
-	 * @return \bool True
+	 * @param array &$files Array of tests (test files) to be run
+	 * @return bool True
 	 */
 	public static function onUnitTestsList( &$files ) {
 		$files = array_merge( $files, glob( __DIR__ . '/tests/phpunit/*Test.php' ) );

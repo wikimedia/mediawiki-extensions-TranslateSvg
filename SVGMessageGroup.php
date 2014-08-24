@@ -20,7 +20,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	/**
 	 * Constructor.
 	 *
-	 * @param $filename \string Name of the file to be translated (no namespace)
+	 * @param string $filename Name of the file to be translated (no namespace)
 	 * @throws MWException if file not found
 	 */
 	public function __construct( $filename ) {
@@ -102,9 +102,9 @@ class SVGMessageGroup extends WikiMessageGroup {
 	/**
 	 * Returns the $code-language translation of a message specified by $key
 	 *
-	 * @param $key \string Key of the message.
-	 * @param $code \string Language code.
-	 * @return \types{\string,\null} The translation or null if it doesn't exists.
+	 * @param string $key Key of the message.
+	 * @param string $code Language code.
+	 * @return string|null The translation or null if it doesn't exists.
 	 */
 	public function getMessage( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
@@ -121,9 +121,9 @@ class SVGMessageGroup extends WikiMessageGroup {
 	/**
 	 * Returns the associated properties of the message specified by $key
 	 *
-	 * @param $key \string Key of the message.
-	 * @param $code \string Language code.
-	 * @return \types{\string,\null} The translation or null if it doesn't exists.
+	 * @param string $key Key of the message.
+	 * @param string $code Language code.
+	 * @return string|null The translation or null if it doesn't exists.
 	 */
 	public function getProperties( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
@@ -136,10 +136,10 @@ class SVGMessageGroup extends WikiMessageGroup {
 		return $properties;
 	}
 
-	/*
+	/**
 	 * Import translations from the file, onto the wiki
 	 *
-	 * return \bool True on success, false on failure
+	 * @return bool True on success, false on failure
 	 */
 	public function importTranslations() {
 		global $wgTranslateSvgBotName;
@@ -185,7 +185,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * the TranslateMetadata framework, or 'en' (English) if none set.
 	 * Overrides parent method
 	 *
-	 * @return \string Language code
+	 * @return string Language code
 	 */
 	public function getSourceLanguage() {
 		if ( !isset( $this->sourceLanguage ) ) {
@@ -199,8 +199,8 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * Sets the source language code of this message group by using
 	 * the TranslateMetadata framework.
 	 *
-	 * @param \string $srcLang The source language code
-	 * @return \null
+	 * @param string $srcLang The source language code
+	 * @return null
 	 */
 	public function setSourceLanguage( $srcLang ) {
 		$this->sourceLanguage = $srcLang;

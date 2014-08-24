@@ -13,6 +13,9 @@
  */
 class SVGFormatWriter {
 
+	/**
+	 * @var SVGMessageGroup
+	 */
 	protected $group;
 	protected $url;
 
@@ -26,8 +29,8 @@ class SVGFormatWriter {
 	/**
 	 * Constructor
 	 *
-	 * @param $group \SVGMessageGroup Message group to write to file
-	 * @param $overrides \array Possible array of overriddes (unsaved translations that should take preference over saved ones), format: [id][langcode][property name]
+	 * @param SVGMessageGroup $group Message group to write to file
+	 * @param array $inProgressTranslations Possible array of overriddes (unsaved translations that should take preference over saved ones), format: [id][langcode][property name]
 	 */
 	public function __construct( SVGMessageGroup $group, $overrides = array() ) {
 		$this->group = $group;
@@ -38,12 +41,12 @@ class SVGFormatWriter {
 
 	/**
 	 * Returns a thumbnail of an SVG translated into the language provided.
-	 * The thumbnail will include all translations, including overrides and
+	 * The thumbnail will include all translations, including in progress and
 	 * onwiki translations, rather than just those uploaded.
 	 *
-	 * @param $language \string|\bool Code of the language to translate into
-	 * @param $size \int The length (in px) of one side of a bounding box square: aspect ratio will always be preserved. Default 275.
-	 * @return \array Array with keys 'success'=>true|false and 'message'=>/web/friendly/path/to/the/new/thumbnail.png|error output
+	 * @param string|bool $language Code of the language to translate into
+	 * @param int $size The length (in px) of one side of a bounding box square: aspect ratio will always be preserved. Default 275.
+	 * @return array Array with keys 'success'=>true|false and 'message'=>/web/friendly/path/to/the/new/thumbnail.png|error output
 	 */
 	public function thumbnailExport( $language, $size = 275 ) {
 		global $wgTranslateSvgDirectory, $wgTranslateSvgPath,
@@ -129,8 +132,8 @@ class SVGFormatWriter {
 	/*
 	 * Handles the actual upload process for a given SVG in DOMDocument form
 	 *
-	 * @param $svg \DOMDocument The object representing the SVG to be uploaded
-	 * @return \mixed{\bool,\string} True on success, error message on failure
+	 * @param User $user The user to use for the upload
+	 * @return bool|string True on success, error message on failure
 	 */
 	public function exportToSVG( User $user ) {
 		global $wgTranslateSvgBotName, $wgContLang, $wgOut;
@@ -197,8 +200,8 @@ class SVGFormatWriter {
 	 * Provides output to the user for a result of UploadBase::verifyUpload
 	 * Copied from SpecialUpload (c) Authors
 	 *
-	 * @param $details \array Result of UploadBase::verifyUpload
-	 * @return \Message
+	 * @param array $details Result of UploadBase::verifyUpload
+	 * @return Message
 	 */
 	protected function processVerificationError( $details ) {
 		switch ( $details['status'] ) {

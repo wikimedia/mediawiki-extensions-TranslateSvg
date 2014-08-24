@@ -1,4 +1,12 @@
 <?php
+/**
+ * Unit test case to enable code sharing between unit test
+ *
+ * @file
+ * @author Harry Burt
+ * @copyright Copyright © 2014, Harry Burt
+ * @license GPL-2.0+
+ */
 
 class TranslateSvgUpload extends UploadBase {
 	public function initializeFromRequest( &$request ) { }
