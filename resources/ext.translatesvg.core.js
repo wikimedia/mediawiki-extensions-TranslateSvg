@@ -104,11 +104,11 @@
 			}
 			var identifiers = name.split( '/' );
 
-			// Create and set overrides[identifier][langcode]
+			// Create and set inprogress[identifier][langcode]
 			var overrideValue = $( textarea ).val() + tsvgLoader.propertiesToString( $form );
-			var overrides = {};
-			overrides[identifiers[1]] = {};
-			overrides[identifiers[1]][identifiers[2]] = overrideValue;
+			var inprogress = {};
+			inprogress[identifiers[1]] = {};
+			inprogress[identifiers[1]][identifiers[2]] = overrideValue;
 
 			var group = identifiers[0];
 			group = group.substr( group.indexOf( ':' ) + 1 ).replace( '_', ' ' );
@@ -119,7 +119,7 @@
 				mgprop: 'thumbnail',
 				mgfilter: group,
 				mglanguage: identifiers[2],
-				mgoverrides: $.toJSON( overrides )
+				mginprogress: $.toJSON( inprogress )
 			}, {
 				ok: function ( data ) {
 					// The extension ensures data.query.messagegroups[0].thumbnail.success exists

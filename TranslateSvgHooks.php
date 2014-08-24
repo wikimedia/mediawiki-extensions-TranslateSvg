@@ -322,19 +322,19 @@ class TranslateSvgHooks {
 			$language = isset( $params['language'] ) ?
 				$params['language'] : $g->getSourceLanguage();
 
-			$overrides = array();
-			if ( isset( $params['overrides'] ) ) {
-				$overrides = json_decode( $params['overrides'], true );
+			$inProgressTranslations = array();
+			if ( isset( $params['inprogress'] ) ) {
+				$inProgressTranslations = json_decode( $params['inprogress'], true );
 			}
 
-			$writer = new SVGFormatWriter( $g, $overrides );
+			$writer = new SVGFormatWriter( $g, $inProgressTranslations );
 			$a['thumbnail'] = $writer->thumbnailExport( $language );
 		}
 		return true;
 	}
 
 	/**
-	 * Define mgoverrides and mglanguage parameters for use with
+	 * Define mginprogress and mglanguage parameters for use with
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateGetAPIMessageGroupsParameterList hook
 	 *
@@ -342,7 +342,7 @@ class TranslateSvgHooks {
 	 * @return bool True
 	 */
 	public static function addAPIParams( &$params ) {
-		$params['overrides'] = array(
+		$params['inprogress'] = array(
 			ApiBase::PARAM_TYPE => 'string'
 		);
 		$params['language'] = array(
@@ -352,7 +352,7 @@ class TranslateSvgHooks {
 	}
 
 	/**
-	 * Document the mgoverrides and mglanguage parameters
+	 * Document the mginprogress and mglanguage parameters
 	 * Used with the TranslateGetAPIMessageGroupsParameterDescs hook
 	 *
 	 * @param array $paramDescs An associative array of parameters, name => description.
@@ -360,9 +360,9 @@ class TranslateSvgHooks {
 	 * @return bool True
 	 */
 	public static function addAPIParamDescs( &$paramDescs, $p ) {
-		$paramDescs['overrides'] =
-			'Possible array of overriddes (unsaved translations that should take preference'
-			. ' over saved ones). SVG message groups only.';
+		$paramDescs['inprogress'] =
+			'Possible array of in-progress translations (unsaved translations that should'
+			. ' take preference over saved ones). SVG message groups only.';
 		$paramDescs['language'] =
 			'Language to render the thumbnail in. SVG message groups only.';
 		return true;
