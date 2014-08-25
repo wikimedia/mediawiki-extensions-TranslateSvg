@@ -18,7 +18,7 @@ $wgExtensionCredits['specialpage'][] = array(
 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['SpecialTranslateNewSVG'] = $dir . 'SpecialTranslateNewSVG.php';
-$wgAutoloadClasses['SVGFormatReader'] = $dir . 'SVGFormatReader.php';
+$wgAutoloadClasses['SVGFile'] = $dir . 'SVGFile.php';
 $wgAutoloadClasses['SVGFormatWriter'] = $dir . 'SVGFormatWriter.php';
 $wgAutoloadClasses['SVGMessageGroup'] = $dir . 'SVGMessageGroup.php';
 $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';

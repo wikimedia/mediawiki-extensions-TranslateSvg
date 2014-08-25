@@ -10,24 +10,19 @@
  */
 
 /**
- * Unit tests for SVGFormatReader class.
- * @covers SVGFormatReader
+ * Unit tests for SVGFile class.
+ * @covers SVGFile
  */
-class SVGFormatReaderTest extends TranslateSvgTestCase {
+class SVGFileTest extends TranslateSvgTestCase {
 
 	/**
-	 * @var SVGFormatReader
+	 * @var SVGFile
 	 */
-	private $reader;
-
-	public static function setUpBeforeClass() {
-		parent::setUpBeforeClass();
-		self::prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
-	}
+	private $svg;
 
 	public function setUp() {
 		parent::setUp();
-		$this->reader = new SVGFormatReader( $this->messageGroup );
+		$this->svg = new SVGFile( __DIR__ . '/../data/Speech_bubbles.svg', 'en' );
 	}
 
 	public function testGetInFileTranslations() {
@@ -238,14 +233,14 @@ class SVGFormatReaderTest extends TranslateSvgTestCase {
 						),
 				)
 		);
-		$this->assertEquals( $expected, $this->reader->getInFileTranslations() );
+		$this->assertEquals( $expected, $this->svg->getInFileTranslations() );
 	}
 
 	public function testGetSavedLanguages() {
 		$expected = array(
 			'de', 'fr', 'nl', 'tlh-ca', 'en'
 		);
-		$this->assertEquals( $expected, $this->reader->getSavedLanguages() );
+		$this->assertEquals( $expected, $this->svg->getSavedLanguages() );
 	}
 
 	public function testGetSavedLanguagesFiltered() {
@@ -253,7 +248,7 @@ class SVGFormatReaderTest extends TranslateSvgTestCase {
 			'full' => array( 'fr', 'nl', 'tlh-ca', 'en' ),
 			'partial' => array( 'de' )
 		);
-		$this->assertEquals( $expected, $this->reader->getSavedLanguagesFiltered() );
+		$this->assertEquals( $expected, $this->svg->getSavedLanguagesFiltered() );
 	}
 
 }

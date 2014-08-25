@@ -25,8 +25,7 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 			return $this->errorOutput( wfMessage( 'translate-svg-export-unsupported', $link ) );
 		}
 
-		/** @var SVGFormatWriter $writer */
-		$writer = $this->group->getWriter();
+		$writer = new SVGFormatWriter( $this->group );
 		$ret = $writer->exportToSVG( $this->context->getUser() );
 		if ( $ret === true ) {
 			global $wgOut;

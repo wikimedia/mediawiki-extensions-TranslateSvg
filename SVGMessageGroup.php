@@ -16,6 +16,7 @@
 class SVGMessageGroup extends WikiMessageGroup {
 	protected $source = null;
 	protected $sourceLanguage = null;
+	protected $onWikiTranslations = null;
 
 	/**
 	 * Constructor.
@@ -145,12 +146,12 @@ class SVGMessageGroup extends WikiMessageGroup {
 		global $wgTranslateSvgBotName;
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 
-		$reader = new SVGFormatReader( $this );
-		if ( !$reader ) {
+		$svg = SVGFile::newFromMessageGroup( $this );
+		if ( $svg === null ) {
 			return false;
 		}
 
-		$translations = $reader->getInFileTranslations();
+		$translations = $svg->getInFileTranslations();
 		foreach ( $translations as $key => $outerArray ) {
 			foreach ( $outerArray as $language => $innerArray ) {
 				if ( $language === 'fallback' ) {
@@ -222,6 +223,49 @@ class SVGMessageGroup extends WikiMessageGroup {
 			}
 		}
 		return $languages;
+	}
+
+	/*
+	 * Extract translations from on wiki
+	 *
+	 * @param bool $forceUpdate Force the regeneration the list (default: false)
+	 * @return array Array of translations (indexed by ID, then langcode, then property)
+	 */
+	public function getOnWikiTranslations( $forceUpdate = false ) {
+		if( $this->onWikiTranslations !== null && !$forceUpdate ) {
+			return $this->onWikiTranslations;
+		}
+
+		$onWikiTranslations = array();
+		$languages = $this->getOnWikiLanguages();
+
+		// Translations generated onwiki
+		foreach ( $languages as $language ) {
+			$collection = $this->initCollection( $language );
+			$collection->loadTranslations();
+			$mangler = $this->getMangler();
+			foreach ( $collection as $item ) {
+				/** @var TMessage $item */
+				$key = explode( '/', $mangler->unMangle( $item->key() ) );
+				$key = array_pop( $key );
+				$translation = str_replace( TRANSLATE_FUZZY, '', $item->translation() );
+
+				if ( $translation === '' ) {
+					// No translation provided
+					continue;
+				}
+
+				$language = ( $this->getSourceLanguage() == $language ) ? 'fallback' : $language;
+				$item = TranslateSvgUtils::translationToArray( $translation );
+				if ( !isset( $onWikiTranslations[$key] ) ) {
+					$onWikiTranslations[$key] = array();
+				}
+				$onWikiTranslations[$key][$language] = $item;
+			}
+		}
+
+		$this->onWikiTranslations = $onWikiTranslations;
+		return $this->onWikiTranslations;
 	}
 
 	public function register( $useJobQueue = true ) {

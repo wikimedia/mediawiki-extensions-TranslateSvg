@@ -17,14 +17,16 @@ class SVGFormatWriter {
 	 * @var SVGMessageGroup
 	 */
 	protected $group;
-	protected $url;
 
 	/**
-	 * @var SVGFormatReader
+	 * @var SVGFile
 	 */
-	protected $reader;
+	protected $svg;
+	protected $url;
 	protected $filename;
 	protected $file;
+
+	protected $inProgressTranslations = array();
 
 	/**
 	 * Constructor
@@ -32,11 +34,70 @@ class SVGFormatWriter {
 	 * @param SVGMessageGroup $group Message group to write to file
 	 * @param array $inProgressTranslations Possible array of overriddes (unsaved translations that should take preference over saved ones), format: [id][langcode][property name]
 	 */
-	public function __construct( SVGMessageGroup $group, $overrides = array() ) {
+	public function __construct( SVGMessageGroup $group, $inProgressTranslations = array() ) {
 		$this->group = $group;
-		$this->reader = new SVGFormatReader( $group, $overrides );
+		$this->svg = SVGFile::newFromMessageGroup( $this->group );
+		$this->inProgressTranslations = $inProgressTranslations;
 		$this->filename = $this->group->getId();
 		$this->file = wfFindFile( Title::makeTitle( NS_FILE, $this->filename ) );
+	}
+
+	/**
+	 * Get the array of in-progress translations
+	 * @return array
+	 */
+	public function getInProgressTranslations() {
+		return $this->inProgressTranslations;
+	}
+
+	/*
+	 * Collate and prepare an array of translations from multiple sources:
+	 * in file, on wiki, filteredTextNodes and in-progress.
+	 *
+	 * return array Array of translations
+	 */
+	protected function getPreferredTranslations() {
+		$inFileTranslations = $this->svg->getInFileTranslations();
+		$onWikiTranslations = $this->group->getOnWikiTranslations();
+		$inProgressTranslations = $this->getInProgressTranslations();
+
+		// Collapse in-progress translations into on-wiki translations
+		foreach ( $inProgressTranslations as $key => $languages ) {
+			foreach ( $languages as $language => $translation ) {
+				$language = ( $this->group->getSourceLanguage() === $language ) ? 'fallback' : $language;
+				$onWikiTranslations[$key][$language] = TranslateSvgUtils::translationToArray( $translation );
+			}
+		}
+
+		// Collapse on-wiki translations translations into in-progress translations
+		foreach ( $onWikiTranslations as $key => $languages ) {
+			foreach ( $languages as $language => $translation ) {
+				$oldItem = isset( $inFileTranslations[$key][$language] ) ? $inFileTranslations[$key][$language] : array();
+				$inFileTranslations[$key][$language] = $onWikiTranslations[$key][$language] + $oldItem;
+				if ( $language !== 'fallback' ) {
+					$inFileTranslations[$key][$language]['id'] = $inFileTranslations[$key]['fallback']['id'] . "-$language";
+				}
+			}
+		}
+
+		// "Unfilter" translations
+		$inFileTranslations = array_merge( $inFileTranslations, $this->svg->getFilteredTextNodes() );
+
+		// Ensure that child tspan translations prompt new <text>s to be created
+		// by duplicating the fallback version.
+		foreach ( $inFileTranslations as $languages ) {
+			foreach ( $languages as $language => $translation ) {
+				if ( isset( $languages['fallback']['data-parent'] ) ) {
+					$parent = $languages['fallback']['data-parent'];
+					$inFileTranslations[$parent][$language] = $inFileTranslations[$parent]['fallback'];
+					if ( $language !== 'fallback' ) {
+						$inFileTranslations[$parent][$language]['id'] .= "-$language";
+					}
+				}
+			}
+		}
+
+		return $inFileTranslations;
 	}
 
 	/**
@@ -59,7 +120,7 @@ class SVGFormatWriter {
 			$wgTranslateSvgPath = "{$wgUploadPath}/translatesvg";
 		}
 
-		$svg = $this->reader->getSVG();
+		$this->svg->switchToTranslationSet( $this->getPreferredTranslations() );
 
 		$srcPath = tempnam( wfTempDir(), 'trans' );
 		$srcTempFile = new TempFSFile( $srcPath );
@@ -69,7 +130,7 @@ class SVGFormatWriter {
 		$intTempFile = new TempFSFile( $srcPath );
 		$intTempFile->autocollect(); // destroy file when $tempFsFile leaves scope
 
-		$contentsHash = substr( md5( $svg->saveXML() ), 0, 12 );
+		$contentsHash = substr( md5( $this->svg->saveToString() ), 0, 12 );
 		$nameHash = md5( $this->filename );
 		$nameHashPath = substr( $nameHash, 0, 1 ) . '/' . substr( $nameHash, 0, 2 );
 		$dstPath = $this->getBackend()->getRootStoragePath() .
@@ -86,7 +147,7 @@ class SVGFormatWriter {
 		}
 
 		// Save the SVG to a temporary file
-		if ( !$svg->save( $srcPath ) ) {
+		if ( !$this->svg->saveToPath( $srcPath ) ) {
 			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-temp-create' )->text() );
 		}
 
@@ -138,13 +199,13 @@ class SVGFormatWriter {
 	public function exportToSVG( User $user ) {
 		global $wgTranslateSvgBotName, $wgContLang, $wgOut;
 
-		$svg = $this->reader->getSVG();
+		$languages = $this->svg->switchToTranslationSet( $this->getPreferredTranslations() );
 
 		// Analyze what changes have been made:
 		// * $started contains new languages;
 		// * $expanded contains old languages with new translations
-		$started = $this->reader->getStarted();
-		$expanded = $this->reader->getExpanded();
+		$started = $languages['started'];
+		$expanded = $languages['expanded'];
 		if ( count( $started ) === 0 && count( $expanded ) === 0 ) {
 			// No real change, jump to save just a a null edit might
 			return true;
@@ -154,10 +215,10 @@ class SVGFormatWriter {
 		$startedString =
 		$expandedString = wfMessage( 'translate-svg-upload-none' )->inContentLanguage();
 		if ( count( $started ) !== 0 ) {
-			$startedString = $wgContLang->commaList( array_keys( $started ) );
+			$startedString = $wgContLang->commaList( $started );
 		}
 		if ( count( $expanded ) !== 0 ) {
-			$expandedString = $wgContLang->commaList( array_keys( $expanded ) );
+			$expandedString = $wgContLang->commaList( $expanded );
 		}
 		$comment = wfMessage(
 			'translate-svg-upload-comment',
@@ -166,7 +227,7 @@ class SVGFormatWriter {
 
 		// Save SVG to temp
 		$temp = tempnam( wfTempDir(), 'trans' );
-		$svg->save( $temp );
+		$this->svg->saveToPath( $temp );
 
 		// Prepare upload
 		$uploader = new TranslateSvgUpload();

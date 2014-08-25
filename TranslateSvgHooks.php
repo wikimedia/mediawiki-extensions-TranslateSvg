@@ -416,8 +416,8 @@ class TranslateSvgHooks {
 
 		$id = $title->getText();
 		$messageGroup = new SVGMessageGroup( $id );
-		$reader = new SVGFormatReader( $messageGroup );
-		$vars['wgFileCanBeTranslated'] = ( $reader !== null );
+		$svg = SVGFile::newFromMessageGroup( $messageGroup );
+		$vars['wgFileCanBeTranslated'] = ( $svg->isTranslationReady() );
 		if ( !$vars['wgFileCanBeTranslated'] || MessageGroups::getGroup( $id ) === null ) {
 			// Not translatable or not yet translated, let's save time and return immediately
 			$vars['wgFileTranslationStarted'] = false;
@@ -426,7 +426,7 @@ class TranslateSvgHooks {
 			return true;
 		}
 
-		$languages = $reader->getSavedLanguagesFiltered();
+		$languages = $svg->getSavedLanguagesFiltered();
 		$full = array();
 		$partial = array();
 		foreach ( $languages['full'] as $language ) {
