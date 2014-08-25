@@ -294,4 +294,145 @@ class SVGFileTest extends TranslateSvgTestCase {
 		$this->assertEquals( $expected, $this->svg->getSavedLanguagesFiltered() );
 	}
 
+	public function testGetFilteredTextNodes() {
+
+		// The important things here are:
+		//  * array length. One of the three sets has non-zero text content, so should not be filtered
+		//  * text. Since they are filtered, all should contain nothing but $ references.
+		//  * data-children. Each should have as many children as there are $ references.
+
+		$expected = array(
+			'text2985' =>
+				array(
+					'de' =>
+						array(
+							'text' => '$1',
+							'xml:space' => 'preserve',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'text2985-de',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2987',
+						),
+					'fr' =>
+						array(
+							'text' => '$1',
+							'xml:space' => 'preserve',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'text2985-fr',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2987',
+						),
+					'nl' =>
+						array(
+							'text' => '$1',
+							'xml:space' => 'preserve',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'text2985-nl',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2987',
+						),
+					'tlh-ca' =>
+						array(
+							'text' => '$1',
+							'xml:space' => 'preserve',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'text2985-nl',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2987',
+						),
+					'fallback' =>
+						array(
+							'text' => '$1',
+							'xml:space' => 'preserve',
+							'x' => '90',
+							'y' => '108.07646',
+							'id' => 'text2985',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2987',
+						),
+				),
+			'text2989' =>
+				array(
+					'de' =>
+						array(
+							'text' => '$1$2',
+							'xml:space' => 'preserve',
+							'x' => '330',
+							'y' => '188.07648',
+							'id' => 'text2989-de',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2991|tspan2993',
+						),
+					'fr' =>
+						array(
+							'text' => '$1$2',
+							'xml:space' => 'preserve',
+							'x' => '330',
+							'y' => '188.07648',
+							'id' => 'text2989-fr',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2991|tspan2993',
+						),
+					'nl' =>
+						array(
+							'text' => '$1$2',
+							'xml:space' => 'preserve',
+							'x' => '330',
+							'y' => '188.07648',
+							'id' => 'text2989-nl',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2991|tspan2993',
+						),
+					'tlh-ca' =>
+						array(
+							'text' => '$1$2',
+							'xml:space' => 'preserve',
+							'x' => '330',
+							'y' => '188.07648',
+							'id' => 'text2989-nl',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2991|tspan2993',
+						),
+					'fallback' =>
+						array(
+							'text' => '$1$2',
+							'xml:space' => 'preserve',
+							'x' => '330',
+							'y' => '188.07648',
+							'id' => 'text2989',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2991|tspan2993',
+						),
+				),
+		);
+		$this->assertArrayEquals( $expected, $this->svg->getFilteredTextNodes() );
+	}
+
+	public function testSwitchTranslationSetRoundtrip() {
+		// Functions already tested above
+		$current = $this->svg->getInFileTranslations();
+		$filteredTextNodes = $this->svg->getFilteredTextNodes();
+		$ret = $this->svg->switchToTranslationSet( array_merge( $current, $filteredTextNodes ) );
+
+		$this->assertArrayEquals( $current, $this->svg->getInFileTranslations() );
+		$this->assertArrayEquals( $filteredTextNodes, $this->svg->getFilteredTextNodes() );
+		$this->assertArrayEquals( array( 'started' => array(), 'expanded' => array() ), $ret );
+	}
+
+	public function testSaveToString() {
+		// Check that we are not actually destroying the XML file
+		$this->assertGreaterThan( 1500, strlen( $this->svg->saveToString() ) );
+	}
+
+	public function testSaveToPath() {
+		$tempPath = tempnam( wfTempDir(), 'test' );
+		$this->svg->saveToPath( $tempPath );
+
+		// Check that we are not actually destroying the XML file
+		$this->assertGreaterThan( 1500, strlen( file_get_contents( $tempPath ) ) );
+	}
 }

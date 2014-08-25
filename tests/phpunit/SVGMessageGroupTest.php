@@ -18,6 +18,14 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		self::prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
 	}
 
+	/**
+	 * @expectedException MWException
+	 * @expectedExceptionMessage File not found
+	 */
+	public function testConstructorFileNotFound() {
+		$group = new SVGMessageGroup( 'DoesNotExist.svg' );
+	}
+
 	public function testRegistration() {
 		// In order that a lot of the tests function, prepareFile() calls register()
 		// but we should check now that it's worked
@@ -60,5 +68,13 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 
 	public function testGetNamespace() {
 		$this->assertEquals( NS_FILE, $this->messageGroup->getNamespace() );
+	}
+
+	public function testGetDescription() {
+		// Should be normalised to spaces
+		$name = str_replace( '_', ' ', self::$name );
+		$expected = "[[File:$name|thumb|right|upright|275x275px]]
+<div style=\"overflow:auto; padding:2px;\">Created during testing</div>";
+		$this->assertEquals( $expected, $this->messageGroup->getDescription() );
 	}
 }
