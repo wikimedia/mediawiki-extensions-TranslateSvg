@@ -30,7 +30,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$title = Title::newFromText( $filename, NS_FILE );
 
 		if( $title === null || !$title->exists() ) {
-			throw new MWException( 'File not found ' . $filename );
+			throw new MWException( 'File not found' );
 		}
 
 		// Pick up normalisation

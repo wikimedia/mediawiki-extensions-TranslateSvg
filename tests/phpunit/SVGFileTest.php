@@ -26,17 +26,17 @@ class SVGFileTest extends TranslateSvgTestCase {
 	}
 
 	public function testGetInFileTranslations() {
-		$expected = array (
+		$expected = array(
 			'tspan2987' =>
-				array (
+				array(
 					'de' =>
-						array (
+						array(
 							'text' => 'Hallo!',
 							'id' => 'tspan2987-de',
 							'data-parent' => 'text2985',
 						),
 					'fr' =>
-						array (
+						array(
 							'text' => 'Bonjour',
 							'x' => '80',
 							'y' => '108.07646',
@@ -44,7 +44,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2985',
 						),
 					'nl' =>
-						array (
+						array(
 							'text' => 'Hallo!',
 							'x' => '90',
 							'y' => '108.07646',
@@ -52,7 +52,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2985',
 						),
 					'tlh-ca' =>
-						array (
+						array(
 							'text' => 'Hallo!',
 							'x' => '90',
 							'y' => '108.07646',
@@ -60,7 +60,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2985',
 						),
 					'fallback' =>
-						array (
+						array(
 							'text' => 'Hello!',
 							'x' => '90',
 							'y' => '108.07646',
@@ -70,9 +70,9 @@ class SVGFileTest extends TranslateSvgTestCase {
 						),
 				),
 			'tspan2991' =>
-				array (
+				array(
 					'de' =>
-						array (
+						array(
 							'text' => 'Hallo! Wie',
 							'x' => '323',
 							'y' => '188.07648',
@@ -80,7 +80,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'fr' =>
-						array (
+						array(
 							'text' => 'Bonjour,',
 							'x' => '335',
 							'y' => '188.07648',
@@ -88,7 +88,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'nl' =>
-						array (
+						array(
 							'text' => 'Hallo! Hoe',
 							'x' => '310',
 							'y' => '188.07648',
@@ -96,7 +96,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'tlh-ca' =>
-						array (
+						array(
 							'text' => 'Hallo! Hoe',
 							'x' => '310',
 							'y' => '188.07648',
@@ -104,7 +104,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'fallback' =>
-						array (
+						array(
 							'text' => 'Hello! How',
 							'x' => '330',
 							'y' => '188.07648',
@@ -114,9 +114,9 @@ class SVGFileTest extends TranslateSvgTestCase {
 						),
 				),
 			'tspan2993' =>
-				array (
+				array(
 					'de' =>
-						array (
+						array(
 							'text' => 'geht\'s?',
 							'x' => '350',
 							'y' => '238.07648',
@@ -125,7 +125,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'fr' =>
-						array (
+						array(
 							'text' => 'ça va?',
 							'x' => '350',
 							'y' => '238.07648',
@@ -133,7 +133,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'nl' =>
-						array (
+						array(
 							'text' => 'gaat het?',
 							'x' => '330',
 							'y' => '238.07648',
@@ -141,7 +141,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'tlh-ca' =>
-						array (
+						array(
 							'text' => 'gaat het?',
 							'x' => '330',
 							'y' => '238.07648',
@@ -149,7 +149,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2989',
 						),
 					'fallback' =>
-						array (
+						array(
 							'text' => 'are you?',
 							'x' => '330',
 							'y' => '238.07648',
@@ -159,9 +159,9 @@ class SVGFileTest extends TranslateSvgTestCase {
 						),
 				),
 			'tspan2997' =>
-				array (
+				array(
 					'fr' =>
-						array (
+						array(
 							'text' => 'Ça va bien,',
 							'x' => '82',
 							'y' => '323',
@@ -169,7 +169,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2995',
 						),
 					'nl' =>
-						array (
+						array(
 							'text' => 'Goed,',
 							'x' => '101.42857',
 							'y' => '318.64789',
@@ -177,7 +177,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2995',
 						),
 					'tlh-ca' =>
-						array (
+						array(
 							'text' => 'Goed,',
 							'x' => '101.42857',
 							'y' => '318.64789',
@@ -185,7 +185,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2995',
 						),
 					'fallback' =>
-						array (
+						array(
 							'text' => 'I\'m well,',
 							'x' => '101.42857',
 							'y' => '318.64789',
@@ -195,18 +195,18 @@ class SVGFileTest extends TranslateSvgTestCase {
 						),
 				),
 			'tspan2999' =>
-				array (
+				array(
 					'fr' =>
-						array (
-							'text' => 'et toi?',
+						array(
+							'text' => 'et toi',
 							'x' => '117.42857',
 							'y' => '368.64789',
 							'id' => 'tspan2999-fr',
 							'data-parent' => 'text2995',
 						),
 					'nl' =>
-						array (
-							'text' => 'met jou?',
+						array(
+							'text' => 'met jou',
 							'x' => '101.42857',
 							'y' => '368.64789',
 							'font-size' => '90%',
@@ -214,8 +214,8 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2995',
 						),
 					'tlh-ca' =>
-						array (
-							'text' => 'met jou?',
+						array(
+							'text' => 'met jou',
 							'x' => '101.42857',
 							'y' => '368.64789',
 							'font-size' => '90%',
@@ -223,14 +223,57 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'data-parent' => 'text2995',
 						),
 					'fallback' =>
-						array (
-							'text' => '   you?',
+						array(
+							'text' => '   you',
 							'x' => '101.42857',
 							'y' => '368.64789',
 							'id' => 'tspan2999',
 							'sodipodi:role' => 'line',
 							'data-parent' => 'text2995',
 						),
+				),
+			'text2995' =>
+				array(
+					'fr' =>
+						array(
+							'text' => '$1$2?',
+							'xml:space' => 'preserve',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'text2995-fr',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2997|tspan2999',
+						),
+					'nl' =>
+						array(
+							'text' => '$1$2?',
+							'xml:space' => 'preserve',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'text2995-nl',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2997|tspan2999',
+						),
+					'tlh-ca' =>
+						array(
+							'text' => '$1$2?',
+							'xml:space' => 'preserve',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'text2995-nl',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2997|tspan2999',
+						),
+					'fallback' =>
+						array(
+							'text' => '$1$2?',
+							'xml:space' => 'preserve',
+							'x' => '101.42857',
+							'y' => '318.64789',
+							'id' => 'text2995',
+							'sodipodi:linespacing' => '125%',
+							'data-children' => 'tspan2997|tspan2999',
+						)
 				)
 		);
 		$this->assertEquals( $expected, $this->svg->getInFileTranslations() );
