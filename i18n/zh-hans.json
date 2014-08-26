@@ -38,6 +38,8 @@
 	"translate-svg-new-title": "SVG翻译",
 	"translate-svg-new-summary": "要开始翻译此文件，请选择您用来翻译此文件的'''来自'''语言（如果含糊不清，选择最广泛使用的语言）。",
 	"translate-svg-new-label": "语言：",
+	"translate-svg-new-error-import": "'''发生错误：'''在尝试创建翻译此SVG需要的页面时发生了一个未知错误。",
+	"translate-svg-new-error-group": "'''发生错误：'''发生一个未知错误；也许您忘记在URL中指定一个组？",
 	"translate-js-properties-legend": "属性",
 	"translate-js-label-x": "X坐标：",
 	"translate-js-label-y": "Y坐标：",
