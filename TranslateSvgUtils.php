@@ -369,6 +369,29 @@ class TranslateSvgUtils {
 	}
 
 	/**
+	 * Implement our own wrapper around Language::fetchLanguageName, providing a more sensible
+	 * fallback chain and our own interpretation of the "fallback" language code.
+	 *
+	 * @param string $langCode Language code (e.g. en-gb, fr)
+	 * @param string $fallbackLanguage Code of the language for which the "fallback" magic word is equivalent
+	 * @return string The autonym of the language with that code (English, français, Nederlands)
+	 */
+	public static function fetchLanguageName( $langCode, $fallbackLanguage ) {
+		$langCode = ( $langCode === 'fallback' ) ? $fallbackLanguage : $langCode;
+		$langName = Language::fetchLanguageName( $langCode );
+		if ( $langName == '' ) {
+			// Try searching for prefix only instead
+			preg_match( '/^([a-z]+)/', $langCode, $matches );
+			$langName = Language::fetchLanguageName( $matches[0] );
+		}
+		if ( $langName == '' ) {
+			// Okay, seems the best we can do is return the language code
+			$langName = $langCode;
+		}
+		return $langName;
+	}
+
+	/**
 	 * Recursively replaces $1, $2, etc. with text tags, if required. Text content
 	 * is formalised as actual text nodes
 	 *

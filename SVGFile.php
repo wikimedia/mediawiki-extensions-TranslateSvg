@@ -28,7 +28,7 @@ class SVGFile {
 	/**
 	 * Construct an SVGFile object.
 	 *
-	 * @seealso self::newFromMessageGroup
+	 * @see self::newFromMessageGroup
 	 * @param string $path
 	 * @param string $fallbackLanguage
 	 * @todo Handle DOM warnings
@@ -468,9 +468,9 @@ class SVGFile {
 					$switch->appendChild( $newTextTag );
 				}
 
-				$langName = ( $language === 'fallback' ) ?
-					'fallback' : Language::fetchLanguageName( $language );
-				if ( in_array( $language, $currentLanguages ) ) {
+				// To have got this far, we must have either updated or started a new language
+				$langName = TranslateSvgUtils::fetchLanguageName( $language, $this->fallbackLanguage );
+				if ( in_array( $language, $currentLanguages ) || $language == 'fallback' ) {
 					$expanded[] = $langName;
 				} else {
 					$started[] = $langName;
