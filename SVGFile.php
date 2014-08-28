@@ -1,7 +1,7 @@
 <?php
 /**
- * This file contains classes for manipulating the contents on an SVG file.
- * Intended to include all references to PHP's DOM manipulation system.
+ * This file contains classes for manipulating the contents of an SVG file.
+ * Intended to centralise references to PHP's byzantine DOM manipulation system.
  *
  * @file
  * @author Harry Burt
@@ -288,8 +288,8 @@ class SVGFile {
 				$numChildren = $text->childNodes->length;
 				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
-				$lang = str_replace( '_', '-', strtolower( $lang ) );
 				$realLangs = preg_split( '/, */', $lang );
+				$realLangs = array_map( 'TranslateSvgUtils::osToLangCode', $realLangs );
 
 				$counter = 1;
 				for ( $k = 0; $k < $numChildren; $k++ ) {
@@ -430,11 +430,7 @@ class SVGFile {
 			foreach ( $translations[$textId] as $language => $translation ) {
 				// Sort out systemLanguage attribute
 				if ( $language !== 'fallback' ) {
-					if ( strpos( $language, '-' ) !== false ) {
-						list( $before, $after ) = explode( '-', $language );
-						$language = $before . '_' . strtoupper( $after );
-					}
-					$translation['systemLanguage'] = $language;
+					$translation['systemLanguage'] = TranslateSvgUtils::langCodeToOs( $language );
 				}
 
 				// Prepare an array of "children" (sub-messages)
