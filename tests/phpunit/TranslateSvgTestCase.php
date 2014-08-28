@@ -28,6 +28,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		copy( $path, $tempName );
 
 		$name = substr( basename( $path ), 0, -4 ) . '_' . date( 'His' ) . '.svg';
+		$name = str_replace( '_', ' ', $name );
 		$title = Title::makeTitle( NS_FILE, $name );
 		if( $title->exists()  ) {
 			$wikiPage = new WikiPage( $title );

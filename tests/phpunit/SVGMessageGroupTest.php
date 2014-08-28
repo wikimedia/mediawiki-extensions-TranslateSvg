@@ -21,8 +21,7 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 	public function testRegistration() {
 		// In order that a lot of the tests function, prepareFile() calls register()
 		// but we should check now that it's worked
-		$name = str_replace( '_', ' ', self::$name );
-		$group = MessageGroups::getGroup( $name );
+		$group = MessageGroups::getGroup( self::$name );
 
 		// $group is either of type SVGMessageGroup (success) or null (failure)
 		$this->assertInstanceOf( 'SVGMessageGroup', $group );
@@ -52,15 +51,11 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 	}
 
 	public function testGetId() {
-		// Should be normalised to spaces
-		$name = str_replace( '_', ' ', self::$name );
-		$this->assertEquals( $name, $this->messageGroup->getId() );
+		$this->assertEquals( self::$name, $this->messageGroup->getId() );
 	}
 
 	public function testGetLabel() {
-		// Should be normalised to spaces
-		$name = str_replace( '_', ' ', self::$name );
-		$this->assertEquals( $name, $this->messageGroup->getLabel() );
+		$this->assertEquals( self::$name, $this->messageGroup->getLabel() );
 	}
 
 	public function testGetNamespace() {
