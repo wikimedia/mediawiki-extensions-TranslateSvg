@@ -343,6 +343,32 @@ class TranslateSvgUtils {
 	}
 
 	/**
+	 * Convert an OS locale (en_GB) to an internal language code (en-gb).
+	 *
+	 * @param string $os
+	 * @return mixed
+	 */
+	public static function osToLangCode( $os ){
+		return str_replace( '_', '-', strtolower( $os ) );
+	}
+
+	/**
+	 * Convert an internal language code (en-gb) to an OS locale (en_GB)
+	 *
+	 * @see self::osToLangCode
+	 * @param string $langCode
+	 * @return string
+	 */
+	public static function langCodeToOs( $langCode ){
+		if ( strpos( $langCode, '-' ) === false ) {
+			// No territory specified, so no change to make (fr => fr)
+			return $langCode;
+		}
+		list( $prefix, $suffix ) = explode( '-', $langCode, 2 );
+		return $prefix . '_' . strtoupper( $suffix );
+	}
+
+	/**
 	 * Recursively replaces $1, $2, etc. with text tags, if required. Text content
 	 * is formalised as actual text nodes
 	 *
