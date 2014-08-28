@@ -100,22 +100,27 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		parent::tearDownAfterClass();
 
 		$title = Title::makeTitle( NS_FILE, self::$name );
-		if( $title->exists()  ) {
-			$wikiPage = new WikiPage( $title );
-			$wikiPage->doDeleteArticle( 'resetting' );
-			$subpages = $title->getSubpages();
-			foreach ( $subpages as $subpage ) {
-				/** @var Title $subpage */
-				$wikiPage = new WikiPage( $subpage );
-				$wikiPage->doDeleteArticle( 'resetting' );
-			}
-		}
-
 		$dbw = wfGetDB( DB_MASTER );
-		$row = array( 'ts_page_id' => $title->getArticleID() );
-		$dbw->delete( 'translate_svg', $row, __METHOD__ );
-		$conds = array( 'tmd_group' => str_replace( '_', ' ', self::$name ) );
+
+		$conds = array( 'ts_page_id' => $title->getArticleID() );
+		$dbw->delete( 'translate_svg', $conds, __METHOD__ );
+
+		$conds = array( 'tmd_group' => self::$name );
 		$dbw->delete( 'translate_metadata', $conds, __METHOD__ );
 		$dbw->commit( __METHOD__, 'flush' );
+
+		if( !$title->exists() ) {
+			return;
+		}
+
+		$subpages = $title->getSubpages();
+		foreach ( $subpages as $subpage ) {
+			/** @var Title $subpage */
+			$wikiPage = new WikiPage( $subpage );
+			$wikiPage->doDeleteArticle( 'resetting' );
+		}
+
+		$wikiPage = new WikiPage( $title );
+		$wikiPage->doDeleteArticle( 'resetting' );
 	}
 }
