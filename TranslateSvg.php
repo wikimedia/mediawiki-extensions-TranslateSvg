@@ -49,7 +49,7 @@ $wgResourceModules['ext.translatesvg'] = array(
 		'jquery.ui.dialog',
 		'jquery.autoresize',
 		'jquery.colorpicker',
-		'jquery.json',
+		'json',
 		'ext.translate.hooks'
 	),
 	'messages'      => array(

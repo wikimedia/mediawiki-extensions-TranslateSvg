@@ -119,7 +119,7 @@
 				mgprop: 'thumbnail',
 				mgfilter: group,
 				mglanguage: identifiers[2],
-				mginprogress: $.toJSON( inprogress )
+				mginprogress: JSON.stringify( inprogress )
 			}, {
 				ok: function ( data ) {
 					// The extension ensures data.query.messagegroups[0].thumbnail.success exists
