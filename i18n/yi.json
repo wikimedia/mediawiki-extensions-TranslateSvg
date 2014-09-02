@@ -4,6 +4,7 @@
 			"פוילישער"
 		]
 	},
+	"translate-taskui-export-as-svg": "שפייכלערן צו אריגינעלער SVG טעקע",
 	"translate-svg-nodesc": "(די טעקע האט נישט קיין באשרייבונג.)",
 	"translate-svg-thumbnail": "ארגינעלע טעקע",
 	"translate-svg-js-thumbnail": "(קליינבילד ווערט דערהיינטיקט אויטאמאטיש)",
@@ -23,6 +24,9 @@
 	"translate-svg-chooselanguage-desc": "ביטע קלויבט די שפראך אין וואס איר ווילט איבערזעצן די SVG טעקע:",
 	"translate-svg-new-title": "SVG איבערזעצונג",
 	"translate-svg-new-label": "שפּראַך:",
+	"translate-js-properties-legend": "אייגנשאפֿטן",
+	"translate-js-label-x": "X-קאארדינאט:",
+	"translate-js-label-y": "Y-קאארדינאט:",
 	"translate-js-label-color": "קאליר:",
 	"translate-js-label-font-family": "פֿאנט:",
 	"translate-js-label-bold": "דיק",
