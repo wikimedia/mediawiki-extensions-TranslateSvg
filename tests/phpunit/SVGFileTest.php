@@ -281,14 +281,14 @@ class SVGFileTest extends TranslateSvgTestCase {
 
 	public function testGetSavedLanguages() {
 		$expected = array(
-			'de', 'fr', 'nl', 'tlh-ca', 'en'
+			'de', 'fr', 'en', 'nl', 'tlh-ca'
 		);
 		$this->assertEquals( $expected, $this->svg->getSavedLanguages() );
 	}
 
 	public function testGetSavedLanguagesFiltered() {
 		$expected = array(
-			'full' => array( 'fr', 'nl', 'tlh-ca', 'en' ),
+			'full' => array( 'fr', 'en', 'nl', 'tlh-ca' ),
 			'partial' => array( 'de' )
 		);
 		$this->assertEquals( $expected, $this->svg->getSavedLanguagesFiltered() );

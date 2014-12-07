@@ -203,11 +203,27 @@ class SVGFile {
 						}
 						$language = $sibling->hasAttribute( 'systemLanguage' ) ?
 							$sibling->getAttribute( 'systemLanguage' ) : 'fallback';
-						if ( in_array( $language, $languagesPresent ) ) {
-							// Two tags for the same language
-							return false;
+						$realLangs = preg_split( '/, */', $language );
+						foreach( $realLangs as $realLang ) {
+							if( count( $realLangs ) > 1 ) {
+								// Although the SVG spec supports multi-language text tags (e.g. "en,fr,de")
+								// these are a really poor idea since (a) they are confusing to read and (b) the
+								// desired translations could diverge at any point. So get rid.
+								$singleLanguageNode = clone $sibling;
+								$singleLanguageNode->setAttribute( 'systemLanguage', $realLang );
+								$switch->appendChild( $singleLanguageNode );
+							}
+							if ( in_array( $realLang, $languagesPresent ) ) {
+								// Two tags for the same language
+								return false;
+							}
+							$languagesPresent[] = $realLang;
 						}
-						$languagesPresent[] = $language;
+
+						if( count( $realLangs ) > 1 ) {
+							// If still present, remove the original multi-language
+							$switch->removeChild( $sibling );
+						}
 					}
 				}
 			} else {
@@ -288,8 +304,7 @@ class SVGFile {
 				$numChildren = $text->childNodes->length;
 				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
-				$realLangs = preg_split( '/, */', $lang );
-				$realLangs = array_map( 'TranslateSvgUtils::osToLangCode', $realLangs );
+				$langCode = TranslateSvgUtils::osToLangCode( $lang );
 
 				$counter = 1;
 				for ( $k = 0; $k < $numChildren; $k++ ) {
@@ -302,10 +317,8 @@ class SVGFile {
 						$childTspan = $fallbackText->getElementsByTagName( 'tspan' )->item( $counter - 1 );
 
 						$childId = $childTspan->getAttribute( 'id' );
-						foreach( $realLangs as $realLang ) {
-							$translations[$childId][$realLang] = TranslateSvgUtils::nodeToArray( $child );
-							$translations[$childId][$realLang]['data-parent'] = $textId;
-						}
+						$translations[$childId][$langCode] = TranslateSvgUtils::nodeToArray( $child );
+						$translations[$childId][$langCode]['data-parent'] = $textId;
 						if ( $text->hasAttribute( 'data-children' ) ) {
 							$existing = $text->getAttribute( 'data-children' );
 							$text->setAttribute( 'data-children', "$existing|$childId" );
@@ -318,17 +331,15 @@ class SVGFile {
 						$counter++;
 					}
 				}
-				foreach( $realLangs as $realLang ) {
-					if ( $hasActualTextContent ) {
-						// If the <text> has *its own* text content, rather than just <tspan>s, register it
-						// for translation.
-						$translations[$textId][$realLang] = TranslateSvgUtils::nodeToArray( $text );
-					} else {
-						$this->filteredTextNodes[$textId][$realLang] = TranslateSvgUtils::nodeToArray( $text );
-					}
-					$savedLang = ( $realLang === 'fallback' ) ? $this->fallbackLanguage : $realLang;
-					$this->savedLanguages[] = $savedLang;
+				if ( $hasActualTextContent ) {
+					// If the <text> has *its own* text content, rather than just <tspan>s, register it
+					// for translation.
+					$translations[$textId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
+				} else {
+					$this->filteredTextNodes[$textId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
 				}
+				$savedLang = ( $langCode === 'fallback' ) ? $this->fallbackLanguage : $langCode;
+				$this->savedLanguages[] = $savedLang;
 			}
 		}
 		$this->inFileTranslations = $translations;
@@ -461,7 +472,10 @@ class SVGFile {
 					"svg:text[@systemLanguage='$language']|text[@systemLanguage='$language']";
 				$existing = $this->xpath->query( $path, $switch );
 				if ( $existing->length == 1 ) {
-					// Only one matching text node, replace
+					// Only one matching text node, replace if different
+					if ( TranslateSvgUtils::nodeToArray( $newTextTag ) === TranslateSvgUtils::nodeToArray( $existing->item( 0 ) ) ) {
+						continue;
+					}
 					$switch->replaceChild( $newTextTag, $existing->item( 0 ) );
 				} elseif ( $existing->length == 0 ) {
 					// No matching text node for this language, so we'll create one
