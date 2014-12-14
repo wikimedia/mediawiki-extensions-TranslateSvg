@@ -114,5 +114,5 @@ $specialPageAliases['zh-hans'] = array(
 
 /** Traditional Chinese (中文（繁體）‎) */
 $specialPageAliases['zh-hant'] = array(
-	'TranslateNewSVG' => array( '翻譯 SVG' ),
+	'TranslateNewSVG' => array( '翻譯_SVG' ),
 );
