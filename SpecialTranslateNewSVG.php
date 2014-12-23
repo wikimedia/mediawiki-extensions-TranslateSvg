@@ -28,7 +28,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$this->checkPermissions();
 
 		$req = $this->getRequest();
-		$groupName = $req->getVal( 'group' );
+		$groupName = str_replace( '_', ' ', $req->getVal( 'group' ) );
 
 		if ( $groupName === null || MessageGroups::getGroup( $groupName ) ) {
 			$this->getOutput()->addWikiMsg( 'translate-svg-new-error-group' );
