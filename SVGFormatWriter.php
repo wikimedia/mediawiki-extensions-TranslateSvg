@@ -238,9 +238,6 @@ class SVGFormatWriter {
 			return $this->processVerificationError( $details );
 		}
 
-		// URL needed later for redirect to file description page
-		$this->url = $uploader->getLocalFile()->getTitle()->getFullURL();
-
 		// Actually perform upload
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 		$status = $uploader->performUpload( $comment, false, false, $bot );
