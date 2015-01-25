@@ -4,7 +4,8 @@
 			"Shirayuki",
 			"Xiaomingyan",
 			"Yfdyh000",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Duolaimi"
 		]
 	},
 	"translatesvg-desc": "为转译符合SVG1.1规范的SVG提供一个原生样式接口",
@@ -36,7 +37,7 @@
 	"translate-svg-warn": "<strong>警告：</strong>此语言目前仍有未保存翻译，直到您或其他人$1否则将不可见。",
 	"translate-svg-warn-inner": "保存这些更改到原始文件",
 	"translate-svg-new-title": "SVG翻译",
-	"translate-svg-new-summary": "要开始翻译此文件，请选择您用来翻译此文件的'''来自'''语言（如果含糊不清，选择最广泛使用的语言）。",
+	"translate-svg-new-summary": "要开始该文件的翻译，请选择该文件的'''原始'''语言（如果难以确定，请选择使用最广泛的语言）。",
 	"translate-svg-new-label": "语言：",
 	"translate-svg-new-error-import": "'''发生错误：'''在尝试创建翻译此SVG需要的页面时发生了一个未知错误。",
 	"translate-svg-new-error-group": "'''发生错误：'''发生一个未知错误；也许您忘记在URL中指定一个组？",
