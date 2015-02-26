@@ -5,7 +5,8 @@
 			"Erkethan",
 			"Gomoko",
 			"Od1n",
-			"Tititou36"
+			"Tititou36",
+			"Hercule"
 		]
 	},
 	"translatesvg-desc": "Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1",
@@ -37,7 +38,7 @@
 	"translate-svg-warn": "<strong>Attention:</strong> Il y a des transactions non enregistrées en cours dans cette langue, qui ne seront pas visibles jusqu'à ce que vous ou quelqu'un d'autre $1.",
 	"translate-svg-warn-inner": "enregistrer vos modifications dans le fichier d'origine",
 	"translate-svg-new-title": "Traduction SVG",
-	"translate-svg-new-summary": "Pour commencer la traduction de ce fichier, veuillez sélectionner la langue <strong>à partir de laquelle</strong> vous traduisez ce fichier (si vous n'êtes pas certain(e) de la langue à indiquer, sélectionnez la langue plus utilisée).",
+	"translate-svg-new-summary": "Pour commencer la traduction de ce fichier, veuillez sélectionner la langue <strong>à partir de laquelle</strong> vous traduisez ce fichier (si vous doutez de la langue à indiquer, sélectionnez la langue plus utilisée).",
 	"translate-svg-new-label": "Langue :",
 	"translate-svg-new-error-import": "<strong> Une erreur s'est produite </strong>: Une erreur inconnue s'est produite lors de la tentative de création des pages nécessaires pour traduire ce SVG.",
 	"translate-svg-new-error-group": "<strong> Une erreur s'est produite </strong>: Une erreur inconnue s'est produite ; vous avez peut-être oublié de spécifier un groupe dans l'URL ?",
