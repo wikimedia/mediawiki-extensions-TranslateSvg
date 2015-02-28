@@ -30,7 +30,7 @@
 	"translate-svg-chooselanguage-desc": "ХӀара SVG-файл хьайна гочян луу мотт харжа:",
 	"translate-svg-instructions-title": "SVG-файлаш гочеш дуьххьара лелош юьй ахьа хӀара кеп?",
 	"translate-svg-warn": "<strong>Терго йе:</strong> ХӀокху маттахь Ӏалаш данза гочдарш ду, цхьам $1 цадича уьш гур дац.",
-	"translate-svg-warn-inner": "Ӏалаш бе хӀара хийцамаш оригинал файлан чу",
+	"translate-svg-warn-inner": "Ӏалашбе хӀара хийцамаш оригинал файлан чу",
 	"translate-svg-new-title": "SVG гочдар",
 	"translate-svg-new-label": "Мотт:",
 	"translate-svg-new-error-group": "<strong>Ошибка:</strong> Доьвзуш доца гӀалат даьлла; URL тоба тӀетоха диц делла те?",
