@@ -6,10 +6,11 @@
 			"Kghbln",
 			"Shirayuki",
 			"Siebrand",
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Umherirrender"
 		]
 	},
-	"translatesvg-desc": "{{desc|name=Translate Svg|url=http://www.mediawiki.org/wiki/Extension:TranslateSvg}}",
+	"translatesvg-desc": "{{desc|name=Translate Svg|url=https://www.mediawiki.org/wiki/Extension:TranslateSvg}}",
 	"translate-taskui-export-as-svg": "Label for a radio button, not currently displayed since no other options",
 	"translate-svg-nodesc": "Text that displays under the heading \"Information about the file\" if no information/description could be found.",
 	"translate-svg-thumbnail": "Caption for a thumbnail that appears immediately before any strings are translated.\n{{Identical|Original file}}",
