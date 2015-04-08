@@ -22,6 +22,11 @@ $specialPageAliases['arz'] = array(
 	'TranslateNewSVG' => array( 'ترجمه_اس_فى_جى_جديد' ),
 );
 
+/** Western Balochi (بلوچی رخشانی) */
+$specialPageAliases['bgn'] = array(
+	'TranslateNewSVG' => array( 'نۆکین_اس_وی_جی_ئی_ترجمه' ),
+);
+
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $specialPageAliases['cdo'] = array(
 	'TranslateNewSVG' => array( '翻譯新其SVG' ),
