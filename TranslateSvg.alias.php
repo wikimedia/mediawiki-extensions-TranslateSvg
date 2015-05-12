@@ -17,7 +17,7 @@ $specialPageAliases['ar'] = array(
 	'TranslateNewSVG' => array( 'ترجمة_إس_في_جي_جديدة' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
+/** Egyptian Arabic (مصرى) */
 $specialPageAliases['arz'] = array(
 	'TranslateNewSVG' => array( 'ترجمه_اس_فى_جى_جديد' ),
 );
