@@ -281,14 +281,14 @@ class SVGFileTest extends TranslateSvgTestCase {
 
 	public function testGetSavedLanguages() {
 		$expected = array(
-			'de', 'fr', 'en', 'nl', 'tlh-ca'
+			'de', 'fr', 'nl', 'tlh-ca', 'en'
 		);
 		$this->assertEquals( $expected, $this->svg->getSavedLanguages() );
 	}
 
 	public function testGetSavedLanguagesFiltered() {
 		$expected = array(
-			'full' => array( 'fr', 'en', 'nl', 'tlh-ca' ),
+			'full' => array( 'fr', 'nl', 'tlh-ca', 'en' ),
 			'partial' => array( 'de' )
 		);
 		$this->assertEquals( $expected, $this->svg->getSavedLanguagesFiltered() );
@@ -414,6 +414,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 
 	public function testSwitchTranslationSetRoundtrip() {
 		// Functions already tested above
+		$origXml = $this->svg->saveToString();
 		$current = $this->svg->getInFileTranslations();
 		$filteredTextNodes = $this->svg->getFilteredTextNodes();
 		$ret = $this->svg->switchToTranslationSet( array_merge( $current, $filteredTextNodes ) );
@@ -421,6 +422,8 @@ class SVGFileTest extends TranslateSvgTestCase {
 		$this->assertArrayEquals( $current, $this->svg->getInFileTranslations() );
 		$this->assertArrayEquals( $filteredTextNodes, $this->svg->getFilteredTextNodes() );
 		$this->assertArrayEquals( array( 'started' => array(), 'expanded' => array() ), $ret );
+
+		$this->assertEquals( str_replace( ' ', '', $origXml ), str_replace( ' ', '', $this->svg->saveToString() ) );
 	}
 
 	public function testSaveToString() {

@@ -258,6 +258,8 @@ class SVGFile {
 			}
 		}
 
+		$this->reorderTexts();
+
 		$this->isTranslationReady = true;
 		return true;
 	}
@@ -491,29 +493,12 @@ class SVGFile {
 				}
 			}
 		}
+		$this->reorderTexts();
 
-		// Move sublocales to the beginning of their switch elements
-		$sublocales = $this->xpath->query(
-			"//text[contains(@systemLanguage,'_')]" . "|" . "//svg:text[contains(@systemLanguage,'_')]"
-		);
-		$count = $sublocales->length;
-		for ( $i = 0; $i < $count; $i++ ) {
-			$firstSibling = $sublocales->item( $i )->parentNode->childNodes->item( 0 );
-			$sublocales->item( $i )->parentNode->insertBefore( $sublocales->item( $i ), $firstSibling );
-		}
-
-		// Move fallbacks to the end of their switch elements
-		$fallbacks = $this->xpath->query(
-			"//text[not(@systemLanguage)]" . "|" . "//svg:text[not(@systemLanguage)]"
-		);
-		$count = $fallbacks->length;
-		for ( $i = 0; $i < $count; $i++ ) {
-			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
-		}
 
 		return array(
-			'expanded' => array_unique( $expanded ),
-			'started' => array_unique( $started )
+			'started' => array_unique( $started ),
+			'expanded' => array_unique( $expanded )
 		);
 	}
 
@@ -556,5 +541,26 @@ class SVGFile {
 		}
 
 		return new SVGFile( $file->getLocalRefPath(), $group->getSourceLanguage() );
+	}
+
+	protected function reorderTexts() {
+		// Move sublocales to the beginning of their switch elements
+		$sublocales = $this->xpath->query(
+			"//text[contains(@systemLanguage,'_')]" . "|" . "//svg:text[contains(@systemLanguage,'_')]"
+		);
+		$count = $sublocales->length;
+		for( $i = 0; $i < $count; $i++ ){
+			$firstSibling = $sublocales->item( $i )->parentNode->childNodes->item( 0 );
+			$sublocales->item( $i )->parentNode->insertBefore( $sublocales->item( $i ), $firstSibling );
+		}
+
+		// Move fallbacks to the end of their switch elements
+		$fallbacks = $this->xpath->query(
+			"//text[not(@systemLanguage)]" . "|" . "//svg:text[not(@systemLanguage)]"
+		);
+		$count = $fallbacks->length;
+		for( $i = 0; $i < $count; $i++ ){
+			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
+		}
 	}
 }
