@@ -129,7 +129,9 @@ class SVGFile {
 		$tspans = $this->document->getElementsByTagName( 'tspan' );
 		$texts = $this->document->getElementsByTagName( 'text' );
 		foreach ( $tspans as $tspan ) {
-			if ( $tspan->childNodes->length > 1 ) {
+			if ($tspan->childNodes->length > 1
+			    || ( $tspan->childNodes->length == 1 && $tspan->childNodes->item(0)->nodeType !== XML_TEXT_NODE )
+			) {
 				return false; // Nested tspans not (yet) supported
 			}
 			$translatableNodes[] = $tspan;
@@ -159,6 +161,17 @@ class SVGFile {
 			}
 		}
 
+		// Reset $translatableNodes
+		$translatableNodes = array();
+		$tspans = $this->document->getElementsByTagName( 'tspan' );
+		$texts = $this->document->getElementsByTagName( 'text' );
+		foreach ( $tspans as $tspan ) {
+			array_push( $translatableNodes, $tspan );
+		}
+		foreach ( $texts as $text ) {
+			array_push( $translatableNodes, $text );
+		}
+
 		// Create id attributes for text, tspan nodes missing it
 		foreach ( $translatableNodes as $translatableNode ) {
 			if ( !$translatableNode->hasAttribute( 'id' ) ) {
@@ -171,7 +184,7 @@ class SVGFile {
 		$textLength = $this->document->getElementsByTagName( 'text' )->length;
 		for ( $i = 0; $i < $textLength; $i++ ) {
 			/** @var DOMElement $text */
-			$text = $texts->item( $i );
+			$text = $this->document->getElementsByTagName( 'text' )->item( $i );
 
 			// Text strings like $1, $2 will cause problems later because
 			// TranslateSvgUtils::replaceIndicesRecursive() will try to replace them
@@ -181,56 +194,26 @@ class SVGFile {
 			}
 
 			// Sort out switches
-			if ( $text->parentNode->nodeName === 'switch'
-			     || $text->parentNode->nodeName === 'svg:switch'
+			if ( $text->parentNode->nodeName !== 'switch'
+			     && $text->parentNode->nodeName !== 'svg:switch'
 			) {
-				// Existing but valid switch e.g. from previous translations
-				$switch = $text->parentNode;
-				$siblings = $switch->childNodes;
-				foreach ( $siblings as $sibling ) {
-					/** @var DOMElement $sibling */
-
-					$languagesPresent = array();
-					if ( $sibling->nodeType === XML_TEXT_NODE ) {
-						if ( trim( $sibling->textContent ) !== '' ) {
-							// Text content inside switch but outside text tags is awkward.
-							return false;
-						}
-					} elseif ( $sibling->nodeType === XML_ELEMENT_NODE ) {
-						// Only text tags are allowed inside switches
-						if ( $sibling->nodeName !== 'text' && $sibling->nodeName !== 'svg:text' ) {
-							return false;
-						}
-						$language = $sibling->hasAttribute( 'systemLanguage' ) ?
-							$sibling->getAttribute( 'systemLanguage' ) : 'fallback';
-						$realLangs = preg_split( '/, */', $language );
-						foreach( $realLangs as $realLang ) {
-							if( count( $realLangs ) > 1 ) {
-								// Although the SVG spec supports multi-language text tags (e.g. "en,fr,de")
-								// these are a really poor idea since (a) they are confusing to read and (b) the
-								// desired translations could diverge at any point. So get rid.
-								$singleLanguageNode = clone $sibling;
-								$singleLanguageNode->setAttribute( 'systemLanguage', $realLang );
-								$switch->appendChild( $singleLanguageNode );
-							}
-							if ( in_array( $realLang, $languagesPresent ) ) {
-								// Two tags for the same language
-								return false;
-							}
-							$languagesPresent[] = $realLang;
-						}
-
-						if( count( $realLangs ) > 1 ) {
-							// If still present, remove the original multi-language
-							$switch->removeChild( $sibling );
-						}
-					}
-				}
-			} else {
+				// Every text should now be in a switch
 				$switch = $this->document->createElementNS( $defaultNS, 'switch' );
 				$text->parentNode->insertBefore( $switch, $text );
 				// Move node into new sibling <switch> element
 				$switch->appendChild( $text );
+			}
+
+			// Transforms on individual texts are particular problematic, should move it to the <switch>
+			if ( $text->hasAttribute( 'transform' ) ) {
+				$text->parentNode->setAttribute( 'transform', $text->getAttribute( 'transform' ) );
+				$text->removeAttribute( 'transform' );
+			}
+
+			// Non-translatable style elements on texts get lost, so bump up to switch
+			if ( $text->hasAttribute( 'style' ) ) {
+				$style = $text->getAttribute( 'style' );
+				$text->parentNode->setAttribute( 'style', $style );
 			}
 
 			$numChildren = $text->childNodes->length;
@@ -244,17 +227,59 @@ class SVGFile {
 					return false;
 				}
 			}
+		}
 
-			// Transforms on individual texts are particular problematic, should move it to the <switch>
-			if ( $text->hasAttribute( 'transform' ) ) {
-				$switch->setAttribute( 'transform', $text->getAttribute( 'transform' ) );
-				$text->removeAttribute( 'transform' );
-			}
+		$switchLength = $this->document->getElementsByTagName( 'switch' )->length;
+		for ( $i = 0; $i < $switchLength; $i++ ) {
+			$switch = $this->document->getElementsByTagName( 'switch' )->item( $i );
+			$siblings = $switch->childNodes;
+			foreach ( $siblings as $sibling ) {
+				/** @var DOMElement $sibling */
 
-			// Non-translatable style elements on texts get lost, so bump up to switch
-			if ( $text->hasAttribute( 'style' ) ) {
-				$style = $text->getAttribute( 'style' );
-				$text->parentNode->setAttribute( 'style', $style );
+				$languagesPresent = array();
+				if ( $sibling->nodeType === XML_TEXT_NODE ) {
+					if ( trim( $sibling->textContent ) !== '' ) {
+						// Text content inside switch but outside text tags is awkward.
+						return false;
+					}
+					continue;
+				} elseif ( $sibling->nodeType !== XML_ELEMENT_NODE ) {
+					// Only text tags are allowed inside switches
+					return false;
+				}
+
+				if ( $sibling->nodeName !== 'text' && $sibling->nodeName !== 'svg:text' ) {
+					return false;
+				}
+
+				$language = $sibling->hasAttribute( 'systemLanguage' ) ?
+					$sibling->getAttribute( 'systemLanguage' ) : 'fallback';
+				$realLangs = preg_split( '/, */', $language );
+				foreach ( $realLangs as $realLang ) {
+					if ( in_array( $realLang, $languagesPresent ) ) {
+						// Two tags for the same language
+						return false;
+					}
+					$languagesPresent[] = $realLang;
+				}
+				if ( count( $realLangs ) === 1 ) {
+					continue;
+				}
+				foreach ( $realLangs as $realLang ) {
+					// Although the SVG spec supports multi-language text tags (e.g. "en,fr,de")
+					// these are a really poor idea since (a) they are confusing to read and (b) the
+					// desired translations could diverge at any point. So get rid.
+					$singleLanguageNode = $sibling->cloneNode( true );
+					$singleLanguageNode->setAttribute( 'systemLanguage', $realLang );
+
+					// @todo: Should also go into tspans and change their ids, too.
+					// $prefix = implode( '-', explode( '-', $singleLanguageNode->getAttribute( 'id' ), -1 ) );
+					// $singleLanguageNode->setAttribute( 'id', "$prefix-$realLang" );
+
+					// Add in new element
+					$switch->appendChild( $singleLanguageNode );
+				}
+				$switch->removeChild( $sibling );
 			}
 		}
 
@@ -296,13 +321,13 @@ class SVGFile {
 
 			/** @var DOMElement $fallbackText */
 			$fallbackText = $fallback->item( 0 );
-			$textId = $fallbackText->getAttribute( 'id' );
+			$fallbackTextId = $fallbackText->getAttribute( 'id' );
 
 			for ( $j = 0; $j < $count; $j++ ) {
 				// Don't want to manipulate actual node
 				/** @var DOMElement $actualNode */
 				$actualNode = $texts->item( $j );
-				$text = clone $actualNode;
+				$text = $actualNode->cloneNode( true );
 				$numChildren = $text->childNodes->length;
 				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
@@ -320,7 +345,7 @@ class SVGFile {
 
 						$childId = $childTspan->getAttribute( 'id' );
 						$translations[$childId][$langCode] = TranslateSvgUtils::nodeToArray( $child );
-						$translations[$childId][$langCode]['data-parent'] = $textId;
+						$translations[$childId][$langCode]['data-parent'] = $fallbackTextId;
 						if ( $text->hasAttribute( 'data-children' ) ) {
 							$existing = $text->getAttribute( 'data-children' );
 							$text->setAttribute( 'data-children', "$existing|$childId" );
@@ -336,9 +361,9 @@ class SVGFile {
 				if ( $hasActualTextContent ) {
 					// If the <text> has *its own* text content, rather than just <tspan>s, register it
 					// for translation.
-					$translations[$textId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
+					$translations[$fallbackTextId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
 				} else {
-					$this->filteredTextNodes[$textId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
+					$this->filteredTextNodes[$fallbackTextId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
 				}
 				$savedLang = ( $langCode === 'fallback' ) ? $this->fallbackLanguage : $langCode;
 				$this->savedLanguages[] = $savedLang;
