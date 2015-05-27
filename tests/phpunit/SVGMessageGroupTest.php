@@ -71,10 +71,33 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 	}
 
 	public function testGetDescription() {
-		// Should be normalised to spaces
-		$name = str_replace( '_', ' ', self::$name );
-		$expected = "[[File:$name|thumb|right|upright|275x275px]]
-<div style=\"overflow:auto; padding:2px;\">Created during testing</div>";
-		$this->assertEquals( $expected, $this->messageGroup->getDescription() );
+		$expected = '[[File:' . self::$name . '|thumb|right|upright|275x275px]]' . "\n" .
+		'<div style="overflow:auto; padding:2px;">Created during testing</div>';
+		$this->assertEquals( $expected, $this->messageGroup->getDescription() ."" );
+	}
+
+	public function testGetOnWikiLanguagesBeforeImport() {
+		$this->assertCount(
+			0,
+			$this->messageGroup->getOnWikiLanguages(),
+			'Message group is registered but has not been imported yet, so getOnWikiLanguages() should return an empty array'
+		);
+	}
+
+	public function testImportTranslations() {
+		$ret = $this->messageGroup->importTranslations();
+		$this->assertTrue( $ret );
+
+		// Normally updating is asynchronous, but need to force the pace for testing
+		MessageGroupStats::clearGroup( $this->messageGroup->getId() );
+	}
+
+	public function testGetOnWikiLanguagesAfterImport() {
+		// Clearly this is dependent on the translations having been imported correctly
+		// Note that 'tlh-ca' is dropped since it is not supported by MediaWiki.
+		$this->assertArrayEquals(
+			array( 'de', 'en', 'fr', 'nl' ),
+			$this->messageGroup->getOnWikiLanguages()
+		);
 	}
 }
