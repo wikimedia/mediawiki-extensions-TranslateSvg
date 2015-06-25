@@ -88,4 +88,8 @@ class SpecialTranslateNewSVG extends SpecialPage {
 	function getDescription() {
 		return $this->msg( 'translate-svg-new-title' )->text();
 	}
+
+	protected function getGroupName() {
+		return 'wiki';
+	}
 }

@@ -99,7 +99,6 @@ $wgHooks['TranslateProcessAPIMessageGroupsProperties'][] = 'TranslateSvgHooks::p
 $wgHooks['UnitTestsList'][] = 'TranslateSvgHooks::onUnitTestsList';
 
 $wgSpecialPages['TranslateNewSVG'] = 'SpecialTranslateNewSVG';
-$wgSpecialPageGroups['TranslateNewSVG'] = 'wiki';
 $wgTranslateMessageNamespaces[] = NS_FILE;
 
 /**
