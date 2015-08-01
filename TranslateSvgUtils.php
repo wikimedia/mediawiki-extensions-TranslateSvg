@@ -15,62 +15,53 @@ class TranslateSvgUtils {
 	/**
 	 * Function used to determine if a message includes a property string
 	 *
-	 * @param $message \string Message which may or may not include a property string
-	 * @return true
+	 * @param string $translation Message which may or may not include a property string
+	 * @return bool
 	 */
-	public static function hasPropertyString( $message ) {
+	public static function hasPropertyString( $translation ) {
 		global $wgTranslateSvgTemplateName;
-		if ( strpos( $message, '{{' . $wgTranslateSvgTemplateName ) !== false ) {
-			return true;
-		} else {
-			return false;
-		}
+		return ( preg_match( '/\{\{' . $wgTranslateSvgTemplateName . '.*\}\}[\s]*$/', $translation ) === 1 );
 	}
 
 	/**
-	 * Function that returns only the property string from a given message
+	 * Function that returns only the property string from a given translation
 	 *
-	 * @param $message \string Message which includes a property string
-	 * @return \string Just the property string, empty string on failure
+	 * @param string $translation Translation which includes a property string
+	 * @return string Just the property string, empty string on failure
 	 */
-	public static function extractPropertyString( $message ) {
+	public static function extractPropertyString( $translation ) {
 		global $wgTranslateSvgTemplateName;
-		if ( self::hasPropertyString( $message ) ) {
-			return substr( $message, ( strrpos( $message, '{{' . $wgTranslateSvgTemplateName ) ) );
-		}
-		return '';
+		preg_match( '/\{\{' . $wgTranslateSvgTemplateName . '.*\}\}[\s]*$/', $translation, $matches );
+		return isset( $matches[0] ) ? trim( $matches[0] ) : '';
 	}
 
 	/**
-	 * Function that returns a message minus its property string
+	 * Function that returns a translation minus its property string
 	 * Useful for the TranslateFormatMessageBeforeTable hook
 	 *
-	 * @param $message \string Message which may or may not include a property string
-	 * @return \string Message without property string
+	 * @param string $translation Translation which may or may not include a property string
+	 * @return string Message without property string
 	 */
-	public static function stripPropertyString( $message ) {
+	public static function stripPropertyString( $translation ) {
 		global $wgTranslateSvgTemplateName;
-		if ( self::hasPropertyString( $message ) ) {
-			return substr( $message, 0, ( strrpos( $message, '{{' . $wgTranslateSvgTemplateName ) ) );
-		}
-		return $message;
+		return preg_replace( '/\{\{' . $wgTranslateSvgTemplateName . '.*\}\}[\s]*$/', '', $translation );
 	}
 
 	/**
 	 * Simple function that quickly whittles down whether a title is that of
 	 * a file description page for an SVG file
 	 *
-	 * @param $title \Title The MediaWiki Title object in question
+	 * @param Title $title The MediaWiki Title object in question
 	 * @return bool True if it is, false if it isn't.
 	 */
 	public static function isSVGFilePage( Title $title ) {
 		if ( $title->getNamespace() === NS_FILE ) {
 			$file = wfFindFile( $title );
 			return ( $file && $file->getMimeType() === 'image/svg+xml' );
-		} else {
-			// Not a file description page
-			return false;
 		}
+
+		// Not a file description page
+		return false;
 	}
 
 	/**
@@ -79,13 +70,13 @@ class TranslateSvgUtils {
 	 * used in an SVG file. Also validates to prevent arbitary input.
 	 *
 	 * @see self::mapFromAttribute()
-	 * @param $parameter \string Parameter name (e.g. color, bold)
-	 * @param $value \string Parameter value (e.g. black, yes)
-	 * @return \array Numerical array, [0] = attribute name, [1] = value
+	 * @param string $name Parameter name (e.g. color, bold)
+	 * @param string $value Parameter value (e.g. black, yes)
+	 * @return array Numerical array, [0] = attribute name, [1] = value
 	 */
-	public static function mapToAttribute( $parameter, $value ) {
+	public static function mapToAttribute( $name, $value ) {
 		global $wgTranslateSvgDefaultProperties, $wgTranslateSvgOptionalProperties;
-		$parameter = trim( $parameter );
+		$name = trim( $name );
 		$value = trim( $value );
 
 		$supported = array_merge(
@@ -93,31 +84,31 @@ class TranslateSvgUtils {
 			$wgTranslateSvgOptionalProperties
 		);
 
-		if ( !in_array( $parameter, $supported ) ) {
+		if ( !in_array( $name, $supported ) ) {
 			// Quietly drop: injection attempt?
 			return array( false, false );
 		}
-		switch ( $parameter ) {
+		switch ( $name ) {
 			case 'bold':
-				$parameter = 'font-weight';
+				$name = 'font-weight';
 				$value = ( $value === 'yes' ) ? 'bold' : 'normal';
 				break;
 			case 'italic':
-				$parameter = 'font-style';
+				$name = 'font-style';
 				$value = ( $value === 'yes' ) ? 'italic' : 'normal';
 				break;
 			case 'underline':
-				$parameter = 'text-decoration';
+				$name = 'text-decoration';
 				$value = ( $value === 'yes' ) ? 'underline' : 'normal';
 				break;
 			case 'color':
-				$parameter = 'fill';
+				$name = 'fill';
 				break;
 		}
 		if ( $value === '' ) {
 			$value = false;
 		}
-		return array( $parameter, $value );
+		return array( $name, $value );
 	}
 
 	/**
@@ -126,13 +117,13 @@ class TranslateSvgUtils {
 	 * a property string. Also validates to prevent arbitary input.
 	 *
 	 * @see self::mapToAttribute()
-	 * @param $parameter \string Attribute name (e.g. fill, font-weight)
-	 * @param $value \string Attribute value (e.g. black, bold)
-	 * @return \array Numerical array, [0] = parameter name, [1] = parameter value
+	 * @param string $name Attribute name (e.g. fill, font-weight)
+	 * @param string $value Attribute value (e.g. black, bold)
+	 * @return array Numerical array, [0] = parameter name, [1] = parameter value
 	 */
-	public static function mapFromAttribute( $parameter, $value ) {
+	public static function mapFromAttribute( $name, $value ) {
 		global $wgTranslateSvgOptionalProperties;
-		$parameter = trim( $parameter );
+		$name = trim( $name );
 		$value = trim( $value );
 
 		$supported = array_merge(
@@ -143,22 +134,22 @@ class TranslateSvgUtils {
 			),
 			$wgTranslateSvgOptionalProperties
 		);
-		if ( !in_array( $parameter, $supported ) ) {
+		if ( !in_array( $name, $supported ) ) {
 			// Not editable, so not suitable for extraction
 			return array( false, false );
 		}
 
-		switch ( $parameter ) {
+		switch ( $name ) {
 			case 'font-weight':
-				$parameter = 'bold';
+				$name = 'bold';
 				$value = ( $value === 'bold' ) ? 'yes' : 'no';
 				break;
 			case 'font-style':
-				$parameter = 'italic';
+				$name = 'italic';
 				$value = ( $value === 'italic' ) ? 'yes' : 'no';
 				break;
 			case 'text-decoration':
-				$parameter = 'underline';
+				$name = 'underline';
 				$value = ( $value === 'underline' ) ? 'yes' : 'no';
 				break;
 			case 'font-family':
@@ -166,14 +157,14 @@ class TranslateSvgUtils {
 				$value = isset( $map[$value] ) ? $map[$value] : $value;
 				break;
 			case 'fill':
-				$parameter = 'color';
+				$name = 'color';
 				break;
 		}
 		if ( $value == '' ) {
 			// Drop empty attributes altogether
 			$value = false;
 		}
-		return array( $parameter, $value );
+		return array( $name, $value );
 	}
 
 	/**
@@ -181,8 +172,8 @@ class TranslateSvgUtils {
 	 * three main formats for handling data (nodes, translations and arrays).
 	 * This one converts between the translation and array formats.
 	 *
-	 * @param $translation \string Translation to convert e.g. Blah{{Properties|foo=bar}}
-	 * @return \array An associative array of properties, including 'text'
+	 * @param string $translation Translation to convert e.g. Blah{{Properties|foo=bar}}
+	 * @return array An associative array of properties, including 'text'
 	 */
 	public static function translationToArray( $translation ) {
 		// Start with text
@@ -215,8 +206,8 @@ class TranslateSvgUtils {
 	 * three main formats for handling data (nodes, translations and arrays).
 	 * This one converts between the array and translation formats.
 	 *
-	 * @param $array \array An associative array of properties, inc 'text'
-	 * @return \string Translation e.g. Blah{{Properties|foo=bar}}
+	 * @param array $array An associative array of properties, inc 'text'
+	 * @return string Translation e.g. Blah{{Properties|foo=bar}}
 	 */
 	public static function arrayToTranslation( $array ) {
 		global $wgTranslateSvgDefaultProperties, $wgTranslateSvgTemplateName;

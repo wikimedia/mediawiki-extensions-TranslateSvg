@@ -48,7 +48,8 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		// Actually perform upload
 		$bot = User::newFromName( 'TranslateSvg unit tests', false );
 		$status = $uploader->performUpload( 'testing', 'Created during testing', false, $bot );
-		if ( !$status->isGood() ) {
+		$title = Title::makeTitle( NS_FILE, $name );
+		if ( !$status->isGood() || !$title->exists() ) {
 			die( 'Could not upload test file ' . $name );
 		}
 
