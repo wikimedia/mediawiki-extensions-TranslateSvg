@@ -160,7 +160,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 				$translation = TranslateSvgUtils::arrayToTranslation( $innerArray );
 				$fullKey = $this->source . '/' . $key . '/' . $language;
 				$title = Title::makeTitleSafe( $this->getNamespace(), $fullKey );
-				if ( $title->exists() ) {
+				if ( $title === null || $title->exists() ) {
 					// @todo: consider whether an update of the page is in order
 					continue;
 				}

@@ -64,6 +64,9 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		// Preserve the syntax of $this->setMwGlobals for future use
 		// but we can't use it te way it's written at the moment since we're static
 		$pairs = array(
+			// Enable uploads
+			'wgEnableUploads' => true,
+
 			// Add .svg to list of supported file extensions
 			'wgFileExtensions' => array( 'png', 'gif', 'jpg', 'jpeg', 'svg' ),
 
@@ -108,7 +111,6 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 
 		$conds = array( 'tmd_group' => self::$name );
 		$dbw->delete( 'translate_metadata', $conds, __METHOD__ );
-		$dbw->commit( __METHOD__, 'flush' );
 
 		if( !$title->exists() ) {
 			return;
@@ -123,5 +125,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 
 		$wikiPage = new WikiPage( $title );
 		$wikiPage->doDeleteArticle( 'resetting' );
+
+		$dbw->commit( __METHOD__, 'flush' );
 	}
 }
