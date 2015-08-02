@@ -187,7 +187,7 @@ class SVGFile {
 			$text = $this->document->getElementsByTagName( 'text' )->item( $i );
 
 			// Text strings like $1, $2 will cause problems later because
-			// TranslateSvgUtils::replaceIndicesRecursive() will try to replace them
+			// self::replaceIndicesRecursive() will try to replace them
 			// with (non-existent) child nodes.
 			if ( preg_match( '/$[0-9]/', $text->textContent ) ) {
 				return false;
@@ -329,7 +329,7 @@ class SVGFile {
 				$actualNode = $texts->item( $j );
 				$text = $actualNode->cloneNode( true );
 				$numChildren = $text->childNodes->length;
-				$hasActualTextContent = TranslateSvgUtils::hasActualTextContent( $text );
+				$hasActualTextContent = self::hasActualTextContent( $text );
 				$lang = $text->hasAttribute( 'systemLanguage' ) ? $text->getAttribute( 'systemLanguage' ) : 'fallback';
 				$langCode = TranslateSvgUtils::osToLangCode( $lang );
 
@@ -344,7 +344,7 @@ class SVGFile {
 						$childTspan = $fallbackText->getElementsByTagName( 'tspan' )->item( $counter - 1 );
 
 						$childId = $childTspan->getAttribute( 'id' );
-						$translations[$childId][$langCode] = TranslateSvgUtils::nodeToArray( $child );
+						$translations[$childId][$langCode] = $this->nodeToArray( $child );
 						$translations[$childId][$langCode]['data-parent'] = $fallbackTextId;
 						if ( $text->hasAttribute( 'data-children' ) ) {
 							$existing = $text->getAttribute( 'data-children' );
@@ -361,9 +361,9 @@ class SVGFile {
 				if ( $hasActualTextContent ) {
 					// If the <text> has *its own* text content, rather than just <tspan>s, register it
 					// for translation.
-					$translations[$fallbackTextId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
+					$translations[$fallbackTextId][$langCode] = $this->nodeToArray( $text );
 				} else {
-					$this->filteredTextNodes[$fallbackTextId][$langCode] = TranslateSvgUtils::nodeToArray( $text );
+					$this->filteredTextNodes[$fallbackTextId][$langCode] = $this->nodeToArray( $text );
 				}
 				$savedLang = ( $langCode === 'fallback' ) ? $this->fallbackLanguage : $langCode;
 				$this->savedLanguages[] = $savedLang;
@@ -481,17 +481,17 @@ class SVGFile {
 						} else {
 							$child = $translations[$child]['fallback'];
 						}
-						$child = TranslateSvgUtils::arrayToNode( $child, $this->document, 'tspan' );
+						$child = $this->arrayToNode( $child, 'tspan' );
 					}
 				}
 
 				// Set up text tag
 				$text = $translation['text'];
 				unset( $translation['text'] );
-				$newTextTag = TranslateSvgUtils::arrayToNode( $translation, $this->document, 'text' );
+				$newTextTag = $this->arrayToNode( $translation, 'text' );
 
 				// Add text, replacing $1, $2 etc. with translations
-				TranslateSvgUtils::replaceIndicesRecursive( $text, $children, $this->document, $newTextTag );
+				$this->replaceIndicesRecursive( $text, $children, $newTextTag, $this->document );
 
 				// Put text tag into document
 				$path = ( $language === 'fallback' ) ?
@@ -500,7 +500,7 @@ class SVGFile {
 				$existing = $this->xpath->query( $path, $switch );
 				if ( $existing->length == 1 ) {
 					// Only one matching text node, replace if different
-					if ( TranslateSvgUtils::nodeToArray( $newTextTag ) === TranslateSvgUtils::nodeToArray( $existing->item( 0 ) ) ) {
+					if ( $this->nodeToArray( $newTextTag ) === $this->nodeToArray( $existing->item( 0 ) ) ) {
 						continue;
 					}
 					$switch->replaceChild( $newTextTag, $existing->item( 0 ) );
@@ -546,6 +546,138 @@ class SVGFile {
 	 */
 	public function saveToPath( $path ) {
 		return $this->document->save( $path );
+	}
+
+	/**
+	 * One of several functions used to convert between TranslateSvg's
+	 * three main formats for handling data (nodes, translations and arrays).
+	 * This one converts between the node and array translation. The function
+	 * assumes that the node does not have any child nodes that need to be
+	 * converted.
+	 *
+	 * @param DOMNode $node A DOMNode object (probably a <text> or <tspan>)
+	 * @return array An associative array of properties, including 'text'
+	 */
+	public function nodeToArray( DOMNode $node ) {
+		$array = array( 'text' => $node->textContent );
+		$attributes = ( $node->hasAttributes() ) ? $node->attributes : array();
+		foreach ( $attributes as $attribute ) {
+			$prefix = ( $attribute->prefix === '' ) ? '' : ( $attribute->prefix . ':' );
+			if ( $attribute->name === 'space' ) {
+				// XML namespace prefix seems to disappear: TODO?
+				$prefix = 'xml:';
+			}
+			list( $attrName, $attrValue ) = TranslateSvgUtils::mapFromAttribute(
+				$prefix . $attribute->name, $attribute->value
+			);
+			if ( $attrName === false || $attrValue === false ) {
+				continue;
+			}
+			list( $attrName, $attrValue ) = TranslateSvgUtils::mapToAttribute( $attrName, $attrValue );
+			if ( $attrName === false || $attrValue === false ) {
+				continue;
+			}
+			$array[ $attrName ] = $attrValue;
+		}
+		return $array;
+	}
+
+	/**
+	 * One of several functions used to convert between TranslateSvg's
+	 * three main formats for handling data (nodes, translations and arrays).
+	 * This one converts between the array and node formats.
+	 *
+	 * @param array $array An associative array of properties, inc 'text'
+	 * @param string $nodeName (optional) The name of the node (no <>), default 'text'
+	 * @return DOMNode A new DOMNode ready to be inserted, complete with text child
+	 */
+	public function arrayToNode( $array, $nodeName = 'text' ) {
+		$defaultNS = $this->document->documentElement->lookupnamespaceURI( null );
+		$newNode = $this->document->createElementNS( $defaultNS, $nodeName );
+
+		// Handle the text property first...
+		if ( isset( $array['text'] ) ) {
+			$textContent = $this->document->createTextNode( $array['text'] );
+			$newNode->appendChild( $textContent );
+			unset( $array['text'] );
+		}
+
+		// ...then all other properties
+		foreach ( $array as $attrName => $attrValue ) {
+			if ( $attrName !== false && !preg_match( '/^data\-/', $attrName ) ) {
+				$newNode->setAttribute( $attrName, $attrValue );
+			}
+		}
+		return $newNode;
+	}
+
+	/**
+	 * Checks whether a given DOMNode has some non-negligible text content (as
+	 * opposed to just whitespace or other tags. Whitespace *between* tags
+	 * counts, as it does get rendered.
+	 *
+	 * @param DOMNode $node The node to check for text content
+	 * @return bool True if content found, false if not
+	 */
+	public static function hasActualTextContent( DOMNode $node ) {
+		//No text nodes means no text content
+		if ( !$node->hasChildNodes() ) {
+			return false;
+		}
+
+		// Search child nodes looking for matching content
+		$children = $node->childNodes;
+		$numChildren = $children->length;
+		for ( $i = 0; $i < $numChildren; $i++ ) {
+			if ( $children->item( $i )->nodeType == XML_TEXT_NODE ) {
+				// Whitespace at beginning and end doesn't count, but
+				// otherwise we have a match
+				if ( !( $i === 0 || $i === ( $numChildren - 1 ) )
+					|| !( strlen( trim( $children->item( $i )->textContent ) ) === 0 )
+				) {
+					return true;
+				}
+			}
+		}
+
+		// Didn't find any
+		return false;
+	}
+
+	/**
+	 * Recursively replaces $1, $2, etc. with text tags, if required. Text content
+	 * is formalised as actual text nodes
+	 *
+	 * @param string $text The text to search for $1, $2 etc.
+	 * @param array &$newNodes An array of DOMNodes, indexed by which $ number they represent
+	 * @param DOMNode &$parentNode  A node to fill with the generated content
+	 * @param DOMDocument $document Base document to use
+	 * @return void
+	 */
+	public static function replaceIndicesRecursive( $text, &$newNodes, DOMNode &$parentNode, DOMDocument $document ) {
+		// If nothing to replace, just fire back a text node
+		if ( count( $newNodes ) === 0 ) {
+			if ( strlen( $text ) > 0 ) {
+				$parentNode->appendChild( $document->createTextNode( $text ) );
+			}
+		}
+
+		// Otherwise, loop through $1, $2, etc. replacing each
+		preg_match_all( '/\$([0-9]+)/', $text, $matches );
+		foreach ( $newNodes as $index => $node ) {
+			// One-indexed (no $0)
+			$realIndex = $index + 1;
+			if ( !in_array( $realIndex, $matches[1] ) ) {
+				// Sanity check
+				continue;
+			}
+			list( $before, $after ) = preg_split( '/\$' . $realIndex . '(?=[^0-9]|$)/', $text );
+			$newNodeToProcess = $newNodes[$index];
+			unset( $newNodes[$index] );
+			self::replaceIndicesRecursive( $before, $newNodes, $parentNode, $document );
+			$parentNode->appendChild( $newNodeToProcess );
+			self::replaceIndicesRecursive( $after, $newNodes, $parentNode, $document );
+		}
 	}
 
 	/**

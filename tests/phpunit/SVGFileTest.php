@@ -25,6 +25,30 @@ class SVGFileTest extends TranslateSvgTestCase {
 		$this->svg = new SVGFile( __DIR__ . '/../data/Speech_bubbles.svg', 'en' );
 	}
 
+	/*
+	 * @todo: add additional attributes
+	 * @todo: consider if data-parent needs to survive roundtrip, and, if so, how
+	 */
+	public function testArrayToNodeToArray() {
+		$array = array(
+			'text' => 'Hallo!',
+			'id' => 'tspan2987-de',
+			'font-weight' => 'bold',
+			'non-existent' => 'foobar',
+			'data-parent' => 'text2985'
+		);
+
+		$dom = new DOMDocument("1.0","UTF-8");
+		$dom->loadXML( '<text id="tspan2987-de" font-weight="bold">Hallo!</text>');
+
+		$node = $this->svg->arrayToNode( $array, 'tspan' );
+		$this->assertEquals( $this->svg->nodeToArray( $dom->firstChild ), $this->svg->nodeToArray( $node ) );
+
+		$expectedArray = $array;
+		unset( $expectedArray['data-parent'], $expectedArray['non-existent'] );
+		$this->assertEquals( $expectedArray, $this->svg->nodeToArray( $node ) );
+	}
+
 	public function testGetInFileTranslations() {
 		$expected = array(
 			'tspan2987' =>
@@ -111,6 +135,9 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'id' => 'tspan2991',
 							'sodipodi:role' => 'line',
 							'data-parent' => 'text2989',
+							'text-decoration' => 'normal',
+							'font-style' => 'normal',
+							'font-weight' => 'normal',
 						),
 				),
 			'tspan2993' =>
@@ -167,6 +194,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'y' => '323',
 							'id' => 'tspan2997-fr',
 							'data-parent' => 'text2995',
+							'font-weight' => 'normal',
 						),
 					'nl' =>
 						array(
@@ -175,6 +203,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'y' => '318.64789',
 							'id' => 'tspan2997-nl',
 							'data-parent' => 'text2995',
+							'font-style' => 'normal',
 						),
 					'tlh-ca' =>
 						array(
@@ -183,6 +212,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'y' => '318.64789',
 							'id' => 'tspan2997-nl',
 							'data-parent' => 'text2995',
+							'font-style' => 'normal',
 						),
 					'fallback' =>
 						array(
@@ -192,6 +222,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 							'id' => 'tspan2997',
 							'sodipodi:role' => 'line',
 							'data-parent' => 'text2995',
+							'text-decoration' => 'normal',
 						),
 				),
 			'tspan2999' =>
