@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BeginaFelicysym",
-			"Chrumps"
+			"Chrumps",
+			"The Polish"
 		]
 	},
 	"translate-svg-thumbnail": "Oryginalny plik",
@@ -10,6 +11,7 @@
 	"translate-taction-mstats-svgmg": "Statystyki pliku",
 	"translate-taction-export-svgmg": "Prześlij zaktualizowaną wersję pliku",
 	"translate-svg-table-header": "Identyfikator wiadomości",
+	"translate-svg-filepage-edit": "edycja",
 	"translate-svg-filepage-another": "inny język",
 	"translate-svg-filepage-other": "inne języki",
 	"translate-svg-filepage-invite": "Ten plik może łatwo przetłumaczyć na $1",
