@@ -4,7 +4,8 @@
 			"Armin1392",
 			"Ebraminio",
 			"ZxxZxxZ",
-			"پاناروما"
+			"پاناروما",
+			"Reza1615"
 		]
 	},
 	"translatesvg-desc": "رابطی بومی برای ترجمهٔ اس‌وی‌جی‌ها با مشخصات SVG1.1 فراهم می‌کند",
@@ -22,6 +23,7 @@
 	"translate-svg-filepage-finish": "اتمام",
 	"translate-svg-filepage-another": "زبان‌های دیگر",
 	"translate-svg-filepage-other": "زبان‌های دیگر",
+	"translate-svg-filepage-item": "$1 ($2)",
 	"translate-svg-filepage-invite": "این پوشه به راحتی می تواند به $1 ترجمه شود",
 	"translate-svg-autocreate": "ایجاد خودکار واحدهای ترجمه بر اساس تغییرات به پوشه منبع اس‌وی‌جی",
 	"translate-svg-autodelete": "حذف خودکار واحدهای ترجمه غیرضروری بر اساس تغییرات به پوشه منبع اس‌وی‌جی",
