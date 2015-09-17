@@ -274,8 +274,8 @@ class SVGFormatWriter {
 				// up having an illegal length of 0 bytes
 				$link = Html::element(
 					'a',
-					array( 'href' => 'http://bugzilla.wikimedia.org' ),
-					'bugzilla.wikimedia.org'
+					array( 'href' => 'https://phabricator.wikimedia.org/maniphest/task/create/?projects=TranslateSVG' ),
+					'phabricator.wikimedia.org'
 				);
 				return wfMessage( 'translate-svg-export-error' )->rawParams( $link )->escaped();
 		}

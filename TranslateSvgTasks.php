@@ -19,8 +19,8 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 		if ( !$this->group instanceof SVGMessageGroup ) {
 			$link = Html::element(
 				'a',
-				array( 'href' => 'http://bugzilla.wikimedia.org' ),
-				'bugzilla.wikimedia.org'
+				array( 'href' => 'https://phabricator.wikimedia.org/maniphest/task/create/?projects=TranslateSVG' ),
+				'phabricator.wikimedia.org'
 			);
 			return $this->errorOutput( wfMessage( 'translate-svg-export-unsupported', $link ) );
 		}
