@@ -4,14 +4,15 @@
 			"Justincheng12345",
 			"Shirayuki",
 			"Simon Shek",
-			"LNDDYL"
+			"LNDDYL",
+			"SupaplexTW"
 		]
 	},
 	"translatesvg-desc": "為轉譯符合SVG1.1規範的SVG提供一個原生樣式接口",
 	"translate-taskui-export-as-svg": "儲存至原SVG檔案",
 	"translate-svg-nodesc": "（没有提供檔案描述。）",
 	"translate-svg-thumbnail": "原始檔案",
-	"translate-svg-js-thumbnail": "（自動更新縮略圖）",
+	"translate-svg-js-thumbnail": "（自動更新縮圖）",
 	"translate-page-description-legend-svgmg": "有關此檔案的資訊",
 	"translate-taction-mstats-svgmg": "檔案統計",
 	"translate-taction-export-svgmg": "上載檔案的新版本",
