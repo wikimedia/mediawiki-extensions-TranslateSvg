@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lakzon"
+			"Lakzon",
+			"Hosseinblue"
 		]
 	},
-	"translate-svg-nodesc": "(هیچ شرحی برای پرونده ارائه نشده‌است.)"
+	"translate-svg-nodesc": "(هیچ شرحی برای پرونده ارائه نشده‌است.)",
+	"translate-svg-autocreate": "ایجاد خودکار واحدهای ترجمه بر اساس تغییرات به پوشه منبع اس‌وی‌جی"
 }
