@@ -26,7 +26,7 @@
 	"translate-svg-filepage-invite": "此檔案可以輕鬆翻譯成$1",
 	"translate-svg-autocreate": "自動對應原始 SVG 檔案的修改建立翻譯單位",
 	"translate-svg-autodelete": "自動對應原始SVG檔案的修改刪除翻譯單位",
-	"translate-svg-autoedit": "自動對應原始SVG檔案的修改更改翻譯單位",
+	"translate-svg-autoedit": "根據原始 SVG 檔的變更，自動更新翻譯",
 	"translate-svg-autofuzzy": "自動對應原始SVG檔案的修改標記翻譯已過時",
 	"translate-svg-upload-comment": "正在更新翻譯（開始：$1；修改或擴展： $2）",
 	"translate-svg-upload-none": "（無）",
