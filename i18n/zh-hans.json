@@ -41,6 +41,7 @@
 	"translate-svg-new-label": "语言：",
 	"translate-svg-new-error-import": "'''发生错误：'''在尝试创建翻译此SVG需要的页面时发生了一个未知错误。",
 	"translate-svg-new-error-group": "'''发生错误：'''发生一个未知错误；也许您忘记在URL中指定一个组？",
+	"translate-svg-export-unsupported": "此消息组不支持导出回SVG。如果不清楚该现象为何发生，您可以在$1提交错误报告。",
 	"translate-svg-export-error": "尝试保存您的更改至此文件时发生意外错误。您也许希望在$1提报关于这个的错误。",
 	"translate-js-properties-legend": "属性",
 	"translate-js-label-x": "X坐标：",
