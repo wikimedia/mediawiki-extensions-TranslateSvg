@@ -34,6 +34,7 @@
 	"translate-svg-chooselanguage-title": "语言选择",
 	"translate-svg-chooselanguage-desc": "请选择您希望翻译此SVG文件的语言：",
 	"translate-svg-instructions-title": "第一次以这种方式翻译一个 SVG 文件吗？",
+	"translate-svg-instructions-desc": "要开始，点击用于翻译那条消息的表格第一列的消息标识符，使用“$1”和“$2”按钮以帮助在需要翻译的消息之间导航。当您完成时，记得要使用“$3”标签以将您的翻译保存回原文件中。",
 	"translate-svg-warn": "<strong>警告：</strong>此语言目前仍有未保存翻译，直到您或其他人$1否则将不可见。",
 	"translate-svg-warn-inner": "保存这些更改到原始文件",
 	"translate-svg-new-title": "SVG翻译",
