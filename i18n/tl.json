@@ -1,16 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"AnakngAraw"
+			"AnakngAraw",
+			"Jojit fb"
 		]
 	},
 	"translatesvg-desc": "Nagbibigay ng isang ugnayang-mukha na nasa katutubong estilo para sa pagsasalinwika ng mga SVG na nakaalinsundo sa pagkakatukoy ng SVG1.1",
 	"translate-taskui-export-as-svg": "Sagiping pabalik sa orihinal na talaksan ng SVG",
 	"translate-svg-nodesc": "(Walang ibinigay na paglalarawan ng talaksan.)",
-	"translate-svg-thumbnail": "Orihinal na talaksan",
+	"translate-svg-thumbnail": "Orihinal na file",
 	"translate-svg-js-thumbnail": "(kusang nagsasapanahon ang kagyat)",
 	"translate-page-description-legend-svgmg": "Kabatirang patungkol sa talaksang ito",
-	"translate-taction-mstats-svgmg": "Estadistika ng talaksan",
+	"translate-taction-mstats-svgmg": "Estadistika ng file",
 	"translate-taction-export-svgmg": "Ikargang paitaas ang naisapanahong bersiyon ng talaksan",
 	"translate-svg-table-header": "Pangkilala ng mensahe",
 	"translate-svg-filepage-caption": "Ang imaheng ito ay iniharap bilang PNG sa ibang mga wika: $1",
