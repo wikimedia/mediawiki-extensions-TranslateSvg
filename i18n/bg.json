@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"පසිඳු කාවින්ද"
+			"පසිඳු කාවින්ද",
+			"DCLXVI"
 		]
 	},
+	"translate-svg-thumbnail": "Оригинален файл",
 	"translate-svg-filepage-edit": "редактиране",
-	"translate-svg-new-label": "Език:"
+	"translate-svg-new-label": "Език:",
+	"translate-js-label-color": "Цвят:",
+	"translate-js-label-font-family": "Шрифт:",
+	"translate-js-label-bold": "Получер",
+	"translate-js-label-italic": "Курсив",
+	"translate-js-label-underline": "Подчертаване"
 }
