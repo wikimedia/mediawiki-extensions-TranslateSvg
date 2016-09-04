@@ -6,7 +6,8 @@
 			"Gomoko",
 			"Od1n",
 			"Tititou36",
-			"Hercule"
+			"Hercule",
+			"Urhixidur"
 		]
 	},
 	"translatesvg-desc": "Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1",
@@ -42,7 +43,7 @@
 	"translate-svg-new-label": "Langue :",
 	"translate-svg-new-error-import": "<strong> Une erreur s'est produite </strong>: Une erreur inconnue s'est produite lors de la tentative de création des pages nécessaires pour traduire ce SVG.",
 	"translate-svg-new-error-group": "<strong> Une erreur s'est produite </strong>: Une erreur inconnue s'est produite ; vous avez peut-être oublié de spécifier un groupe dans l'URL ?",
-	"translate-svg-export-unsupported": "Exporter vers un SVG n'est pas supporté pour ce groupe de messages. Si la raison n'en est pas claire, vous pouvez créer un bogue sur cela sur $1.",
+	"translate-svg-export-unsupported": "Exporter vers un SVG n’est pas pris en charge pour ce groupe de messages. Si la raison n’en est pas claire, vous pouvez créer un bogue à ce propos sur $1.",
 	"translate-svg-export-error": "Une erreur inattendue est survenue en essayant d'enregistrer vos changements dans le fichier. Vous pouvez signaler un bogue à ce propos sur $1.",
 	"translate-js-properties-legend": "Propriétés",
 	"translate-js-label-x": "Coordonnée X :",
