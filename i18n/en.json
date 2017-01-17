@@ -50,5 +50,7 @@
 	"translate-js-label-bold": "Bold",
 	"translate-js-label-italic": "Italic",
 	"translate-js-label-underline": "Underline",
-	"translate-js-font-family-inherit": "(inherit)"
+	"translate-js-font-family-inherit": "(inherit)",
+	"apihelp-query+messagegroups-param-inprogress": "Possible array of in-progress translations (unsaved translations that should take preference over saved ones). SVG message groups only.",
+	"apihelp-query+messagegroups-param-language": "Language to render the thumbnail in. SVG message groups only."
 }
