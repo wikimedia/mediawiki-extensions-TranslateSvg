@@ -7,7 +7,8 @@
 			"Od1n",
 			"Tititou36",
 			"Hercule",
-			"Urhixidur"
+			"Urhixidur",
+			"Wladek92"
 		]
 	},
 	"translatesvg-desc": "Fournit une interface de style natif pour traduire les SVGs en ligne conformément à la spécification SVG1.1",
@@ -53,5 +54,7 @@
 	"translate-js-label-bold": "Gras",
 	"translate-js-label-italic": "Italique",
 	"translate-js-label-underline": "Souligné",
-	"translate-js-font-family-inherit": "(hérité)"
+	"translate-js-font-family-inherit": "(hérité)",
+	"apihelp-query+messagegroups-param-inprogress": "Tableau possible des traductions en cours (traductions non sauvegardées qui devraient être prioritaires sur celles qui ont été sauvées). Groupes de messages SVG uniquement.",
+	"apihelp-query+messagegroups-param-language": "Langue dans laquelle afficher la vignette. Groupes de messages SVG uniquement."
 }

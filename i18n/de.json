@@ -49,5 +49,7 @@
 	"translate-js-label-bold": "Fett",
 	"translate-js-label-italic": "Kursiv",
 	"translate-js-label-underline": "Unterstrichen",
-	"translate-js-font-family-inherit": "(erben)"
+	"translate-js-font-family-inherit": "(erben)",
+	"apihelp-query+messagegroups-param-inprogress": "Mögliche Anordnung von Übersetzungen in Bearbeitung (ungespeicherte Übersetzungen, die Vorrang vor gespeicherten haben sollten). Nur SVG-Nachrichtengruppen.",
+	"apihelp-query+messagegroups-param-language": "Sprache, in der das Vorschaubild dargestellt werden soll. Nur SVG-Nachrichtengruppen."
 }

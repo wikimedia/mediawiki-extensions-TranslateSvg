@@ -47,5 +47,7 @@
 	"translate-js-label-bold": "Задебелено",
 	"translate-js-label-italic": "Закосено",
 	"translate-js-label-underline": "Потцртано",
-	"translate-js-font-family-inherit": "(усвој од документот)"
+	"translate-js-font-family-inherit": "(усвој од документот)",
+	"apihelp-query+messagegroups-param-inprogress": "Можна низа на преводи во тек (незачувани преводи што треба да имаат предност над зачуваните). Само SVG-групи на пораки.",
+	"apihelp-query+messagegroups-param-language": "Јазик за испис на минијатурата. Само SVG-групи на пораки."
 }
