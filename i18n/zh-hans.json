@@ -52,5 +52,7 @@
 	"translate-js-label-bold": "粗体",
 	"translate-js-label-italic": "斜体",
 	"translate-js-label-underline": "底线",
-	"translate-js-font-family-inherit": "（继承）"
+	"translate-js-font-family-inherit": "（继承）",
+	"apihelp-query+messagegroups-param-inprogress": "正在进行翻译的可用数组（应该接管已保存翻译设置的未保存翻译）。仅限SVG消息组。",
+	"apihelp-query+messagegroups-param-language": "渲染缩略图的语言。仅限SVG消息组。"
 }
