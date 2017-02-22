@@ -47,5 +47,7 @@
 	"translate-js-label-bold": "Negrina",
 	"translate-js-label-italic": "Cursiva",
 	"translate-js-label-underline": "Sorrayao",
-	"translate-js-font-family-inherit": "(heredar)"
+	"translate-js-font-family-inherit": "(heredar)",
+	"apihelp-query+messagegroups-param-inprogress": "Posible matriz de traducciones en cursu (traducciones sin guardar qu'habríen de tener preferencia sobro les guardaes). Sólo grupos de mensaxes SVG.",
+	"apihelp-query+messagegroups-param-language": "Llingua na que representar la miniatura. Sólo grupos de mensaxes SVG."
 }
