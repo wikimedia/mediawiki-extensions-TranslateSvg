@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Base",
-			"Olvin"
+			"Olvin",
+			"Piramidion"
 		]
 	},
 	"translatesvg-desc": "Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1",
@@ -48,5 +49,7 @@
 	"translate-js-label-bold": "Жирний",
 	"translate-js-label-italic": "Курсив",
 	"translate-js-label-underline": "Підкреслений",
-	"translate-js-font-family-inherit": "(успадкування)"
+	"translate-js-font-family-inherit": "(успадкування)",
+	"apihelp-query+messagegroups-param-inprogress": "Можливий ряд перекладів у процесі (незбережені переклади, які мають замінити вже збережені). Лише групи повідомлень SVG.",
+	"apihelp-query+messagegroups-param-language": "Мова, якою має бути відтворена мініатюра. Лише групи повідомлень SVG."
 }
