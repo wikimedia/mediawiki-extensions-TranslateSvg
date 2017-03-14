@@ -49,5 +49,6 @@
 	"translate-js-label-bold": "굵게",
 	"translate-js-label-italic": "기울임꼴",
 	"translate-js-label-underline": "밑줄",
-	"translate-js-font-family-inherit": "(상속)"
+	"translate-js-font-family-inherit": "(상속)",
+	"apihelp-query+messagegroups-param-language": "섬네일로 렌더링할 언어입니다. SVG 메시지 그룹 전용입니다."
 }
