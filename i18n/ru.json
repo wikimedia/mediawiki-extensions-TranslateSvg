@@ -3,7 +3,8 @@
 		"authors": [
 			"Express2000",
 			"Kaganer",
-			"Kalan"
+			"Kalan",
+			"Okras"
 		]
 	},
 	"translatesvg-desc": "Предоставляет перевод файлов SVG в соответствии со спецификацией SVG1.1",
@@ -49,5 +50,6 @@
 	"translate-js-label-bold": "Жирный",
 	"translate-js-label-italic": "Курсив",
 	"translate-js-label-underline": "Подчёркнутый",
-	"translate-js-font-family-inherit": "(по умолчанию)"
+	"translate-js-font-family-inherit": "(по умолчанию)",
+	"apihelp-query+messagegroups-param-language": "Язык, на котором производится рендеринг миниатюр. Только группы сообщений SVG."
 }
