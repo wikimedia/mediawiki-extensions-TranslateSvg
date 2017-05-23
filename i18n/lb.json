@@ -34,7 +34,7 @@
 	"translate-svg-new-label": "Sprooch:",
 	"translate-svg-new-error-import": "<strong>Et ass e Feeler geschitt:</strong> En onbekannte Feeler ass beim Versuch vum Uleeë vun de Säite geschitt, déi gebraucht gi fir d'Iwwersetze vun dësem SVG.",
 	"translate-svg-export-error": "Beim Späichere vun Ären Ännerungen an dësem Fichier ass en onerwaarte Feeler geschitt. Dir kënnt dëse Feeler op $1 mellen.",
-	"translate-js-properties-legend": "Eegeschaften",
+	"translate-js-properties-legend": "Eegenschaften",
 	"translate-js-label-x": "X-Koordinat:",
 	"translate-js-label-y": "Y-Koordinat:",
 	"translate-js-label-color": "Faarf:",
