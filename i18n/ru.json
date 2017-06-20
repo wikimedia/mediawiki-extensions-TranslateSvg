@@ -4,7 +4,8 @@
 			"Express2000",
 			"Kaganer",
 			"Kalan",
-			"Okras"
+			"Okras",
+			"Facenapalm"
 		]
 	},
 	"translatesvg-desc": "Предоставляет перевод файлов SVG в соответствии со спецификацией SVG1.1",
@@ -51,5 +52,6 @@
 	"translate-js-label-italic": "Курсив",
 	"translate-js-label-underline": "Подчёркнутый",
 	"translate-js-font-family-inherit": "(по умолчанию)",
+	"apihelp-query+messagegroups-param-inprogress": "Возможный массив незаконченных переводов (несохранённые переводы, которые должны иметь преимущество над сохранёнными). Только группы сообщений SVG.",
 	"apihelp-query+messagegroups-param-language": "Язык, на котором производится рендеринг миниатюр. Только группы сообщений SVG."
 }
