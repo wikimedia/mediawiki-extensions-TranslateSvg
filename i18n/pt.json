@@ -1,14 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"SandroHc"
+			"SandroHc",
+			"Hamilton Abreu"
 		]
 	},
+	"translatesvg-desc": "Fornece uma interface de estilo nativo para traduzir ficheiros SVG de acordo com a especificação SVG1.1",
+	"translate-taskui-export-as-svg": "Gravar no ficheiro SVG original",
+	"translate-svg-nodesc": "(Não foi fornecida nenhuma descrição do ficheiro).",
+	"translate-svg-thumbnail": "Ficheiro original",
+	"translate-svg-js-thumbnail": "(a miniatura atualiza-se automaticamente)",
 	"translate-page-description-legend-svgmg": "Informação sobre este ficheiro",
 	"translate-taction-mstats-svgmg": "Estatísticas do ficheiro",
+	"translate-taction-export-svgmg": "Carregar versão atualizada do ficheiro",
+	"translate-svg-table-header": "Identificador da mensagem",
+	"translate-svg-filepage-caption": "Esta imagem composta em formato PNG noutras línguas: $1",
+	"translate-svg-filepage-caption-translator": "Esta imagem composta em formato PNG noutras línguas: $1; ou traduza-a para $2",
 	"translate-svg-filepage-edit": "editar",
 	"translate-svg-filepage-finish": "finalizar",
-	"translate-svg-filepage-another": "outra linguagem",
+	"translate-svg-filepage-another": "outra língua",
+	"translate-svg-filepage-other": "outras línguas",
+	"translate-svg-filepage-invite": "Este ficheiro pode ser facilmente traduzido para $1",
 	"translate-svg-upload-none": "(nenhum)",
 	"translate-svg-chooselanguage-title": "Seleção de linguagem",
 	"translate-js-properties-legend": "Propriedades",
