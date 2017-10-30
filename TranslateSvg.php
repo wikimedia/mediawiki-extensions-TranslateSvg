@@ -32,7 +32,6 @@ if( defined( 'MW_PHPUNIT_TEST' ) ) {
 }
 
 $wgMessagesDirs['TranslateSvg'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['TranslateSvg'] = $dir . 'TranslateSvg.i18n.php';
 $wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
 
 $wgResourceModules['jquery.colorpicker'] = array(
