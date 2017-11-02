@@ -284,7 +284,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 
 		MessageGroups::clearCache();
 		if ( $useJobQueue ) {
-			MessageIndexRebuildJob::newJob()->insert();
+			MessageIndexRebuildJob::newJob()->insertIntoJobQueue();
 		} else {
 			MessageIndex::singleton()->rebuild();
 		}
