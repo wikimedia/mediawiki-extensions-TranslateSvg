@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
-			"Jopparn"
+			"Jopparn",
+			"WikiPhoenix"
 		]
 	},
 	"translatesvg-desc": "Innehåller en gränssnitt för att översätta SVGs enligt SVG1.1 specifikation",
@@ -48,5 +49,7 @@
 	"translate-js-label-bold": "Fet",
 	"translate-js-label-italic": "Kursiv",
 	"translate-js-label-underline": "Understrykning",
-	"translate-js-font-family-inherit": "(ärv)"
+	"translate-js-font-family-inherit": "(ärv)",
+	"apihelp-query+messagegroups-param-inprogress": "Möjlig array över pågående översättningar (osparade översättningar som bör ha företräde över de sparade). Endast SVG-meddelandegrupper.",
+	"apihelp-query+messagegroups-param-language": "Språk att rendera miniatyren på. Endast SVG-meddelandegrupper."
 }
