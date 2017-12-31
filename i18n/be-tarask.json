@@ -49,5 +49,6 @@
 	"translate-js-label-bold": "Тоўсты",
 	"translate-js-label-italic": "Курсіў",
 	"translate-js-label-underline": "Падкрэсьлены",
-	"translate-js-font-family-inherit": "(спадкаваць)"
+	"translate-js-font-family-inherit": "(спадкаваць)",
+	"apihelp-query+messagegroups-param-inprogress": "Магчымы масіў няскончаных перакладаў (незахаваныя пераклады, якія павінны мець перавагу перад захаванымі). Толькі групы паведамленьняў SVG."
 }
