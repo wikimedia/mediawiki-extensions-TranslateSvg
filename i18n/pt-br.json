@@ -4,9 +4,11 @@
 			"Cainamarques",
 			"Hamilton Abreu",
 			"Luckas",
-			"Luckas Blade"
+			"Luckas Blade",
+			"Eduardo Addad de Oliveira"
 		]
 	},
+	"translatesvg-desc": "Fornece uma interface de estilo nativo para traduzir ficheiros SVG de acordo com a especificação SVG1.1",
 	"translate-svg-thumbnail": "Arquivo original",
 	"translate-svg-js-thumbnail": "(as miniaturas são atualizadas automaticamente)",
 	"translate-page-description-legend-svgmg": "Informação sobre este arquivo",
