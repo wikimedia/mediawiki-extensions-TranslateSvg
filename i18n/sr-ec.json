@@ -3,7 +3,8 @@
 		"authors": [
 			"Милан Јелисавчић",
 			"Сербијана",
-			"Obsuser"
+			"Obsuser",
+			"Acamicamacaraca"
 		]
 	},
 	"translatesvg-desc": "Омогућава интерфејс аутохтоног стила за превођење SVG-ова у складу са SVG1.1 спецификацији",
@@ -22,7 +23,7 @@
 	"translate-svg-filepage-another": "други језик",
 	"translate-svg-filepage-other": "остале језике",
 	"translate-svg-filepage-invite": "Ова датотека може лако да се преведе на $1",
-	"translate-svg-autocreate": "Аутоматско креирање јединица превођења на основу измена изворника SVG датотеке",
+	"translate-svg-autocreate": "Аутоматско прављење јединица превођења на основу измена изворника SVG датотеке",
 	"translate-svg-autodelete": "Аутоматско брисање непотребних јединица превода на основу измена изворника SVG датотеке",
 	"translate-svg-autoedit": "Аутоматско ажурирање превода на основу измена изворника SVG датотеке",
 	"translate-svg-autofuzzy": "Аутоматско означавање превода са „fuzzy” на основу измена изворника SVG датотеке",
