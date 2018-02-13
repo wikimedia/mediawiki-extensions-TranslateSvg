@@ -99,7 +99,7 @@
 			// is possible.
 			var filename = mw.config.get( 'wgTitle' );
 			var uri = new mw.Uri(
-				mw.util.wikiGetlink( 'Special:TranslateNewSvg' )
+				mw.util.getUrl( 'Special:TranslateNewSvg' )
 			).extend( { 'group' : filename } ).toString();
 			var link = mw.html.element(
 				'a',
@@ -134,7 +134,7 @@
 				opts.chooselanguage = true;
 			}
 			var uri = new mw.Uri(
-				mw.util.wikiGetlink( 'Special:Translate' )
+				mw.util.getUrl( 'Special:Translate' )
 			).extend( opts ).toString();
 			return mw.html.element(
 				'a',
