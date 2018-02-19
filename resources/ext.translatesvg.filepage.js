@@ -144,7 +144,7 @@
 		}
 	};
 
-	$( document ).ready( function () {
+	$( function () {
 		var tsvgFilepage = new TranslateSvgFilepage();
 		tsvgFilepage.init();
 	} );

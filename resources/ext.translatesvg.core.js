@@ -131,7 +131,7 @@
 			} );
 		}
 	};
-	$( document ).ready( function () {
+	$( function () {
 		var tsvgLoader = new TranslateSvgLoader();
 		window.tsvgLoader = tsvgLoader;
 		tsvgLoader.init();
