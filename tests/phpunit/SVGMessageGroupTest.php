@@ -5,7 +5,7 @@
  * @file
  * @author Harry Burt
  * @copyright Copyright © 2014, Harry Burt
- * @license GPL-2.0+
+ * @license GPL-2.0-or-later
  */
 
 /**
