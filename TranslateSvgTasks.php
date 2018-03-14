@@ -6,20 +6,29 @@
 class ExportSVGMessagesTask extends ExportMessagesTask {
 	protected $id = 'export-as-svg';
 
-	// Override
-	protected function preinit() { }
+	/**
+	 * Override
+	 */
+	protected function preinit() {
+	}
 
-	// No paging should be done
-	protected function doPaging() { }
+	/**
+	 * No paging should be done
+	 */
+	protected function doPaging() {
+	}
 
-	// Override
-	protected function postinit() { }
+	/**
+	 * Override
+	 */
+	protected function postinit() {
+	}
 
 	public function output() {
 		if ( !$this->group instanceof SVGMessageGroup ) {
 			$link = Html::element(
 				'a',
-				array( 'href' => 'https://phabricator.wikimedia.org/maniphest/task/create/?projects=TranslateSVG' ),
+				[ 'href' => 'https://phabricator.wikimedia.org/maniphest/task/create/?projects=TranslateSVG' ],
 				'phabricator.wikimedia.org'
 			);
 			return $this->errorOutput( wfMessage( 'translate-svg-export-unsupported', $link ) );
@@ -37,14 +46,15 @@ class ExportSVGMessagesTask extends ExportMessagesTask {
 		}
 	}
 
-	/*
+	/**
 	 * Takes an error message and wraps it nicely, with a header
 	 *
-	 * @param $content \string Error message, as string
+	 * @param string $content Error message, as string
+	 * @return string
 	 */
 	protected function errorOutput( $content ) {
 		$output = '<h2>' . wfMessage( 'uploadwarning' )->plain() . "</h2>\n" .
-		          '<div class="error">' . $content . "</div>\n";
+			'<div class="error">' . $content . "</div>\n";
 		return $output;
 	}
 }

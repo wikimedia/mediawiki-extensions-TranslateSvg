@@ -19,16 +19,16 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 		global $wgTranslateSvgTemplateName;
 		$tn = $wgTranslateSvgTemplateName;
 
-		return array(
-			array( "Test", '' ),
-			array( "Test$tn", '' ),
-			array( 'Test {{' . $tn, '' ),
-			array( '{{' . $tn . '}}foo', '' ),
-			array( '{{' . $tn . '}}', '{{' . $tn. '}}' ),
-			array( 'Test {{' . $tn. '}}', '{{' . $tn. '}}' ),
-			array( '{{' . $tn . '|foo=bar}}', '{{' . $tn . '|foo=bar}}' ),
-			array( 'foo{{' . $tn . '|foo=bar}}', '{{' . $tn . '|foo=bar}}' )
-		);
+		return [
+			[ "Test", '' ],
+			[ "Test$tn", '' ],
+			[ 'Test {{' . $tn, '' ],
+			[ '{{' . $tn . '}}foo', '' ],
+			[ '{{' . $tn . '}}', '{{' . $tn. '}}' ],
+			[ 'Test {{' . $tn. '}}', '{{' . $tn. '}}' ],
+			[ '{{' . $tn . '|foo=bar}}', '{{' . $tn . '|foo=bar}}' ],
+			[ 'foo{{' . $tn . '|foo=bar}}', '{{' . $tn . '|foo=bar}}' ]
+		];
 	}
 
 	/**
@@ -68,11 +68,11 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @return array
 	 */
 	public function titleProvider() {
-		return array(
-			array( NS_FILE, false, true ),
-			array( NS_MAIN, false, false ),
-			array( NS_FILE, 'Speech_bubbles.jpg', false )
-		);
+		return [
+			[ NS_FILE, false, true ],
+			[ NS_MAIN, false, false ],
+			[ NS_FILE, 'Speech_bubbles.jpg', false ]
+		];
 	}
 
 	/**
@@ -83,7 +83,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @covers TranslateSvgUtils::isSVGFilePage
 	 */
 	public function testIsSVGFilePage( $ns, $name, $isFilePage ) {
-		if( !$name ) {
+		if ( !$name ) {
 			$name = self::$name; // Providers are established before self::$name is set
 		}
 		$title = Title::makeTitle( $ns, $name );
@@ -95,15 +95,15 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @return array
 	 */
 	public function paramProvider() {
-		return array(
-			array( 'hackingAttempt', 'inject', array( false, false ) ),
-			array( 'bold', 'yes', array( 'font-weight', 'bold' ) ),
-			array( 'underline', 'yes', array( 'text-decoration', 'underline' ) ),
-			array( 'italic', 'no  ', array( 'font-style', 'normal' ) ), // Trim value
-			array( ' sodipodi:role', 'line', array( 'sodipodi:role', 'line' ) ), // Trim parameter
-			array( 'xml:type', 'test', array( 'xml:type', 'test' ) ), // Custom parameter pass-through
-			array( 'xml:type', '', array( 'xml:type', false ) ) // '' becomes false
-		);
+		return [
+			[ 'hackingAttempt', 'inject', [ false, false ] ],
+			[ 'bold', 'yes', [ 'font-weight', 'bold' ] ],
+			[ 'underline', 'yes', [ 'text-decoration', 'underline' ] ],
+			[ 'italic', 'no  ', [ 'font-style', 'normal' ] ], // Trim value
+			[ ' sodipodi:role', 'line', [ 'sodipodi:role', 'line' ] ], // Trim parameter
+			[ 'xml:type', 'test', [ 'xml:type', 'test' ] ], // Custom parameter pass-through
+			[ 'xml:type', '', [ 'xml:type', false ] ] // '' becomes false
+		];
 	}
 	/**
 	 * @dataProvider paramProvider
@@ -123,17 +123,17 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @return array
 	 */
 	public function attribProvider() {
-		return array(
-			array( 'hackingAttempt', 'inject', array( false, false ) ),
-			array( 'font-weight', 'bold', array( 'bold', 'yes' ) ),
-			array( 'text-decoration', 'underline', array( 'underline', 'yes' ) ),
-			array( 'font-style', 'normal  ', array( 'italic', 'no' ) ), // Trim value
-			array( ' sodipodi:role', 'line', array( 'sodipodi:role', 'line' ) ), // Trim parameter
-			array( 'fill', '#ccc', array( 'color', '#ccc' ) ), // fill to color
-			array( 'xml:type', 'test', array( 'xml:type', 'test' ) ), // Custom parameter pass-through
-			array( 'xml:type', '', array( 'xml:type', false ) ), // '' becomes false
-			array( 'font-family', 'Sans', array( 'font-family', 'sans-serif' ) ) // Hard coded mapping
-		);
+		return [
+			[ 'hackingAttempt', 'inject', [ false, false ] ],
+			[ 'font-weight', 'bold', [ 'bold', 'yes' ] ],
+			[ 'text-decoration', 'underline', [ 'underline', 'yes' ] ],
+			[ 'font-style', 'normal  ', [ 'italic', 'no' ] ], // Trim value
+			[ ' sodipodi:role', 'line', [ 'sodipodi:role', 'line' ] ], // Trim parameter
+			[ 'fill', '#ccc', [ 'color', '#ccc' ] ], // fill to color
+			[ 'xml:type', 'test', [ 'xml:type', 'test' ] ], // Custom parameter pass-through
+			[ 'xml:type', '', [ 'xml:type', false ] ], // '' becomes false
+			[ 'font-family', 'Sans', [ 'font-family', 'sans-serif' ] ] // Hard coded mapping
+		];
 	}
 	/**
 	 * @dataProvider attribProvider
@@ -155,16 +155,16 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	public function translationProvider() {
 		global $wgTranslateSvgTemplateName;
 		$tn = $wgTranslateSvgTemplateName;
-		return array(
-			array(
+		return [
+			[
 				'Foo{{' . $tn . '|x=|y=|font-family=other|font-size=|units=other|color=|underline=no|italic=no|bold=yes}}',
-				array( 'text' => 'Foo', 'font-weight' => 'bold', 'text-decoration' => 'normal', 'font-style' => 'normal' )
-			),
-			array(
+				[ 'text' => 'Foo', 'font-weight' => 'bold', 'text-decoration' => 'normal', 'font-style' => 'normal' ]
+			],
+			[
 				'Foo{{' . $tn . '|x=|y=|font-family=other|font-size=12|units=px|color=|underline=no|italic=no|bold=yes}}',
-				array( 'text' => 'Foo', 'font-weight' => 'bold', 'text-decoration' => 'normal', 'font-style' => 'normal', 'font-size' => '12px' )
-			)
-		);
+				[ 'text' => 'Foo', 'font-weight' => 'bold', 'text-decoration' => 'normal', 'font-style' => 'normal', 'font-size' => '12px' ]
+			]
+		];
 	}
 
 	/**
@@ -192,13 +192,13 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @return array
 	 */
 	public function langProvider() {
-		return array(
-			array( 'en_GB', 'en-gb', 'British English' ),
-			array( 'fr', 'fr', 'français' ),
-			array( 'fr_BZ', 'fr-bz', 'français' ), // fr-bz doesn't exist in ISO but fr does
-			array( 'zz_BZ', 'zz-bz', 'zz-bz' ), // neither zz-bz nor zz doesn't exist in ISO
-			array( 'fallback', 'fallback', 'Deutsch' ) // fallback defined as de
-		);
+		return [
+			[ 'en_GB', 'en-gb', 'British English' ],
+			[ 'fr', 'fr', 'français' ],
+			[ 'fr_BZ', 'fr-bz', 'français' ], // fr-bz doesn't exist in ISO but fr does
+			[ 'zz_BZ', 'zz-bz', 'zz-bz' ], // neither zz-bz nor zz doesn't exist in ISO
+			[ 'fallback', 'fallback', 'Deutsch' ] // fallback defined as de
+		];
 	}
 
 	/**
@@ -207,7 +207,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @param string $langCode The expected output, i.e. the 'lang code' form of the name, e.g. pt-br
 	 * @covers TranslateSvgUtils::osToLangCode
 	 */
-	public function testOsToLangCode( $os, $langCode ){
+	public function testOsToLangCode( $os, $langCode ) {
 		$this->assertEquals( $langCode, TranslateSvgUtils::osToLangCode( $os ) );
 	}
 
@@ -217,7 +217,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * @param string $langCode The 'lang code' form of the name to transform, e.g. pt-br
 	 * @covers TranslateSvgUtils::langCodeToOs
 	 */
-	public function testLangCodeToOs( $os, $langCode ){
+	public function testLangCodeToOs( $os, $langCode ) {
 		$this->assertEquals( $os, TranslateSvgUtils::langCodeToOs( $langCode ) );
 	}
 

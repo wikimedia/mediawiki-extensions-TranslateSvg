@@ -1,22 +1,33 @@
 <?php
-/*
-	TranslateSvg extension (c) 2012 Harry Burt (http://harryburt.co.uk) on a
-	file by file basis.
-
-	Licensed freely under GNU General Public License Version 2, June 1991
-	For terms of use, see http://www.opensource.org/licenses/gpl-2.0.php.
-*/
-
-$wgExtensionCredits['specialpage'][] = array(
+/**
+ * MediaWiki extension TranslateSvg
+ * Copyright (C) 2012 Harry Burt
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ */
+$wgExtensionCredits['specialpage'][] = [
 	'path'           => __FILE__,
 	'name'           => 'TranslateSVG',
 	'author'         => 'Harry Burt',
 	'url'            => 'https://www.mediawiki.org/wiki/Extension:TranslateSvg/2.0',
 	'descriptionmsg' => 'translatesvg-desc',
 	'version'        => '2.1.0',
-);
+	'license'        => 'GPL-2.0-or-later',
+];
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = __DIR__ . '/';
 $wgAutoloadClasses['SpecialTranslateNewSVG'] = $dir . 'SpecialTranslateNewSVG.php';
 $wgAutoloadClasses['SVGFile'] = $dir . 'SVGFile.php';
 $wgAutoloadClasses['SVGFormatWriter'] = $dir . 'SVGFormatWriter.php';
@@ -26,7 +37,7 @@ $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgAutoloadClasses['ExportSVGMessagesTask'] = $dir . 'TranslateSvgTasks.php';
 $wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
 
-if( defined( 'MW_PHPUNIT_TEST' ) ) {
+if ( defined( 'MW_PHPUNIT_TEST' ) ) {
 	define( 'MW_PHPUNIT_USE_AUTOLOAD', true );
 	require_once $dir . 'tests/phpunit/bootstrap.php';
 }
@@ -34,35 +45,35 @@ if( defined( 'MW_PHPUNIT_TEST' ) ) {
 $wgMessagesDirs['TranslateSvg'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
 
-$wgResourceModules['jquery.colorpicker'] = array(
-	'scripts'       => array( 'resources/jquery.colorpicker.js' ),
-	'styles'        => array( 'resources/jquery.colorpicker.css' ),
-	'localBasePath' => dirname( __FILE__ ),
+$wgResourceModules['jquery.colorpicker'] = [
+	'scripts'       => [ 'resources/jquery.colorpicker.js' ],
+	'styles'        => [ 'resources/jquery.colorpicker.css' ],
+	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'TranslateSvg'
-);
+];
 
-$wgResourceModules['ext.translatesvg'] = array(
-	'scripts'       => array( 'resources/ext.translatesvg.core.js' ),
-	'dependencies'  => array(
+$wgResourceModules['ext.translatesvg'] = [
+	'scripts'       => [ 'resources/ext.translatesvg.core.js' ],
+	'dependencies'  => [
 		'jquery.form',
 		'jquery.ui.dialog',
 		'jquery.colorpicker',
 		'json',
 		'ext.translate.hooks'
-	),
-	'messages'      => array(
+	],
+	'messages'      => [
 		'translate-taction-mstats-svgmg',
 		'translate-taction-export-svgmg',
 		'translate-page-description-legend-svgmg'
-	),
-	'localBasePath' => dirname( __FILE__ ),
+	],
+	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'TranslateSvg'
-);
+];
 
-$wgResourceModules['ext.translatesvg.filepage'] = array(
-	'scripts'       => array( 'resources/ext.translatesvg.filepage.js' ),
-	'dependencies'  => array( 'mediawiki.Uri' ),
-	'messages'      => array(
+$wgResourceModules['ext.translatesvg.filepage'] = [
+	'scripts'       => [ 'resources/ext.translatesvg.filepage.js' ],
+	'dependencies'  => [ 'mediawiki.Uri' ],
+	'messages'      => [
 		'translate-svg-filepage-caption',
 		'translate-svg-filepage-caption-translator',
 		'translate-svg-filepage-edit',
@@ -72,10 +83,10 @@ $wgResourceModules['ext.translatesvg.filepage'] = array(
 		'translate-svg-filepage-other',
 		'translate-svg-filepage-invite',
 		'comma-separator'
-	),
-	'localBasePath' => dirname( __FILE__ ),
+	],
+	'localBasePath' => __DIR__,
 	'remoteExtPath' => 'TranslateSvg'
-);
+];
 
 $wgHooks['BeforePageDisplay'][] = 'TranslateSvgHooks::updateFileDescriptionPages';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'TranslateSvgHooks::schemaUpdates';
@@ -104,7 +115,7 @@ $wgTranslateMessageNamespaces[] = NS_FILE;
  * List of typefaces (or keywords) that can safely be incorporated into SVG
  * images, not including "(inherit)", the default.
  */
-$wgTranslateSvgTypefaces = array( 'serif', 'sans-serif', 'monospace' );
+$wgTranslateSvgTypefaces = [ 'serif', 'sans-serif', 'monospace' ];
 
 $wgTranslateSvgTemplateName = 'Translation properties';
 
@@ -120,7 +131,7 @@ $wgTranslateSvgDirectory = false;
  */
 $wgTranslateSvgPath = false;
 
-$wgTranslateSvgColors = array(
+$wgTranslateSvgColors = [
 	'#ffffff', '#ffccc9', '#ffce93', '#fffc9e', '#ffffc7', '#9aff99', '#96fffb',
 	'#cdffff', '#cbcefb', '#cfcfcf', '#fd6864', '#fe996b', '#fffe65', '#fcff2f',
 	'#67fd9a', '#38fff8', '#68fdff', '#9698ed', '#c0c0c0', '#fe0000', '#f8a102',
@@ -130,20 +141,20 @@ $wgTranslateSvgColors = array(
 	'#329a9d', '#3531ff', '#6200c9', '#343434', '#680100', '#963400', '#986536',
 	'#646809', '#036400', '#34696d', '#00009b', '#303498', '#000000', '#330001',
 	'#643403', '#663234', '#343300', '#013300', '#003532', '#010066'
-);
+];
 
 $wgTranslateSvgBotName = 'SVG translation updater';
 $wgReservedUsernames[] = & $wgTranslateSvgBotName;
 
-$wgTranslateSvgDefaultProperties = array(
+$wgTranslateSvgDefaultProperties = [
 	'x'         => '', 'y' => '', 'font-family' => 'other',
 	'font-size' => '', 'units' => 'other', 'color' => '',
 	'underline' => '', 'italic' => '', 'bold' => ''
-);
-$wgTranslateSvgOptionalProperties = array(
+];
+$wgTranslateSvgOptionalProperties = [
 	'id',
 	'data-children',
 	'xml:space',
 	'sodipodi:role',
 	'sodipodi:linespacing'
-);
+];

@@ -86,7 +86,7 @@ class TranslateSvgUtils {
 
 		if ( !in_array( $name, $supported ) ) {
 			// Quietly drop: injection attempt?
-			return array( false, false );
+			return [ false, false ];
 		}
 		switch ( $name ) {
 			case 'bold':
@@ -108,7 +108,7 @@ class TranslateSvgUtils {
 		if ( $value === '' ) {
 			$value = false;
 		}
-		return array( $name, $value );
+		return [ $name, $value ];
 	}
 
 	/**
@@ -127,16 +127,16 @@ class TranslateSvgUtils {
 		$value = trim( $value );
 
 		$supported = array_merge(
-			array(
+			[
 				'x', 'y', 'font-size', 'font-weight', 'font-style',
 				'text-decoration', 'font-family', 'fill', 'style',
 				'systemLanguage'
-			),
+			],
 			$wgTranslateSvgOptionalProperties
 		);
 		if ( !in_array( $name, $supported ) ) {
 			// Not editable, so not suitable for extraction
-			return array( false, false );
+			return [ false, false ];
 		}
 
 		switch ( $name ) {
@@ -153,7 +153,7 @@ class TranslateSvgUtils {
 				$value = ( $value === 'underline' ) ? 'yes' : 'no';
 				break;
 			case 'font-family':
-				$map = array( 'Sans' => 'sans-serif' );
+				$map = [ 'Sans' => 'sans-serif' ];
 				$value = isset( $map[$value] ) ? $map[$value] : $value;
 				break;
 			case 'fill':
@@ -164,7 +164,7 @@ class TranslateSvgUtils {
 			// Drop empty attributes altogether
 			$value = false;
 		}
-		return array( $name, $value );
+		return [ $name, $value ];
 	}
 
 	/**
@@ -177,7 +177,7 @@ class TranslateSvgUtils {
 	 */
 	public static function translationToArray( $translation ) {
 		// Start with text
-		$array = array( 'text' => self::stripPropertyString( $translation ) );
+		$array = [ 'text' => self::stripPropertyString( $translation ) ];
 
 		// Build array from property string
 		$propertyString = self::extractPropertyString( $translation );
@@ -247,7 +247,7 @@ class TranslateSvgUtils {
 	 * @param string $os
 	 * @return mixed
 	 */
-	public static function osToLangCode( $os ){
+	public static function osToLangCode( $os ) {
 		return str_replace( '_', '-', strtolower( $os ) );
 	}
 
@@ -258,7 +258,7 @@ class TranslateSvgUtils {
 	 * @param string $langCode
 	 * @return string
 	 */
-	public static function langCodeToOs( $langCode ){
+	public static function langCodeToOs( $langCode ) {
 		if ( strpos( $langCode, '-' ) === false ) {
 			// No territory specified, so no change to make (fr => fr)
 			return $langCode;

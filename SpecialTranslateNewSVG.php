@@ -42,7 +42,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		if ( $srcLang !== null && Language::isValidBuiltInCode( $srcLang ) ) {
 			if ( $this->addSVGGroup( $groupName, $srcLang ) ) {
 				$target = SpecialPage::getTitleFor( 'Translate' );
-				$params = array( 'group' => $groupName, 'chooselanguage' => true );
+				$params = [ 'group' => $groupName, 'chooselanguage' => true ];
 				$this->getOutput()->redirect( $target->getLocalUrl( $params ) );
 			} else {
 				$this->getOutput()->addWikiMsg( 'translate-svg-new-error-import' );
@@ -55,7 +55,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 
 	protected function addSVGGroup( $groupName, $srcLang ) {
 		$group = new SVGMessageGroup( $groupName );
-		if( $group === false ) {
+		if ( $group === false ) {
 			return false;
 		}
 		$group->setSourceLanguage( $srcLang );
@@ -67,9 +67,9 @@ class SpecialTranslateNewSVG extends SpecialPage {
 		$default = ( $srcLang === null ) ? $this->getLanguage()->getCode() : $srcLang;
 		$this->getOutput()->addHTML(
 			Html::openElement(
-				'form', array(
+				'form', [
 					'method' => 'post', 'action' => $wgScript, 'id' => 'specialtranslateNewSVG'
-				)
+				]
 			) .
 			Html::openElement( 'fieldset' ) .
 			Html::element( 'legend', null, $this->msg( 'translate-svg-chooselanguage-title' )->text() ) .

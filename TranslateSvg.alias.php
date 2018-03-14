@@ -3,121 +3,119 @@
  * Allows the special page title to be translated to another language.
  * The page title can be customized into another language
  */
-// @codingStandardsIgnoreFile
-
-$specialPageAliases = array();
+$specialPageAliases = [];
 
 /** English (English) */
-$specialPageAliases['en'] = array(
-	'TranslateNewSVG' => array( 'TranslateNewSVG' ),
-);
+$specialPageAliases['en'] = [
+	'TranslateNewSVG' => [ 'TranslateNewSVG' ],
+];
 
 /** Arabic (العربية) */
-$specialPageAliases['ar'] = array(
-	'TranslateNewSVG' => array( 'ترجمة_إس_في_جي_جديدة' ),
-);
+$specialPageAliases['ar'] = [
+	'TranslateNewSVG' => [ 'ترجمة_إس_في_جي_جديدة' ],
+];
 
 /** Egyptian Arabic (مصرى) */
-$specialPageAliases['arz'] = array(
-	'TranslateNewSVG' => array( 'ترجمه_اس_فى_جى_جديد' ),
-);
+$specialPageAliases['arz'] = [
+	'TranslateNewSVG' => [ 'ترجمه_اس_فى_جى_جديد' ],
+];
 
 /** Western Balochi (بلوچی رخشانی) */
-$specialPageAliases['bgn'] = array(
-	'TranslateNewSVG' => array( 'نۆکین_اس_وی_جی_ئی_ترجمه' ),
-);
+$specialPageAliases['bgn'] = [
+	'TranslateNewSVG' => [ 'نۆکین_اس_وی_جی_ئی_ترجمه' ],
+];
 
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
-$specialPageAliases['cdo'] = array(
-	'TranslateNewSVG' => array( '翻譯新其SVG' ),
-);
+$specialPageAliases['cdo'] = [
+	'TranslateNewSVG' => [ '翻譯新其SVG' ],
+];
 
 /** German (Deutsch) */
-$specialPageAliases['de'] = array(
-	'TranslateNewSVG' => array( 'SVG_übersetzen' ),
-);
+$specialPageAliases['de'] = [
+	'TranslateNewSVG' => [ 'SVG_übersetzen' ],
+];
 
 /** Zazaki (Zazaki) */
-$specialPageAliases['diq'] = array(
-	'TranslateNewSVG' => array( 'SVGyoNeweAçarnayış' ),
-);
+$specialPageAliases['diq'] = [
+	'TranslateNewSVG' => [ 'SVGyoNeweAçarnayış' ],
+];
 
 /** Greek (Ελληνικά) */
-$specialPageAliases['el'] = array(
-	'TranslateNewSVG' => array( 'ΜετάφρασηΝέουSVG' ),
-);
+$specialPageAliases['el'] = [
+	'TranslateNewSVG' => [ 'ΜετάφρασηΝέουSVG' ],
+];
 
 /** Esperanto (Esperanto) */
-$specialPageAliases['eo'] = array(
-	'TranslateNewSVG' => array( 'Traduki_novan_SVG' ),
-);
+$specialPageAliases['eo'] = [
+	'TranslateNewSVG' => [ 'Traduki_novan_SVG' ],
+];
 
 /** Persian (فارسی) */
-$specialPageAliases['fa'] = array(
-	'TranslateNewSVG' => array( 'ترجمهٔ_اس‌وی‌جی_جدید' ),
-);
+$specialPageAliases['fa'] = [
+	'TranslateNewSVG' => [ 'ترجمهٔ_اس‌وی‌جی_جدید' ],
+];
 
 /** Hebrew (עברית) */
-$specialPageAliases['he'] = array(
-	'TranslateNewSVG' => array( 'תרגום_SVG_חדש' ),
-);
+$specialPageAliases['he'] = [
+	'TranslateNewSVG' => [ 'תרגום_SVG_חדש' ],
+];
 
 /** Upper Sorbian (hornjoserbsce) */
-$specialPageAliases['hsb'] = array(
-	'TranslateNewSVG' => array( 'SVG_přełožować' ),
-);
+$specialPageAliases['hsb'] = [
+	'TranslateNewSVG' => [ 'SVG_přełožować' ],
+];
 
 /** Japanese (日本語) */
-$specialPageAliases['ja'] = array(
-	'TranslateNewSVG' => array( '新規SVG変換' ),
-);
+$specialPageAliases['ja'] = [
+	'TranslateNewSVG' => [ '新規SVG変換' ],
+];
 
 /** Korean (한국어) */
-$specialPageAliases['ko'] = array(
-	'TranslateNewSVG' => array( '새SVG번역' ),
-);
+$specialPageAliases['ko'] = [
+	'TranslateNewSVG' => [ '새SVG번역' ],
+];
 
 /** Luxembourgish (Lëtzebuergesch) */
-$specialPageAliases['lb'] = array(
-	'TranslateNewSVG' => array( 'Nei_SVGen_iwwersetzen' ),
-);
+$specialPageAliases['lb'] = [
+	'TranslateNewSVG' => [ 'Nei_SVGen_iwwersetzen' ],
+];
 
 /** Macedonian (македонски) */
-$specialPageAliases['mk'] = array(
-	'TranslateNewSVG' => array( 'ПреведиНовSVG' ),
-);
+$specialPageAliases['mk'] = [
+	'TranslateNewSVG' => [ 'ПреведиНовSVG' ],
+];
 
 /** Malayalam (മലയാളം) */
-$specialPageAliases['ml'] = array(
-	'TranslateNewSVG' => array( 'പുതിയഎസ്.വി.ജി.പരിഭാഷ' ),
-);
+$specialPageAliases['ml'] = [
+	'TranslateNewSVG' => [ 'പുതിയഎസ്.വി.ജി.പരിഭാഷ' ],
+];
 
 /** Norwegian Bokmål (norsk bokmål) */
-$specialPageAliases['nb'] = array(
-	'TranslateNewSVG' => array( 'Oversett_ny_SVG' ),
-);
+$specialPageAliases['nb'] = [
+	'TranslateNewSVG' => [ 'Oversett_ny_SVG' ],
+];
 
 /** Dutch (Nederlands) */
-$specialPageAliases['nl'] = array(
-	'TranslateNewSVG' => array( 'NieuweSVGVertalen' ),
-);
+$specialPageAliases['nl'] = [
+	'TranslateNewSVG' => [ 'NieuweSVGVertalen' ],
+];
 
 /** Norwegian Nynorsk (norsk nynorsk) */
-$specialPageAliases['nn'] = array(
-	'TranslateNewSVG' => array( 'Set_om_ny_SVG' ),
-);
+$specialPageAliases['nn'] = [
+	'TranslateNewSVG' => [ 'Set_om_ny_SVG' ],
+];
 
 /** Vietnamese (Tiếng Việt) */
-$specialPageAliases['vi'] = array(
-	'TranslateNewSVG' => array( 'Biên_dịch_SVG_mới' ),
-);
+$specialPageAliases['vi'] = [
+	'TranslateNewSVG' => [ 'Biên_dịch_SVG_mới' ],
+];
 
 /** Simplified Chinese (中文（简体）‎) */
-$specialPageAliases['zh-hans'] = array(
-	'TranslateNewSVG' => array( '翻译新SVG' ),
-);
+$specialPageAliases['zh-hans'] = [
+	'TranslateNewSVG' => [ '翻译新SVG' ],
+];
 
 /** Traditional Chinese (中文（繁體）‎) */
-$specialPageAliases['zh-hant'] = array(
-	'TranslateNewSVG' => array( '翻譯_SVG' ),
-);
+$specialPageAliases['zh-hant'] = [
+	'TranslateNewSVG' => [ '翻譯_SVG' ],
+];

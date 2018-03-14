@@ -31,9 +31,9 @@ class TranslateSvgHooks {
 		$file = wfFindFile( $title );
 		$thumbnail = Linker::makeThumbLinkObj(
 			$title, $file, wfMessage( 'translate-svg-js-thumbnail' ), '', $wgLang->alignEnd(),
-			array( 'width' => 275, 'height' => 275 )
+			[ 'width' => 275, 'height' => 275 ]
 		);
-		$boxes = array_merge( array( 'thumbnail' => $thumbnail ), $boxes );
+		$boxes = array_merge( [ 'thumbnail' => $thumbnail ], $boxes );
 
 		return true;
 	}
@@ -122,7 +122,7 @@ class TranslateSvgHooks {
 	 */
 	public static function propertiesToExtraInputs( &$message, &$extraInputs ) {
 		global $wgTranslateSvgTypefaces, $wgTranslateSvgColors;
-		$allowedUnits = array( 'px', 'pt', '%', 'em' );
+		$allowedUnits = [ 'px', 'pt', '%', 'em' ];
 
 		if ( !TranslateSvgUtils::hasPropertyString( $message ) ) {
 			return true;
@@ -141,10 +141,10 @@ class TranslateSvgHooks {
 				case 'y':
 				case 'font-size':
 					$extraInputs .= Xml::inputLabel(
-						                wfMessage( 'translate-js-label-' . $index )->text(),
-						                'mw-translate-prop-' . $index, 'mw-translate-prop-' . $index, 2, $currentValue,
-						                array( 'type' => 'number', 'step' => 'any', 'style' => 'width:3em;' )
-					                ) . "&#160;";
+						wfMessage( 'translate-js-label-' . $index )->text(),
+						'mw-translate-prop-' . $index, 'mw-translate-prop-' . $index, 2, $currentValue,
+						[ 'type' => 'number', 'step' => 'any', 'style' => 'width:3em;' ]
+					) . "&#160;";
 					break;
 				case 'font-family':
 					$typefaces = $wgTranslateSvgTypefaces;
@@ -155,29 +155,29 @@ class TranslateSvgHooks {
 						$typefaces[] = $currentValue;
 					}
 					$extraInputs .= Xml::label(
-						                wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
-					                ) .
-					                "&#160;" . Xml::listDropDown(
-						                'mw-translate-prop-' . $index, implode( "\n", $wgTranslateSvgTypefaces ),
-						                wfMessage( 'translate-js-font-family-inherit' )->text(), $currentValue
-					                ) . "&#160;";
+							wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
+						) .
+							"&#160;" . Xml::listDropDown(
+							'mw-translate-prop-' . $index, implode( "\n", $wgTranslateSvgTypefaces ),
+							wfMessage( 'translate-js-font-family-inherit' )->text(), $currentValue
+						) . "&#160;";
 					break;
 				case 'units':
 					$extraInputs .= Xml::label(
-						                wfMessage( 'translate-js-label-' . $index )->text(),
-						                'mw-translate-prop-' . $index
-					                ) .
-					                "&#160;" . Xml::listDropDown(
-						                'mw-translate-prop-' . $index, implode( "\n", $allowedUnits ),
-						                '', $currentValue
-					                ) . "&#160;";
+							wfMessage( 'translate-js-label-' . $index )->text(),
+							'mw-translate-prop-' . $index
+						) .
+						"&#160;" . Xml::listDropDown(
+							'mw-translate-prop-' . $index, implode( "\n", $allowedUnits ),
+							'', $currentValue
+						) . "&#160;";
 					break;
 				case 'bold':
 				case 'italic':
 				case 'underline':
 					$checked = ( $currentValue === 'yes' );
-					$extraInputs .= Html::openElement( 'span', array( 'style' => 'white-space:nowrap;' ) )
-					                . Xml::checkLabel(
+					$extraInputs .= Html::openElement( 'span', [ 'style' => 'white-space:nowrap;' ] )
+						. Xml::checkLabel(
 							wfMessage( 'translate-js-label-' . $index )->text(),
 							'mw-translate-prop-' . $index, 'mw-translate-prop-' . $index, $checked
 						) . Html::closeElement( 'span' ) . " ";
@@ -186,12 +186,12 @@ class TranslateSvgHooks {
 					$colors = $wgTranslateSvgColors;
 					$colors[] = $currentValue;
 					$extraInputs .= Xml::label(
-						                wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
-					                ) .
-					                "&#160;" . Xml::listDropDown(
-						                'mw-translate-prop-' . $index, implode( "\n", $colors ),
-						                '', $currentValue
-					                ) . "&#160;";
+							wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
+						) .
+						"&#160;" . Xml::listDropDown(
+							'mw-translate-prop-' . $index, implode( "\n", $colors ),
+							'', $currentValue
+						) . "&#160;";
 					break;
 			}
 		}
@@ -251,9 +251,9 @@ class TranslateSvgHooks {
 	 */
 	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
 		if ( isset( $nondefaults['group'] )
-		     && MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
-		     && isset( $nondefaults['taction'] )
-		     && $nondefaults['taction'] == 'export'
+			&& MessageGroups::getGroup( $nondefaults['group'] ) instanceof SVGMessageGroup
+			&& isset( $nondefaults['taction'] )
+			&& $nondefaults['taction'] == 'export'
 		) {
 			$nondefaults['task'] = 'export-as-svg';
 		}
@@ -283,11 +283,11 @@ class TranslateSvgHooks {
 	public static function schemaUpdates( $updater ) {
 		$dir = __DIR__ . '/sql';
 
-		$updater->addExtensionUpdate( array( 'addTable', 'translate_svg', "$dir/translate_svg.sql", true ) );
+		$updater->addExtensionUpdate( [ 'addTable', 'translate_svg', "$dir/translate_svg.sql", true ] );
 		return true;
 	}
 
-	/*
+	/**
 	 * Function used to add modules via the resource loader on
 	 * the file pages of SVG files via the BeforePageDisplay MediaWiki hook
 	 *
@@ -322,7 +322,7 @@ class TranslateSvgHooks {
 			$language = isset( $params['language'] ) ?
 				$params['language'] : $g->getSourceLanguage();
 
-			$inProgressTranslations = array();
+			$inProgressTranslations = [];
 			if ( isset( $params['inprogress'] ) ) {
 				$inProgressTranslations = json_decode( $params['inprogress'], true );
 			}
@@ -342,12 +342,12 @@ class TranslateSvgHooks {
 	 * @return bool True
 	 */
 	public static function addAPIParams( &$params ) {
-		$params['inprogress'] = array(
+		$params['inprogress'] = [
 			ApiBase::PARAM_TYPE => 'string'
-		);
-		$params['language'] = array(
+		];
+		$params['language'] = [
 			ApiBase::PARAM_TYPE => 'string'
-		);
+		];
 		return true;
 	}
 
@@ -380,9 +380,9 @@ class TranslateSvgHooks {
 	public static function loadSVGGroups( &$list, &$deps, &$autoload ) {
 		$dbr = wfGetDB( DB_MASTER );
 
-		$tables = array( 'translate_svg', 'page' );
+		$tables = [ 'translate_svg', 'page' ];
 		$col = '*';
-		$conds = array( 'page_id = ts_page_id' );
+		$conds = [ 'page_id = ts_page_id' ];
 		$res = $dbr->select( $tables, $col, $conds, __METHOD__ );
 
 		foreach ( $res as $r ) {
@@ -421,28 +421,28 @@ class TranslateSvgHooks {
 		if ( !$vars['wgFileCanBeTranslated'] || MessageGroups::getGroup( $id ) === null ) {
 			// Not translatable or not yet translated, let's save time and return immediately
 			$vars['wgFileTranslationStarted'] = false;
-			$vars['wgFileFullTranslations'] = array();
-			$vars['wgFilePartialTranslations'] = array();
+			$vars['wgFileFullTranslations'] = [];
+			$vars['wgFilePartialTranslations'] = [];
 			return true;
 		}
 
 		$languages = $svg->getSavedLanguagesFiltered();
-		$full = array();
-		$partial = array();
+		$full = [];
+		$partial = [];
 		foreach ( $languages['full'] as $language ) {
 			array_push(
-				$full, array(
+				$full, [
 					'name' => Language::fetchLanguageName( $language ),
 					'code' => $language
-				)
+				]
 			);
 		}
 		foreach ( $languages['partial'] as $language ) {
 			array_push(
-				$partial, array(
+				$partial, [
 					'name' => Language::fetchLanguageName( $language ),
 					'code' => $language
-				)
+				]
 			);
 		}
 		$vars['wgFileFullTranslations'] = $full;

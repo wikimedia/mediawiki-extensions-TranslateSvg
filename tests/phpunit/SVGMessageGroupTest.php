@@ -55,7 +55,7 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 	}
 
 	public function provideSetSourceLanguage() {
-		return array( array( 'de' ), array( 'en' ) );
+		return [ [ 'de' ], [ 'en' ] ];
 	}
 
 	public function testGetId() {
@@ -96,7 +96,7 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		// Clearly this is dependent on the translations having been imported correctly
 		// Note that 'tlh-ca' is dropped since it is not supported by MediaWiki.
 		$this->assertArrayEquals(
-			array( 'de', 'en', 'fr', 'nl' ),
+			[ 'de', 'en', 'fr', 'nl' ],
 			$this->messageGroup->getOnWikiLanguages()
 		);
 	}

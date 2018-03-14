@@ -29,7 +29,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 
 		$title = Title::newFromText( $filename, NS_FILE );
 
-		if( $title === null || !$title->exists() ) {
+		if ( $title === null || !$title->exists() ) {
 			throw new MWException( 'File not found' );
 		}
 
@@ -66,9 +66,8 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 
 		$desc = "[[$prefixedFilename|thumb|" . $wgLang->alignEnd() . "|upright|275x275px]]" . "\n" .
-		        Html::rawElement( 'div', array( 'style' => 'overflow:auto; padding:2px;' ), $rev );
+			Html::rawElement( 'div', [ 'style' => 'overflow:auto; padding:2px;' ], $rev );
 		$this->setDescription( $desc );
-
 	}
 
 	/**
@@ -84,7 +83,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * @return \array Array of messages keys with definitions.
 	 */
 	public function getDefinitions() {
-		$definitions = array();
+		$definitions = [];
 		$subpages = Title::makeTitleSafe( $this->getNamespace(), $this->source )->getSubpages();
 		foreach ( $subpages as $subpage ) {
 			/** @var Title $subpage */
@@ -164,7 +163,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 					// @todo: consider whether an update of the page is in order
 					continue;
 				}
-				if( !$title->userCan( 'create', $bot ) ) {
+				if ( !$title->userCan( 'create', $bot ) ) {
 					// Needs to be created, can't be, so fail
 					return false;
 				}
@@ -172,7 +171,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 				$summary = wfMessage( 'translate-svg-autocreate' )->inContentLanguage()->text();
 				$content = ContentHandler::makeContent( $translation, $title );
 				$status = $wikiPage->doEditContent( $content, $summary, 0, false, $bot );
-				if( !$status->isOK() ) {
+				if ( !$status->isOK() ) {
 					// Needs to be created, couldn't, so fail
 					return false;
 				}
@@ -211,10 +210,11 @@ class SVGMessageGroup extends WikiMessageGroup {
 	/**
 	 * Returns a list of languages the file has been translated into *on wiki*
 	 * i.e. some of those may not have been saved back to the file yet.
+	 * @return array
 	 */
 	public function getOnWikiLanguages() {
 		$stats = MessageGroupStats::forGroup( $this->getId() );
-		$languages = array();
+		$languages = [];
 		foreach ( $stats as $language => $data ) {
 			$translatedCount = $data[MessageGroupStats::TRANSLATED];
 			$fuzzyCount = $data[MessageGroupStats::FUZZY];
@@ -225,18 +225,18 @@ class SVGMessageGroup extends WikiMessageGroup {
 		return $languages;
 	}
 
-	/*
+	/**
 	 * Extract translations from on wiki
 	 *
 	 * @param bool $forceUpdate Force the regeneration the list (default: false)
 	 * @return array Array of translations (indexed by ID, then langcode, then property)
 	 */
 	public function getOnWikiTranslations( $forceUpdate = false ) {
-		if( $this->onWikiTranslations !== null && !$forceUpdate ) {
+		if ( $this->onWikiTranslations !== null && !$forceUpdate ) {
 			return $this->onWikiTranslations;
 		}
 
-		$onWikiTranslations = array();
+		$onWikiTranslations = [];
 		$languages = $this->getOnWikiLanguages();
 
 		// Translations generated onwiki
@@ -258,7 +258,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 				$language = ( $this->getSourceLanguage() == $language ) ? 'fallback' : $language;
 				$item = TranslateSvgUtils::translationToArray( $translation );
 				if ( !isset( $onWikiTranslations[$key] ) ) {
-					$onWikiTranslations[$key] = array();
+					$onWikiTranslations[$key] = [];
 				}
 				$onWikiTranslations[$key][$language] = $item;
 			}
@@ -272,18 +272,18 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$articleId = Title::newFromText( $this->getLabel(), NS_FILE )->getArticleId();
 
 		$dbw = wfGetDB( DB_MASTER );
-		$row = array( 'ts_page_id' => $articleId );
+		$row = [ 'ts_page_id' => $articleId ];
 
-		$dbw->insert( 'translate_svg', $row, __METHOD__, array( 'IGNORE' ) );
+		$dbw->insert( 'translate_svg', $row, __METHOD__, [ 'IGNORE' ] );
 
-		if( $dbw->affectedRows() === 0 ) {
+		if ( $dbw->affectedRows() === 0 ) {
 			// If $dbw->affectedRows() == 0, it already exists,
 			// but no particular reason to error out
 			return true;
 		}
 
 		MessageGroups::clearCache();
-		if( $useJobQueue ) {
+		if ( $useJobQueue ) {
 			MessageIndexRebuildJob::newJob()->insert();
 		} else {
 			MessageIndex::singleton()->rebuild();

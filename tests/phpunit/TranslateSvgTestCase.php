@@ -9,7 +9,8 @@
  */
 
 class TranslateSvgUpload extends UploadBase {
-	public function initializeFromRequest( &$request ) { }
+	public function initializeFromRequest( &$request ) {
+	}
 }
 class TranslateSvgTestCase extends MediaWikiTestCase {
 
@@ -30,7 +31,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$name = substr( basename( $path ), 0, -4 ) . '_' . date( 'His' ) . '.svg';
 		$name = str_replace( '_', ' ', $name );
 		$title = Title::makeTitle( NS_FILE, $name );
-		if( $title->exists()  ) {
+		if ( $title->exists() ) {
 			$wikiPage = new WikiPage( $title );
 			$wikiPage->doDeleteArticle( 'resetting' );
 			$subpages = $title->getSubpages();
@@ -60,28 +61,27 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 	}
 
 	public static function setUpBeforeClass() {
-
 		// Preserve the syntax of $this->setMwGlobals for future use
 		// but we can't use it te way it's written at the moment since we're static
-		$pairs = array(
+		$pairs = [
 			// Enable uploads
 			'wgEnableUploads' => true,
 
 			// Add .svg to list of supported file extensions
-			'wgFileExtensions' => array( 'png', 'gif', 'jpg', 'jpeg', 'svg' ),
+			'wgFileExtensions' => [ 'png', 'gif', 'jpg', 'jpeg', 'svg' ],
 
 			// Bot (who won't be a registered users) needs to be able to create pages
-			'wgGroupPermissions' => array(
-				'*' => array(
+			'wgGroupPermissions' => [
+				'*' => [
 					'createpage' => true,
 					'read' => true,
 					'edit' => true,
-				)
-			),
+				]
+			],
 
 			// Need to enable subpages in the File: namespace
-			'wgNamespacesWithSubpages' => array( NS_FILE => true )
-		);
+			'wgNamespacesWithSubpages' => [ NS_FILE => true ]
+		];
 
 		foreach ( $pairs as $key => $value ) {
 			$GLOBALS[$key] = $value;
@@ -90,7 +90,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 
 	public function setUp() {
 		parent::setUp();
-		if( isset( self::$name ) ) {
+		if ( isset( self::$name ) ) {
 			$this->messageGroup = new SVGMessageGroup( self::$name );
 		}
 	}
@@ -106,13 +106,13 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$title = Title::makeTitle( NS_FILE, self::$name );
 		$dbw = wfGetDB( DB_MASTER );
 
-		$conds = array( 'ts_page_id' => $title->getArticleID() );
+		$conds = [ 'ts_page_id' => $title->getArticleID() ];
 		$dbw->delete( 'translate_svg', $conds, __METHOD__ );
 
-		$conds = array( 'tmd_group' => self::$name );
+		$conds = [ 'tmd_group' => self::$name ];
 		$dbw->delete( 'translate_metadata', $conds, __METHOD__ );
 
-		if( !$title->exists() ) {
+		if ( !$title->exists() ) {
 			return;
 		}
 

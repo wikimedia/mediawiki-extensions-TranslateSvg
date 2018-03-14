@@ -33,7 +33,7 @@ class SVGFile {
 	 * @param string $fallbackLanguage
 	 * @todo Handle DOM warnings
 	 */
-	public function  __construct( $path, $fallbackLanguage ){
+	public function  __construct( $path, $fallbackLanguage ) {
 		// Save sourceLanguage for later (mostly so we can understand which language is the fallback)
 		$this->fallbackLanguage = $fallbackLanguage;
 
@@ -54,7 +54,7 @@ class SVGFile {
 	/**
 	 * Was the file successfully made translation ready i.e. is it translatable?
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function isTranslationReady() {
 		return $this->isTranslationReady;
@@ -69,7 +69,7 @@ class SVGFile {
 	 * @return bool False on failure, DOMDocument on success
 	 */
 	protected function makeTranslationReady() {
-		if( $this->isTranslationReady ) {
+		if ( $this->isTranslationReady ) {
 			return true;
 		}
 
@@ -124,13 +124,13 @@ class SVGFile {
 		}
 
 		// Strip empty tspans, texts, fill $idsInUse
-		$idsInUse = array( 0 );
-		$translatableNodes = array();
+		$idsInUse = [ 0 ];
+		$translatableNodes = [];
 		$tspans = $this->document->getElementsByTagName( 'tspan' );
 		$texts = $this->document->getElementsByTagName( 'text' );
 		foreach ( $tspans as $tspan ) {
-			if ($tspan->childNodes->length > 1
-			    || ( $tspan->childNodes->length == 1 && $tspan->childNodes->item(0)->nodeType !== XML_TEXT_NODE )
+			if ( $tspan->childNodes->length > 1
+				|| ( $tspan->childNodes->length == 1 && $tspan->childNodes->item( 0 )->nodeType !== XML_TEXT_NODE )
 			) {
 				return false; // Nested tspans not (yet) supported
 			}
@@ -162,7 +162,7 @@ class SVGFile {
 		}
 
 		// Reset $translatableNodes
-		$translatableNodes = array();
+		$translatableNodes = [];
 		$tspans = $this->document->getElementsByTagName( 'tspan' );
 		$texts = $this->document->getElementsByTagName( 'text' );
 		foreach ( $tspans as $tspan ) {
@@ -195,7 +195,7 @@ class SVGFile {
 
 			// Sort out switches
 			if ( $text->parentNode->nodeName !== 'switch'
-			     && $text->parentNode->nodeName !== 'svg:switch'
+				&& $text->parentNode->nodeName !== 'svg:switch'
 			) {
 				// Every text should now be in a switch
 				$switch = $this->document->createElementNS( $defaultNS, 'switch' );
@@ -220,8 +220,8 @@ class SVGFile {
 			for ( $j = 0; $j < $numChildren; $j++ ) {
 				$child = $text->childNodes->item( $j );
 				if ( $child->nodeType !== XML_TEXT_NODE
-				     && $child->nodeName !== 'tspan'
-				     && $child->nodeName !== 'svg:tspan'
+					&& $child->nodeName !== 'tspan'
+					&& $child->nodeName !== 'svg:tspan'
 				) {
 					// Tags other than tspan inside text tags are not (yet) supported
 					return false;
@@ -236,7 +236,7 @@ class SVGFile {
 			foreach ( $siblings as $sibling ) {
 				/** @var DOMElement $sibling */
 
-				$languagesPresent = array();
+				$languagesPresent = [];
 				if ( $sibling->nodeType === XML_TEXT_NODE ) {
 					if ( trim( $sibling->textContent ) !== '' ) {
 						// Text content inside switch but outside text tags is awkward.
@@ -289,8 +289,7 @@ class SVGFile {
 		return true;
 	}
 
-
-	/*
+	/**
 	 * Analyse the SVG file, extracting translations and other metadata. Expects the file to
 	 * be in a certain format: see self::makeTranslationReady() for details.
 	 *
@@ -299,8 +298,8 @@ class SVGFile {
 	protected function analyse() {
 		$switches = $this->document->getElementsByTagName( 'switch' );
 		$number = $switches->length;
-		$translations = array();
-		$this->filteredTextNodes = array(); // Reset
+		$translations = [];
+		$this->filteredTextNodes = []; // Reset
 
 		for ( $i = 0; $i < $number; $i++ ) {
 			/** @var DOMElement $switch */
@@ -399,7 +398,7 @@ class SVGFile {
 		return $this->savedLanguages;
 	}
 
-	/*
+	/**
 	 * Get a list of languages which have one or more translations in-file
 	 *
 	 * @return array Array of languages, split into 'full' and 'partial' subarrays
@@ -408,8 +407,8 @@ class SVGFile {
 		$translations = $this->getInFileTranslations();
 		$savedLanguages = $this->getSavedLanguages();
 
-		$full = array();
-		$partial = array();
+		$full = [];
+		$partial = [];
 		foreach ( $savedLanguages as $savedLanguage ) {
 			$fullSoFar = true;
 			foreach ( $translations as $languages ) {
@@ -424,7 +423,7 @@ class SVGFile {
 				$partial[] = $savedLanguage;
 			}
 		}
-		return array( 'full' => $full, 'partial' => $partial );
+		return [ 'full' => $full, 'partial' => $partial ];
 	}
 
 	/**
@@ -440,14 +439,14 @@ class SVGFile {
 		return $this->filteredTextNodes;
 	}
 
-	/*
+	/**
 	 * Compile an updated DOM model of the SVG using the provided set of translations
 	 *
 	 * @return array Array with keys 'expanded' and 'started', each an array of language names
 	 */
 	public function switchToTranslationSet( $translations ) {
 		$currentLanguages = $this->getSavedLanguages();
-		$expanded = $started = array();
+		$expanded = $started = [];
 
 		$switches = $this->document->getElementsByTagName( 'switch' );
 		$number = $switches->length;
@@ -472,7 +471,7 @@ class SVGFile {
 				}
 
 				// Prepare an array of "children" (sub-messages)
-				$children = array();
+				$children = [];
 				if ( isset( $translation['data-children'] ) ) {
 					$children = explode( '|', $translation['data-children'] );
 					foreach ( $children as &$child ) {
@@ -520,11 +519,10 @@ class SVGFile {
 		}
 		$this->reorderTexts();
 
-
-		return array(
+		return [
 			'started' => array_unique( $started ),
 			'expanded' => array_unique( $expanded )
-		);
+		];
 	}
 
 	/**
@@ -559,8 +557,8 @@ class SVGFile {
 	 * @return array An associative array of properties, including 'text'
 	 */
 	public function nodeToArray( DOMNode $node ) {
-		$array = array( 'text' => $node->textContent );
-		$attributes = ( $node->hasAttributes() ) ? $node->attributes : array();
+		$array = [ 'text' => $node->textContent ];
+		$attributes = ( $node->hasAttributes() ) ? $node->attributes : [];
 		foreach ( $attributes as $attribute ) {
 			$prefix = ( $attribute->prefix === '' ) ? '' : ( $attribute->prefix . ':' );
 			if ( $attribute->name === 'space' ) {
@@ -620,7 +618,7 @@ class SVGFile {
 	 * @return bool True if content found, false if not
 	 */
 	public static function hasActualTextContent( DOMNode $node ) {
-		//No text nodes means no text content
+		// No text nodes means no text content
 		if ( !$node->hasChildNodes() ) {
 			return false;
 		}
@@ -650,7 +648,7 @@ class SVGFile {
 	 *
 	 * @param string $text The text to search for $1, $2 etc.
 	 * @param array &$newNodes An array of DOMNodes, indexed by which $ number they represent
-	 * @param DOMNode &$parentNode  A node to fill with the generated content
+	 * @param DOMNode &$parentNode A node to fill with the generated content
 	 * @param DOMDocument $document Base document to use
 	 * @return void
 	 */
@@ -706,7 +704,7 @@ class SVGFile {
 			"//text[contains(@systemLanguage,'_')]" . "|" . "//svg:text[contains(@systemLanguage,'_')]"
 		);
 		$count = $sublocales->length;
-		for( $i = 0; $i < $count; $i++ ){
+		for ( $i = 0; $i < $count; $i++ ) {
 			$firstSibling = $sublocales->item( $i )->parentNode->childNodes->item( 0 );
 			$sublocales->item( $i )->parentNode->insertBefore( $sublocales->item( $i ), $firstSibling );
 		}
@@ -716,7 +714,7 @@ class SVGFile {
 			"//text[not(@systemLanguage)]" . "|" . "//svg:text[not(@systemLanguage)]"
 		);
 		$count = $fallbacks->length;
-		for( $i = 0; $i < $count; $i++ ){
+		for ( $i = 0; $i < $count; $i++ ) {
 			$fallbacks->item( $i )->parentNode->appendChild( $fallbacks->item( $i ) );
 		}
 	}

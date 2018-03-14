@@ -26,7 +26,7 @@ class SVGFormatWriter {
 	protected $filename;
 	protected $file;
 
-	protected $inProgressTranslations = array();
+	protected $inProgressTranslations = [];
 
 	/**
 	 * Constructor
@@ -34,7 +34,7 @@ class SVGFormatWriter {
 	 * @param SVGMessageGroup $group Message group to write to file
 	 * @param array $inProgressTranslations Possible array of overriddes (unsaved translations that should take preference over saved ones), format: [id][langcode][property name]
 	 */
-	public function __construct( SVGMessageGroup $group, $inProgressTranslations = array() ) {
+	public function __construct( SVGMessageGroup $group, $inProgressTranslations = [] ) {
 		$this->group = $group;
 		$this->svg = SVGFile::newFromMessageGroup( $this->group );
 		$this->inProgressTranslations = $inProgressTranslations;
@@ -50,11 +50,11 @@ class SVGFormatWriter {
 		return $this->inProgressTranslations;
 	}
 
-	/*
+	/**
 	 * Collate and prepare an array of translations from multiple sources:
 	 * in file, on wiki, filteredTextNodes and in-progress.
 	 *
-	 * return array Array of translations
+	 * @return array Array of translations
 	 */
 	protected function getPreferredTranslations() {
 		$inFileTranslations = $this->svg->getInFileTranslations();
@@ -72,7 +72,7 @@ class SVGFormatWriter {
 		// Collapse on-wiki translations translations into in-progress translations
 		foreach ( $onWikiTranslations as $key => $languages ) {
 			foreach ( $languages as $language => $translation ) {
-				$oldItem = isset( $inFileTranslations[$key][$language] ) ? $inFileTranslations[$key][$language] : array();
+				$oldItem = isset( $inFileTranslations[$key][$language] ) ? $inFileTranslations[$key][$language] : [];
 				$inFileTranslations[$key][$language] = $onWikiTranslations[$key][$language] + $oldItem;
 				if ( $language !== 'fallback' ) {
 					$inFileTranslations[$key][$language]['id'] = $inFileTranslations[$key]['fallback']['id'] . "-$language";
@@ -111,7 +111,7 @@ class SVGFormatWriter {
 	 */
 	public function thumbnailExport( $language, $size = 275 ) {
 		global $wgTranslateSvgDirectory, $wgTranslateSvgPath,
-		       $wgUploadDirectory, $wgUploadPath;
+			   $wgUploadDirectory, $wgUploadPath;
 
 		if ( !$wgTranslateSvgDirectory ) {
 			$wgTranslateSvgDirectory = "{$wgUploadDirectory}/translatesvg";
@@ -134,21 +134,21 @@ class SVGFormatWriter {
 		$nameHash = md5( $this->filename );
 		$nameHashPath = substr( $nameHash, 0, 1 ) . '/' . substr( $nameHash, 0, 2 );
 		$dstPath = $this->getBackend()->getRootStoragePath() .
-		           '/translatesvg-render/';
+			'/translatesvg-render/';
 		$dstName = "$nameHashPath/$contentsHash-" . $this->filename . '.png';
 		$dstUrl = $wgTranslateSvgPath . '/' . $dstName;
 
-		if ( $this->getBackend()->fileExists( array( 'src' => $dstPath . $dstName ) ) ) {
+		if ( $this->getBackend()->fileExists( [ 'src' => $dstPath . $dstName ] ) ) {
 			// We've already generated this SVG; no point regenerating
-			return array(
+			return [
 				'success' => true,
 				'message' => $dstUrl,
-			);
+			];
 		}
 
 		// Save the SVG to a temporary file
 		if ( !$this->svg->saveToPath( $srcPath ) ) {
-			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-temp-create' )->text() );
+			return [ 'success' => false, 'message' => wfMessage( 'thumbnail-temp-create' )->text() ];
 		}
 
 		// Work out appropriate height and width for thumbnail
@@ -167,30 +167,30 @@ class SVGFormatWriter {
 		// Used to rasterize the SVG into a PNG of a thumbnail size
 		$svgHandler = new SvgHandler();
 		if ( !$svgHandler->rasterize( $srcPath, $intPath, $width, $height, $language ) ) {
-			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() );
+			return [ 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() ];
 		}
 
 		// Create any containers/directories as needed...
 		$backend = $this->getBackend();
-		if ( !$backend->prepare( array( 'dir' => "$dstPath/$nameHashPath/" ) )->isOK() ) {
-			return array( 'success' => false, 'message' => wfMessage( 'thumbnail_dest_directory' )->text() );
+		if ( !$backend->prepare( [ 'dir' => "$dstPath/$nameHashPath/" ] )->isOK() ) {
+			return [ 'success' => false, 'message' => wfMessage( 'thumbnail_dest_directory' )->text() ];
 		}
 		// Store the file at the final storage path...
 		if ( !$backend->quickStore(
-			array(
+			[
 				'src' => $intPath, 'dst' => $dstPath . $dstName
-			)
+			]
 		)->isOK()
 		) {
-			return array( 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() );
+			return [ 'success' => false, 'message' => wfMessage( 'thumbnail-dest-create' )->text() ];
 		}
-		return array(
+		return [
 			'success' => true,
 			'message' => $dstUrl
-		);
+		];
 	}
 
-	/*
+	/**
 	 * Handles the actual upload process for a given SVG in DOMDocument form
 	 *
 	 * @param User $user The user to use for the upload
@@ -222,7 +222,7 @@ class SVGFormatWriter {
 		}
 		$comment = wfMessage(
 			'translate-svg-upload-comment',
-			array( $startedString, $expandedString )
+			[ $startedString, $expandedString ]
 		)->inContentLanguage();
 
 		// Save SVG to temp
@@ -274,7 +274,7 @@ class SVGFormatWriter {
 				// up having an illegal length of 0 bytes
 				$link = Html::element(
 					'a',
-					array( 'href' => 'https://phabricator.wikimedia.org/maniphest/task/create/?projects=TranslateSVG' ),
+					[ 'href' => 'https://phabricator.wikimedia.org/maniphest/task/create/?projects=TranslateSVG' ],
 					'phabricator.wikimedia.org'
 				);
 				return wfMessage( 'translate-svg-export-error' )->rawParams( $link )->escaped();
@@ -295,23 +295,23 @@ class SVGFormatWriter {
 		} else {
 			static $backend = null;
 			if ( !$backend ) {
-				$backend = new FSFileBackend( array(
+				$backend = new FSFileBackend( [
 					'name'           => 'translatesvg-backend',
 					'lockManager'    => 'nullLockManager',
-					'containerPaths' => array( 'translatesvg-render' => $wgTranslateSvgDirectory ),
+					'containerPaths' => [ 'translatesvg-render' => $wgTranslateSvgDirectory ],
 					'fileMode'       => 0777
-				) );
+				] );
 			}
 			return $backend;
 		}
 	}
 }
 
-/*
+/**
  * Empty class used to instantiate an instance of the otherwise abstract UploadBase
  * class.
  */
 
 class TranslateSvgUpload extends UploadBase {
-	public function initializeFromRequest( &$request ) { }
+	public function initializeFromRequest( &$request ) {}
 }
