@@ -50,6 +50,11 @@ $specialPageAliases['eo'] = [
 	'TranslateNewSVG' => [ 'Traduki_novan_SVG' ],
 ];
 
+/** Spanish (Español) */
+$specialPageAliases['es'] = [
+	'TranslateNewSVG' => [ 'Traducir_nuevo_SVG' ],
+];
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = [
 	'TranslateNewSVG' => [ 'ترجمهٔ_اس‌وی‌جی_جدید' ],
