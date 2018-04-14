@@ -6,7 +6,7 @@
  * @file
  * @author Harry Burt
  * @copyright Copyright © 2014 Harry Burt
- * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ * @license GPL-2.0-or-later
  */
 class SVGFile {
 	/**
