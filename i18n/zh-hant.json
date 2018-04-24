@@ -5,7 +5,8 @@
 			"Shirayuki",
 			"Simon Shek",
 			"LNDDYL",
-			"SupaplexTW"
+			"SupaplexTW",
+			"Kly"
 		]
 	},
 	"translatesvg-desc": "為轉譯符合SVG1.1規範的SVG提供一個原生樣式接口",
@@ -51,5 +52,7 @@
 	"translate-js-label-bold": "粗體",
 	"translate-js-label-italic": "斜體",
 	"translate-js-label-underline": "底線",
-	"translate-js-font-family-inherit": "（繼承）"
+	"translate-js-font-family-inherit": "（繼承）",
+	"apihelp-query+messagegroups-param-inprogress": "可能進行翻譯中的陣列（未儲存翻譯應優先於已儲存翻譯）。僅限 SVG 訊息群組。",
+	"apihelp-query+messagegroups-param-language": "呈現縮圖的語言。僅限 SVG 訊息群組。"
 }
