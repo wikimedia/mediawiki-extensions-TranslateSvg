@@ -16,6 +16,8 @@
 	"translate-svg-chooselanguage-title": "Επιλογή γλώσσας",
 	"translate-svg-new-label": "Γλώσσα:",
 	"translate-js-properties-legend": "Ιδιότητες",
+	"translate-js-label-x": "Χ-συντεταγμένη:",
+	"translate-js-label-y": "Y-συντεταγμένη:",
 	"translate-js-label-color": "Χρώμα:",
 	"translate-js-label-font-family": "Γραμματοσειρά:",
 	"translate-js-label-bold": "Έντονα",
