@@ -442,6 +442,10 @@ class SVGFileTest extends TranslateSvgTestCase {
 		$this->assertArrayEquals( $expected, $this->svg->getFilteredTextNodes() );
 	}
 
+	/**
+	 * @group Broken
+	 * @see https://phabricator.wikimedia.org/T179774
+	 */
 	public function testSwitchTranslationSetRoundtrip() {
 		// Functions already tested above
 		$origXml = $this->svg->saveToString();
