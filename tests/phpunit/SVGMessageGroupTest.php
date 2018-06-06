@@ -92,6 +92,10 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		MessageGroupStats::clearGroup( $this->messageGroup->getId() );
 	}
 
+	/**
+	 * @group Broken
+	 * @see https://phabricator.wikimedia.org/T196555
+	 */
 	public function testGetOnWikiLanguagesAfterImport() {
 		// Clearly this is dependent on the translations having been imported correctly
 		// Note that 'tlh-ca' is dropped since it is not supported by MediaWiki.
