@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robin van der Vliet"
+			"Robin van der Vliet",
+			"Mafcadio"
 		]
 	},
 	"translate-svg-filepage-other": "otra linguas",
-	"translate-svg-new-label": "Lingua:"
+	"translate-svg-new-label": "Lingua:",
+	"translate-js-label-bold": "Spesa",
+	"translate-js-label-italic": "Italica",
+	"translate-js-label-underline": "Sulini"
 }
