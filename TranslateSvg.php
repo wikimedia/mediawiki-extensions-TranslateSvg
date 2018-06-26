@@ -58,7 +58,6 @@ $wgResourceModules['ext.translatesvg'] = [
 		'jquery.form',
 		'jquery.ui.dialog',
 		'jquery.colorpicker',
-		'json',
 		'ext.translate.hooks'
 	],
 	'messages'      => [
