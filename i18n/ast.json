@@ -19,7 +19,7 @@
 	"translate-svg-filepage-finish": "acabar",
 	"translate-svg-filepage-another": "otru idioma",
 	"translate-svg-filepage-other": "otros idiomes",
-	"translate-svg-filepage-invite": "Esti ficheru pue traducise fácilmente a $1",
+	"translate-svg-filepage-invite": "Esti ficheru puede traducise fácilmente a $1",
 	"translate-svg-autocreate": "Creando automáticamente les unidaes de traducción basaes en cambios na fonte del ficheru SVG",
 	"translate-svg-autodelete": "Desaniciando automáticamente les unidaes de traducción innecesaries basaes en cambios na fonte del ficheru SVG",
 	"translate-svg-autoedit": "Anovando automáticamente les traducciones basaes en cambios na fonte del ficheru SVG",
