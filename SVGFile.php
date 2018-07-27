@@ -64,8 +64,8 @@ class SVGFile {
 	 * Makes $this->document ready for translation by inserting <switch> tags where they need to be, etc.
 	 * Also works as a check on the compatibility of the file since it will return false if it fails.
 	 *
-	 * @todo: Find a way of making isTranslationReady a proper check
-	 * @todo: add interlanguage consistency check
+	 * @todo Find a way of making isTranslationReady a proper check
+	 * @todo add interlanguage consistency check
 	 * @return bool False on failure, DOMDocument on success
 	 */
 	protected function makeTranslationReady() {
