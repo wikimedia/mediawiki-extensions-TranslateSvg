@@ -4,13 +4,14 @@
 			"Милан Јелисавчић",
 			"Сербијана",
 			"Obsuser",
-			"Acamicamacaraca"
+			"Acamicamacaraca",
+			"BadDog"
 		]
 	},
 	"translatesvg-desc": "Омогућава интерфејс аутохтоног стила за превођење SVG-ова у складу са SVG1.1 спецификацији",
 	"translate-taskui-export-as-svg": "Сачувај назад у оригиналну SVG датотеку",
 	"translate-svg-nodesc": "(Опис датотеке није достављен.)",
-	"translate-svg-thumbnail": "Изворна датотека",
+	"translate-svg-thumbnail": "Првобитна датотека",
 	"translate-svg-js-thumbnail": "(минијатура се ажурира аутоматски)",
 	"translate-page-description-legend-svgmg": "Информације о овој датотеци",
 	"translate-taction-mstats-svgmg": "Статистике датотеке",
