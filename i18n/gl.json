@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño"
+			"Toliño",
+			"Banjo"
 		]
 	},
 	"translatesvg-desc": "Proporciona unha inteface de estilo nativa para a tradución de ficheiros SVG en liña coa especificación SVG1.1.",
@@ -47,5 +48,7 @@
 	"translate-js-label-bold": "Negra",
 	"translate-js-label-italic": "Cursiva",
 	"translate-js-label-underline": "Subliñado",
-	"translate-js-font-family-inherit": "(herdar)"
+	"translate-js-font-family-inherit": "(herdar)",
+	"apihelp-query+messagegroups-param-inprogress": "Posible matriz de traducións en progreso (traducións non gardadas que deberían ter preferencia sobre as gardadas). Só grupos de mensaxes SVG.",
+	"apihelp-query+messagegroups-param-language": "Lingua na que renderizar a miniatura. Só grupo de mensaxes SVG."
 }
