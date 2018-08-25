@@ -207,7 +207,7 @@ class SVGFormatWriter {
 		$started = $languages['started'];
 		$expanded = $languages['expanded'];
 		if ( count( $started ) === 0 && count( $expanded ) === 0 ) {
-			// No real change, jump to save just a a null edit might
+			// No real change, jump to save just a null edit might
 			return true;
 		}
 
