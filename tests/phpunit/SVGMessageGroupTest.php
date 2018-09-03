@@ -73,7 +73,7 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 	public function testGetDescription() {
 		$expected = '[[File:' . self::$name . '|thumb|right|upright|275x275px]]' . "\n" .
 		'<div style="overflow:auto; padding:2px;">Created during testing</div>';
-		$this->assertEquals( $expected, $this->messageGroup->getDescription() ."" );
+		$this->assertEquals( $expected, $this->messageGroup->getDescription() . "" );
 	}
 
 	public function testGetOnWikiLanguagesBeforeImport() {

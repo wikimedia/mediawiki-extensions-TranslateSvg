@@ -24,8 +24,8 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 			[ "Test$tn", '' ],
 			[ 'Test {{' . $tn, '' ],
 			[ '{{' . $tn . '}}foo', '' ],
-			[ '{{' . $tn . '}}', '{{' . $tn. '}}' ],
-			[ 'Test {{' . $tn. '}}', '{{' . $tn. '}}' ],
+			[ '{{' . $tn . '}}', '{{' . $tn . '}}' ],
+			[ 'Test {{' . $tn . '}}', '{{' . $tn . '}}' ],
 			[ '{{' . $tn . '|foo=bar}}', '{{' . $tn . '|foo=bar}}' ],
 			[ 'foo{{' . $tn . '|foo=bar}}', '{{' . $tn . '|foo=bar}}' ]
 		];
