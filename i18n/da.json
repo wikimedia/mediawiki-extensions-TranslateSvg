@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Sarrus"
+			"Sarrus",
+			"Saederup92"
 		]
 	},
-	"translate-svg-filepage-other": "andre sprog"
+	"translate-svg-filepage-other": "andre sprog",
+	"translate-svg-new-label": "Sprog:",
+	"translate-js-label-color": "Farve:"
 }
