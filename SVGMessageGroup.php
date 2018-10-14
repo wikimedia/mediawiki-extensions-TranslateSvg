@@ -72,7 +72,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 
 	/**
 	 * Return a full URL to the file page of the SVG
-	 * @return String
+	 * @return string
 	 */
 	public function getUrl() {
 		return Title::makeTitleSafe( $this->getNamespace(), $this->source )->getFullURL();
