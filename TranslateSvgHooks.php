@@ -17,7 +17,7 @@ class TranslateSvgHooks {
 	 *
 	 * @param MessageGroup $group The MessageGroup of the page being translated
 	 * @param MessageHandle $handle The MessageHandle of the page being translated
-	 * @param array $boxes The array to which the thumbnail helper is added
+	 * @param array &$boxes The array to which the thumbnail helper is added
 	 */
 	public static function addThumbnail( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		global $wgLang;
@@ -41,7 +41,7 @@ class TranslateSvgHooks {
 	 *
 	 * @param MessageGroup $group The message group to which the message being translated belongs
 	 * @param MessageHandle $handle The MessageHandle of the message being translated
-	 * @param array $boxes The array from which the thumbnail helper is removed
+	 * @param array &$boxes The array from which the thumbnail helper is removed
 	 */
 	public static function removeQQQ( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		if ( !( $group instanceof SVGMessageGroup ) ) {
@@ -58,7 +58,7 @@ class TranslateSvgHooks {
 	 * @todo Replace this with a better helper rather than no helper
 	 * @param MessageGroup $group The message group to which the message being translated belongs
 	 * @param MessageHandle $handle The MessageHandle of the message being translated
-	 * @param array $boxes The array from which the thumbnail helper is removed
+	 * @param array &$boxes The array from which the thumbnail helper is removed
 	 */
 	public static function removeSuggestions( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		if ( !( $group instanceof SVGMessageGroup ) ) {
@@ -72,7 +72,7 @@ class TranslateSvgHooks {
 	 * Function used to add modules to the ResourceLoader via the
 	 * TranslateBeforeAddModules hook
 	 *
-	 * @param array $modules The current array of modules
+	 * @param string[] &$modules
 	 */
 	public static function addModules( &$modules ) {
 		$modules[] = 'ext.translatesvg';
@@ -81,7 +81,7 @@ class TranslateSvgHooks {
 	/**
 	 * Function used to preload properties via the TranslatePrefillTranslation hook
 	 *
-	 * @param string $properties To be filled with the preloaded property string
+	 * @param string &$properties To be filled with the preloaded property string
 	 * @param MessageHandle $handle $handle
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, MessageHandle $handle ) {
@@ -105,8 +105,8 @@ class TranslateSvgHooks {
 	 * a series of HTML form elements (extraInputs). Used for the
 	 * TranslateGetExtraInputs hook.
 	 *
-	 * @param string $message Input/output translation string, passed by reference
-	 * @param string $extraInputs Extra form elements required
+	 * @param string &$message Input/output translation string, passed by reference
+	 * @param string &$extraInputs Extra form elements required
 	 */
 	public static function propertiesToExtraInputs( &$message, &$extraInputs ) {
 		global $wgTranslateSvgTypefaces, $wgTranslateSvgColors;
@@ -227,8 +227,8 @@ class TranslateSvgHooks {
 	 * Function used to make "export as SVG" the default export option for SVG files
 	 * Used with the TranslateGetSpecialTranslateOptions hook
 	 *
-	 * @param array $defaults Associative array of so-called "default" values supplied by Translate
-	 * @param array $nondefaults Associative array of so-called "non-default" values supplied by Translate
+	 * @param array &$defaults Associative array of so-called "default" values supplied by Translate
+	 * @param array &$nondefaults Associative array of so-called "non-default" values supplied by Translate
 	 */
 	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
 		if ( isset( $nondefaults['group'] )
@@ -245,7 +245,7 @@ class TranslateSvgHooks {
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateGetAPIMessageGroupsPropertyDescs hook
 	 *
-	 * @param array $properties An associative array of properties (name => details)
+	 * @param string[] &$properties An associative array of properties (name => details)
 	 */
 	public static function addAPIProperties( &$properties ) {
 		$properties['thumbnail'] = ' thumbnail    - Include URL of up-to-date thumbnail (SVG message groups only)';
@@ -281,7 +281,7 @@ class TranslateSvgHooks {
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateProcessAPIMessageGroupsProperties hook
 	 *
-	 * @param array $a Associative array of the properties of $group that will be returned
+	 * @param array &$a Associative array of the properties of $group that will be returned
 	 * @param array $props Associative array ($name => true) of properties the user has specifically requested
 	 * @param array $params Parameter input by the user (unprefixed name => value)
 	 * @param MessageGroup $g The group in question
@@ -310,7 +310,7 @@ class TranslateSvgHooks {
 	 * action=query&meta=messagegroups API queries.
 	 * Used with the TranslateGetAPIMessageGroupsParameterList hook
 	 *
-	 * @param array $params An associative array of possible parameters (name => details)
+	 * @param array[] &$params An associative array of possible parameters (name => details)
 	 */
 	public static function addAPIParams( &$params ) {
 		$params['inprogress'] = [
@@ -325,7 +325,7 @@ class TranslateSvgHooks {
 	 * Document the mginprogress and mglanguage parameters
 	 * Used with the TranslateGetAPIMessageGroupsParameterDescs hook
 	 *
-	 * @param array $paramDescs An associative array of parameters, name => description.
+	 * @param string[] &$paramDescs An associative array of parameters, name => description.
 	 * @param string $p The prefix for action=query&meta=messagegroups (unused)
 	 */
 	public static function addAPIParamDescs( &$paramDescs, $p ) {
