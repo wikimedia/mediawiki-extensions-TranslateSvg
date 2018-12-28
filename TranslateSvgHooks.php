@@ -277,7 +277,7 @@ class TranslateSvgHooks {
 	 * Function used to add TranslateSvg's schema update to update.php via
 	 * MediaWiki's 'LoadExtensionSchemaUpdates' hook.
 	 *
-	 * @param $updater DatabaseUpdater The MediaWiki-provided updater instance
+	 * @param DatabaseUpdater $updater The MediaWiki-provided updater instance
 	 * @return bool True
 	 */
 	public static function schemaUpdates( $updater ) {
