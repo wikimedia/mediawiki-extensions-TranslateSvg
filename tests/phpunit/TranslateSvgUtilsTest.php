@@ -64,7 +64,8 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	}
 
 	/**
-	 * Provides triples of namespace ids, file names, and whether that page should be recognised as an SVG filepage
+	 * Provides triples of namespace ids, file names, and whether that page should be recognised as
+	 * an SVG filepage
 	 * @return array
 	 */
 	public function titleProvider() {
@@ -91,7 +92,8 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	}
 
 	/**
-	 * Provides triples of parameter name, parameter value, and sanitised output (a pairing of attribute name and value)
+	 * Provides triples of parameter name, parameter value, and sanitised output (a pairing of
+	 * attribute name and value)
 	 * @return array
 	 */
 	public function paramProvider() {
@@ -119,7 +121,8 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	}
 
 	/**
-	 * Provides triples of attribute name, attribute value, and sanitised output (a pairing of parameter name and value)
+	 * Provides triples of attribute name, attribute value, and sanitised output (a pairing of
+	 * parameter name and value)
 	 * @return array
 	 */
 	public function attribProvider() {
@@ -157,12 +160,25 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 		$tn = $wgTranslateSvgTemplateName;
 		return [
 			[
-				'Foo{{' . $tn . '|x=|y=|font-family=other|font-size=|units=other|color=|underline=no|italic=no|bold=yes}}',
-				[ 'text' => 'Foo', 'font-weight' => 'bold', 'text-decoration' => 'normal', 'font-style' => 'normal' ]
+				'Foo{{' . $tn . '|x=|y=|font-family=other|font-size=|units=other|color=' .
+					'|underline=no|italic=no|bold=yes}}',
+				[
+					'text' => 'Foo',
+					'font-weight' => 'bold',
+					'text-decoration' => 'normal',
+					'font-style' => 'normal',
+				]
 			],
 			[
-				'Foo{{' . $tn . '|x=|y=|font-family=other|font-size=12|units=px|color=|underline=no|italic=no|bold=yes}}',
-				[ 'text' => 'Foo', 'font-weight' => 'bold', 'text-decoration' => 'normal', 'font-style' => 'normal', 'font-size' => '12px' ]
+				'Foo{{' . $tn . '|x=|y=|font-family=other|font-size=12|units=px|color=' .
+					'|underline=no|italic=no|bold=yes}}',
+				[
+					'text' => 'Foo',
+					'font-weight' => 'bold',
+					'text-decoration' => 'normal',
+					'font-style' => 'normal',
+					'font-size' => '12px',
+				]
 			]
 		];
 	}

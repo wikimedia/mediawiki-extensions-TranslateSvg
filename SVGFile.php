@@ -648,12 +648,17 @@ class SVGFile {
 	 * is formalised as actual text nodes
 	 *
 	 * @param string $text The text to search for $1, $2 etc.
-	 * @param array &$newNodes An array of DOMNodes, indexed by which $ number they represent
+	 * @param DOMNode[] &$newNodes An array of DOMNodes, indexed by which $ number they represent
 	 * @param DOMNode &$parentNode A node to fill with the generated content
 	 * @param DOMDocument $document Base document to use
 	 * @return void
 	 */
-	public static function replaceIndicesRecursive( $text, &$newNodes, DOMNode &$parentNode, DOMDocument $document ) {
+	public static function replaceIndicesRecursive(
+		$text,
+		array &$newNodes,
+		DOMNode &$parentNode,
+		DOMDocument $document
+	) {
 		// If nothing to replace, just fire back a text node
 		if ( count( $newNodes ) === 0 ) {
 			if ( strlen( $text ) > 0 ) {

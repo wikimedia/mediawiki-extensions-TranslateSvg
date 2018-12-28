@@ -80,7 +80,8 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		$this->assertCount(
 			0,
 			$this->messageGroup->getOnWikiLanguages(),
-			'Message group is registered but has not been imported yet, so getOnWikiLanguages() should return an empty array'
+			'Message group is registered but has not been imported yet, so getOnWikiLanguages() ' .
+				'should return an empty array'
 		);
 	}
 

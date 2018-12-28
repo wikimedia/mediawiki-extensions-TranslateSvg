@@ -200,7 +200,13 @@ class TranslateSvgHooks {
 	 * @param string $targetLang The language for which translations are being shown
 	 * @param array &$attrs The set of attributes to apply to the row (not used)
 	 */
-	public static function stripPropertyString( &$message, ThinMessage $m, MessageGroup $group, $targetLang, &$attrs ) {
+	public static function stripPropertyString(
+		&$message,
+		ThinMessage $m,
+		MessageGroup $group,
+		$targetLang,
+		&$attrs
+	) {
 		// TODO: mark as .justtranslated if not yet exported
 		if ( !( $group instanceof SVGMessageGroup ) ) {
 			return;

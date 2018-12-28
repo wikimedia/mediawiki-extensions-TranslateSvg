@@ -32,7 +32,8 @@ class SVGFormatWriter {
 	 * Constructor
 	 *
 	 * @param SVGMessageGroup $group Message group to write to file
-	 * @param array $inProgressTranslations Possible array of overriddes (unsaved translations that should take preference over saved ones), format: [id][langcode][property name]
+	 * @param array[] $inProgressTranslations Possible array of overriddes (unsaved translations
+	 *  that should take preference over saved ones), format: [id][langcode][property name]
 	 */
 	public function __construct( SVGMessageGroup $group, $inProgressTranslations = [] ) {
 		$this->group = $group;
@@ -44,7 +45,7 @@ class SVGFormatWriter {
 
 	/**
 	 * Get the array of in-progress translations
-	 * @return array
+	 * @return array[]
 	 */
 	public function getInProgressTranslations() {
 		return $this->inProgressTranslations;
@@ -106,8 +107,10 @@ class SVGFormatWriter {
 	 * onwiki translations, rather than just those uploaded.
 	 *
 	 * @param string|bool $language Code of the language to translate into
-	 * @param int $size The length (in px) of one side of a bounding box square: aspect ratio will always be preserved. Default 275.
-	 * @return array Array with keys 'success'=>true|false and 'message'=>/web/friendly/path/to/the/new/thumbnail.png|error output
+	 * @param int $size The length (in px) of one side of a bounding box square: aspect ratio will
+	 *  always be preserved. Default 275.
+	 * @return array Array with keys 'success'=>true|false and
+	 *  'message'=>/web/friendly/path/to/the/new/thumbnail.png|error output
 	 */
 	public function thumbnailExport( $language, $size = 275 ) {
 		global $wgTranslateSvgDirectory, $wgTranslateSvgPath,
