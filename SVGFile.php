@@ -442,9 +442,10 @@ class SVGFile {
 	/**
 	 * Compile an updated DOM model of the SVG using the provided set of translations
 	 *
-	 * @return array Array with keys 'expanded' and 'started', each an array of language names
+	 * @param array[] $translations
+	 * @return array[] Array with keys 'expanded' and 'started', each an array of language names
 	 */
-	public function switchToTranslationSet( $translations ) {
+	public function switchToTranslationSet( array $translations ) {
 		$currentLanguages = $this->getSavedLanguages();
 		$expanded = $started = [];
 

@@ -54,7 +54,7 @@ class SVGFormatWriter {
 	 * Collate and prepare an array of translations from multiple sources:
 	 * in file, on wiki, filteredTextNodes and in-progress.
 	 *
-	 * @return array Array of translations
+	 * @return array[] Array of translations
 	 */
 	protected function getPreferredTranslations() {
 		$inFileTranslations = $this->svg->getInFileTranslations();
