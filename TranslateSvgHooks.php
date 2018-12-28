@@ -291,7 +291,7 @@ class TranslateSvgHooks {
 	 * Function used to add modules via the resource loader on
 	 * the file pages of SVG files via the BeforePageDisplay MediaWiki hook
 	 *
-	 * @param $out Contextual OutputPage instance
+	 * @param OutputPage $out Contextual OutputPage instance
 	 * @return bool
 	 */
 	public static function updateFileDescriptionPages( OutputPage $out ) {
