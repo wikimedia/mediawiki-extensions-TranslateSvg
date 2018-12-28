@@ -18,13 +18,12 @@ class TranslateSvgHooks {
 	 * @param MessageGroup $group The MessageGroup of the page being translated
 	 * @param MessageHandle $handle The MessageHandle of the page being translated
 	 * @param array $boxes The array to which the thumbnail helper is added
-	 * @return bool True
 	 */
 	public static function addThumbnail( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		global $wgLang;
 
 		if ( !( $group instanceof SVGMessageGroup ) ) {
-			return true;
+			return;
 		}
 
 		$title = Title::newFromText( $group->getLabel(), NS_FILE );
@@ -34,8 +33,6 @@ class TranslateSvgHooks {
 			[ 'width' => 275, 'height' => 275 ]
 		);
 		$boxes = array_merge( [ 'thumbnail' => $thumbnail ], $boxes );
-
-		return true;
 	}
 
 	/**
@@ -45,15 +42,13 @@ class TranslateSvgHooks {
 	 * @param MessageGroup $group The message group to which the message being translated belongs
 	 * @param MessageHandle $handle The MessageHandle of the message being translated
 	 * @param array $boxes The array from which the thumbnail helper is removed
-	 * @return bool True
 	 */
 	public static function removeQQQ( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		if ( !( $group instanceof SVGMessageGroup ) ) {
-			return true;
+			return;
 		}
 
 		unset( $boxes['documentation'] );
-		return true;
 	}
 
 	/**
@@ -64,15 +59,13 @@ class TranslateSvgHooks {
 	 * @param MessageGroup $group The message group to which the message being translated belongs
 	 * @param MessageHandle $handle The MessageHandle of the message being translated
 	 * @param array $boxes The array from which the thumbnail helper is removed
-	 * @return bool True
 	 */
 	public static function removeSuggestions( MessageGroup $group, MessageHandle $handle, &$boxes ) {
 		if ( !( $group instanceof SVGMessageGroup ) ) {
-			return true;
+			return;
 		}
 
 		unset( $boxes['translation-memory'] );
-		return true;
 	}
 
 	/**
@@ -80,11 +73,9 @@ class TranslateSvgHooks {
 	 * TranslateBeforeAddModules hook
 	 *
 	 * @param array $modules The current array of modules
-	 * @return bool True
 	 */
 	public static function addModules( &$modules ) {
 		$modules[] = 'ext.translatesvg';
-		return true;
 	}
 
 	/**
@@ -92,22 +83,20 @@ class TranslateSvgHooks {
 	 *
 	 * @param string $properties To be filled with the preloaded property string
 	 * @param MessageHandle $handle $handle
-	 * @return bool True
 	 */
 	public static function getDefaultPropertiesFromGroup( &$properties, MessageHandle $handle ) {
 		if ( !$handle->isValid() ) {
-			return true;
+			return;
 		}
 
 		$group = $handle->getGroup();
 		if ( !( $group instanceof SVGMessageGroup ) || $properties !== null ) {
-			return true;
+			return;
 		}
 		$properties = $group->getProperties(
 			$handle->getKey(),
 			$group->getSourceLanguage()
 		);
-		return true;
 	}
 
 	/**
@@ -118,14 +107,13 @@ class TranslateSvgHooks {
 	 *
 	 * @param string $message Input/output translation string, passed by reference
 	 * @param string $extraInputs Extra form elements required
-	 * @return bool True
 	 */
 	public static function propertiesToExtraInputs( &$message, &$extraInputs ) {
 		global $wgTranslateSvgTypefaces, $wgTranslateSvgColors;
 		$allowedUnits = [ 'px', 'pt', '%', 'em' ];
 
 		if ( !TranslateSvgUtils::hasPropertyString( $message ) ) {
-			return true;
+			return;
 		}
 
 		$propertyString = TranslateSvgUtils::extractPropertyString( $message );
@@ -200,8 +188,6 @@ class TranslateSvgHooks {
 			wfMessage( 'translate-js-properties-legend' ),
 			$extraInputs
 		);
-
-		return true;
 	}
 
 	/**
@@ -213,16 +199,14 @@ class TranslateSvgHooks {
 	 * @param MessageGroup $group The source message group
 	 * @param string $targetLang The language for which translations are being shown
 	 * @param array &$attrs The set of attributes to apply to the row (not used)
-	 * @return bool True
 	 */
 	public static function stripPropertyString( &$message, ThinMessage $m, MessageGroup $group, $targetLang, &$attrs ) {
 		// TODO: mark as .justtranslated if not yet exported
 		if ( !( $group instanceof SVGMessageGroup ) ) {
-			return true;
+			return;
 		}
 
 		$message = TranslateSvgUtils::stripPropertyString( $message );
-		return true;
 	}
 
 	/**
@@ -231,14 +215,12 @@ class TranslateSvgHooks {
 	 *
 	 * @param array &$vars of variables to be exposed to JavaScript
 	 * @param OutputPage $out Contextual OutputPage instance
-	 * @return bool True
 	 */
 	public static function exposeTranslateSvgTemplateName( &$vars, OutputPage $out ) {
 		global $wgTranslateSvgTemplateName;
 		if ( $out->getTitle()->isSpecial( 'Translate' ) ) {
 			$vars['wgTranslateSvgTemplateName'] = $wgTranslateSvgTemplateName;
 		}
-		return true;
 	}
 
 	/**
@@ -247,7 +229,6 @@ class TranslateSvgHooks {
 	 *
 	 * @param array $defaults Associative array of so-called "default" values supplied by Translate
 	 * @param array $nondefaults Associative array of so-called "non-default" values supplied by Translate
-	 * @return bool True
 	 */
 	public static function makeExportAsSvgOptionDefault( &$defaults, &$nondefaults ) {
 		if ( isset( $nondefaults['group'] )
@@ -257,7 +238,6 @@ class TranslateSvgHooks {
 		) {
 			$nondefaults['task'] = 'export-as-svg';
 		}
-		return true;
 	}
 
 	/**
@@ -266,11 +246,9 @@ class TranslateSvgHooks {
 	 * Used with the TranslateGetAPIMessageGroupsPropertyDescs hook
 	 *
 	 * @param array $properties An associative array of properties (name => details)
-	 * @return bool True
 	 */
 	public static function addAPIProperties( &$properties ) {
 		$properties['thumbnail'] = ' thumbnail    - Include URL of up-to-date thumbnail (SVG message groups only)';
-		return true;
 	}
 
 	/**
@@ -278,13 +256,11 @@ class TranslateSvgHooks {
 	 * MediaWiki's 'LoadExtensionSchemaUpdates' hook.
 	 *
 	 * @param DatabaseUpdater $updater The MediaWiki-provided updater instance
-	 * @return bool True
 	 */
 	public static function schemaUpdates( $updater ) {
 		$dir = __DIR__ . '/sql';
 
 		$updater->addExtensionUpdate( [ 'addTable', 'translate_svg', "$dir/translate_svg.sql", true ] );
-		return true;
 	}
 
 	/**
@@ -292,14 +268,12 @@ class TranslateSvgHooks {
 	 * the file pages of SVG files via the BeforePageDisplay MediaWiki hook
 	 *
 	 * @param OutputPage $out Contextual OutputPage instance
-	 * @return bool
 	 */
 	public static function updateFileDescriptionPages( OutputPage $out ) {
 		$title = $out->getTitle();
 		if ( TranslateSvgUtils::isSVGFilePage( $title ) ) {
 			$out->addModules( 'ext.translatesvg.filepage' );
 		}
-		return true;
 	}
 
 	/**
@@ -311,11 +285,10 @@ class TranslateSvgHooks {
 	 * @param array $props Associative array ($name => true) of properties the user has specifically requested
 	 * @param array $params Parameter input by the user (unprefixed name => value)
 	 * @param MessageGroup $g The group in question
-	 * @return bool True
 	 */
 	public static function processAPIProperties( &$a, $props, $params, MessageGroup $g ) {
 		if ( !( $g instanceof SVGMessageGroup ) ) {
-			return true;
+			return;
 		}
 
 		if ( isset( $props['thumbnail'] ) ) {
@@ -330,7 +303,6 @@ class TranslateSvgHooks {
 			$writer = new SVGFormatWriter( $g, $inProgressTranslations );
 			$a['thumbnail'] = $writer->thumbnailExport( $language );
 		}
-		return true;
 	}
 
 	/**
@@ -339,7 +311,6 @@ class TranslateSvgHooks {
 	 * Used with the TranslateGetAPIMessageGroupsParameterList hook
 	 *
 	 * @param array $params An associative array of possible parameters (name => details)
-	 * @return bool True
 	 */
 	public static function addAPIParams( &$params ) {
 		$params['inprogress'] = [
@@ -348,7 +319,6 @@ class TranslateSvgHooks {
 		$params['language'] = [
 			ApiBase::PARAM_TYPE => 'string'
 		];
-		return true;
 	}
 
 	/**
@@ -357,7 +327,6 @@ class TranslateSvgHooks {
 	 *
 	 * @param array $paramDescs An associative array of parameters, name => description.
 	 * @param string $p The prefix for action=query&meta=messagegroups (unused)
-	 * @return bool True
 	 */
 	public static function addAPIParamDescs( &$paramDescs, $p ) {
 		$paramDescs['inprogress'] =
@@ -365,7 +334,6 @@ class TranslateSvgHooks {
 			. ' take preference over saved ones). SVG message groups only.';
 		$paramDescs['language'] =
 			'Language to render the thumbnail in. SVG message groups only.';
-		return true;
 	}
 
 	/**
@@ -375,7 +343,6 @@ class TranslateSvgHooks {
 	 * @param array &$list Array of groups to append to.
 	 * @param array &$deps Not used at present.
 	 * @param array &$autoload Not used at present.
-	 * @return bool True
 	 */
 	public static function loadSVGGroups( &$list, &$deps, &$autoload ) {
 		$dbr = wfGetDB( DB_MASTER );
@@ -390,7 +357,6 @@ class TranslateSvgHooks {
 			$group = Title::newFromRow( $r )->getText();
 			$list[$group] = new SVGMessageGroup( $group );
 		}
-		return true;
 	}
 
 	/**
@@ -400,12 +366,11 @@ class TranslateSvgHooks {
 	 *
 	 * @param array &$vars Array of variables to be exposed to JavaScript
 	 * @param OutputPage $out Contextual OutputPage instance
-	 * @return bool True
 	 */
 	public static function makeFilePageGlobalVariables( &$vars, OutputPage $out ) {
 		$title = $out->getTitle();
 		if ( !TranslateSvgUtils::isSVGFilePage( $title ) ) {
-			return true;
+			return;
 		}
 
 		$user = $out->getUser();
@@ -423,7 +388,7 @@ class TranslateSvgHooks {
 			$vars['wgFileTranslationStarted'] = false;
 			$vars['wgFileFullTranslations'] = [];
 			$vars['wgFilePartialTranslations'] = [];
-			return true;
+			return;
 		}
 
 		$languages = $svg->getSavedLanguagesFiltered();
@@ -448,17 +413,14 @@ class TranslateSvgHooks {
 		$vars['wgFileFullTranslations'] = $full;
 		$vars['wgFilePartialTranslations'] = $partial;
 		$vars['wgFileTranslationStarted'] = true;
-		return true;
 	}
 
 	/**
 	 * Register our unit tests so Jenkins can run them
 	 *
 	 * @param array &$files Array of tests (test files) to be run
-	 * @return bool True
 	 */
 	public static function onUnitTestsList( &$files ) {
 		$files = array_merge( $files, glob( __DIR__ . '/tests/phpunit/*Test.php' ) );
-		return true;
 	}
 }
