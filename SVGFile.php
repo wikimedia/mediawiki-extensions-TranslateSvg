@@ -40,10 +40,10 @@ class SVGFile {
 		$this->document = new DOMDocument( '1.0' );
 
 		// Warnings need to be suppressed in case there are DOM warnings
-		wfSuppressWarnings();
+		Wikimedia\suppressWarnings();
 		$this->document->load( $path );
 		$this->xpath = new DOMXpath( $this->document );
-		wfRestoreWarnings();
+		Wikimedia\restoreWarnings();
 
 		$this->xpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
 
