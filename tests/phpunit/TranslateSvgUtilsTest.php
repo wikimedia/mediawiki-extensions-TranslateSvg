@@ -107,6 +107,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 			[ 'xml:type', '', [ 'xml:type', false ] ] // '' becomes false
 		];
 	}
+
 	/**
 	 * @dataProvider paramProvider
 	 * @param string $name The parameter name provided
@@ -138,6 +139,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 			[ 'font-family', 'Sans', [ 'font-family', 'sans-serif' ] ] // Hard coded mapping
 		];
 	}
+
 	/**
 	 * @dataProvider attribProvider
 	 * @param string $name The attribute name provided

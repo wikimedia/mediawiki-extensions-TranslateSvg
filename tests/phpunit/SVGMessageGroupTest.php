@@ -18,12 +18,9 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		self::prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
 	}
 
-	/**
-	 * @expectedException MWException
-	 * @expectedExceptionMessage File not found
-	 */
 	public function testConstructorFileNotFound() {
-		$group = new SVGMessageGroup( 'DoesNotExist.svg' );
+		$this->setExpectedException( MWException::class, 'File not found' );
+		new SVGMessageGroup( 'DoesNotExist.svg' );
 	}
 
 	public function testRegistration() {
