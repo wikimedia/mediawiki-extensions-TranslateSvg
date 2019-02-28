@@ -3,7 +3,8 @@
 		"authors": [
 			"Base",
 			"Olvin",
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"translatesvg-desc": "Забезпечує звичний інтерфейс для перекладу файлів .SVG у відповідності до специфікації SVG1.1",
@@ -41,7 +42,7 @@
 	"translate-svg-new-error-group": "<strong>Сталася помилка:</strong> Сталась невідома помилка; можливо Ви забули додати групу до URL?",
 	"translate-svg-export-unsupported": "Експорт назад, у SVG не підтримується для цієї групи повідомлень. Якщо не очевидно чому це сталось, можливо Ви хочете повідомити що це баґ на $1.",
 	"translate-svg-export-error": "Неочікувана помилка при спробі зберегти Ваші зміни назад до файлу. Можливо, Ви хочете повідомити що це баґ на $1.",
-	"translate-js-properties-legend": "Всластивості",
+	"translate-js-properties-legend": "Властивості",
 	"translate-js-label-x": "Координата X:",
 	"translate-js-label-y": "Координата Y:",
 	"translate-js-label-color": "Колір:",
