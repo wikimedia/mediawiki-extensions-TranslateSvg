@@ -25,7 +25,7 @@
 			$( '#ca-export a' ).text( mw.msg( 'translate-taction-export-svgmg' ) );
 			$( '.mw-sp-translate-description legend').text( mw.msg( 'translate-page-description-legend-svgmg' ) );
 
-			mw.translateHooks.add( 'beforeSubmit', function ( $form ) {
+			mw.hook( 'mw.translate.editor.beforeSubmit' ).add( function ( $form ) {
 				// Add properties from other inputs back into main translations
 				var textarea = $form.find( '.mw-translate-edit-area' );
 				tsvgLoader.oldValue = textarea.val();
@@ -33,36 +33,10 @@
 				$form.parents( '.ui-dialog' ).hide();
 				return true;
 			} );
-			mw.translateHooks.add( 'afterSubmit', function ( $form ) {
+
+			mw.hook( 'mw.translate.editor.afterSubmit' ).add( function ( $form ) {
 				// ...and remove them again to avoid duplication / user confusion
 				$form.find( '.mw-translate-edit-area' ).val( tsvgLoader.oldValue );
-				return true;
-			} );
-			mw.translateHooks.add( 'afterRegisterFeatures', function ( $form ) {
-				// Initialise colourPicker UI
-				$form.find( '#mw-translate-prop-color' ).colorPicker();
-				var colorPicker = $form.find( '#mw-translate-prop-color' );
-				if( colorPicker.val() === 'other' ){
-					colorPicker.val( '' );
-				}
-
-				// Add thumbnail update events. The duplication is intentional;
-				// e.g. to account for copy-paste, or the fact that type="number" is
-				// textual in some browsers but has increment/decrement buttons in others.
-				$form.find(
-					'.mw-translate-inputs textarea,' +
-					'.mw-translate-inputs input[type="number"],' +
-					'.mw-translate-inputs input[type="text"]'
-				).keyup( function () { tsvgLoader.updateThumbnailDelayed( $form ); } );
-				$form.find(
-					'.mw-translate-inputs select,' +
-					'.mw-translate-inputs input[type="checkbox"],' +
-					'.mw-translate-inputs input[type="number"],' +
-					'.mw-translate-inputs input[type="text"]'
-				).change( function () { tsvgLoader.updateThumbnail( $form ); } );
-
-				// Update the thumbnail now for good measure
-				tsvgLoader.updateThumbnail( $form );
 				return true;
 			} );
 		},
