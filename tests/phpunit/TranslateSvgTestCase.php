@@ -47,8 +47,8 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$uploader->initializePathInfo( $name, $tempName, filesize( $tempName ), true );
 
 		// Actually perform upload
-		$bot = User::newFromName( 'TranslateSvg unit tests', false );
-		$status = $uploader->performUpload( 'testing', 'Created during testing', false, $bot );
+		$status = $uploader->performUpload( 'testing', 'Created during testing', false,
+			self::getTestUser()->getUser() );
 		$title = Title::makeTitle( NS_FILE, $name );
 		if ( !$status->isGood() || !$title->exists() ) {
 			die( 'Could not upload test file ' . $name );
@@ -69,15 +69,6 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 
 			// Add .svg to list of supported file extensions
 			'wgFileExtensions' => [ 'png', 'gif', 'jpg', 'jpeg', 'svg' ],
-
-			// Bot (who won't be a registered users) needs to be able to create pages
-			'wgGroupPermissions' => [
-				'*' => [
-					'createpage' => true,
-					'read' => true,
-					'edit' => true,
-				]
-			],
 
 			// Need to enable subpages in the File: namespace
 			'wgNamespacesWithSubpages' => [ NS_FILE => true ]
