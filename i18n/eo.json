@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Blahma"
+			"Blahma",
+			"Mirin"
 		]
 	},
 	"translatesvg-desc": "Provizas indiĝenan interfacon por tradukado de SVG-dosieroj konforme al la specifo SVG1.1",
@@ -47,5 +48,7 @@
 	"translate-js-label-bold": "Grasa",
 	"translate-js-label-italic": "Kursiva",
 	"translate-js-label-underline": "Substrekita",
-	"translate-js-font-family-inherit": "(heredata)"
+	"translate-js-font-family-inherit": "(heredata)",
+	"apihelp-query+messagegroups-param-inprogress": "Ebla tabelo de prilaborataj tradukoj (ne konservitaj tradukoj kiuj transpasu la konservitajn). Nur pri SVG-mesaĝgrupoj.",
+	"apihelp-query+messagegroups-param-language": "Lingvo je kiu la antaŭvido bildiĝas. Nur pri SVG-mesaĝgrupoj."
 }
