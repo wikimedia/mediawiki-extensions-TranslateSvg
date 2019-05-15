@@ -70,6 +70,8 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 			// Add .svg to list of supported file extensions
 			'wgFileExtensions' => [ 'png', 'gif', 'jpg', 'jpeg', 'svg' ],
 
+			'wgHooks' => [],
+
 			// Need to enable subpages in the File: namespace
 			'wgNamespacesWithSubpages' => [ NS_FILE => true ]
 		];
