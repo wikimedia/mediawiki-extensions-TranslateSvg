@@ -1,7 +1,5 @@
 <?php
 /**
- * Unit tests.
- *
  * @file
  * @author Harry Burt
  * @copyright Copyright © 2014, Harry Burt
@@ -9,7 +7,6 @@
  */
 
 /**
- * Unit tests for SVGFile class.
  * @covers SVGFile
  * @group Database
  */
