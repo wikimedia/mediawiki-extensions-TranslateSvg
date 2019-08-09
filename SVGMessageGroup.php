@@ -104,7 +104,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 *
 	 * @param string $key Key of the message.
 	 * @param string $code Language code.
-	 * @return string|null The translation or null if it doesn't exists.
+	 * @return string|null The translation or null if it doesn't exist.
 	 */
 	public function getMessage( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
@@ -123,7 +123,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 *
 	 * @param string $key Key of the message.
 	 * @param string $code Language code.
-	 * @return string|null The translation or null if it doesn't exists.
+	 * @return string|null The translation or null if it doesn't exist.
 	 */
 	public function getProperties( $key, $code ) {
 		$title = Title::makeTitleSafe( $this->getNamespace(), "$key/$code" );
