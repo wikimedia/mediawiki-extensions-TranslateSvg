@@ -79,14 +79,14 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		}
 	}
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 		if ( isset( self::$name ) ) {
 			$this->messageGroup = new SVGMessageGroup( self::$name );
 		}
 	}
 
-	public function tearDown() {
+	public function tearDown() : void {
 		parent::tearDown();
 		$this->messageGroup = null;
 	}
