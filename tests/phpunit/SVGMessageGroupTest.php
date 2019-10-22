@@ -8,11 +8,12 @@
 
 /**
  * @covers SVGMessageGroup
+ * @group Database
  */
 class SVGMessageGroupTest extends TranslateSvgTestCase {
-	public static function setUpBeforeClass() {
-		parent::setUpBeforeClass();
-		self::prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
+	public function setUp() : void {
+		parent::setUp();
+		$this->prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
 	}
 
 	public function testConstructorFileNotFound() {

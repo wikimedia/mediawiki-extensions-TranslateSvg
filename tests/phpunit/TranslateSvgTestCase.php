@@ -8,7 +8,16 @@
  * @license GPL-2.0-or-later
  */
 class TranslateSvgTestCase extends MediaWikiTestCase {
-
+	protected $tablesUsed = [
+		'user',
+		'page',
+		'translate_svg',
+		'translate_metadata',
+		'revision',
+		'archive',
+		'image',
+		'comment',
+	];
 	/**
 	 * @var string
 	 */
@@ -19,14 +28,17 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 	 */
 	protected $messageGroup;
 
-	protected static function prepareFile( $path ) {
-		$tempName = tempnam( wfTempDir(), 'test' );
+	private $tempPath;
+
+	protected function prepareFile( $path ) {
+		$tempName = $this->getNewTempFile();
 		copy( $path, $tempName );
 
 		$name = substr( basename( $path ), 0, -4 ) . '_' . date( 'His' ) . '.svg';
 		$name = str_replace( '_', ' ', $name );
 		$title = Title::makeTitle( NS_FILE, $name );
 		if ( $title->exists() ) {
+			// @todo This should not happen
 			$wikiPage = new WikiPage( $title );
 			$wikiPage->doDeleteArticle( 'resetting' );
 			$subpages = $title->getSubpages();
@@ -46,18 +58,21 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 			self::getTestUser()->getUser() );
 		$title = Title::makeTitle( NS_FILE, $name );
 		if ( !$status->isGood() || !$title->exists() ) {
-			die( 'Could not upload test file ' . $name );
+			$this->fail( "Could not upload test file $name:\n$status" );
 		}
+
+		$this->tempPath = $uploader->getLocalFile()->getPath();
 
 		$messageGroup = new SVGMessageGroup( $name );
 		$messageGroup->register( false );
 
 		self::$name = $name;
+		$this->messageGroup = new SVGMessageGroup( self::$name );
 	}
 
-	public static function setUpBeforeClass() {
-		// Preserve the syntax of $this->setMwGlobals for future use
-		// but we can't use it te way it's written at the moment since we're static
+	public function setUp() : void {
+		parent::setUp();
+
 		$pairs = [
 			// Enable uploads
 			'wgEnableUploads' => true,
@@ -68,50 +83,17 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 			// Need to enable subpages in the File: namespace
 			'wgNamespacesWithSubpages' => [ NS_FILE => true ]
 		];
-
-		foreach ( $pairs as $key => $value ) {
-			$GLOBALS[$key] = $value;
-		}
-	}
-
-	public function setUp() : void {
-		parent::setUp();
-		if ( isset( self::$name ) ) {
-			$this->messageGroup = new SVGMessageGroup( self::$name );
-		}
+		$this->setMwGlobals( $pairs );
 	}
 
 	public function tearDown() : void {
 		parent::tearDown();
 		$this->messageGroup = null;
-	}
-
-	public static function tearDownAfterClass() {
-		parent::tearDownAfterClass();
-
-		$title = Title::makeTitle( NS_FILE, self::$name );
-		$dbw = wfGetDB( DB_MASTER );
-
-		$conds = [ 'ts_page_id' => $title->getArticleID() ];
-		$dbw->delete( 'translate_svg', $conds, __METHOD__ );
-
-		$conds = [ 'tmd_group' => self::$name ];
-		$dbw->delete( 'translate_metadata', $conds, __METHOD__ );
-
-		if ( !$title->exists() ) {
-			return;
+		self::$name = null;
+		if ( $this->tempPath ) {
+			$backend = RepoGroup::singleton()->getLocalRepo()->getBackend();
+			$backend->delete( [ 'src' => $this->tempPath ], [ 'force' => 1 ] );
+			$this->tempPath = null;
 		}
-
-		$subpages = $title->getSubpages();
-		foreach ( $subpages as $subpage ) {
-			/** @var Title $subpage */
-			$wikiPage = new WikiPage( $subpage );
-			$wikiPage->doDeleteArticle( 'resetting' );
-		}
-
-		$wikiPage = new WikiPage( $title );
-		$wikiPage->doDeleteArticle( 'resetting' );
-
-		$dbw->commit( __METHOD__, 'flush' );
 	}
 }
