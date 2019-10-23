@@ -36,11 +36,8 @@ $wgAutoloadClasses['TranslateSvgUtils'] = $dir . 'TranslateSvgUtils.php';
 $wgAutoloadClasses['TranslateSvgHooks'] = $dir . 'TranslateSvgHooks.php';
 $wgAutoloadClasses['ExportSVGMessagesTask'] = $dir . 'TranslateSvgTasks.php';
 $wgAutoloadClasses['TranslateSvgUpload'] = $dir . 'SVGFormatWriter.php';
-
-if ( defined( 'MW_PHPUNIT_TEST' ) ) {
-	define( 'MW_PHPUNIT_USE_AUTOLOAD', true );
-	require_once $dir . 'tests/phpunit/bootstrap.php';
-}
+$wgAutoloadClasses['TranslateSvgUploadMock'] = $dir . 'tests/phpunit/TranslateSvgUploadMock.php';
+$wgAutoloadClasses['TranslateSvgTestCase'] = $dir . 'tests/phpunit/TranslateSvgTestCase.php';
 
 $wgMessagesDirs['TranslateSvg'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['TranslateSvgAlias'] = $dir . 'TranslateSvg.alias.php';
