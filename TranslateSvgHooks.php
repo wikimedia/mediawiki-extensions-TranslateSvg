@@ -13,6 +13,17 @@
  */
 class TranslateSvgHooks {
 	/**
+	 * Called right after the extension is registered
+	 */
+	public static function onRegistration() {
+		global $wgReservedUsernames, $wgTranslateSvgBotName, $wgTranslateMessageNamespaces;
+
+		$wgTranslateMessageNamespaces[] = NS_FILE;
+		// @fixme This ref-assignment is scary.
+		$wgReservedUsernames[] = & $wgTranslateSvgBotName;
+	}
+
+	/**
 	 * Function used to add a translation helper box via the TranslateGetBoxes hook
 	 *
 	 * @param MessageGroup $group The MessageGroup of the page being translated
@@ -425,6 +436,7 @@ class TranslateSvgHooks {
 	 * Register our unit tests so Jenkins can run them
 	 *
 	 * @param array &$files Array of tests (test files) to be run
+	 * @fixme Shouldn't be necessary anymore
 	 */
 	public static function onUnitTestsList( &$files ) {
 		$files = array_merge( $files, glob( __DIR__ . '/tests/phpunit/*Test.php' ) );
