@@ -7,7 +7,7 @@
 	"descriptionmsg": "translatesvg-desc",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.29.0",
+		"MediaWiki": ">= 1.35.0",
 		"extensions": {
 			"Translate": "*"
 		}
@@ -109,8 +109,7 @@
 		"TranslateGetAPIMessageGroupsParameterDescs": "TranslateSvgHooks::addAPIParamDescs",
 		"TranslateGetAPIMessageGroupsParameterList": "TranslateSvgHooks::addAPIParams",
 		"TranslatePostInitGroups": "TranslateSvgHooks::loadSVGGroups",
-		"TranslateProcessAPIMessageGroupsProperties": "TranslateSvgHooks::processAPIProperties",
-		"UnitTestsList": "TranslateSvgHooks::onUnitTestsList"
+		"TranslateProcessAPIMessageGroupsProperties": "TranslateSvgHooks::processAPIProperties"
 	},
 	"config": {
 		"TranslateSvgTypefaces": {
