@@ -7,11 +7,6 @@
  * @copyright Copyright © 2014, Harry Burt
  * @license GPL-2.0-or-later
  */
-
-class TranslateSvgUpload extends UploadBase {
-	public function initializeFromRequest( &$request ) {
-	}
-}
 class TranslateSvgTestCase extends MediaWikiTestCase {
 
 	/**
@@ -43,7 +38,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		}
 
 		// Prepare upload
-		$uploader = new TranslateSvgUpload();
+		$uploader = new TranslateSvgUploadMock();
 		$uploader->initializePathInfo( $name, $tempName, filesize( $tempName ), true );
 
 		// Actually perform upload
