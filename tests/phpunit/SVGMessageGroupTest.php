@@ -17,7 +17,8 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 	}
 
 	public function testConstructorFileNotFound() {
-		$this->setExpectedException( MWException::class, 'File not found' );
+		$this->expectException( MWException::class );
+		$this->expectExceptionMessage( 'File not found' );
 		new SVGMessageGroup( 'DoesNotExist.svg' );
 	}
 
