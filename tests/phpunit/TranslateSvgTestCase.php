@@ -50,7 +50,10 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		}
 
 		// Prepare upload
-		$uploader = new TranslateSvgUploadMock();
+		/** @var UploadBase|\PHPUnit\Framework\MockObject\MockObject $uploader */
+		$uploader = $this->getMockBuilder( UploadBase::class )
+			->setMethods( [ 'initializeFromRequest' ] )
+			->getMock();
 		$uploader->initializePathInfo( $name, $tempName, filesize( $tempName ), true );
 
 		// Actually perform upload

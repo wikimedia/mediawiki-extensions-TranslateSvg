@@ -32,8 +32,7 @@
 		"TranslateSvgHooks": "TranslateSvgHooks.php",
 		"ExportSVGMessagesTask": "TranslateSvgTasks.php",
 		"TranslateSvgUpload": "SVGFormatWriter.php",
-		"TranslateSvgTestCase": "tests/phpunit/TranslateSvgTestCase.php",
-		"TranslateSvgUploadMock": "tests/phpunit/TranslateSvgUploadMock.php"
+		"TranslateSvgTestCase": "tests/phpunit/TranslateSvgTestCase.php"
 	},
 	"ResourceModules": {
 		"jquery.colorpicker": {
