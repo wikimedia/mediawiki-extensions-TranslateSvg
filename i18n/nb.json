@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"translatesvg-desc": "Gir et grensesnitt for å oversette SVG-er i samsvar med spesifikasjonen SVG1.1",
+	"translate-taskui-export-as-svg": "Lagre over den originale SVG-fila",
+	"translate-svg-nodesc": "(Ingen filbeskrivelse gitt.)",
+	"translate-svg-thumbnail": "Originalfil",
+	"translate-svg-js-thumbnail": "(miniatyrbilde oppdateres automatisk)",
+	"translate-page-description-legend-svgmg": "Informasjon om denne fila",
+	"translate-taction-mstats-svgmg": "Filstatistikk",
+	"translate-taction-export-svgmg": "Last opp oppdatert versjon av fila",
+	"translate-svg-table-header": "Beskjedidentifikator",
+	"translate-svg-filepage-caption": "Dette bildet vist som PNG på andre språk: $1",
+	"translate-svg-filepage-caption-translator": "Dette bildet vist som PNG på andre språk: $1; eller oversett det til $2",
+	"translate-svg-filepage-edit": "rediger",
+	"translate-svg-filepage-finish": "fullfør",
+	"translate-svg-filepage-another": "et annet språk",
+	"translate-svg-filepage-other": "andre språk",
+	"translate-svg-filepage-invite": "Denne fila kan enkelt oversettes til $1",
+	"translate-svg-autocreate": "Opprett oversettelsesenheter automatisk basert på endringer i kilde-SVG-fila",
+	"translate-svg-autodelete": "Slett automatisk unødvendige oversettelsesenheter basert på endringer i kilde-SVG-fila",
+	"translate-svg-autoedit": "Oppdater oversettelser automatisk basert på endringer i kilde-SVG-fila",
+	"translate-svg-autofuzzy": "Merker automatisk oversettelser som foreldet basert på endringer i kilde-SVG-fila",
+	"translate-svg-upload-comment": "Oppdaterer oversettelser (startet: $1; endret/utvidet: $2)",
+	"translate-svg-upload-none": "(ingen)",
+	"translate-svg-chooselanguage-title": "Språkvalg",
+	"translate-svg-chooselanguage-desc": "Velg hvilket språk du ønsker å oversette denne SVG-fila til:",
+	"translate-svg-instructions-title": "Er det første gang du oversetter en SVG-fil på denne måten?",
+	"translate-svg-instructions-desc": "For å begynne, klikk på en beskjedidentifikator i første kolonne for å begynne å oversette den beskjeden, og bruk knappene «$1» og «$2» for å navigere gjennom beskjedene som trenger oversettelse. Husk å bruke fana «$3» for å lagre oversettelsen når du er ferdig.",
+	"translate-svg-warn": "<strong>Advarsel:</strong> Det er for tiden ulagrede oversettelser til dette språket, som ikke vil bli synlige før du eller noen andre $1.",
+	"translate-svg-warn-inner": "lagrer de endringene i originalfila",
+	"translate-svg-new-title": "SVG-oversettelse"
+}
