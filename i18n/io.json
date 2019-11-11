@@ -4,5 +4,7 @@
 			"Joao Xavier"
 		]
 	},
+	"translate-svg-filepage-caption": "Ca imajo reprezentesas en PNG en altra lingui: $1",
+	"translate-svg-filepage-other": "altra lingui",
 	"translate-svg-warn": "<strong>Atencez:</strong> Existas tradukuri ad ica linguo ne konservata. Li ne divenos videbla til ke vu od altra persono $1."
 }
