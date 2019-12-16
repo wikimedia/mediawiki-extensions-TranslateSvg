@@ -49,7 +49,7 @@
 			],
 			"dependencies": [
 				"jquery.form",
-				"jquery.ui.dialog",
+				"jquery.ui",
 				"jquery.colorpicker",
 				"ext.translate.hooks"
 			],
