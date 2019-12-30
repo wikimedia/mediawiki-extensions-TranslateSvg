@@ -31,7 +31,9 @@
 		"TranslateSvgUtils": "TranslateSvgUtils.php",
 		"TranslateSvgHooks": "TranslateSvgHooks.php",
 		"ExportSVGMessagesTask": "TranslateSvgTasks.php",
-		"TranslateSvgUpload": "SVGFormatWriter.php",
+		"TranslateSvgUpload": "SVGFormatWriter.php"
+	},
+	"TestAutoloadClasses": {
 		"TranslateSvgTestCase": "tests/phpunit/TranslateSvgTestCase.php"
 	},
 	"ResourceModules": {
