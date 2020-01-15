@@ -245,7 +245,7 @@ class SVGFormatWriter {
 		$bot = User::newFromName( $wgTranslateSvgBotName, false );
 		$status = $uploader->performUpload( $comment, false, false, $bot );
 		if ( !$status->isGood() ) {
-			return $wgOut->parse( $status->getWikiText() );
+			return $wgOut->parseAsInterface( $status->getWikiText() );
 		}
 
 		// If the user would have watched a normal reupload, watch this
