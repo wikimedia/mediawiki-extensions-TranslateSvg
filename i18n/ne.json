@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"हिमाल सुबेदी"
+			"हिमाल सुबेदी",
+			"पर्वत सुबेदी"
 		]
 	},
+	"translate-svg-filepage-other": "अन्य भाषाहरू",
 	"translate-svg-new-label": "भाषा:"
 }
