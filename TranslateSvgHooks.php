@@ -309,8 +309,7 @@ class TranslateSvgHooks {
 		}
 
 		if ( isset( $props['thumbnail'] ) ) {
-			$language = isset( $params['language'] ) ?
-				$params['language'] : $g->getSourceLanguage();
+			$language = $params['language'] ?? $g->getSourceLanguage();
 
 			$inProgressTranslations = [];
 			if ( isset( $params['inprogress'] ) ) {

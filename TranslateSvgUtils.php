@@ -154,7 +154,7 @@ class TranslateSvgUtils {
 				break;
 			case 'font-family':
 				$map = [ 'Sans' => 'sans-serif' ];
-				$value = isset( $map[$value] ) ? $map[$value] : $value;
+				$value = $map[$value] ?? $value;
 				break;
 			case 'fill':
 				$name = 'color';

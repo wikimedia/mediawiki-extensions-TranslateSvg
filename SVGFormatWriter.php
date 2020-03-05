@@ -29,8 +29,6 @@ class SVGFormatWriter {
 	protected $inProgressTranslations = [];
 
 	/**
-	 * Constructor
-	 *
 	 * @param SVGMessageGroup $group Message group to write to file
 	 * @param array[] $inProgressTranslations Possible array of overriddes (unsaved translations
 	 *  that should take preference over saved ones), format: [id][langcode][property name]
@@ -73,7 +71,7 @@ class SVGFormatWriter {
 		// Collapse on-wiki translations translations into in-progress translations
 		foreach ( $onWikiTranslations as $key => $languages ) {
 			foreach ( $languages as $language => $translation ) {
-				$oldItem = isset( $inFileTranslations[$key][$language] ) ? $inFileTranslations[$key][$language] : [];
+				$oldItem = $inFileTranslations[$key][$language] ?? [];
 				$inFileTranslations[$key][$language] = $onWikiTranslations[$key][$language] + $oldItem;
 				if ( $language !== 'fallback' ) {
 					$inFileTranslations[$key][$language]['id'] = $inFileTranslations[$key]['fallback']['id'] . "-$language";

@@ -21,8 +21,6 @@ class SVGMessageGroup extends WikiMessageGroup {
 	protected $onWikiTranslations = null;
 
 	/**
-	 * Constructor.
-	 *
 	 * @param string $filename Name of the file to be translated (no namespace)
 	 * @throws MWException if file not found
 	 */
