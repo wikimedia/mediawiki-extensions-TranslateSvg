@@ -8,6 +8,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Group for messages that are stored in subpages of the File namespace.
  *
@@ -151,6 +153,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		}
 
 		$translations = $svg->getInFileTranslations();
+		$pm = MediaWikiServices::getInstance()->getPermissionManager();
 		foreach ( $translations as $key => $outerArray ) {
 			foreach ( $outerArray as $language => $innerArray ) {
 				if ( $language === 'fallback' ) {
@@ -163,7 +166,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 					// @todo: consider whether an update of the page is in order
 					continue;
 				}
-				if ( !$title->userCan( 'create', $bot ) ) {
+				if ( !$pm->userCan( 'create', $bot, $title ) ) {
 					// Needs to be created, can't be, so fail
 					return false;
 				}
