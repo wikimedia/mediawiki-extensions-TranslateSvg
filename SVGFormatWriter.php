@@ -8,6 +8,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Class for writing SVG files
  */
@@ -38,7 +40,8 @@ class SVGFormatWriter {
 		$this->svg = SVGFile::newFromMessageGroup( $this->group );
 		$this->inProgressTranslations = $inProgressTranslations;
 		$this->filename = $this->group->getId();
-		$this->file = wfFindFile( Title::makeTitle( NS_FILE, $this->filename ) );
+		$this->file = MediaWikiServices::getInstance()->getRepoGroup()
+			->findFile( Title::makeTitle( NS_FILE, $this->filename ) );
 	}
 
 	/**

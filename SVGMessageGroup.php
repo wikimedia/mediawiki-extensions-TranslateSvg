@@ -43,7 +43,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		// Parental constructor. Sets $this->source.
 		parent::__construct( $filename, $filename );
 
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		if ( !$file || !$file->exists() ) {
 			throw new MWException( 'File not found' );
 		}

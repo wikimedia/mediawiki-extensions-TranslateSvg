@@ -7,6 +7,9 @@
  * @copyright Copyright © 2014, Harry Burt
  * @license GPL-2.0-or-later
  */
+
+use MediaWiki\MediaWikiServices;
+
 class TranslateSvgTestCase extends MediaWikiTestCase {
 	protected $tablesUsed = [
 		'user',
@@ -94,7 +97,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$this->messageGroup = null;
 		self::$name = null;
 		if ( $this->tempPath ) {
-			$backend = RepoGroup::singleton()->getLocalRepo()->getBackend();
+			$backend = MediaWikiServices::getInstance()->getRepoGroup()->getLocalRepo()->getBackend();
 			$backend->delete( [ 'src' => $this->tempPath ], [ 'force' => 1 ] );
 			$this->tempPath = null;
 		}

@@ -8,6 +8,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * An essentially random collection of helper functions, similar to GlobalFunctions.php.
  */
@@ -56,7 +58,7 @@ class TranslateSvgUtils {
 	 */
 	public static function isSVGFilePage( Title $title ) {
 		if ( $title->getNamespace() === NS_FILE ) {
-			$file = wfFindFile( $title );
+			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 			return ( $file && $file->getMimeType() === 'image/svg+xml' );
 		}
 

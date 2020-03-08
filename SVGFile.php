@@ -8,6 +8,9 @@
  * @copyright Copyright © 2014 Harry Burt
  * @license GPL-2.0-or-later
  */
+
+use MediaWiki\MediaWikiServices;
+
 class SVGFile {
 	/**
 	 * @var DOMDocument
@@ -695,7 +698,7 @@ class SVGFile {
 	 */
 	public static function newFromMessageGroup( SVGMessageGroup $group ) {
 		$title = Title::makeTitleSafe( NS_FILE, $group->getId() );
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		if ( !$file || !$file->exists() ) {
 			// Double-check it definitely exists
 			throw new MWException( 'File not found' );

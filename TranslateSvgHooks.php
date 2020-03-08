@@ -8,6 +8,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Some hooks for TranslateSvg extension.
  */
@@ -38,7 +40,7 @@ class TranslateSvgHooks {
 		}
 
 		$title = Title::newFromText( $group->getLabel(), NS_FILE );
-		$file = wfFindFile( $title );
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
 		$thumbnail = Linker::makeThumbLinkObj(
 			$title, $file, wfMessage( 'translate-svg-js-thumbnail' ), '', $wgLang->alignEnd(),
 			[ 'width' => 275, 'height' => 275 ]
