@@ -41,14 +41,15 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$name = str_replace( '_', ' ', $name );
 		$title = Title::makeTitle( NS_FILE, $name );
 		if ( $title->exists() ) {
+			$user = $this->getTestSysop()->getUser();
 			// @todo This should not happen
 			$wikiPage = new WikiPage( $title );
-			$wikiPage->doDeleteArticle( 'resetting' );
+			$wikiPage->doDeleteArticleReal( 'resetting', $user );
 			$subpages = $title->getSubpages();
 			foreach ( $subpages as $subpage ) {
 				/** @var Title $subpage */
 				$wikiPage = new WikiPage( $subpage );
-				$wikiPage->doDeleteArticle( 'resetting' );
+				$wikiPage->doDeleteArticleReal( 'resetting', $user );
 			}
 		}
 
