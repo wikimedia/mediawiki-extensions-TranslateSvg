@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fohanno"
+			"Fohanno",
+			"Fulup"
 		]
 	},
 	"translate-svg-thumbnail": "Restr orin",
@@ -10,6 +11,7 @@
 	"translate-svg-filepage-finish": "echuiñ",
 	"translate-svg-filepage-another": "yezh all",
 	"translate-svg-filepage-other": "yezhoù all",
+	"translate-svg-upload-comment": "Hizivadur an troidigezhioù (boulc'het : $1; kemmet/astennet : $2)",
 	"translate-svg-upload-none": "(hini ebet)",
 	"translate-svg-chooselanguage-title": "Diuzañ ar yezh",
 	"translate-svg-new-title": "Troidigezh SVG",
