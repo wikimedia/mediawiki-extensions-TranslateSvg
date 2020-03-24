@@ -52,8 +52,7 @@
 			"dependencies": [
 				"jquery.form",
 				"jquery.ui",
-				"jquery.colorpicker",
-				"ext.translate.hooks"
+				"jquery.colorpicker"
 			],
 			"messages": [
 				"translate-taction-mstats-svgmg",
