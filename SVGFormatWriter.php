@@ -295,7 +295,8 @@ class SVGFormatWriter {
 		global $wgTranslateSvgBackend, $wgTranslateSvgDirectory;
 
 		if ( $wgTranslateSvgBackend ) {
-			return FileBackendGroup::singleton()->get( $wgTranslateSvgDirectory );
+			return MediaWikiServices::getInstance()->getFileBackendGroup()
+				->get( $wgTranslateSvgDirectory );
 		} else {
 			static $backend = null;
 			if ( !$backend ) {
