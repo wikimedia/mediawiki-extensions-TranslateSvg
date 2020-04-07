@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kwj2772",
-			"아라",
-			"Ykhwong"
+			"Ykhwong",
+			"아라"
 		]
 	},
 	"translatesvg-desc": "SVG 1.1 규격에 따라 SVG 파일을 번역하는 인터페이스를 제공합니다",

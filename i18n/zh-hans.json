@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Duolaimi",
+			"Liuxinyu970226",
 			"Shirayuki",
 			"Xiaomingyan",
-			"Yfdyh000",
-			"Liuxinyu970226",
-			"Duolaimi"
+			"Yfdyh000"
 		]
 	},
 	"translatesvg-desc": "为转译符合SVG1.1规范的SVG提供一个原生样式接口",

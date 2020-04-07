@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Cainamarques",
+			"Eduardo Addad de Oliveira",
 			"Hamilton Abreu",
 			"Luckas",
-			"Luckas Blade",
-			"Eduardo Addad de Oliveira"
+			"Luckas Blade"
 		]
 	},
 	"translatesvg-desc": "Fornece uma interface de estilo nativo para traduzir ficheiros SVG de acordo com a especificação SVG1.1",

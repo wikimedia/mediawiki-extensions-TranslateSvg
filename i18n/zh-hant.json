@@ -2,11 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Justincheng12345",
+			"Kly",
+			"LNDDYL",
 			"Shirayuki",
 			"Simon Shek",
-			"LNDDYL",
-			"SupaplexTW",
-			"Kly"
+			"SupaplexTW"
 		]
 	},
 	"translatesvg-desc": "為轉譯符合SVG1.1規範的SVG提供一個原生樣式接口",

@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"SandroHc",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"SandroHc"
 		]
 	},
 	"translatesvg-desc": "Fornece uma interface de estilo nativo para traduzir ficheiros SVG de acordo com a especificação SVG1.1",

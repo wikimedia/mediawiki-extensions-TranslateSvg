@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Toliño",
-			"Banjo"
+			"Banjo",
+			"Toliño"
 		]
 	},
 	"translatesvg-desc": "Proporciona unha inteface de estilo nativa para a tradución de ficheiros SVG en liña coa especificación SVG1.1.",

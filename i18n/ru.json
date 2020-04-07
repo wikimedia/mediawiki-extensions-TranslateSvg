@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Express2000",
+			"Facenapalm",
 			"Kaganer",
 			"Kalan",
-			"Okras",
-			"Facenapalm"
+			"Okras"
 		]
 	},
 	"translatesvg-desc": "Предоставляет перевод файлов SVG в соответствии со спецификацией SVG1.1",
