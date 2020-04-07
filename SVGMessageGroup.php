@@ -247,7 +247,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 			$mangler = $this->getMangler();
 			foreach ( $collection as $item ) {
 				/** @var TMessage $item */
-				$key = explode( '/', $mangler->unMangle( $item->key() ) );
+				$key = explode( '/', $mangler->unmangle( $item->key() ) );
 				$key = array_pop( $key );
 				$translation = str_replace( TRANSLATE_FUZZY, '', $item->translation() );
 
