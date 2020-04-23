@@ -9,6 +9,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\SlotRecord;
 
 /**
  * Group for messages that are stored in subpages of the File namespace.
@@ -51,7 +52,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$rev = '';
 		if ( $title->exists() ) {
 			// If the *page* associated with the file exists, grab its content
-			$rev = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
+			$rev = $this->getWikitextForTransclusion( $title );
 			$revsections = explode( "\n==", $rev );
 			foreach ( $revsections as $revsection ) {
 				// Attempt to trim the file description page down to only the most relevant content
@@ -88,7 +89,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		foreach ( $subpages as $subpage ) {
 			/** @var Title $subpage */
 			if ( $this->isSourceLanguage( $subpage->getSubpageText() ) ) {
-				$definition = Revision::newFromTitle( $subpage )->getContent()->getWikitextForTransclusion();
+				$definition = $this->getWikitextForTransclusion( $subpage );
 				$definition = TranslateSvgUtils::stripPropertyString( $definition );
 
 				// Is there really not an easier way to get the parent page than:
@@ -111,9 +112,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		if ( !$title->exists() ) {
 			return null;
 		}
-		$rev = Revision::newFromTitle( $title );
-
-		$definition = $rev->getContent()->getWikitextForTransclusion();
+		$definition = $this->getWikitextForTransclusion( $title );
 		$definition = TranslateSvgUtils::stripPropertyString( $definition );
 		return $definition;
 	}
@@ -130,7 +129,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		if ( !$title->exists() ) {
 			return '';
 		}
-		$translation = Revision::newFromTitle( $title )->getContent()->getWikitextForTransclusion();
+		$translation = $this->getWikitextForTransclusion( $title );
 		$properties = TranslateSvgUtils::extractPropertyString( $translation );
 
 		return $properties;
@@ -290,5 +289,16 @@ class SVGMessageGroup extends WikiMessageGroup {
 			MessageIndex::singleton()->rebuild();
 		}
 		return true;
+	}
+
+	/**
+	 * @param LinkTarget $title
+	 * @return string|false
+	 */
+	private function getWikitextForTransclusion( $title ) {
+		return MediaWikiServices::getInstance()->getRevisionLookup()
+			->getRevisionByTitle( $title )
+			->getContent( SlotRecord::MAIN )
+			->getWikitextForTransclusion();
 	}
 }
