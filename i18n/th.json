@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aefgh39622",
 			"Ans"
 		]
 	},
-	"translate-js-properties-legend": "คุณลักษณะ"
+	"translate-svg-new-label": "ภาษา:",
+	"translate-js-properties-legend": "คุณลักษณะ",
+	"translate-js-label-color": "สี:"
 }
