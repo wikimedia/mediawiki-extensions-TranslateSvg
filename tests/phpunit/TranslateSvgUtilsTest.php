@@ -188,7 +188,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 
 	/**
 	 * @dataProvider translationProvider
-	 * @param string $translation  The translation string (text plus properties) to transform
+	 * @param string $translation The translation string (text plus properties) to transform
 	 * @param array $array The expected output, i.e. the full translation array
 	 * @covers TranslateSvgUtils::translationToArray
 	 */

@@ -36,7 +36,7 @@ class SVGFile {
 	 * @param string $fallbackLanguage
 	 * @todo Handle DOM warnings
 	 */
-	public function  __construct( $path, $fallbackLanguage ) {
+	public function __construct( $path, $fallbackLanguage ) {
 		// Save sourceLanguage for later (mostly so we can understand which language is the fallback)
 		$this->fallbackLanguage = $fallbackLanguage;
 
