@@ -200,7 +200,6 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * the TranslateMetadata framework.
 	 *
 	 * @param string $srcLang The source language code
-	 * @return null
 	 */
 	public function setSourceLanguage( $srcLang ) {
 		$this->sourceLanguage = $srcLang;

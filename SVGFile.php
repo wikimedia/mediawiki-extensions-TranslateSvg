@@ -295,8 +295,6 @@ class SVGFile {
 	/**
 	 * Analyse the SVG file, extracting translations and other metadata. Expects the file to
 	 * be in a certain format: see self::makeTranslationReady() for details.
-	 *
-	 * @return array Array of translations (indexed by ID, then langcode, then property)
 	 */
 	protected function analyse() {
 		$switches = $this->document->getElementsByTagName( 'switch' );
