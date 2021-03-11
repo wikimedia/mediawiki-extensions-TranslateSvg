@@ -8,6 +8,7 @@
 			"Od1n",
 			"Tititou36",
 			"Urhixidur",
+			"Verdy p",
 			"Wladek92"
 		]
 	},
@@ -26,6 +27,7 @@
 	"translate-svg-filepage-finish": "terminer",
 	"translate-svg-filepage-another": "Autres langues",
 	"translate-svg-filepage-other": "autres langues",
+	"translate-svg-filepage-item": "$1 ($2)",
 	"translate-svg-filepage-invite": "Ce fichier peut facilement être traduit en $1",
 	"translate-svg-autocreate": "Créer automatiquement des unités de traduction basées sur les changements sur le fichier source SVG",
 	"translate-svg-autodelete": "Supprimer automatiquement les unités de traduction inutiles sur des changements du fichier source SVG",
