@@ -251,8 +251,9 @@ class SVGFormatWriter {
 
 		// If the user would have watched a normal reupload, watch this
 		// reupload.
-		if ( $user->getOption( 'watchcreations' ) ) {
-			$user->addWatch( $uploader->getLocalFile()->getTitle() );
+		$services = MediaWikiServices::getInstance();
+		if ( $services->getUserOptionsLookup()->getOption( $user, 'watchcreations' ) ) {
+			$services->getWatchlistManager()->addWatch( $user, $uploader->getLocalFile()->getTitle() );
 		}
 
 		return true;
