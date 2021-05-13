@@ -201,7 +201,7 @@ class SVGFormatWriter {
 	 * @return bool|string True on success, error message on failure
 	 */
 	public function exportToSVG( User $user ) {
-		global $wgTranslateSvgBotName, $wgContLang, $wgOut;
+		global $wgTranslateSvgBotName, $wgOut;
 
 		$languages = $this->svg->switchToTranslationSet( $this->getPreferredTranslations() );
 
@@ -218,11 +218,12 @@ class SVGFormatWriter {
 		// Prepare edit summary accordingly
 		$startedString =
 		$expandedString = wfMessage( 'translate-svg-upload-none' )->inContentLanguage();
+		$contentLanguage = MediaWikiServices::getInstance()->getContentLanguage();
 		if ( count( $started ) !== 0 ) {
-			$startedString = $wgContLang->commaList( $started );
+			$startedString = $contentLanguage->commaList( $started );
 		}
 		if ( count( $expanded ) !== 0 ) {
-			$expandedString = $wgContLang->commaList( $expanded );
+			$expandedString = $contentLanguage->commaList( $expanded );
 		}
 		$comment = wfMessage(
 			'translate-svg-upload-comment',

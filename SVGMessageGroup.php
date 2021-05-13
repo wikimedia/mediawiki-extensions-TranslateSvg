@@ -26,7 +26,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	 * @throws MWException if file not found
 	 */
 	public function __construct( $filename ) {
-		global $wgLang, $wgContLang;
+		global $wgLang;
 
 		$title = Title::newFromText( $filename, NS_FILE );
 
@@ -39,7 +39,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 		$this->setNamespace( NS_FILE );
 		$this->setLabel( $filename );
 		$this->setId( $filename );
-		$prefixedFilename = $wgContLang->getNsText( NS_FILE ) . ':' . $filename;
+		$prefixedFilename = MediaWikiServices::getInstance()->getContentLanguage()->getNsText( NS_FILE ) . ':' . $filename;
 
 		// Parental constructor. Sets $this->source.
 		parent::__construct( $filename, $filename );
