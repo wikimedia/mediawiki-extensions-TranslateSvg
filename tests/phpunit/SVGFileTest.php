@@ -17,7 +17,7 @@ class SVGFileTest extends TranslateSvgTestCase {
 	 */
 	private $svg;
 
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->svg = new SVGFile( __DIR__ . '/../data/Speech_bubbles.svg', 'en' );
 	}

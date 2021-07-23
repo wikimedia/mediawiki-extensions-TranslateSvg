@@ -77,7 +77,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$this->messageGroup = new SVGMessageGroup( self::$name );
 	}
 
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 
 		$pairs = [
@@ -93,7 +93,7 @@ class TranslateSvgTestCase extends MediaWikiTestCase {
 		$this->setMwGlobals( $pairs );
 	}
 
-	public function tearDown() : void {
+	public function tearDown(): void {
 		parent::tearDown();
 		$this->messageGroup = null;
 		self::$name = null;

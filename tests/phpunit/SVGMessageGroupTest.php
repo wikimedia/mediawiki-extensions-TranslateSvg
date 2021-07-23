@@ -11,7 +11,7 @@
  * @group Database
  */
 class SVGMessageGroupTest extends TranslateSvgTestCase {
-	public function setUp() : void {
+	public function setUp(): void {
 		parent::setUp();
 		$this->prepareFile( __DIR__ . '/../data/Speech_bubbles.svg' );
 	}
