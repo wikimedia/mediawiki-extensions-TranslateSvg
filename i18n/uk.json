@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Base",
+			"DDPAT",
 			"Olvin",
 			"Piramidion",
 			"Vlad5250"
@@ -22,6 +23,7 @@
 	"translate-svg-filepage-finish": "завершити",
 	"translate-svg-filepage-another": "іншу мову",
 	"translate-svg-filepage-other": "інші мови",
+	"translate-svg-filepage-item": "$1 ($2)",
 	"translate-svg-filepage-invite": "Цей файл може бути легко перекладений на $1",
 	"translate-svg-autocreate": "Автоматичне створення елементів перекладу на основі змін у вихідному SVG-файлі",
 	"translate-svg-autodelete": "Автоматичне вилучення непотрібних елементів перекладу на основі змін у вихідному SVG-файлі",
