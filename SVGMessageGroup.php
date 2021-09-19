@@ -170,8 +170,10 @@ class SVGMessageGroup extends WikiMessageGroup {
 				$wikiPage = new WikiPage( $title );
 				$summary = wfMessage( 'translate-svg-autocreate' )->inContentLanguage()->text();
 				$content = ContentHandler::makeContent( $translation, $title );
-				$status = $wikiPage->doEditContent( $content, $summary, 0, false, $bot );
-				if ( !$status->isOK() ) {
+				$updater = $wikiPage->newPageUpdater( $bot );
+				$updater->setContent( SlotRecord::MAIN, $content );
+				$updater->saveRevision( CommentStoreComment::newUnsavedComment( $summary ) );
+				if ( !$updater->getStatus()->isOK() ) {
 					// Needs to be created, couldn't, so fail
 					return false;
 				}
