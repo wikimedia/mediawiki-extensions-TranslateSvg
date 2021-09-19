@@ -272,7 +272,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 	public function register( $useJobQueue = true ) {
 		$articleId = Title::newFromText( $this->getLabel(), NS_FILE )->getArticleId();
 
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$row = [ 'ts_page_id' => $articleId ];
 
 		$dbw->insert( 'translate_svg', $row, __METHOD__, [ 'IGNORE' ] );

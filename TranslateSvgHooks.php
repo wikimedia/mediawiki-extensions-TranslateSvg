@@ -363,7 +363,7 @@ class TranslateSvgHooks {
 	 * @param array &$autoload Not used at present.
 	 */
 	public static function loadSVGGroups( &$list, &$deps, &$autoload ) {
-		$dbr = wfGetDB( DB_MASTER );
+		$dbr = wfGetDB( DB_PRIMARY );
 
 		$tables = [ 'translate_svg', 'page' ];
 		$col = '*';
