@@ -10,7 +10,7 @@
 
 use MediaWiki\MediaWikiServices;
 
-class TranslateSvgTestCase extends MediaWikiTestCase {
+class TranslateSvgTestCase extends MediaWikiIntegrationTestCase {
 	protected $tablesUsed = [
 		'user',
 		'page',
