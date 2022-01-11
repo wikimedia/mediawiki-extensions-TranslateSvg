@@ -1,9 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
+			"Daud I.F. Argana",
 			"පසිඳු කාවින්ද"
 		]
 	},
+	"translatesvg-desc": "Menyediakan antarmuka bergaya bawaan untuk menerjemahkan SVG sesuai dengan ketentuan SVG1.1",
+	"translate-taskui-export-as-svg": "Simpan kembali ke berkas SVG asal",
+	"translate-svg-nodesc": "(Keterangan berkas tidak disediakan.)",
+	"translate-svg-thumbnail": "Berkas asli",
+	"translate-page-description-legend-svgmg": "Informasi tentang berkas ini",
+	"translate-taction-mstats-svgmg": "Statistik berkas",
+	"translate-taction-export-svgmg": "Mengunggah versi terbaru dari berkas",
+	"translate-svg-table-header": "Penanda pesan",
 	"translate-svg-filepage-edit": "sunting",
-	"translate-svg-new-label": "Bahasa:"
+	"translate-svg-new-label": "Bahasa:",
+	"translate-js-properties-legend": "Atribut",
+	"translate-js-label-x": "Koordinat X:",
+	"translate-js-label-y": "Koordinat Y:",
+	"translate-js-label-color": "Warna:",
+	"translate-js-label-font-family": "Fon:",
+	"translate-js-label-bold": "Tebal",
+	"translate-js-label-italic": "Miring",
+	"translate-js-label-underline": "Garis bawah",
+	"translate-js-font-family-inherit": "(diturunkan)"
 }
