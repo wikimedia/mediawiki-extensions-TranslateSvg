@@ -13,5 +13,6 @@
 	"translate-svg-upload-none": "(nulo)",
 	"translate-svg-warn": "<strong>Atencez:</strong> Existas tradukuri ad ica linguo ne konservata. Li ne divenos videbla til ke vu od altra persono $1.",
 	"translate-svg-new-label": "Linguo:",
-	"translate-svg-export-error": "Eventis eroro neexpektita, probante konservar vua modifikuri en l'arkivo. Se vu deziros, vu povos informar pri ol che $1."
+	"translate-svg-export-error": "Eventis eroro neexpektita, probante konservar vua modifikuri en l'arkivo. Se vu deziros, vu povos informar pri ol che $1.",
+	"translate-js-label-font-family": "Litero-fonto:"
 }
