@@ -43,7 +43,7 @@
 	"translate-svg-warn-inner": "enregistrer vos modifications dans le fichier d'origine",
 	"translate-svg-new-title": "Traduction SVG",
 	"translate-svg-new-summary": "Pour commencer la traduction de ce fichier, veuillez sélectionner la langue <strong>à partir de laquelle</strong> vous traduisez ce fichier (si vous doutez de la langue à indiquer, sélectionnez la langue plus utilisée).",
-	"translate-svg-new-label": "Langue :",
+	"translate-svg-new-label": "Langue :",
 	"translate-svg-new-error-import": "<strong> Une erreur s'est produite </strong>: Une erreur inconnue s'est produite lors de la tentative de création des pages nécessaires pour traduire ce SVG.",
 	"translate-svg-new-error-group": "<strong> Une erreur s'est produite </strong>: Une erreur inconnue s'est produite ; vous avez peut-être oublié de spécifier un groupe dans l'URL ?",
 	"translate-svg-export-unsupported": "Exporter vers un SVG n’est pas pris en charge pour ce groupe de messages. Si la raison n’en est pas claire, vous pouvez créer un bogue à ce propos sur $1.",
