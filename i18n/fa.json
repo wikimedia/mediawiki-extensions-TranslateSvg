@@ -7,7 +7,8 @@
 			"Reza1615",
 			"ZxxZxxZ",
 			"پاناروما",
-			"Huji"
+			"Huji",
+			"Beginneruser"
 		]
 	},
 	"translatesvg-desc": "رابطی بومی برای ترجمهٔ اس‌وی‌جی‌ها با مشخصات SVG1.1 فراهم می‌کند",
@@ -18,7 +19,7 @@
 	"translate-page-description-legend-svgmg": "اطلاعات دربارهٔ این پرونده",
 	"translate-taction-mstats-svgmg": "آمارهای پوشه",
 	"translate-taction-export-svgmg": "بارگذاری نسخهٔ روزآمد شدهٔ پرونده",
-	"translate-svg-table-header": "پیغام شناسانه",
+	"translate-svg-table-header": "شناسانۀ پیام",
 	"translate-svg-filepage-caption": "این تصویر به عنوان پی‌ان‌جی در زبان‌های دیگر ازائه شده: $1",
 	"translate-svg-filepage-caption-translator": "این تصویر به عنوان پی‌ان‌جی در زبان‌های دیگر ارائه شده: $1؛ یا این را به $2 ترجمه کنید",
 	"translate-svg-filepage-edit": "ویرایش",
