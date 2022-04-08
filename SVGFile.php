@@ -10,6 +10,7 @@
  */
 
 use MediaWiki\MediaWikiServices;
+use Wikimedia\AtEase\AtEase;
 
 class SVGFile {
 	/**
@@ -43,10 +44,10 @@ class SVGFile {
 		$this->document = new DOMDocument( '1.0' );
 
 		// Warnings need to be suppressed in case there are DOM warnings
-		Wikimedia\suppressWarnings();
+		AtEase::suppressWarnings();
 		$this->document->load( $path );
 		$this->xpath = new DOMXpath( $this->document );
-		Wikimedia\restoreWarnings();
+		AtEase::restoreWarnings();
 
 		$this->xpath->registerNamespace( 'svg', 'http://www.w3.org/2000/svg' );
 
