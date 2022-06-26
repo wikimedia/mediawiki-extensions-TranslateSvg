@@ -151,6 +151,12 @@ class SVGMessageGroup extends WikiMessageGroup {
 
 		$translations = $svg->getInFileTranslations();
 		$pm = MediaWikiServices::getInstance()->getPermissionManager();
+		if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+			// MW 1.36+
+			$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
+		} else {
+			$wikiPageFactory = null;
+		}
 		foreach ( $translations as $key => $outerArray ) {
 			foreach ( $outerArray as $language => $innerArray ) {
 				if ( $language === 'fallback' ) {
@@ -167,7 +173,12 @@ class SVGMessageGroup extends WikiMessageGroup {
 					// Needs to be created, can't be, so fail
 					return false;
 				}
-				$wikiPage = new WikiPage( $title );
+				if ( $wikiPageFactory !== null ) {
+					// MW 1.36+
+					$wikiPage = $wikiPageFactory->newFromTitle( $title );
+				} else {
+					$wikiPage = new WikiPage( $title );
+				}
 				$summary = wfMessage( 'translate-svg-autocreate' )->inContentLanguage()->text();
 				$content = ContentHandler::makeContent( $translation, $title );
 				$updater = $wikiPage->newPageUpdater( $bot );

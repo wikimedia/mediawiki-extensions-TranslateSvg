@@ -42,13 +42,30 @@ class TranslateSvgTestCase extends MediaWikiIntegrationTestCase {
 		$title = Title::makeTitle( NS_FILE, $name );
 		if ( $title->exists() ) {
 			$user = $this->getTestSysop()->getUser();
+			if ( method_exists( MediaWikiServices::class, 'getWikiPageFactory' ) ) {
+				// MW 1.36+
+				$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
+			} else {
+				$wikiPageFactory = null;
+			}
+
 			// @todo This should not happen
-			$wikiPage = new WikiPage( $title );
+			if ( $wikiPageFactory !== null ) {
+				// MW 1.36+
+				$wikiPage = $wikiPageFactory->newFromTitle( $title );
+			} else {
+				$wikiPage = new WikiPage( $title );
+			}
 			$wikiPage->doDeleteArticleReal( 'resetting', $user );
 			$subpages = $title->getSubpages();
 			foreach ( $subpages as $subpage ) {
 				/** @var Title $subpage */
-				$wikiPage = new WikiPage( $subpage );
+				if ( $wikiPageFactory !== null ) {
+					// MW 1.36+
+					$wikiPage = $wikiPageFactory->newFromTitle( $subpage );
+				} else {
+					$wikiPage = new WikiPage( $subpage );
+				}
 				$wikiPage->doDeleteArticleReal( 'resetting', $user );
 			}
 		}
