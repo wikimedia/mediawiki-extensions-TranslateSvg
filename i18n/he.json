@@ -37,7 +37,7 @@
 	"translate-svg-new-label": "שפה:",
 	"translate-svg-new-error-import": "<strong>אירעה שגיעה:</strong> שגיאה לא ידועה אירעה בעת ניסיון ליצור את הדפים הדרושים לתרגום ה־SVG הזה.",
 	"translate-svg-new-error-group": "<strong>אירעה שגיאה:</strong> אירעה שגיאה לא ידוע; אולי שכחת לציין קבוצה בכתובת?",
-	"translate-svg-export-unsupported": "ייצוא חזרה ל־SVG לא נתמך בקבוצות ההודעות הזאת. אם לא ברור לך למה זה קרה, כדאי לפתוח באג באתר $1 .",
+	"translate-svg-export-unsupported": "יצוא חזרה ל־SVG לא נתמך בקבוצות ההודעות הזאת. אם לא ברור לך למה זה קרה, כדאי לפתוח באג באתר $1.",
 	"translate-svg-export-error": "אירעה שגיאה לא צפויה בעת ניסיון לשמור את השינויים שלך חזרה אל הקובץ. כדאי לפתוח באג באתר $1 .",
 	"translate-js-properties-legend": "מאפיינים",
 	"translate-js-label-x": "נקודת ציון על ציר X:",
