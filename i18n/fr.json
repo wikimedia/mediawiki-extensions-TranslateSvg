@@ -39,7 +39,7 @@
 	"translate-svg-chooselanguage-desc": "Veuillez sélectionner la langue dans laquelle vous souhaitez traduire ce fichier SVG :",
 	"translate-svg-instructions-title": "C'est la première fois que vous traduisez un fichier SVG de cette manière?",
 	"translate-svg-instructions-desc": "Pour commencer, cliquez sur un identifiant de message dans la première colonne de la table afin de commencer la traduction de ce message, à l'aide des boutons « $1 « et » $2 » qui vous aideront à naviguer parmi les messages nécessitant une traduction. Lorsque vous avez terminé, n'oubliez pas d'utiliser l'onglet « $3 » pour enregistrer vos traductions dans le fichier d'origine.",
-	"translate-svg-warn": "<strong>Attention:</strong> Il y a des transactions non enregistrées en cours dans cette langue, qui ne seront pas visibles jusqu'à ce que vous ou quelqu'un d'autre $1.",
+	"translate-svg-warn": "<strong>Attention :</strong> il y a actuellement des transactions non enregistrées dans cette langue, qui ne seront pas visibles tant vous ou quelqu’un d’autre n’aura pas utilisé « $1 ».",
 	"translate-svg-warn-inner": "enregistrer vos modifications dans le fichier d'origine",
 	"translate-svg-new-title": "Traduction SVG",
 	"translate-svg-new-summary": "Pour commencer la traduction de ce fichier, veuillez sélectionner la langue <strong>à partir de laquelle</strong> vous traduisez ce fichier (si vous doutez de la langue à indiquer, sélectionnez la langue plus utilisée).",
