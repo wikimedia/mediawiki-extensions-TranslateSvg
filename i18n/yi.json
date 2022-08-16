@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"פוילישער"
+			"פוילישער",
+			"Pacha Tchernof"
 		]
 	},
 	"translate-taskui-export-as-svg": "שפייכלערן צו אריגינעלער SVG טעקע",
@@ -27,7 +28,7 @@
 	"translate-js-properties-legend": "אייגנשאפֿטן",
 	"translate-js-label-x": "X-קאארדינאט:",
 	"translate-js-label-y": "Y-קאארדינאט:",
-	"translate-js-label-color": "קאליר:",
+	"translate-js-label-color": "קאָליר:",
 	"translate-js-label-font-family": "פֿאנט:",
 	"translate-js-label-bold": "דיק",
 	"translate-js-label-italic": "קורסיוו",
