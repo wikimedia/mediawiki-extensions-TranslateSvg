@@ -391,9 +391,10 @@ class TranslateSvgHooks {
 			return;
 		}
 
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$user = $out->getUser();
 		$vars['wgUserLanguageName'] = Language::fetchLanguageName(
-			$user->getOption( 'language' )
+			$userOptionsLookup->getOption( $user, 'language' )
 		);
 		$vars['wgUserCanTranslate'] = $user->isAllowed( 'translate' );
 
