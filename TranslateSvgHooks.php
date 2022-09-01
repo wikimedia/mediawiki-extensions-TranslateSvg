@@ -145,7 +145,7 @@ class TranslateSvgHooks {
 						wfMessage( 'translate-js-label-' . $index )->text(),
 						'mw-translate-prop-' . $index, 'mw-translate-prop-' . $index, 2, $currentValue,
 						[ 'type' => 'number', 'step' => 'any', 'style' => 'width:3em;' ]
-					) . "&#160;";
+					) . "\u{00A0}";
 					break;
 				case 'font-family':
 					$typefaces = $wgTranslateSvgTypefaces;
@@ -158,20 +158,20 @@ class TranslateSvgHooks {
 					$extraInputs .= Xml::label(
 							wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
 						) .
-							"&#160;" . Xml::listDropDown(
+							"\u{00A0}" . Xml::listDropDown(
 							'mw-translate-prop-' . $index, implode( "\n", $wgTranslateSvgTypefaces ),
 							wfMessage( 'translate-js-font-family-inherit' )->text(), $currentValue
-						) . "&#160;";
+						) . "\u{00A0}";
 					break;
 				case 'units':
 					$extraInputs .= Xml::label(
 							wfMessage( 'translate-js-label-' . $index )->text(),
 							'mw-translate-prop-' . $index
 						) .
-						"&#160;" . Xml::listDropDown(
+						"\u{00A0}" . Xml::listDropDown(
 							'mw-translate-prop-' . $index, implode( "\n", $allowedUnits ),
 							'', $currentValue
-						) . "&#160;";
+						) . "\u{00A0}";
 					break;
 				case 'bold':
 				case 'italic':
@@ -189,10 +189,10 @@ class TranslateSvgHooks {
 					$extraInputs .= Xml::label(
 							wfMessage( 'translate-js-label-' . $index )->text(), 'mw-translate-prop-' . $index
 						) .
-						"&#160;" . Xml::listDropDown(
+						"\u{00A0}" . Xml::listDropDown(
 							'mw-translate-prop-' . $index, implode( "\n", $colors ),
 							'', $currentValue
-						) . "&#160;";
+						) . "\u{00A0}";
 					break;
 			}
 		}
