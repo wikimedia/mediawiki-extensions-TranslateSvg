@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Rapsar",
 			"Vito Genovese"
 		]
 	},
 	"translatesvg-desc": "SVG'leri SVG1.1 spesifikasyonuna uygun olarak çevirmek için yerel bir arayüz sağlar",
 	"translate-taskui-export-as-svg": "Orijinal SVG dosyasına geri kaydet",
 	"translate-svg-nodesc": "(Dosya açıklaması verilmedi.)",
-	"translate-svg-thumbnail": "Orijinal dosya",
+	"translate-svg-thumbnail": "Özgün dosya",
 	"translate-svg-js-thumbnail": "(küçük resim otomatik olarak güncellenir)",
 	"translate-page-description-legend-svgmg": "Bu dosya hakkında bilgi",
 	"translate-taction-mstats-svgmg": "Dosya istatistikleri",
