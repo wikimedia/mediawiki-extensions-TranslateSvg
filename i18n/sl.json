@@ -6,6 +6,7 @@
 		]
 	},
 	"translate-svg-filepage-edit": "uredi",
+	"translate-svg-upload-none": "(noben)",
 	"translate-svg-chooselanguage-desc": "Prosimo, izberite jezik, v katerega želite prevesti to SVG-datoteko:",
 	"translate-svg-new-summary": "Za začetek prevajanja te datoteke izberite jezik, '''iz''' katerega jo prevajate (če je to dvoumno, izberite najbolj razširjeni jezik).",
 	"translate-svg-new-label": "Jezik:",
