@@ -47,5 +47,7 @@
 	"translate-js-label-bold": "בולט",
 	"translate-js-label-italic": "נטוי",
 	"translate-js-label-underline": "קו תחתי",
-	"translate-js-font-family-inherit": "(בירושה)"
+	"translate-js-font-family-inherit": "(בירושה)",
+	"apihelp-query+messagegroups-param-inprogress": "מערך אפשרי של תרגומים בתהליך (תרגומים שלא נשמרו שצריכים לקבל עדיפות על פני תרגומים שמורים). לקבוצות הודעות SVG בלבד.",
+	"apihelp-query+messagegroups-param-language": "שפה לעיבוד התמונה הממוזערת. קבוצות הודעות SVG בלבד."
 }
