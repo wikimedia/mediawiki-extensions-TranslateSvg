@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yupik"
+			"Yupik",
+			"Kimberli Mäkäräinen (WMNO)"
 		]
 	},
+	"translate-svg-thumbnail": "Álgovuolggalaš fiila",
 	"translate-svg-filepage-other": "eará gielat",
 	"translate-svg-new-label": "Giella:"
 }
