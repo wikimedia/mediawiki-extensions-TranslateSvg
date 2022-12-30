@@ -9,6 +9,8 @@
  * @license GPL-2.0-or-later
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Class for special page Special:TranslateNewSVG.
  *
@@ -37,9 +39,11 @@ class SpecialTranslateNewSVG extends SpecialPage {
 
 		$srcLang = $req->getVal( 'language' );
 
-		// Language::isValidBuiltInCode() isn't technically ideal, but it's probably
+		// LanguageNameUtils::isValidBuiltInCode() isn't technically ideal, but it's probably
 		// close enough for now.
-		if ( $srcLang !== null && Language::isValidBuiltInCode( $srcLang ) ) {
+		if ( $srcLang !== null &&
+			MediaWikiServices::getInstance()->getLanguageNameUtils()->isValidBuiltInCode( $srcLang )
+		) {
 			if ( $this->addSVGGroup( $groupName, $srcLang ) ) {
 				$target = SpecialPage::getTitleFor( 'Translate' );
 				$params = [ 'group' => $groupName, 'chooselanguage' => true ];

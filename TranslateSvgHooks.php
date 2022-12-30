@@ -391,9 +391,11 @@ class TranslateSvgHooks {
 			return;
 		}
 
-		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$services = MediaWikiServices::getInstance();
+		$userOptionsLookup = $services->getUserOptionsLookup();
+		$languageNameUtils = $services->getLanguageNameUtils();
 		$user = $out->getUser();
-		$vars['wgUserLanguageName'] = Language::fetchLanguageName(
+		$vars['wgUserLanguageName'] = $languageNameUtils->getLanguageName(
 			$userOptionsLookup->getOption( $user, 'language' )
 		);
 		$vars['wgUserCanTranslate'] = $user->isAllowed( 'translate' );
@@ -416,7 +418,7 @@ class TranslateSvgHooks {
 		foreach ( $languages['full'] as $language ) {
 			array_push(
 				$full, [
-					'name' => Language::fetchLanguageName( $language ),
+					'name' => $languageNameUtils->getLanguageName( $language ),
 					'code' => $language
 				]
 			);
@@ -424,7 +426,7 @@ class TranslateSvgHooks {
 		foreach ( $languages['partial'] as $language ) {
 			array_push(
 				$partial, [
-					'name' => Language::fetchLanguageName( $language ),
+					'name' => $languageNameUtils->getLanguageName( $language ),
 					'code' => $language
 				]
 			);

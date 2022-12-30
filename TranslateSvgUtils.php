@@ -270,7 +270,7 @@ class TranslateSvgUtils {
 	}
 
 	/**
-	 * Implement our own wrapper around Language::fetchLanguageName, providing a more sensible
+	 * Implement our own wrapper around LanguageNameUtils::getLanguageName, providing a more sensible
 	 * fallback chain and our own interpretation of the "fallback" language code.
 	 *
 	 * @param string $langCode Language code (e.g. en-gb, fr)
@@ -279,11 +279,12 @@ class TranslateSvgUtils {
 	 */
 	public static function fetchLanguageName( $langCode, $fallbackLanguage ) {
 		$langCode = ( $langCode === 'fallback' ) ? $fallbackLanguage : $langCode;
-		$langName = Language::fetchLanguageName( $langCode );
+		$languageNameUtils = MediaWikiServices::getInstance()->getLanguageNameUtils();
+		$langName = $languageNameUtils->getLanguageName( $langCode );
 		if ( $langName == '' ) {
 			// Try searching for prefix only instead
 			preg_match( '/^([a-z]+)/', $langCode, $matches );
-			$langName = Language::fetchLanguageName( $matches[0] );
+			$langName = $languageNameUtils->getLanguageName( $matches[0] );
 		}
 		if ( $langName == '' ) {
 			// Okay, seems the best we can do is return the language code
