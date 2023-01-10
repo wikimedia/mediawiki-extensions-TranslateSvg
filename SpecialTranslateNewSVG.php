@@ -10,6 +10,7 @@
  */
 
 use MediaWiki\Extension\Translate\MessageGroupProcessing\MessageGroups;
+use MediaWiki\Extension\Translate\Utilities\Utilities;
 use MediaWiki\MediaWikiServices;
 
 /**
@@ -82,7 +83,7 @@ class SpecialTranslateNewSVG extends SpecialPage {
 			Html::hidden( 'title', $this->getPageTitle()->getPrefixedText() ) .
 			Html::openElement( 'p' ) .
 			$this->msg( 'translate-svg-new-label' )->escaped() .
-			TranslateUtils::languageSelector( $this->getLanguage()->getCode(), $default ) . "\u{00A0}" .
+			Utilities::languageSelector( $this->getLanguage()->getCode(), $default ) . "\u{00A0}" .
 			Xml::submitButton( $this->msg( 'go' )->text() ) . "\n" .
 			Html::closeElement( 'p' ) .
 			Html::closeElement( 'fieldset' ) .
