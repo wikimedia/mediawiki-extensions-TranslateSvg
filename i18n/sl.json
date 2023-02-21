@@ -50,6 +50,6 @@
 	"translate-js-label-italic": "Ležeče",
 	"translate-js-label-underline": "Podčrtano",
 	"translate-js-font-family-inherit": "(podedovano)",
-	"apihelp-query+messagegroups-param-inprogress": "Možen nabor prevodov v teku (neshranjeni prevodi, ki bi morali imeti prednost pred shranjenimi). Samo skupine sporočil SVG.",
+	"apihelp-query+messagegroups-param-inprogress": "Možna matrika prevodov v teku (neshranjeni prevodi, ki bi morali imeti prednost pred shranjenimi). Samo skupine SVG-sporočil.",
 	"apihelp-query+messagegroups-param-language": "Jezik za upodobitev sličice. Samo skupine sporočil SVG."
 }
