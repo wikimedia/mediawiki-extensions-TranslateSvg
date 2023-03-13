@@ -9,6 +9,7 @@
  */
 
 use MediaWiki\Extension\Translate\MessageGroupProcessing\MessageGroups;
+use MediaWiki\Extension\Translate\MessageLoading\Message;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
 
@@ -258,7 +259,7 @@ class SVGMessageGroup extends WikiMessageGroup {
 			$collection->loadTranslations();
 			$mangler = $this->getMangler();
 			foreach ( $collection as $item ) {
-				/** @var TMessage $item */
+				/** @var Message $item */
 				$key = explode( '/', $mangler->unmangle( $item->key() ) );
 				$key = array_pop( $key );
 				$translation = str_replace( TRANSLATE_FUZZY, '', $item->translation() );
