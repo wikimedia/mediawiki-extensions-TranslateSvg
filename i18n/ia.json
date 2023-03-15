@@ -48,6 +48,6 @@
 	"translate-js-label-italic": "Italic",
 	"translate-js-label-underline": "Sublineate",
 	"translate-js-font-family-inherit": "(hereditar)",
-	"apihelp-query+messagegroups-param-inprogress": "Un array possibile de traductiones in progresso (traductiones non salveguardate que deberea prender le prioritate sur illos salveguardate). Gruppos de messages SVG solmente.",
+	"apihelp-query+messagegroups-param-inprogress": "Un matrice possibile de traductiones in progresso (traductiones non salveguardate que deberea prender le prioritate sur salveguardates). Gruppos de messages SVG solmente.",
 	"apihelp-query+messagegroups-param-language": "Le lingua in le qual render le miniatura. Gruppos de messages SVG solmente."
 }
