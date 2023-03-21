@@ -5,7 +5,7 @@
 			"Janezdrilc"
 		]
 	},
-	"translatesvg-desc": "Zagotavlja vmesnik v izvornem slogu za prevajanje SVG-jev v skladu s specifikacijo SVG1.1",
+	"translatesvg-desc": "Zagotavlja vmesnik v avtohtonem slogu za prevajanje SVG-jev v skladu s specifikacijo SVG1.1",
 	"translate-taskui-export-as-svg": "Shrani nazaj v izvorno datoteko SVG",
 	"translate-svg-nodesc": "(Opis datoteke ni bil naveden.)",
 	"translate-svg-thumbnail": "Izvorna datoteka",
