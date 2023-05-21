@@ -16,7 +16,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * Provides pairings of full string and its component property string (or '' if not applicable)
 	 * @return array
 	 */
-	public function propertyStringProvider() {
+	public static function propertyStringProvider() {
 		global $wgTranslateSvgTemplateName;
 		$tn = $wgTranslateSvgTemplateName;
 
@@ -69,7 +69,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * an SVG filepage
 	 * @return array
 	 */
-	public function titleProvider() {
+	public static function titleProvider() {
 		return [
 			[ NS_FILE, false, true ],
 			[ NS_MAIN, false, false ],
@@ -97,7 +97,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * attribute name and value)
 	 * @return array
 	 */
-	public function paramProvider() {
+	public static function paramProvider() {
 		return [
 			[ 'hackingAttempt', 'inject', [ false, false ] ],
 			[ 'bold', 'yes', [ 'font-weight', 'bold' ] ],
@@ -127,7 +127,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * parameter name and value)
 	 * @return array
 	 */
-	public function attribProvider() {
+	public static function attribProvider() {
 		return [
 			[ 'hackingAttempt', 'inject', [ false, false ] ],
 			[ 'font-weight', 'bold', [ 'bold', 'yes' ] ],
@@ -158,7 +158,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * Provides pairs of translation strings and their associated arrays
 	 * @return array
 	 */
-	public function translationProvider() {
+	public static function translationProvider() {
 		global $wgTranslateSvgTemplateName;
 		$tn = $wgTranslateSvgTemplateName;
 		return [
@@ -210,7 +210,7 @@ class TranslateSvgUtilsTest extends TranslateSvgTestCase {
 	 * Provides triples of 'operating system' language codes, MediaWiki language codes, and language names
 	 * @return array
 	 */
-	public function langProvider() {
+	public static function langProvider() {
 		return [
 			[ 'en_GB', 'en-gb', 'British English' ],
 			[ 'fr', 'fr', 'français' ],

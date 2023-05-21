@@ -52,7 +52,7 @@ class SVGMessageGroupTest extends TranslateSvgTestCase {
 		$this->assertEquals( $to, $this->messageGroup->getSourceLanguage() );
 	}
 
-	public function provideSetSourceLanguage() {
+	public static function provideSetSourceLanguage() {
 		return [ [ 'de' ], [ 'en' ] ];
 	}
 
