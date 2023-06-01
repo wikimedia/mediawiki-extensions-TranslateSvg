@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Yupik"
+			"Yupik",
+			"Seipinne"
 		]
 	},
 	"translate-taskui-export-as-svg": "Vuorkkii algâalgâlâš tiätuvuárkán",
 	"translate-svg-thumbnail": "Algâalgâlâš tiätuvuárkká",
+	"translate-svg-filepage-another": "nube kielân",
 	"translate-svg-filepage-other": "eres kielah",
+	"translate-svg-chooselanguage-title": "Kielâ valjiim",
 	"translate-svg-new-label": "Kielâ:"
 }
