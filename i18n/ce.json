@@ -34,7 +34,7 @@
 	"translate-svg-new-title": "SVG гочдар",
 	"translate-svg-new-label": "Мотт:",
 	"translate-svg-new-error-import": "<strong>ГӀалат:</strong> SVG-файлан оьшуш йолу агӀо кхолла гӀерташ девзаш доцу гӀалат даьлла.",
-	"translate-svg-new-error-group": "<strong>ГӀалат:</strong> Доьвзуш доца гӀалат даьлла; URL тоба тӀетоха диц делла те?",
+	"translate-svg-new-error-group": "<strong>ГӀалат:</strong> Девзаш доцу гӀалат даьлла; URL тоба тӀетоха диц делла те?",
 	"translate-js-properties-legend": "ХӀума",
 	"translate-js-label-x": "Координатан X:",
 	"translate-js-label-y": "Координатан Y:",
