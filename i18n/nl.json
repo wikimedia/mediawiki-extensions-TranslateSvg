@@ -3,6 +3,7 @@
 		"authors": [
 			"AvatarTeam",
 			"Mainframe98",
+			"McDutchie",
 			"SPQRobin",
 			"Siebrand"
 		]
@@ -51,5 +52,6 @@
 	"translate-js-label-italic": "Cursief",
 	"translate-js-label-underline": "Onderstrepen",
 	"translate-js-font-family-inherit": "(overnemen)",
+	"apihelp-query+messagegroups-param-inprogress": "Mogelijke array met lopende vertalingen (niet-opgeslagen vertalingen die voorrang moeten krijgen op de opgeslagen vertalingen). Alleen SVG-berichtgroepen.",
 	"apihelp-query+messagegroups-param-language": "Taal om de voorvertoning in te weergeven. Alleen SVG berichtgroepen zijn toegestaan."
 }
