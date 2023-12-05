@@ -4,7 +4,8 @@
 			"AvatarTeam",
 			"Mainframe98",
 			"SPQRobin",
-			"Siebrand"
+			"Siebrand",
+			"McDutchie"
 		]
 	},
 	"translatesvg-desc": "Biedt een interface voor het vertalen van SVG-bestanden in het bestand zelf volgens de SVG1.1-specificatie",
@@ -51,5 +52,6 @@
 	"translate-js-label-italic": "Cursief",
 	"translate-js-label-underline": "Onderstrepen",
 	"translate-js-font-family-inherit": "(overnemen)",
+	"apihelp-query+messagegroups-param-inprogress": "Mogelijke array met lopende vertalingen (niet-opgeslagen vertalingen die voorrang moeten krijgen op de opgeslagen vertalingen). Alleen SVG-berichtgroepen.",
 	"apihelp-query+messagegroups-param-language": "Taal om de voorvertoning in te weergeven. Alleen SVG berichtgroepen zijn toegestaan."
 }
