@@ -7,7 +7,7 @@
  * @copyright Copyright © 2012 Harry Burt
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-( function ( mw, $ ) {
+( function () {
 	var TranslateSvgFilepage = function () {
 		// Placeholder; note that 'this' can (and should) be used here safely
 	};
@@ -148,4 +148,4 @@
 		var tsvgFilepage = new TranslateSvgFilepage();
 		tsvgFilepage.init();
 	} );
-}( mediaWiki, jQuery ) );
+}() );
